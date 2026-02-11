@@ -6,7 +6,7 @@
 
 \DeclareMathOperator{\Hom}{\mathsf{Hom}}
 \DeclareMathOperator{\id}{\mathrm{id}}
-\newcommand{\Mod}[2][]{\sideset{_{#1}}{_{#2}}\mathsf{Mod}}%the first parameter is the left ring action, the second is the right ring action, e.g. so R-S bimods are _R Mod _S. I think I'm messing up the macro for optional commands or smth so I have to debug that
+\newcommand{\Mod}[2]{\sideset{_{#1}}{_{#2}}{\mathop{\mathsf{Mod}}}}%the first parameter is the left ring action, the second is the right ring action, e.g. so R-S bimods are _R Mod _S. I think I'm messing up the macro for optional commands or smth so I have to debug that
 
 \begin{document}
 	\section{Basic Category Theory}
@@ -87,7 +87,7 @@
 	\begin{theorem}
 		\end{theorem}
 	\section{(co)homological algebra}
-	\begin{definition}If $F: \Mod{R}\to \Mod{S}$ is a functor of module categories (it can be different sided module categories too, it doesn't matter), $F$ is said to be \textit{additive} if, given any two $\varphi,\psi \in \Hom_R(M,N)$, we have $F(\varphi+ \psi)= F(\varphi)+F(\psi)$-- that is, on each $\Hom$ it's a homomorphism of additive groups.
+	\begin{definition}If $F: \Mod{R}{}\to \Mod{S}{}$ is a functor of module categories (it can be different sided module categories too, it doesn't matter), $F$ is said to be \textit{additive} if, given any two $\varphi,\psi \in \Hom_R(M,N)$, we have $F(\varphi+ \psi)= F(\varphi)+F(\psi)$-- that is, on each $\Hom$ it's a homomorphism of additive groups.
 	\end{definition}
 	I'm really only mentioning the word ``additive" here so that I can say ``additive" later on without needing to refer you to the stuff on abelian categories (at least, not yet).
 	\begin{definition} A module is said to be \textbf{projective} if
