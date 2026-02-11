@@ -3,6 +3,91 @@
 \usepackage{AMadhava}
 %the .sty AMadhava apparently requires LuaLaTeX or XeTeX at the moment, be sure that you're using those for compilation
 
+
+\DeclareMathOperator{\Hom}{\mathsf{Hom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\newcommand{\Mod}[2]{_{#1}\mathsf{Mod}_{#2}}%the first parameter is the left ring action, the second is the right ring action, e.g. so R-S bimods are _R Mod _S.
+
 \begin{document}
-	hi hello there
+	\section{Basic Category Theory}
+	\begin{remark}The notion of ``class" in ZFC requires a definition. This can be done (``parametrically definable classes"), but for now let's blackbox the concept and just say ``classes are a generalization of sets which are allowed to be `large'", e.g. so a ``class of all sets" makes sense even though a ``set of all sets" does not. This shouldn't matter ultimately anyways. \end{remark}
+	\begin{definition}
+		A \textbf{Category}, $\mathcal{C}$, is a triple of classes, $\mathsf{obj}(\mathcal{C})$, $\Hom(\mathcal{C})$, and $\mathsf{\circ}$ AKA $\mathsf{Comp}(\mathcal{C})$. For every $a,b\in \mathsf{obj}(\mathcal{C})$, we have some set $\Hom_\mathcal{C}(a,b)\subset \Hom(\mathcal{C})$ and ok blablabla composition is a map $\Hom_\mathcal{C}(a,b)\times \Hom_\mathcal{C}(b,c) \to \Hom_\mathcal{C}(a,c)$ such that it's associative, and each $\Hom_\mathcal{C}(a,a)$ has an identity $\id_a$ under composition.
+		\end{definition}
+	\begin{definition} Given two categories, $\mathcal{C}$ and $\mathcal{D}$, a \textbf{functor} $F: \mathcal{C}\to \mathcal{D}$ is
+		\end{definition}
+		
+		Now we know what a functor is, we should talk about some examples and basic properties thereof.
+	\begin{definition}A functor, $F:\mathcal{C}\to \mathcal{D}$, is said to be:	
+		\begin{itemize}
+			\item \textbf{faithful} if the induced map $\Hom_\mathcal{C}(a,b)\to\Hom_\mathcal{D}(Fa, Fb)$ is injective for all $a,b\in \mathsf{obj}(\mathcal{C})$
+			\item \textbf{full} if the induced map $\Hom_\mathcal{C}(a,b)\to\Hom_\mathcal{D}(Fa, Fb)$ is surjective for all $a,b\in \mathsf{obj}(\mathcal{C})$
+			\item \textbf{bijective} if the induced map $\Hom_\mathcal{C}(a,b)\to\Hom_\mathcal{D}(Fa, Fb)$ is bijective for all $a,b\in \mathsf{obj}(\mathcal{C})$
+		\end{itemize}
+		\end{definition}
+	Now, in many contexts we want to compare two categories, talk about whether or not they're the ``same". In such circumstances we \textit{could} require that we have a pair of inverse functors-- an ``isomorphism of categories"-- but the problem is that this is way too strong (to the point of coming down to ``how strict are we about what sets we use to define our objects"). It is, for instance, perfectly valid linear algebra-wise to imagine all finite $\mathbb{R}$-vector spaces as just ``vector spaces $\mathbb{R}^n$", but the two categories \textit{aren't} equivalent because one only has a $\mathbb{Z}^+$ worth of sets while the other has way more. The notion of ``isomorphism" is thus the ``wrong definition". For a better definition, rather than being ``bijective on objects", we require a sort of weaker notion:
+	\begin{definition}A functor $F:\mathcal{C}\to \mathcal{D}$ is said to be \textbf{essentially surjective} if, for every $d\in \mathsf{obj}(\mathcal{D})$, there exists some $c\in \mathsf{obj}(\mathcal{C})$ such that $Fc\cong d$. 
+		\end{definition}
+	That is to say, $F$ ``reaches all of $\mathcal{D}$ (up to abstract isomorphism)" With this in mind, we can formulate the following:
+	\begin{definition} A functor $F:\mathcal{C}\to \mathcal{D}$ is said to be a \textbf{(weak) equivalence of categories} if $F$ is fully faithful and essentially surjective.
+		\end{definition}
+	This is to say: morphisms in $\mathcal{C}$ and $\mathcal{D}$ can be thought of interchangeably--so long as you're willing to transport along abstract isomorphisms in $\mathcal{D}$. Subscribing to the philosophy that ``objects are but vessels for morphisms" (hey, I don't wanna bother with the yoneda lemma here), this tells us the two categories are ``morally" the same. The reason for the parenthetical ``weak" is more or less a ``you can choose to be careful about the axiom of choice"-- in particular, there's a natural notion of a ``(homotopy) equivalence of categories"-- cf. \ref{Cat Equiv}, which is nice and cool but requires a bit more terminology. With Axiom of choice these are the same, but without axiom of choice this notion is ``weaker". Jason has said he often means ``weak equivalence" when he says equivalence though (even though he's distinguished them in the past?), so mostly it's a ``have the homotopic notion in mind morally, and the weak notion in mind for like 80\% of practical examples."
+	\begin{definition}
+		Given two functors, $F,G: \mathcal{C}\to \mathcal{D}$, a \textbf{natural transformation} $\eta_\bullet: F \to G$ is 
+		\end{definition}
+	\begin{remark} If the notation was not itself suggestive enough (and perhaps it wasn't at this high a level of abstraction, alas), a ``natural transformation" is a good concept of ``map between functors"-- this should already be a somewhat familiar notion to those who know some representation theory: A representation of $G$ over $k$ (take $k=\mathbb{R},\mathbb{C}$ for comfort if you like) is a sort of map (indeed, literally a functor) $G\to \mathsf{Vect}_k$, and an equivariant map between two representations is analogous to (indeed, literally is) a natural transformation between them. People also sometimes like to illustrate these with a ``globular diagram"
+		% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhjYWx7Q30iXSxbMiwwLCJcXG1hdGhjYWx7RH0iXSxbMCwxLCJGIiwxLHsiY3VydmUiOi0yfV0sWzAsMSwiRyIsMSx7ImN1cnZlIjoyfV0sWzIsMywiXFxldGFfXFxidWxsZXQiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+		\[\begin{tikzcd}
+			{\mathcal{C}} && {\mathcal{D}}
+			\arrow[""{name=0, anchor=center, inner sep=0}, "F"{description}, curve={height=-12pt}, from=1-1, to=1-3]
+			\arrow[""{name=1, anchor=center, inner sep=0}, "G"{description}, curve={height=12pt}, from=1-1, to=1-3]
+			\arrow["{\eta_\bullet}", between={0.2}{0.8}, Rightarrow, from=0, to=1]
+		\end{tikzcd}\],
+	which in particular should make you imagine a sort of ``directed" homotopy from $F$ to $G$ (and indeed, one can kind of formulate homotopies of maps of topological spaces in this ``maps between maps" language blabla)-- in a bit, we'll see some concepts which are roughly ``homotopy equivalences of categories", so this intuition is by no means off the mark.
+		\end{remark}
+		
+	``why do we care about this?" well, to curry your question into a different question, we define another thing
+	
+	\begin{definition}
+		A pair of functors $F:\mathcal{C}\to \mathcal{D}$, $G:\mathcal{D}\to \mathcal{C}$ are said to be an \textbf{adjoint pair} if any of the following equivalent definitions hold:
+			\begin{itemize}
+				\item 
+			\end{itemize}
+	\end{definition}
+	\begin{remark}Each of these definitions gives a slightly different insight into what a ``adjunction" really is, namely:
+		\end{remark}
+	\begin{remark}Technically, a proof that these definitions are equivalent is required. Practically, it's pure abstract nonsense and not particularly insightful. For completeness, I provide the proofs here ()actually idk maybe I don't, the proof's on nlab and wikipedia probably) , but you shouldn't need to remember them nearly so much as (the intuition behind) the definitions.
+		\end{remark}
+	\begin{lemma}(the different concepts of adjunction are equivalent)
+		\end{lemma}
+	
+	Now that we have the requisite language, we can finally formulate a ``(homotopy) equivalence of categories":
+	\begin{definition}\label{Cat Equiv} Two categories, $\mathcal{C}, \mathcal{D}$ are said to be \textbf{equivalent} if there exists pair of functors $F:\mathcal{C} \to \mathcal{D}$ and $G: \mathcal{D}\to \mathcal{C}$ \textit{and} a pair of natural \textit{iso}morphisms $\eta: \id_\mathcal{C}\to F\circ G$ and $\varepsilon: G\circ F\id_\mathcal{D}$. 
+		\end{definition}
+		\begin{remark} Any equivalence is an adjunction by the counit-unit definition above, and indeed: an equivalence is precisely an adjunction for which the counit and unit transformations are iso.
+			\end{remark}
+		
+		
+	
+	\section{Tensor products (even over potentially non-commutative rings) and more miscellaneous module theory}
+	\begin{definition}\textbf{$R$-balanced maps}
+		\end{definition}
+	\begin{definition}\textbf{tensor product}
+		\end{definition}
+		That's a universal property or what have you-- really, it's the same philosophy as viewing the ``tensor product of $V$ and $W$" as ``the multilinear maps from $V\times W$", we're just being cautious about commutativity and being a smidgeon more careful since not every module is free here. Anyways, ``how/why does this universal object actually exist?", well, we just take a super big free module and the mod out by what it means to be $R$-balanced, aka by what it means to be (non-commutatively) multilinear. We give the proof of existence as follows:
+	\begin{lemma})(tensor products exist)
+		\end{lemma}
+	
+	\section{(co)homological algebra}
+	\begin{definition}
+	\end{definition}
+		
+	\section{Generalities on ``Abelian Categories"}
+	\begin{remark}
+		Jason might require us to technically be able to unravel the definition, \textit{but}, in practice ``abelian category" just means ``category which we can think of like a category of left/right $R$-modules".  This is possible to formalize by the \ref{Freyd-Mitchell}{Freyd-Mitchell Embedding Theorem}, which is technically useful. It's also complete abstract nonsense, and for every almost every single thing we talk about, you can use the words ``abelian category" interchangeably with ``category of $R$-modules" (or, \textit{if you really want}, ``category of chain complexes of $R$-modules"), so just think in terms of whatever's easiest.
+	\end{remark}
+	\begin{theorem}\label{Freyd-Mitchell} (Freyd-Mitchell Embedding) Let $\mathcal{A}$ be a (small) abelian category. Then, there is a ring $R$ (not necessarily commutative)  and a full, faithful, exact (hence additive) functor $i: \mathcal{A}\hookrightarrow _R\mathsf{Mod}$ the category of left $R$-modules.
+		\end{theorem}
+	You do \textit{not} need to memorize this (nor will we see a proof), but I feel it necessary to mention it as a name to look up/be referred to.
+
 \end{document}
