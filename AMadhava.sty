@@ -1,0 +1,343 @@
+\RequirePackage{fontspec}
+%\setmainfont{Noto Serif}
+%\usepackage{notomath}
+%\let\Bbbk\relax
+%\let\openbox\relax
+%\RequirePackage{noto}
+%\newfontfamily\kannadafont{Noto Sans Kannada}
+%\RequirePackage{polyglossia}
+%\setmainlanguage{english}
+%\setotherlanguage{kannada}
+%\newfontfamily{\kannadafont}{Kannada_Regular.ttf}[
+%Path = ../Fonts/.
+%Extension = .ttf
+%]
+%\RequirePackage[utf8]{inputenc}
+\usepackage{imakeidx}
+\RequirePackage{graphicx} % Required for inserting images
+\RequirePackage{amsfonts, amsmath, amssymb, amsthm, tikz}
+\RequirePackage{mathtools}
+\RequirePackage{float}
+\RequirePackage{enumerate, enumitem}
+\RequirePackage[margin = 1in]{geometry}
+\RequirePackage{imakeidx}
+\RequirePackage{tasks}
+\RequirePackage{fancyhdr}
+\RequirePackage{mdframed}
+\RequirePackage{makecell}
+%\RequirePackage{arydshln}
+\RequirePackage{titling}
+\RequirePackage[table]{xcolor}
+\RequirePackage{listings}
+%\RequirePackage{xcolor}
+\RequirePackage[labelfont = bf]{caption, subcaption}
+%\RequirePackage{soul}
+\RequirePackage{braket}
+\RequirePackage[mathscr]{euscript}
+\RequirePackage{nicefrac}
+%\RequirePackage{mathrsfs}
+\RequirePackage[normalem]{ulem}
+\RequirePackage{cancel}
+\RequirePackage{halloweenmath}
+\usetikzlibrary{arrows,scopes}
+\usetikzlibrary{calc}
+%\RequirePackage{biblatex}
+\RequirePackage{pifont}
+\RequirePackage{tikz-cd}
+% Source - https://tex.stackexchange.com/a
+% Posted by fish_monster
+% Retrieved 2026-01-08, License - CC BY-SA 4.0
+%\RequirePackage{MnSymbol}
+
+
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{snake it/.style={decorate, decoration=snake}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+% \RequirePackage{tocloft}
+% \AtBeginDocument{%
+	%     \newlistof{problems}{lop}{List of Problems}
+	%     \newlistentry{problemitem}{lop}{0}
+	%     \setlength{\cftbeforelop}{\baselineskip}
+	% }
+\RequirePackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,      
+	urlcolor=blue
+}
+
+\lstset{style=mystyle}
+
+%\setul{1pt}{0.2pt}
+%\newcommand{\tp}[1]{\ul{\textbf{#1}}\textbf{:}\index{#1}}
+\newcommand{\gcf}[1]{\text{gcf}\left\{#1\right\}}
+\newcommand{\rat}{\mathbb{Q}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\rel}{\mathbb{R}}
+\newcommand{\textct}[1]{\textcolor{blue}{\texttt{#1}}}
+\newcommand{\halfline}{\noindent\hfil \rule{0.75\textwidth}{0.4pt}\hfil}
+\newcommand{\quarterline}{\noindent\hfil \rule{0.5\textwidth}{0.4pt}\hfil}
+\newcommand{\fullline}{\noindent\hrule width \hsize}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\nm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\bigabs}[1]{\bigg\vert #1 \bigg \vert}
+\newcommand{\emf}{\mathcal{E}}
+\newcommand{\tr}[1]{\operatorname{tr}\left(#1\right)}
+\newcommand{\matlab}{\text{MATLAB }}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\ti}[1]{\widetilde{#1}}
+\newcommand{\h}[1]{H^{#1}_{\text{dr}}}
+\renewcommand{\b}{B_{r}}
+\newcommand{\defs}[1]{\textbf{#1}\index{\textbf{Definitions}!#1}}
+\newcommand{\thms}[1]{\textbf{#1}\index{\textbf{Theorems}!#1}}
+\newcommand{\props}[1]{\textbf{#1}\index{\textbf{Propositions}!#1}}
+\newcommand{\corr}[1]{\textbf{#1}\index{\textbf{Corollaries}!#1}}
+\newcommand{\lems}[1]{\textbf{#1}\index{\textbf{Lemmas}!#1}}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\supp}{supp}
+\DeclarePairedDelimiter{\PDset}{\{}{\}}
+
+%%%%%%%%%% https://tex.stackexchange.com/questions/21274/script-r-symbol %%%%%%%%%%%%%
+\newcommand{\rc}{%
+	\resizebox{!}{1.25ex}{%
+		\begin{tikzpicture}[>=round cap]
+			\clip (0.09em,-0.05ex) rectangle (0.61em,0.81ex);
+			\draw [line width=.11ex, <->, rounded corners=0.13ex] (0.1em,0.1ex) .. controls (0.24em,0.4ex) .. (0.35em,0.8ex) .. controls (0.29em,0.725ex) .. (0.25em,0.6ex) .. controls (0.7em,0.8ex) and (0.08em,-0.4ex) .. (0.55em,0.25ex);
+		\end{tikzpicture}%
+	}%
+}
+\newcommand{\brc}{%
+	\resizebox{!}{1.3ex}{%
+		\begin{tikzpicture}[>=round cap]
+			\clip (0.085em,-0.1ex) rectangle (0.61em,0.875ex);
+			\draw [line width=.2ex, <->, rounded corners=0.13ex] (0.1em,0.1ex) .. controls (0.24em,0.4ex) .. (0.35em,0.8ex) .. controls (0.29em,0.725ex) .. (0.25em,0.6ex) .. controls (0.7em,0.8ex) and (0.08em,-0.4ex) .. (0.55em,0.25ex);
+		\end{tikzpicture}%
+	}%
+}
+\newcommand{\hrc}{\hat{\brc}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\boldm}[1]{$\boldsymbol{#1}$}
+\renewcommand{\th}{^{\text{th}}}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\low}{\hat{a}}
+\newcommand{\ras}{\hat{a}^{\dagger}}
+\newcommand{\lxop}{\begin{pmatrix}0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}}
+\newcommand{\lyop}{\begin{pmatrix}0 & -i & 0 \\ i & 0 & -i \\ 0 & i & 0 \end{pmatrix}}
+\newcommand{\lzop}{\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1\end{pmatrix}}
+\newcommand{\lx}{\hat{L}_{x}}
+\newcommand{\ly}{\hat{L}_{y}}
+\newcommand{\lz}{\hat{L}_{z}}
+\newcommand{\x}{\hat{x}}
+\newcommand{\y}{\hat{y}}
+\newcommand{\z}{\hat{z}}
+\newcommand{\px}{\hat{p}_{x}}
+\newcommand{\py}{\hat{p}_{y}}
+\newcommand{\pz}{\hat{p}_{z}}
+\newcommand{\lp}{\hat{L}_{+}}
+\newcommand{\lm}{\hat{L}_{-}}
+\renewcommand{\l}{\hat{L}}
+\newcommand{\ch}[3]{\boldsymbol{\Gamma}_{#1 #2}^{#3}}
+\newcommand{\chof}[2]{\Gamma_{#1}^{#2}}
+\newcommand{\rom}[1]{%
+	\textup{\uppercase\expandafter{\romannumeral#1}}%
+}
+\newcommand{\hr}{\hspace{1.5pt}\hrc}
+\newcommand{\br}{\hspace{1.5pt}\brc}
+\newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+\newcommand{\tensor}[3]{{#1^{#2}}_{#3}}
+\renewcommand{\r}{\rightarrow}
+\renewcommand{\l}{\leftarrow}
+\newcommand{\out}{\odot}
+\newcommand{\into}{\otimes}
+\newcommand{\tc}[2]{\textcolor{#1}{#2}}
+\newcommand{\me}{Aniruddha Madhava}
+\newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\Int}[1]{#1^{\circ}}
+\newcommand{\Clo}[1]{\overline{#1}}
+\newcommand{\empspace}{\hspace{2pt}\cdot\hspace{2pt}}
+\newcommand{\om}{
+\newfontfamily\kannadafont{Noto Serif Kannada}
+
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-30pt}{%
+      \ifodd\value{page}
+        % Odd pages â†’ right edge
+        \hspace{\paperwidth}%
+        \makebox[-40pt][r]{%
+          {\color{black}\kannadafont à²“à²‚}%
+        }%
+      \else
+        % Even pages â†’ left edge
+        \makebox[2cm][r]{%
+          {\color{black}\kannadafont à²“à²‚}%
+        }%
+      \fi
+    }%
+  }%
+}
+}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\ext}{ext}
+\DeclarePairedDelimiter{\brac}{\{}{\}}
+%\DeclarePairedDelimiter{\par}{(}{)}
+
+%%% https://tex.stackexchange.com/questions/44237/lower-and-upper-riemann-integrals %%%
+\def\upint{\mathchoice%
+	{\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+	{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+	{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+	{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+	\int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{definition*}{Definition}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{solution}{Sol'n}[section]
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{customthm}[1]
+{\renewcommand\theinnercustomthm{#1}\phantomsection\addcontentsline{toc}{subsection}{Theorem #1}\innercustomthm\upshape}
+{\endinnercustomthm}
+\newtheorem{innercustomcor}{Corollary}
+\newenvironment{customcor}[1]
+{\renewcommand\theinnercustomcor{#1}\innercustomcor\upshape}
+{\endinnercustomcor}
+\newtheorem{innercustomlem}{Lemma}
+\newenvironment{customlem}[1]
+{\renewcommand\theinnercustomlem{#1}\innercustomlem\upshape}
+{\endinnercustomlem}
+\newtheorem{innercustomexc}{Exercise}
+\newenvironment{customexc}[1]
+{\renewcommand\theinnercustomexc{#1}\innercustomexc\upshape}
+{\endinnercustomexc}
+\newtheorem{innercustomdef}{Def}
+\newenvironment{customdef}[1]
+{\renewcommand\theinnercustomdef{#1}\innercustomdef\upshape}
+{\endinnercustomdef}
+\newtheorem{innercustomprop}{Proposition}
+\newenvironment{customprop}[1]
+{\renewcommand\theinnercustomprop{#1}\innercustomprop\upshape}
+{\endinnercustomprop}
+\newtheorem{innercustomprb}{Problem}
+\newenvironment{customprb}[1]
+{%
+	\renewcommand\theinnercustomprb{#1}%
+	\phantomsection%
+	\addcontentsline{toc}{subsubsection}{Problem #1}%
+	\innercustomprb\upshape
+}
+{\endinnercustomprb}
+\newenvironment{solutions}{\color{blue}}{}
+\newenvironment{proofs}{\color{orange}}{}
+\newenvironment{myproof}[1][\proofname]{%
+	\begin{proof}[#1]$ $\par\nobreak\ignorespaces
+	}{%
+	\end{proof}
+}
+
+\mdfsetup{
+	innertopmargin=-6pt,
+	innerbottommargin=2pt,
+	innerrightmargin=4pt,
+	innerleftmargin=4pt,
+	leftmargin = 4pt,
+	rightmargin = 4pt
+}
+\newenvironment{prb}[1]{
+	\begin{mdframed}
+		\begin{customprb}{#1}
+		}
+		{
+		\end{customprb}
+	\end{mdframed}
+}
+\newenvironment{exc}[1]{
+	\begin{mdframed}
+		\begin{customexc}{#1}
+		}
+		{
+		\end{customexc}
+	\end{mdframed}
+}
+\newenvironment{thm}[1]{
+	\begin{mdframed}
+		\begin{customthm}{#1}
+		}
+		{
+		\end{customthm}
+	\end{mdframed}
+}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\arccot}{arccot}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\setlength{\parindent}{0pt}
+\tikzcdset{arrow style=tikz, diagrams={>={Stealth[round,length=4pt,width=4.95pt,inset=2.75pt]}}}
+\RequirePackage{eso-pic}
+
+
+%\newfontfamily\kannada[
+%Path = ../KannadaFonts/,
+%Extension = .ttf,
+%UprightFont = *-Regular,
+%BoldFont = *-Bold
+%]{AnnekKannada}
+
+
+
+
+%\newfontfamily\kannadafont{Noto Serif Kannada}
+
+%\AddToShipoutPictureBG{%
+%	\AtPageUpperLeft{%
+%		\hspace{\paperwidth}%
+%		\raisebox{-\baselineskip}{%
+%			\makebox[-20pt][r]{%
+%				{\color{black} \sffamily à²“à²‚}%
+%			}%
+%}}}
