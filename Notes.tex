@@ -6,7 +6,7 @@
 
 \DeclareMathOperator{\Hom}{\mathsf{Hom}}
 \DeclareMathOperator{\id}{\mathrm{id}}
-\newcommand{\Mod}[2]{_{#1}\mathsf{Mod}_{#2}}%the first parameter is the left ring action, the second is the right ring action, e.g. so R-S bimods are _R Mod _S.
+\newcommand{\Mod}[2][]{\sideset{_{#1}}{_{#2}}\mathsf{Mod}}%the first parameter is the left ring action, the second is the right ring action, e.g. so R-S bimods are _R Mod _S. I think I'm messing up the macro for optional commands or smth so I have to debug that
 
 \begin{document}
 	\section{Basic Category Theory}
@@ -14,8 +14,13 @@
 	\begin{definition}
 		A \textbf{Category}, $\mathcal{C}$, is a triple of classes, $\mathsf{obj}(\mathcal{C})$, $\Hom(\mathcal{C})$, and $\mathsf{\circ}$ AKA $\mathsf{Comp}(\mathcal{C})$. For every $a,b\in \mathsf{obj}(\mathcal{C})$, we have some set $\Hom_\mathcal{C}(a,b)\subset \Hom(\mathcal{C})$ and ok blablabla composition is a map $\Hom_\mathcal{C}(a,b)\times \Hom_\mathcal{C}(b,c) \to \Hom_\mathcal{C}(a,c)$ such that it's associative, and each $\Hom_\mathcal{C}(a,a)$ has an identity $\id_a$ under composition.
 		\end{definition}
+		
+	\begin{definition} Given a category $\mathcal{C}$, we define its \textit{opposite category} $\mathcal{C}^{op}$ to be the category
+		\end{definition}
 	\begin{definition} Given two categories, $\mathcal{C}$ and $\mathcal{D}$, a \textbf{functor} $F: \mathcal{C}\to \mathcal{D}$ is
 		\end{definition}
+		Now, sometimes we wish to talk about things which don't \textit{respect} composition, but instead reverse it. These still get to be called functors, but we call those ``contravariant functors" and (even if we \textit{really}) think of them as ``composition reversing functors $\mathcal{C}\to \mathcal{D}$) it'll end up being nice to think of these quite formally as functors $\mathcal{C}^{op} \to \mathcal{D}$-- e.g. they ``preserve reverse composition of arrows". 
+		
 		
 		Now we know what a functor is, we should talk about some examples and basic properties thereof.
 	\begin{definition}A functor, $F:\mathcal{C}\to \mathcal{D}$, is said to be:	
@@ -78,9 +83,15 @@
 	\begin{lemma})(tensor products exist)
 		\end{lemma}
 	
+	The tensor product has, itself, a deep relation to $\Hom$-functors-- namely, we have the \textit{tensor-hom adjunction}:
+	\begin{theorem}
+		\end{theorem}
 	\section{(co)homological algebra}
-	\begin{definition}
+	\begin{definition}If $F: \Mod{R}\to \Mod{S}$ is a functor of module categories (it can be different sided module categories too, it doesn't matter), $F$ is said to be \textit{additive} if, given any two $\varphi,\psi \in \Hom_R(M,N)$, we have $F(\varphi+ \psi)= F(\varphi)+F(\psi)$-- that is, on each $\Hom$ it's a homomorphism of additive groups.
 	\end{definition}
+	I'm really only mentioning the word ``additive" here so that I can say ``additive" later on without needing to refer you to the stuff on abelian categories (at least, not yet).
+	\begin{definition} A module is said to be \textbf{projective} if
+		\end{definition}
 		
 	\section{Generalities on ``Abelian Categories"}
 	\begin{remark}

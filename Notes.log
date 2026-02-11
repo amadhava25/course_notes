@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.2.10)  11 FEB 2026 00:31
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.2.10)  11 FEB 2026 00:48
  restricted system commands enabled.
 **Notes.tex
 (./Notes.tex
@@ -1359,7 +1359,73 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] (./Notes.aux)
+]
+! Missing } inserted.
+<inserted text> 
+                }
+l.90 	\begin{definition}If $F: \Mod{R}
+                                      \to \Mod{S}$ is a functor of module ca...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten $.
+\@mathmeasure ...3->\setbox #1\hbox {\m@th $#2#3$}
+                                                  
+l.90 	\begin{definition}If $F: \Mod{R}
+                                      \to \Mod{S}$ is a functor of module ca...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Limit controls must follow a math operator.
+<argument> \nolimits 
+                     
+l.90 	\begin{definition}If $F: \Mod{R}
+                                      \to \Mod{S}$ is a functor of module ca...
+I'm ignoring this misplaced \limits or \nolimits command.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.90 	\begin{definition}If $F: \Mod{R}\to \Mod{S}
+                                                 $ is a functor of module ca...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten $.
+\@mathmeasure ...3->\setbox #1\hbox {\m@th $#2#3$}
+                                                  
+l.90 	\begin{definition}If $F: \Mod{R}\to \Mod{S}
+                                                 $ is a functor of module ca...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Limit controls must follow a math operator.
+<argument> \nolimits 
+                     
+l.90 	\begin{definition}If $F: \Mod{R}\to \Mod{S}
+                                                 $ is a functor of module ca...
+I'm ignoring this misplaced \limits or \nolimits command.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.10004pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.10004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-11.10004pt}.
+
+[2] [3] (./Notes.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1369,13 +1435,14 @@ Package rerunfilecheck Info: File `Notes.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 34338 strings out of 476076
+ 34342 strings out of 476076
  156414,1144653 words of node,token memory allocated
  790 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 111 glue_spec
 , 8 attribute_list, 2 write nodes
-   avail lists: 1:2,2:1342,3:506,4:89,5:981,6:68,7:14276,8:32,9:670,10:9,11:817
- 55869 multiletter control sequences out of 65536+600000
+   avail lists: 1:2,2:1403,3:511,4:91,5:1037,6:72,7:14584,8:32,9:681,10:11,11:83
+6
+ 55870 multiletter control sequences out of 65536+600000
  47 fonts using 3476199 bytes
  131i,15n,128p,1047b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/t
@@ -1392,10 +1459,10 @@ cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2025/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2025/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Notes.pdf (3 pages, 110608 bytes).
+Output written on Notes.pdf (3 pages, 115067 bytes).
 
-PDF statistics: 147 PDF objects out of 1000 (max. 8388607)
- 111 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 131072)
+PDF statistics: 150 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 131072)
  48 words of extra memory for PDF output out of 10000 (max. 100000000)
 
