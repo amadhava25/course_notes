@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{../AMadhava}
+\rhead{MAT 533: Analysis II Notes}
+
+\title{Lecture Notes in Analysis II}
+\author{Spring 2026}
+\date{\vspace{-0.5ex}}
+\begin{document}
+	\maketitle
+	\fullline 
+	\tableofcontents
+	\halfline 
+	\newpage 
+
+
+\section*{Lecture 4: Weak and Strong Convergence}
+\subsubsection*{Key Topics:}
+(1) Weak and Strong Convergence, (2) Compactness of the Unit Ball, (3) Riesz's Theorem, (4) Kakutani's Theorem 
+\subsubsection*{Summary:}
+In this lecture, we will see a couple of different compactness results. In particular, we will study strong and weak compactness, and show that strong compactness is, in general, impossible to attain. We will see applications of these convergence types to the unit ball and reflexive spaces. 
+\subsubsection*{Lecture:}
+\begin{itemize}
+	\item \textbf{Thm. (Riesz's Theorem)} Let $X$ be a normed linear space. Then the unit ball $\{x \in X: \norm{x} \leq 1\}$ is compact if and only if $\dim(X) < \infty$.
+	
+	\begin{solutions}
+		($\Leftarrow$) Suppose $X$ is a finite-dimensional space. In HW 2, we showed that every norm on $X$ is equivalent, and so is equivalent to the Euclidean norm. This means that the induced topology is the same as the Euclidean topology on $X$. Then since the unit sphere is closed and bounded in the Euclidean norm, by the Heine-Borel Theorem\footnote{\href{http://math.stackexchange.com/questions/4959961/heine-borel-for-finite-dimensional-normed-vector-spaces}{http://math.stackexchange.com/questions/4959961/heine-borel-for-finite-dimensional-normed-vector-spaces}}, we conclude that the unit sphere is compact. 
+		
+		($\Rightarrow$) Suppose that $\dim(X) = \infty$. We wish to show that the unit sphere is not compact; since $X$ is a normed (hence, metric) space, equivalence of sequential compactness and compactness implies it is sufficient to find a sequence with no convergent subsequence. In particular, we will construct a sequence $\{x_{j}\} \subseteq \{\norm{x} \leq 1\}$ so that $\norm{x_{j} - x_{k}}\geq \frac{1}{2}$ for all $j\neq k$. We proceed by induction. Choose $x_{1} \in X$ with $\norm{x_{1}} = 1$. Suppose that we have chosen $x_{1}, \ldots, x_{n}$ with $\norm{x_{j}}\leq 1$ for all $j = 1, 2,\ldots, n$, and $\norm{x_{j} - x_{k}}\geq \frac{1}{2}$ for $j \neq k$. Let $P = \operatorname{span}\{x_{1}, \ldots, x_{n}\}$. Since $P \subsetneq X$, there exists some $y_{n + 1} \in X\setminus P$ so that $\norm{y_{n + 1}}\leq \frac{1}{4}$. Let $\delta$ be the distance between $y_{n + 1}$ and $P$: 
+		\begin{equation}
+			\delta = \inf_{x \in P}\norm{y_{n + 1} - x} > 0. 
+		\end{equation}
+		In particular, there exists some $x_{\ast} \in P$ so that $\norm{y_{n + 1} - x_{\ast}} \leq (11/10)\delta$. Define the element 
+		\begin{equation}
+			x_{n + 1} = \frac{1}{2}\cdot \frac{y_{n + 1} - x_{\ast}}{\delta}. 
+		\end{equation}
+		We observe the following: 
+		\begin{enumerate}[itemsep =-2pt,label = (\roman{*})]
+			\item $\displaystyle \norm{x_{n + 1}} = \frac{1}{2\delta}\norm{y_{n + 1} - x_{\ast}} \leq \frac{1}{2\delta} \cdot \frac{11\delta}{10} = \frac{11}{20} < 1$. Hence, $x_{n + 1} \in \{\norm{x} \leq 1\}$. 
+			\item For any $j \leq n$, 
+			\begin{align}
+				\begin{split}
+					\norm{x_{n + 1} - x_{j}} &= \norm{\frac{y_{n + 1} - (x_{\ast} + 2\delta x_{j})}{2\delta}} \geq \frac{\delta}{2\delta} = \frac{1}{2}, 
+				\end{split}
+			\end{align}
+			where the inequality follows from the fact that $x_{\ast} + 2\delta x_{j} \in P$. 
+		\end{enumerate}
+		Hence, we continue building $\{x_{j}\}$ in this way; by construction, this sequence has no convergent subsequence, which proves that the unit ball cannot be compact. 
+	\end{solutions}
+	\item \textbf{Rmk.} Riesz's theorem shows the problem with \textit{strong} convergence. Over the following results, we will demonstrate that \textit{weak} convergence is better for compactness. Our goal is to show that the unit ball is weakly compact in an arbitrary reflexive space. 
+	\item \textbf{Def. (Weak Convergence)} Let $X$ be a normed linear space, and $X^{\ast}$ its dual space. $\{x_{n}\}_{n = 1}^{\infty} \subseteq X$ converges \textit{weakly} to $x \in X$ if for all $\ell \in X^{\ast}$, $\ell(x_{n})$ converges to $\ell(x)$. Let's recall a few results we had from last time $\ldots$
+	\item \textbf{Prop. (Norm for Weak Convergence)} Let $X$ be a normed linear space, and assume $x_{n}$ converges to $x$ weakly. Then the following are true: 
+	\begin{enumerate}[itemsep =-2pt,label = (\roman{*})]
+		\item $\sup\limits_{n}\norm{x_{n}} < \infty$, 
+		\item $\norm{x} \leq \liminf\limits_{n}\norm{x_{n}}$. 
+	\end{enumerate}
+	
+	\begin{solutions}
+		\begin{enumerate}[itemsep =-2pt,label = (\roman{*})]
+			\item Uniform boundedness principle (see Lecture 5)
+			\item By the Hahn-Banach Theorem, there exists a linear functional $\ell \in X^{\ast}$ with $\norm{\ell} = 1$ so that $\ell(x) = x$ (this is the second application of the HBT; see Lecture 3). This means that 
+			\begin{equation}
+				\norm{x} = \ell(x) = \lim_{n \to \infty}\ell(x_{n}) \leq \norm{\ell}\liminf_{n \to \infty}\norm{x_{n}} = \liminf_{n \to \infty}\norm{x_{n}}. 
+			\end{equation} 
+		\end{enumerate}
+	\end{solutions}
+	\item \textbf{Thm. (Kakutani)} Let $X$ be a normed linear space. Then $X$ is reflexive if and only if the unit ball $\{\norm{x} \leq 1\}$ is weakly compact; i.e., if and only if for any sequence $\{x_{n}\} \subseteq \{\norm{x}\leq 1\}$, there exists a subsequence $\{x_{n_{k}}\}$ and $x_{\ast} \in X$ so that $x_{n_{k}}$ converges weakly to $x_{\ast}$ as $k \to \infty$. 
+	
+	Remark: to prove this theorem, we will actually prove a couple of weaker results, and then use these results to attack the main theorem. Also note that the original lecture only focused on the forward direction. 
+	
+	\item \textbf{Thm. (Weak Kakutani)} Let $X$ be a reflexive normed linear space and $X^{\ast}$ separable. Then the unit ball $\{\norm{x_{n}} \leq 1\}$ is weakly compact. 
+	
+	\begin{solutions}
+		Assume the hypotheses. Since $X^{\ast}$ is reflexive, there exists a countable dense subset $\{\ell_{n}\} \subset X^{\ast}$. Let $\{x_{n}\}$ be a subsequence of the unit ball in $X$. We will break this proof into a couple of steps. 
+			\begin{quote}
+				(Step 1) There exists a subsequence $\{x_{n_{j}}\}$ such that for all $k$, $\{\ell_{k}(x_{n_{j}})\}$ converges. 
+				
+				This step uses the Cantor diagonalization argument. Consider the sequence $\{\ell_{1}(x_{n})\}$. Then since this sequence is uniformly bounded, there exists a subsequence $\{x_{n_{k}}^{(1)}\}$ such that $\{\ell_{1}(x_{n_{k}}^{(1)})\}$ converges. Now consider the sequence $\{\ell_{2}(x_{n_{k}}^{(1)})\}$. Once again, this is a uniformly bounded numerical sequence, and therefore, admits a subsequence $\{x_{n_{k}}^{(2)}\}$ so that $\{\ell_{2}(x_{n_{k}}^{(2)})\}$ converges. Moreover, we also know that $\{\ell_{1}(x_{n_{k}}^{(2)})\}$ converges. Repeating this procedure inductively, construct the grid: 
+					\begin{equation}
+						\begin{matrix}
+							x_{n_{1}}^{(1)} & x_{n_{2}}^{(1)} & x_{n_{3}}^{(1)} & \dotsm & x_{n_{k}}^{(1)} \\
+							x_{n_{1}}^{(2)} & x_{n_{2}}^{(2)} & x_{n_{3}}^{(2)} & \dotsm & x_{n_{k}}^{(2)}\\
+							x_{n_{1}}^{(3)} & x_{n_{2}}^{(3)} & x_{n_{3}}^{(3)} & \dotsm & x_{n_{k}}^{(3)}\\
+							\vdots & \vdots & \vdots & \ddots \\
+							x_{n_{1}}^{(k)} & \ldots & \ldots & \ldots &  x_{n_{k}}^{(k)} 
+						\end{matrix}
+					\end{equation} 
+				Form a sequence by selecting all the diagonal arguments. This is the desired subsequence. 
+			
+			(Step 2) Show that this subsequence converges for \textit{all} $\ell \in X^{\ast}$. Let $\{x_{n_{j}}\}$ be the sequence one obtains by completing Step 1. Let $\ell \in X^{\ast}$ be arbitrary Then we claim that $\{\ell(x_{n_{j}})\}$ converges. 
+			\end{quote}
+	\end{solutions}
+\end{itemize}
+\end{document}
