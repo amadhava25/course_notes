@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  13 FEB 2026 22:09
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  13 FEB 2026 22:14
  restricted system commands enabled.
 **"Analysis II Notes.tex"
 ("./Analysis II Notes.tex"
@@ -1489,7 +1489,9 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 [6]
 
-[7] ("./Analysis II Notes.aux")
+[7]
+
+[8] ("./Analysis II Notes.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -1499,14 +1501,15 @@ Package rerunfilecheck Info: File `"Analysis II Notes".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 42963 strings out of 475915
+ 42972 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 3216 words of node memory still in use:
-   94 hlist, 12 vlist, 5 rule, 12 math, 48 glue, 7 kern, 124 glyph, 68 attribute
-, 110 glue_spec, 68 attribute_list, 2 write nodes
-   avail lists: 2:2323,3:907,4:139,5:526,6:62,7:7031,8:66,9:1067,10:11,11:334
- 64431 multiletter control sequences out of 65536+600000
- 65 fonts using 4592751 bytes
+ 3224 words of node memory still in use:
+   94 hlist, 12 vlist, 5 rule, 12 math, 48 glue, 7 kern, 124 glyph, 70 attribute
+, 110 glue_spec, 70 attribute_list, 2 write nodes
+   avail lists: 1:1,2:2319,3:907,4:145,5:526,6:62,7:7031,8:66,9:1067,10:11,11:33
+4
+ 64438 multiletter control sequences out of 65536+600000
+ 71 fonts using 4964935 bytes
  99i,17n,128p,941b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf><c:/te
 xlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf><c:/texlive/
@@ -1518,18 +1521,19 @@ ntype/public/lm/lmroman12-bold.otf><c:/texlive/2024/texmf-dist/fonts/opentype/pu
 blic/lm/lmroman12-regular.otf><c:/texlive/2024/texmf-dist/fonts/opentype/public/
 lm/lmroman17-regular.otf><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
-b>
-Output written on Analysis II Notes.pdf (7 pages, 158112 bytes).
+.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/t
+exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/20
+24/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Analysis II Notes.pdf (8 pages, 173979 bytes).
 
-PDF statistics: 238 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 131072)
- 96 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 256 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 131072)
+ 104 words of extra memory for PDF output out of 10000 (max. 100000000)
 
