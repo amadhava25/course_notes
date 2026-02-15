@@ -3,23 +3,50 @@
 \usepackage{AMadhava}
 %the .sty AMadhava apparently requires LuaLaTeX or XeTeX at the moment, be sure that you're using those for compilation
 
+\newcommand{\CRing}{\mathsf{CRing}} % the category of commutative unital Rings
+\newcommand{\Ring}{\mathsf{Ring}} % the category of unital (not-necessarily commutative) Rings
+\newcommand{\Grp}{\mathsf{Group}} % the category of groups
+\newcommand{\Ch}{\mathsf{Ch}} %the category of chain complexes
+\newcommand{\Ab}{\mathsf{Ab}} %the category of abelian groups
+\newcommand{\Mod}[2]{\sideset{_{#1}}{_{#2}}{\mathop{\mathsf{Mod}}}}%the first parameter is the left ring action, the second is the right ring action, e.g. so R-S bimods are _R Mod _S. The way I wrote this has no optional args, so you always have to do two args (just leaving one empty depending).
+\newcommand{\Alg}[2]{\sideset{_{#1}}{_{#2}}{\mathop{\mathsf{Alg}}}}% the category of (unital) left/right algebras over such and such rings
+\newcommand{\CAlg}[1]{\sideset{_{#1}}{}{\mathop{\mathsf{CAlg}}}}% the category of (unital) Commutative algebras over such and such ring.
+\newcommand{\Vect}[1]{\sideset{_{#1}}{}{\mathop{\mathsf{Vect}}}}
+\newcommand{\FinVect}[1]{\sideset{_{#1}}{}{\mathop{\mathsf{FinVect}}}}
+\newcommand{\Top}{\mathsf{Top}}% the category of topological spaces
+
+\newcommand{\dual}{^\lor}
+\newcommand{\iso}{\xrightarrow{~}}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\isom}{\cong}
 
 \DeclareMathOperator{\Hom}{\mathsf{Hom}}
 \DeclareMathOperator{\id}{\mathrm{id}}
-\newcommand{\Mod}[2]{\sideset{_{#1}}{_{#2}}{\mathop{\mathsf{Mod}}}}%the first parameter is the left ring action, the second is the right ring action, e.g. so R-S bimods are _R Mod _S. I think I'm messing up the macro for optional commands or smth so I have to debug that
-
-\begin{document}
-	\section{Basic Category Theory}
+\DeclareMathOperator{\Ext}{\mathsf{Ext}}
+\DeclareMathOperator{\Tor}{\mathsf{Tor}}
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\begin{document} 
+\section{Basic Category Theory}
 	\begin{remark}The notion of ``class" in ZFC requires a definition. This can be done (``parametrically definable classes"), but for now let's blackbox the concept and just say ``classes are a generalization of sets which are allowed to be `large'", e.g. so a ``class of all sets" makes sense even though a ``set of all sets" does not. This shouldn't matter ultimately anyways. \end{remark}
 	\begin{definition}
-		A \textbf{Category}, $\mathcal{C}$, is a triple of classes, $\mathsf{obj}(\mathcal{C})$, $\Hom(\mathcal{C})$, and $\mathsf{\circ}$ AKA $\mathsf{Comp}(\mathcal{C})$. For every $a,b\in \mathsf{obj}(\mathcal{C})$, we have some set $\Hom_\mathcal{C}(a,b)\subset \Hom(\mathcal{C})$ and ok blablabla composition is a map $\Hom_\mathcal{C}(a,b)\times \Hom_\mathcal{C}(b,c) \to \Hom_\mathcal{C}(a,c)$ such that it's associative, and each $\Hom_\mathcal{C}(a,a)$ has an identity $\id_a$ under composition.
+		A \textbf{Category}, $\mathcal{C}$, is a triple of classes, $\mathsf{obj}(\mathcal{C})$, $\Hom(\mathcal{C})$, and ``$\mathsf{\circ}$", AKA $\mathsf{Comp}(\mathcal{C})$, such that:
+			\begin{itemize}
+				\item For every $a,b\in \mathsf{obj}(\mathcal{C})$, there is a set $\Hom_\mathcal{C}(a,b)$ of elements of $\Hom(\mathcal{C})$.
+				\item For every $a,b,c\in \mathsf{obj}(\mathcal{C})$, composition is a ``map" $\circ: \Hom_\mathcal{C}(a,b)\times \Hom_\mathcal{C}(b,c)\to \Hom_\mathcal{C}(a,c)$
+					\begin{itemize}
+						\item Composition is \textit{associative}, in that $(f\circ g)\circ h= f\circ (g\circ h)$ for any morphisms $f,g,h\in \Hom(\mathcal{C})$ (whenever this composition makes sense).
+					\end{itemize}
+				\item For every $a\in \mathsf{obj}(\mathcal{C})$, there is an element $\id_a\in \Hom_\mathcal{C}(a,a)$ which is an identity for composition.
+			\end{itemize}
 		\end{definition}
+	In short: we have objects, arrows between objects, a way of composing arrows, and identity arrows on each object. Oftentimes, when working with a category of modules or vector spaces, we will omit the name of the full category and simply denote $\Hom_R(M,N)$ for (say) $\Hom_{\Mod{R}{}}(M,N)$.
 		
-	\begin{definition} Given a category $\mathcal{C}$, we define its \textit{opposite category} $\mathcal{C}^{op}$ to be the category
+	\begin{definition} Given a category $\mathcal{C}$, we define its \textit{opposite category} $\mathcal{C}^{op}$ to be the category with the same objects, but such that for every morphism $f:a \to b$ in $\Hom(\mathcal{C})$ we have an arrow $f^{op}:b \to a$ in $\Hom(\mathcal{C}^{op})$. Composition is defined by saying that, for every $$a\xrightarrow{f}b \xrightarrow{g} c$$ in $\Hom(\mathcal{C})$, $$c\xrightarrow{(g\circ f)^{op}}a :=  c\xrightarrow{g^{op}}b \xrightarrow{f^{op}}a$$ in $\Hom(\mathcal{C}^{op}).$
 		\end{definition}
-	\begin{definition} Given two categories, $\mathcal{C}$ and $\mathcal{D}$, a \textbf{functor} $F: \mathcal{C}\to \mathcal{D}$ is
+	\begin{definition} Given two categories, $\mathcal{C}$ and $\mathcal{D}$, a \textbf{functor} $F: \mathcal{C}\to \mathcal{D}$ is a map on objects $F_{\mathsf{obj}}: \mathsf{obj}(\mathcal{C})\to \mathsf{obj}(\mathcal{D})$ together with a collection of maps on morphisms $F_{\Hom(a,b)}: \Hom_\mathcal{C}(a,b)\to \Hom_{\mathcal{D}}(Fa, Fb)$. By convention we omit any subscripts and, for any $\mathcal{C}$-object $a$ or any $\mathcal{C}$-morphism $\varphi$, simply denote $Fa$ and $F\varphi$ for the corresponding object/morphism in $\mathcal{D}$.
 		\end{definition}
-		Now, sometimes we wish to talk about things which don't \textit{respect} composition, but instead reverse it. These still get to be called functors, but we call those ``contravariant functors" and (even if we \textit{really}) think of them as ``composition reversing functors $\mathcal{C}\to \mathcal{D}$) it'll end up being nice to think of these quite formally as functors $\mathcal{C}^{op} \to \mathcal{D}$-- e.g. they ``preserve reverse composition of arrows". 
+	
+		Now, sometimes we wish to talk about things which don't \textit{respect} composition, but instead reverse it. These still get to be called functors, but we call those ``\textbf{contravariant functors}" and (even if we \textit{really}) think of them as ``composition reversing functors $\mathcal{C}\to \mathcal{D}$) it'll end up being nice to think of these quite formally as functors $\mathcal{C}^{op} \to \mathcal{D}$-- e.g. they ``preserve reverse composition of arrows". 
 		
 		
 		Now we know what a functor is, we should talk about some examples and basic properties thereof.
@@ -38,7 +65,17 @@
 		\end{definition}
 	This is to say: morphisms in $\mathcal{C}$ and $\mathcal{D}$ can be thought of interchangeably--so long as you're willing to transport along abstract isomorphisms in $\mathcal{D}$. Subscribing to the philosophy that ``objects are but vessels for morphisms" (hey, I don't wanna bother with the yoneda lemma here), this tells us the two categories are ``morally" the same. The reason for the parenthetical ``weak" is more or less a ``you can choose to be careful about the axiom of choice"-- in particular, there's a natural notion of a ``(homotopy) equivalence of categories"-- cf. \ref{Cat Equiv}, which is nice and cool but requires a bit more terminology. With Axiom of choice these are the same, but without axiom of choice this notion is ``weaker". Jason has said he often means ``weak equivalence" when he says equivalence though (even though he's distinguished them in the past?), so mostly it's a ``have the homotopic notion in mind morally, and the weak notion in mind for like 80\% of practical examples."
 	\begin{definition}
-		Given two functors, $F,G: \mathcal{C}\to \mathcal{D}$, a \textbf{natural transformation} $\eta_\bullet: F \to G$ is 
+		Given two functors, $F,G: \mathcal{C}\to \mathcal{D}$, a \textbf{natural transformation} $\eta_\bullet: F \to G$ is a collection of maps for each $a\in\mathsf{obj}(\mathcal{C})$, $\eta_a: Fa\to Ga$ such that for every $a \xrightarrow{\varphi} b$ in $\Hom(\mathcal{C})$ the following square commutes:
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJGYSJdLFsyLDAsIkZiIl0sWzIsMiwiR2IiXSxbMCwyLCJHYSJdLFswLDMsIlxcZXRhX2EiXSxbMSwyLCJcXGV0YV9iIl0sWzAsMSwiRlxcdmFycGhpIl0sWzMsMiwiR1xcdmFycGhpIiwyXV0=
+		\[\begin{tikzcd}
+			Fa && Fb \\
+			\\
+			Ga && Gb
+			\arrow["{F\varphi}", from=1-1, to=1-3]
+			\arrow["{\eta_a}", from=1-1, to=3-1]
+			\arrow["{\eta_b}", from=1-3, to=3-3]
+			\arrow["{G\varphi}"', from=3-1, to=3-3]
+		\end{tikzcd}\]
 		\end{definition}
 	\begin{remark} If the notation was not itself suggestive enough (and perhaps it wasn't at this high a level of abstraction, alas), a ``natural transformation" is a good concept of ``map between functors"-- this should already be a somewhat familiar notion to those who know some representation theory: A representation of $G$ over $k$ (take $k=\mathbb{R},\mathbb{C}$ for comfort if you like) is a sort of map (indeed, literally a functor) $G\to \mathsf{Vect}_k$, and an equivariant map between two representations is analogous to (indeed, literally is) a natural transformation between them. People also sometimes like to illustrate these with a ``globular diagram"
 		% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhjYWx7Q30iXSxbMiwwLCJcXG1hdGhjYWx7RH0iXSxbMCwxLCJGIiwxLHsiY3VydmUiOi0yfV0sWzAsMSwiRyIsMSx7ImN1cnZlIjoyfV0sWzIsMywiXFxldGFfXFxidWxsZXQiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
@@ -50,30 +87,217 @@
 		\end{tikzcd}\],
 	which in particular should make you imagine a sort of ``directed" homotopy from $F$ to $G$ (and indeed, one can kind of formulate homotopies of maps of topological spaces in this ``maps between maps" language blabla)-- in a bit, we'll see some concepts which are roughly ``homotopy equivalences of categories", so this intuition is by no means off the mark.
 		\end{remark}
+		\begin{example}Denote $(-)^\times: \CRing\to \Grp$ the functor that associates any commutative ring $R$ to its group of units. Denote $GL_n(-): \CRing \to \Grp$ the functor that associates any commutative ring $R$ to the group of invertible $n\times n$ matrices with coefficients in $R$. Then, the determinant map defines a natural transformation $\det_\bullet: GL_n(-)\to (-)^\times$. 
+			\end{example}
+		\begin{example} Denote $(-)\dual: \FinVect{\mathbb{R}}\to \FinVect{\mathbb{R}}$ the functor that takes a vector space, $V$, to its dual $V\dual := \Hom_{\mathbb{R}}(V,\mathbb{R})$. Now, for each finite dimensional vector space $V$, one can choose an isomorphism $\eta_V: V\iso V\dual$ by choosing a basis. Nonetheless, this can \textit{not} be assembled into a natural transformation $\id_\mathcal{C}\to (-)\dual$-- intuitively because there is no way to make the choice of isomorphism "naturally" or "canonically"
+		\end{example}
 		
-	``why do we care about this?" well, to curry your question into a different question, we define another thing
+	
+		
+	``why do we care about this?" well, to curry your question into a different question, we define another thing:
 	
 	\begin{definition}
-		A pair of functors $F:\mathcal{C}\to \mathcal{D}$, $G:\mathcal{D}\to \mathcal{C}$ are said to be an \textbf{adjoint pair} if any of the following equivalent definitions hold:
+		A pair of functors $L:\mathcal{C}\to \mathcal{D}$, $R:\mathcal{D}\to \mathcal{C}$ are said to be an \textbf{adjoint pair} if any of the following equivalent definitions hold:
 			\begin{itemize}
-				\item 
+				\item ($\Hom$ bijection) For every $c\in \mathsf{obj}(\mathcal{C}), d\in \mathsf{obj}(\mathcal{D})$, there is a natural isomorphism $\eta_{c,d}:\Hom_\mathcal{D}(Lc, d)\iso\Hom_\mathcal{C}(c,Rd)$, where ``natural" is taken to mean ``for any $c\xrightarrow{\varphi}c'\in \Hom(\mathcal{C}), d\xrightarrow{\psi}d'\in \Hom(\mathcal{D})$, the following commutes:
+				% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXEhvbV9cXG1hdGhjYWx7Q30oTGMsZCkiXSxbMywwXSxbMiwwLCJcXEhvbV9cXG1hdGhjYWx7RH0oYywgUmQpIl0sWzIsMiwiXFxIb21fXFxtYXRoY2Fse0R9KGMnLFJkJykiXSxbMCwyLCJcXEhvbV9cXG1hdGhjYWx7Q30oTGMnLGQnKSJdLFsyLDMsIlxcSG9tX1xcbWF0aGNhbHtEfShcXHZhcnBoaSwgUlxccHNpKSJdLFswLDIsIlxcZXRhX3tjLGR9Il0sWzAsNCwiXFxIb21fXFxtYXRoY2Fse0N9KEZcXHZhcnBoaSwgXFxwc2kpIiwyXSxbNCwzLCJcXGV0YV97YycsZCd9IiwyXV0=
+				\[\begin{tikzcd}
+					{\Hom_\mathcal{C}(Lc,d)} && {\Hom_\mathcal{D}(c, Rd)} & {} \\
+					\\
+					{\Hom_\mathcal{C}(Lc',d')} && {\Hom_\mathcal{D}(c',Rd')}
+					\arrow["{\eta_{c,d}}", from=1-1, to=1-3]
+					\arrow["{\Hom_\mathcal{C}(F\varphi, \psi)}"', from=1-1, to=3-1]
+					\arrow["{\Hom_\mathcal{D}(\varphi, R\psi)}", from=1-3, to=3-3]
+					\arrow["{\eta_{c',d'}}"', from=3-1, to=3-3]
+				\end{tikzcd}\]
+				\item (equational) We have natural transformations $\eta: \id_\mathcal{C}\to R\circ L$ (the ``unit") and $\varepsilon:L\circ R \to \id_{\mathcal{D}}$ (the ``counit") such that the following commutes:
+				% https://q.uiver.app/#q=WzAsNixbMCwyLCJMIl0sWzIsMiwiTFJMIl0sWzQsMiwiTCJdLFswLDAsIlIiXSxbMiwwLCJSTFIiXSxbNCwwLCJSIl0sWzAsMSwiTFxcZXRhX3soLSl9Il0sWzEsMiwiXFx2YXJlcHNpbG9uX3tMKC0pfSJdLFswLDIsIlxcaWRfTCIsMix7ImN1cnZlIjoyfV0sWzMsNCwiXFxldGFfe1IoLSl9IiwyXSxbNCw1LCJSXFx2YXJlcHNpbG9uX3soLSl9IiwyXSxbMyw1LCJcXGlkX1IiLDAseyJjdXJ2ZSI6LTJ9XV0=
+				\[\begin{tikzcd}
+					R && RLR && R \\
+					\\
+					L && LRL && L
+					\arrow["{\eta_{R(-)}}"', from=1-1, to=1-3]
+					\arrow["{\id_R}", curve={height=-12pt}, from=1-1, to=1-5]
+					\arrow["{R\varepsilon_{(-)}}"', from=1-3, to=1-5]
+					\arrow["{L\eta_{(-)}}", from=3-1, to=3-3]
+					\arrow["{\id_L}"', curve={height=12pt}, from=3-1, to=3-5]
+					\arrow["{\varepsilon_{L(-)}}", from=3-3, to=3-5]
+				\end{tikzcd}\]
+				(in a quip, ``$\varepsilon \circ \eta = \id$").
+				\item (universal arrow for left adjoint) For every $c\in \mathcal{C}$, there exists $Rc\in \mathsf{obj}(\mathcal{D})$ and a map $\varepsilon_c: LRc\to c$ such that, for every $d\in \mathsf{obj}(\mathcal{D})$ and every $\varphi: Ld\to c$, there exists unique $\tilde{\varphi}: d\to Rc$ making the following diagram commute
+				% https://q.uiver.app/#q=WzAsNCxbMiwwXSxbMCwwLCJMZCJdLFswLDIsIkxSYyJdLFsyLDIsImMiXSxbMiwzLCJcXHZhcmVwc2lsb25fYyIsMl0sWzEsMiwiXFxleGlzdHMhIExcXHRpbGRlXFx2YXJwaGkiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMSwzLCJcXHZhcnBoaSJdXQ==
+				\[\begin{tikzcd}
+					Ld && {} \\
+					\\
+					LRc && c
+					\arrow["{\exists! L\tilde\varphi}"', dashed, from=1-1, to=3-1]
+					\arrow["\varphi", from=1-1, to=3-3]
+					\arrow["{\varepsilon_c}"', from=3-1, to=3-3]
+				\end{tikzcd}\]
+				\item (universal arrow for right adjoint)
+				For every $d\in \mathcal{D}$, there exists $Ld\in \mathsf{obj}(\mathcal{C})$ and a map $\eta_d: d\to RLd$ such that, for every $c\in \mathsf{obj}(\mathcal{C})$ and every $\psi: d\to Rc$, there exists unique $\tilde{\psi}: Ld\to c$ making the following diagram commute
+				% https://q.uiver.app/#q=WzAsNCxbMiwwXSxbMCwwLCJSYyJdLFswLDIsIlJMZCJdLFsyLDIsImQiXSxbMywyLCJcXGV0YV9kIl0sWzIsMSwiXFxleGlzdHMhIFJcXHRpbGRlXFxwc2kiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywxLCJcXHBzaSIsMl1d
+				\[\begin{tikzcd}
+					Rc && {} \\
+					\\
+					RLd && d
+					\arrow["{\exists! R\tilde\psi}", dashed, from=3-1, to=1-1]
+					\arrow["\psi"', from=3-3, to=1-1]
+					\arrow["{\eta_d}", from=3-3, to=3-1]
+				\end{tikzcd}\]
+				
 			\end{itemize}
+			In any of these cases, $L$ is said to be a \textbf{left adjoint} (to $R$), and $R$ is said to be a \textbf{right adjoint} (to $L$). 
 	\end{definition}
 	\begin{remark}Each of these definitions gives a slightly different insight into what a ``adjunction" really is, namely:
 		\end{remark}
-	\begin{remark}Technically, a proof that these definitions are equivalent is required. Practically, it's pure abstract nonsense and not particularly insightful. For completeness, I provide the proofs here ()actually idk maybe I don't, the proof's on nlab and wikipedia probably) , but you shouldn't need to remember them nearly so much as (the intuition behind) the definitions.
+	\begin{remark}Technically, a proof that these definitions are equivalent is required. Practically, it's pure abstract nonsense and not particularly insightful. To see the proofs, look at the nlab pages on ``adjunction" and ``adjoint functors" , but you shouldn't need to remember them nearly so much as (the intuition behind) the definitions.
 		\end{remark}
-	\begin{lemma}(the different concepts of adjunction are equivalent)
-		\end{lemma}
 	
 	Now that we have the requisite language, we can finally formulate a ``(homotopy) equivalence of categories":
 	\begin{definition}\label{Cat Equiv} Two categories, $\mathcal{C}, \mathcal{D}$ are said to be \textbf{equivalent} if there exists pair of functors $F:\mathcal{C} \to \mathcal{D}$ and $G: \mathcal{D}\to \mathcal{C}$ \textit{and} a pair of natural \textit{iso}morphisms $\eta: \id_\mathcal{C}\to F\circ G$ and $\varepsilon: G\circ F\id_\mathcal{D}$. 
 		\end{definition}
 		\begin{remark} Any equivalence is an adjunction by the counit-unit definition above, and indeed: an equivalence is precisely an adjunction for which the counit and unit transformations are iso.
 			\end{remark}
-		
-		
 	
+	\begin{definition}In a category, $\mathcal{C}$, a ``\textbf{diagram}" is a functor $F: \mathcal{I}\to \mathcal{C}$ where $\mathcal{I}$ is small (and thought of as a ``index category").
+		\end{definition}
+	The term ``index category" here is taken in analogy to that of ``index set", e.g. for a product/direct sum. 
+	\begin{example}\label{pre-pushout}Take $\mathcal{I}$ to be the category given by the following digraph (with identity maps implicit):
+		% https://q.uiver.app/#q=WzAsMyxbMCwwLCIxIl0sWzEsMCwiMyJdLFsyLDAsIjIiXSxbMSwwLCJpIiwyXSxbMSwyLCJqIl1d
+		\[\begin{tikzcd}
+			1 & 3 & 2
+			\arrow["i"', from=1-2, to=1-1]
+			\arrow["j", from=1-2, to=1-3]
+		\end{tikzcd}\]
+	Take $\mathcal{C}= \CRing $. Then, the functor such that $F(1)= \mathbb{Z}[x]$, $F(2)= \mathbb{Z/2\mathbb{Z}}, F(3)= \mathbb{Z}$ with $F(i),F(j)$ taken to be the natural inclusions gives a diagram, visualized as % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntafVt4XSJdLFsxLDAsIlxcbWF0aGJie1p9Il0sWzIsMCwiXFxtYXRoYmJ7Wn0vMlxcbWF0aGJie1p9Il0sWzEsMF0sWzEsMiwiaiJdXQ==
+	\[\begin{tikzcd}
+		{\mathbb{Z}[x]} & {\mathbb{Z}} & {\mathbb{Z}/2\mathbb{Z}}
+		\arrow[from=1-2, to=1-1]
+		\arrow["j", from=1-2, to=1-3]
+	\end{tikzcd}\]
+		\end{example}
+	\begin{example}\label{pre-inverse limit}Take $\mathcal{I}$ to be the category given by the following infinite digraph (with identity maps implicit):
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCIxIl0sWzEsMCwiMiJdLFsyLDAsIjMiXSxbMywwLCJcXGRvdHMiXSxbMCwxLCJpX3sxMn0iXSxbMSwyLCJpX3syM30iXSxbMiwzLCJpX3szNH0iXV0=
+		\[\begin{tikzcd}
+			1 & 2 & 3 & \dots
+			\arrow["{i_{12}}", from=1-1, to=1-2]
+			\arrow["{i_{23}}", from=1-2, to=1-3]
+			\arrow["{i_{34}}", from=1-3, to=1-4]
+		\end{tikzcd}\]
+		Take $\mathcal{C}= \CRing $. Then, the functor such that, for every positive integer $n$, we take $F(n)= \mathbb{Z}/2^n\mathbb{Z}$ and $F(i_{n(n+1)})$ is taken to be the natural inclusion $\mathbb{Z}/2^n\mathbb{Z}\to \mathbb{Z}/2^{n+1}\mathbb{Z}$ is a diagram, visualized as
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhiYntafS9wXFxtYXRoYmJ7Wn0iXSxbMSwwLCJcXG1hdGhiYntafS9wXjJcXG1hdGhiYntafSJdLFsyLDAsIlxcbWF0aGJie1p9L3BeM1xcbWF0aGJie1p9Il0sWzMsMCwiXFxkb3RzIl0sWzAsMV0sWzEsMl0sWzIsM11d
+		\[\begin{tikzcd}
+			{\mathbb{Z}/2\mathbb{Z}} & {\mathbb{Z}/2^2\mathbb{Z}} & {\mathbb{Z}/2^3\mathbb{Z}} & \dots
+			\arrow[from=1-1, to=1-2]
+			\arrow[from=1-2, to=1-3]
+			\arrow[from=1-3, to=1-4]
+		\end{tikzcd}\]
+	\end{example}
+	\begin{example}\label{pre-(co)product}
+		Take $\mathcal{I}$ to be the category given by the following digraph (with identity maps implicit):
+		% https://q.uiver.app/#q=WzAsMixbMCwwLCIxIl0sWzEsMCwiMiJdXQ==
+		\[\begin{tikzcd}
+			1 & 2
+		\end{tikzcd}\]
+		Take $\mathcal{C}=\CRing$. Then, the functor with $F(1)= \mathbb{R}$ abd $F(2)=\mathbb{C}$ gives a diagram, visualized as:
+		% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhiYntSfSJdLFsxLDAsIlxcbWF0aGJie0N9Il1d
+		\[\begin{tikzcd}
+			{\mathbb{R}} & {\mathbb{C}}
+		\end{tikzcd}\]
+		\end{example}
+	
+	\begin{definition} Let $F:\mathcal{I}\to \mathcal{C}$ be a diagram. A ``\textbf{cone over}" (resp. ``\textbf{cocone under}") is a $\mathcal{C}$-object $c$, together with arrows $c\xrightarrow{\pi_n} Fn$ (resp. $c\xleftarrow{\iota_n}Fn$) for each $n\in\mathsf{obj}(\mathcal{I})$, such that for every $n\xrightarrow{i_{nm}}m\in \Hom(\mathcal{I})$  we have that the following diagram on the left (resp. on the right) commutes:
+		% https://q.uiver.app/#q=WzAsNyxbMiwxXSxbMSwwLCJjIl0sWzAsMiwiRm4iXSxbMiwyLCJGbSJdLFs0LDAsIkZuIl0sWzYsMCwiRm0iXSxbNSwyLCJjIl0sWzEsMiwiXFxwaV9uIiwwLHsiY3VydmUiOjF9XSxbMSwzLCJcXHBpX20iLDIseyJjdXJ2ZSI6LTF9XSxbMiwzLCJGKGlfe25tfSkiXSxbNCw1LCJGKGlfe25tfSkiXSxbNCw2LCJcXGlvdGFfbiIsMix7ImN1cnZlIjoxfV0sWzUsNiwiXFxpb3RhX20iLDAseyJjdXJ2ZSI6LTF9XV0=
+		\[\begin{tikzcd}
+			& c &&& Fn && Fm \\
+			&& {} \\
+			Fn && Fm &&& c
+			\arrow["{\pi_n}", curve={height=6pt}, from=1-2, to=3-1]
+			\arrow["{\pi_m}"', curve={height=-6pt}, from=1-2, to=3-3]
+			\arrow["{F(i_{nm})}", from=1-5, to=1-7]
+			\arrow["{\iota_n}"', curve={height=6pt}, from=1-5, to=3-6]
+			\arrow["{\iota_m}", curve={height=-6pt}, from=1-7, to=3-6]
+			\arrow["{F(i_{nm})}", from=3-1, to=3-3]
+		\end{tikzcd}\]
+		\end{definition}
+	\begin{definition}Let $F:\mathcal{I}\to \mathcal{C}$ be a diagram. A \textbf{limit} (resp. \textbf{colimit}) is a terminal cone over $F$ (resp. initial cocone under $F$)-- e.g, an object $c$ equipped with maps $c\xrightarrow{\pi_n} Fn$ (resp. $c\xleftarrow{\iota_n}Fn$) such that, for \textit{any other} object $c'$ equipped with maps $c'\xrightarrow{\pi'_n} Fn$ (resp. $c'\xleftarrow{\iota'_n}Fn$), there exists a unique map $\pi: c' \to c$ (resp $\iota: c\to c'$) such that the following diagram on the left (resp. on the right) commutes:
+		% https://q.uiver.app/#q=WzAsOSxbMiwyXSxbMSwxLCJjIl0sWzAsMywiRm4iXSxbMiwzLCJGbSJdLFsxLDAsImMnIl0sWzQsMCwiRm4iXSxbNiwwLCJGbSJdLFs1LDIsImMiXSxbNSwzLCJjJyJdLFsxLDIsIlxccGlfbiIsMCx7ImN1cnZlIjoxfV0sWzEsMywiXFxwaV9tIiwyLHsiY3VydmUiOi0xfV0sWzIsMywiRihpX3tubX0pIl0sWzQsMiwiXFxwaSdfbiIsMCx7ImN1cnZlIjozfV0sWzQsMywiXFxwaSdfbSIsMCx7ImN1cnZlIjotM31dLFs0LDEsIlxcZXhpc3RzICEgXFxwaSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDYsIkYoaV97bm19KSJdLFs1LDcsIlxcaW90YV9uIiwyLHsiY3VydmUiOjF9XSxbNiw3LCJcXGlvdGFfbSIsMCx7ImN1cnZlIjotMX1dLFs1LDgsIlxcaW90YSdfe259IiwyLHsiY3VydmUiOjN9XSxbNiw4LCJcXGlvdGEnX20iLDAseyJjdXJ2ZSI6LTN9XSxbNyw4LCJcXGV4aXN0cyAhIFxcaW90YSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+		\[\begin{tikzcd}
+			& {c'} &&& Fn && Fm \\
+			& c \\
+			&& {} &&& c \\
+			Fn && Fm &&& {c'}
+			\arrow["{\exists ! \pi}", dashed, from=1-2, to=2-2]
+			\arrow["{\pi'_n}", curve={height=18pt}, from=1-2, to=4-1]
+			\arrow["{\pi'_m}", curve={height=-18pt}, from=1-2, to=4-3]
+			\arrow["{F(i_{nm})}", from=1-5, to=1-7]
+			\arrow["{\iota_n}"', curve={height=6pt}, from=1-5, to=3-6]
+			\arrow["{\iota'_{n}}"', curve={height=18pt}, from=1-5, to=4-6]
+			\arrow["{\iota_m}", curve={height=-6pt}, from=1-7, to=3-6]
+			\arrow["{\iota'_m}", curve={height=-18pt}, from=1-7, to=4-6]
+			\arrow["{\pi_n}", curve={height=6pt}, from=2-2, to=4-1]
+			\arrow["{\pi_m}"', curve={height=-6pt}, from=2-2, to=4-3]
+			\arrow["{\exists ! \iota}", dashed, from=3-6, to=4-6]
+			\arrow["{F(i_{nm})}", from=4-1, to=4-3]
+		\end{tikzcd}\]
+		\end{definition}
+	\begin{example}Let $F:\mathcal{I}\to \mathcal{C}$ be as in example \ref{pre-pushout}. Then, the colimit over the diagram is given by the tensor product as (commutative) $\mathbb{Z}$-algebras, $\mathbb{Z}[x]\otimes_\mathbb{Z}\mathbb{Z}/2\mathbb{Z}\isom \mathbb{Z}/2\mathbb{Z}[x]$: 
+		% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhiYntafVt4XVxcb3RpbWVzX1xcbWF0aGJie1p9XFxtYXRoYmJ7Wn0vMlxcbWF0aGJie1p9Il0sWzIsMCwiXFxtYXRoYmJ7Wn1beF0iXSxbMCwxXSxbMCwyLCJcXG1hdGhiYntafS8yXFxtYXRoYmJ7Wn0iXSxbMiwyLCJcXG1hdGhiYntafSJdLFsxLDBdLFszLDBdLFs0LDNdLFs0LDFdXQ==
+		\[\begin{tikzcd}
+			{\mathbb{Z}[x]\otimes_\mathbb{Z}\mathbb{Z}/2\mathbb{Z}} && {\mathbb{Z}[x]} \\
+			{} \\
+			{\mathbb{Z}/2\mathbb{Z}} && {\mathbb{Z}}
+			\arrow[from=1-3, to=1-1]
+			\arrow[from=3-1, to=1-1]
+			\arrow[from=3-3, to=1-3]
+			\arrow[from=3-3, to=3-1]
+		\end{tikzcd}\]
+	This is also called a \textbf{pushout} (its dual is called a \textbf{pullback} or a \textbf{fibre product}).
+		\end{example}
+	\begin{example}Let $F:\mathcal{I}\to \mathcal{C}$ be as in example \ref{pre-inverse limit}. Then, the limit over the diagram is given by the $2$-adic integers $\mathbb{Z}_2$ (look them up on wikipedia if you haven't seen them before, they're useful for number theory etc.), together with the natural projections:% https://q.uiver.app/#q=WzAsNSxbMCwxLCJcXG1hdGhiYntafS8yXFxtYXRoYmJ7Wn0iXSxbMSwxLCJcXG1hdGhiYntafS8yXjJcXG1hdGhiYntafSJdLFsyLDEsIlxcbWF0aGJie1p9LzJeM1xcbWF0aGJie1p9Il0sWzMsMSwiXFxkb3RzIl0sWzEsMCwiXFxtYXRoYmJ7Wn1fMiJdLFswLDFdLFsxLDJdLFsyLDNdLFswLDRdLFsxLDRdLFsyLDRdXQ==
+		\[\begin{tikzcd}
+			& {\mathbb{Z}_2} && \\
+			{\mathbb{Z}/2\mathbb{Z}} & {\mathbb{Z}/2^2\mathbb{Z}} & {\mathbb{Z}/2^3\mathbb{Z}} & \dots
+			\arrow[from=2-1, to=1-2]
+			\arrow[from=2-1, to=2-2]
+			\arrow[from=2-2, to=1-2]
+			\arrow[from=2-2, to=2-3]
+			\arrow[from=2-3, to=1-2]
+			\arrow[from=2-3, to=2-4]
+		\end{tikzcd}\]
+		This is also called a \textbf{projective/inverse limit} (its dual is called a \textbf{direct/inductive limit}).
+		\end{example}
+	\begin{example} Let $F:\mathcal{I}\to \mathcal{C}$ be as in example \ref{pre-(co)product}. Then, the limit over the diagram is given by the product as rings, and the colimit over the diagram is given by the tensor product as $\mathbb{Z}$-algebras (note $\mathbb{Z}$ the initial object of $\CRing$, so one has ``invisible" maps $\mathbb{Z}\to \mathbb{R}$ and $\mathbb{Z}\to \mathbb{C}$):
+		% https://q.uiver.app/#q=WzAsNixbMCwxLCJcXG1hdGhiYntSfSJdLFsyLDEsIlxcbWF0aGJie0N9Il0sWzEsMCwiXFxtYXRoYmJ7Un1cXHRpbWVzIFxcbWF0aGJie0N9Il0sWzQsMCwiXFxtYXRoYmJ7Un0iXSxbNiwwLCJcXG1hdGhiYntDfSJdLFs1LDEsIlxcbWF0aGJie1J9XFxvdGltZXNfXFxtYXRoYmJ7Wn1cXG1hdGhiYntDfSJdLFsyLDAsIlxccGlfXFxtYXRoYmJ7MX0iLDJdLFsyLDEsIlxccGlfMiJdLFszLDUsIlxcaW90YV8xIiwyXSxbNCw1LCJcXGlvdGFfMiJdXQ==
+		\[\begin{tikzcd}
+			& {\mathbb{R}\times \mathbb{C}} &&& {\mathbb{R}} && {\mathbb{C}} \\
+			{\mathbb{R}} && {\mathbb{C}} &&& {\mathbb{R}\otimes_\mathbb{Z}\mathbb{C}}
+			\arrow["{\pi_\mathbb{1}}"', from=1-2, to=2-1]
+			\arrow["{\pi_2}", from=1-2, to=2-3]
+			\arrow["{\iota_1}"', from=1-5, to=2-6]
+			\arrow["{\iota_2}", from=1-7, to=2-6]
+		\end{tikzcd}\]
+	The left limit is called a \textbf{product}, the right colimit is called a \textbf{coproduct} (though indeed, coproducts in $\CRing$ can be thought of as pushouts under $\mathbb{Z}$).
+	\end{example}
+	Idea: colimits usually look like disjoint unions modulo identifying some things, limits usually look like subcollections of products.  Google examples of (co)products, pushouts, and pullbacks in categories you know about (including $\Top$ by the way) to feel a bit more comfortable with the terminology. Important note: in module categories, finite (but not infinite!) products and coproducts coincide. ``coproducts" bear the name of ``direct sum" more generally, but finite direct sums \textit{are} products as well (which is part of what makes ``abelian categories" so nice).
+	\begin{theorem}Suppose $F: \mathcal{C}\to \mathcal{D}$ is a functor. Then:
+		\begin{itemize}
+			\item If $F$ is a left adjoint (e.g., has a right adjoint), then $F$ preserves colimits.
+			\item If $F$ is a right adjoint (e.g., has a left adjoint), then $F$ preserves limits. 
+		\end{itemize}
+	\end{theorem}
+	This has a proof by pure formal nonsense given by unraveling the definitions. This is also an incredibly useful fact from which many other properties follow. If it helps to remember, one has the mnemonics ``LAPC [left adjoints preserve colimits]" and ``RAPL [right adjoints preserve limits]."
+	\begin{prop}Let $F:\mathcal{I}\to \mathcal{C}$ be a diagram. Then, a limit of $F$ (resp. a colimit of $F$) is precisely a $\mathcal{C}$-object $\lim F$ (resp. $\colim F$) such that, for all $c\in \mathsf{obj}(\mathcal{C})$ we have a natural bijection $$\Hom_\mathcal{C}(c, \lim F)\isom \Hom_{\mathsf{Fun}(\mathcal{I}, \mathcal{C})}(\mathsf{const}_c, F)$$ or respectively a natural bijection 
+		$$\Hom_\mathcal{C}(\colim F, c)\isom \Hom_{\mathsf{Fun}(\mathcal{I}, \mathcal{C})}(F, \mathsf{const}_c),$$ where by $\mathsf{Fun}(\mathcal{I}, \mathcal{C})$ we mean the category of functors and natural transformations (ignore set-theoretic issues here), and by $\mathsf{const}_c$ we mean the functor that takes every object to $c$ and every morphism to $\id_c$. 
+		
+		Rephrasing: $\lim_\mathcal{I}$ and $\colim_{\mathcal{I}}$ are right (resp. left) adjoint to the functor $\mathsf{const}: \mathcal{C}\to \mathsf{Fun}(\mathcal{I}, \mathcal{C})$. 
+		\end{prop}
+	This above proposition, modulo set-theoretic issues w.r.t. defining a functor category, is a valid alternative definition of ``limit/colimit", and can lead one to various useful ideas (e.g., the 2-category of categories, viewing $\lim / \colim$ as functors on their own right, left/right Kan extensions, etc.). It is a fine exercise to try and unravel this definition and see how the universal property (w.r.t. cones/cocones) is equivalent to this statement, but we would suggest not overemphasizing this definition if any of these concepts are new to the reader.
+	
+		
+		
+	\newpage
 	\section{Tensor products (even over potentially non-commutative rings) and more miscellaneous module theory}
 	\begin{definition}\textbf{$R$-balanced maps}
 		\end{definition}
@@ -86,13 +310,15 @@
 	The tensor product has, itself, a deep relation to $\Hom$-functors-- namely, we have the \textit{tensor-hom adjunction}:
 	\begin{theorem}
 		\end{theorem}
+		
+		\newpage
 	\section{(co)homological algebra}
 	\begin{definition}If $F: \Mod{R}{}\to \Mod{S}{}$ is a functor of module categories (it can be different sided module categories too, it doesn't matter), $F$ is said to be \textit{additive} if, given any two $\varphi,\psi \in \Hom_R(M,N)$, we have $F(\varphi+ \psi)= F(\varphi)+F(\psi)$-- that is, on each $\Hom$ it's a homomorphism of additive groups.
 	\end{definition}
 	I'm really only mentioning the word ``additive" here so that I can say ``additive" later on without needing to refer you to the stuff on abelian categories (at least, not yet).
 	\begin{definition} A module is said to be \textbf{projective} if
 		\end{definition}
-		
+		\newpage
 	\section{Generalities on ``Abelian Categories"}
 	\begin{remark}
 		Jason might require us to technically be able to unravel the definition, \textit{but}, in practice ``abelian category" just means ``category which we can think of like a category of left/right $R$-modules".  This is possible to formalize by the \ref{Freyd-Mitchell}{Freyd-Mitchell Embedding Theorem}, which is technically useful. It's also complete abstract nonsense, and for every almost every single thing we talk about, you can use the words ``abelian category" interchangeably with ``category of $R$-modules" (or, \textit{if you really want}, ``category of chain complexes of $R$-modules"), so just think in terms of whatever's easiest.
