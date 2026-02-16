@@ -2,6 +2,19 @@
 \usepackage{quiver}
 \usepackage{AMadhava}
 %the .sty AMadhava apparently requires LuaLaTeX or XeTeX at the moment, be sure that you're using those for compilation
+\usepackage{fontspec}
+
+\defaultfontfeatures[HaranoAjiMincho]{
+	Renderer=HarfBuzz,
+	Script=Kana,
+	Scale=MatchUppercase,
+	UprightFont=*-Light,
+	BoldFont=*-Medium,
+	Extension=.otf
+}
+
+\newfontfamily\kanafont{HaranoAjiMincho}
+\DeclareRobustCommand\yo{\textup{\kanafont よ}} %hiragana yo for yoneda embedding
 
 \newcommand{\CRing}{\mathsf{CRing}} % the category of commutative unital Rings
 \newcommand{\Ring}{\mathsf{Ring}} % the category of unital (not-necessarily commutative) Rings
@@ -14,6 +27,7 @@
 \newcommand{\Vect}[1]{\sideset{_{#1}}{}{\mathop{\mathsf{Vect}}}}
 \newcommand{\FinVect}[1]{\sideset{_{#1}}{}{\mathop{\mathsf{FinVect}}}}
 \newcommand{\Top}{\mathsf{Top}}% the category of topological spaces
+\newcommand{\SSet}{\mathsf{Set}}
 
 \newcommand{\dual}{^\lor}
 \newcommand{\iso}{\xrightarrow{~}}
@@ -153,13 +167,65 @@
 		\end{remark}
 	\begin{remark}Technically, a proof that these definitions are equivalent is required. Practically, it's pure abstract nonsense and not particularly insightful. To see the proofs, look at the nlab pages on ``adjunction" and ``adjoint functors" , but you shouldn't need to remember them nearly so much as (the intuition behind) the definitions.
 		\end{remark}
-	
+
 	Now that we have the requisite language, we can finally formulate a ``(homotopy) equivalence of categories":
 	\begin{definition}\label{Cat Equiv} Two categories, $\mathcal{C}, \mathcal{D}$ are said to be \textbf{equivalent} if there exists pair of functors $F:\mathcal{C} \to \mathcal{D}$ and $G: \mathcal{D}\to \mathcal{C}$ \textit{and} a pair of natural \textit{iso}morphisms $\eta: \id_\mathcal{C}\to F\circ G$ and $\varepsilon: G\circ F\id_\mathcal{D}$. 
 		\end{definition}
 		\begin{remark} Any equivalence is an adjunction by the counit-unit definition above, and indeed: an equivalence is precisely an adjunction for which the counit and unit transformations are iso.
 			\end{remark}
+	\subsection{Yoneda Lemma}
+	\begin{definition}Let $\mathcal{C}$, $\mathcal{D}$ be categories. Then, we denote $\mathsf{Fun}(\mathcal{C}, \mathcal{D})$ the category of (covariant) functors from $\mathcal{C}\to \mathcal{D}$, where the morphisms are natural transformations. 
+		\end{definition}
+	The above definition actually \textit{doesn't} always ``make sense" in that we required categories to have a \textit{set} of morphisms between any two objects, and yet this definition (at least taken as literally as possible) does not always meet this criterion. We shall ignore such issues for now.
 	
+	\begin{definition}
+		Let $\mathcal{C}$ be a category. We denote by $\yo_\bullet: \mathcal{C}\to \mathsf{Fun}(\mathcal{C},\SSet)$ the functor $c\mapsto \yo_c:= \Hom_\mathcal{C}(c,-)$, and we denote $\yo^\bullet: \mathcal{C}^{op}\to \mathsf{Fun}(\mathcal{C},\SSet)$ the functor $c\mapsto \yo^c := \Hom_\mathcal{C}(-, c)$.  These are called the \textbf{covariant and contravariant Yoneda functors} respectively (with the symbol used being the hiragana character ``yo" for Yoneda). The notation $h_\bullet$ or $h^\bullet$ is also used.
+		\end{definition}
+	\begin{theorem}(Yoneda Lemma) There is a natural isomorphism between the functors 
+		\begin{gather*}
+			\mathsf{eval}:\mathcal{C}\times \mathsf{Fun}(\mathcal{C}, \SSet)\to \SSet \\
+			(c, F)\mapsto Fc \\
+			(\varphi: c\to c', \eta: F\to G)\mapsto \eta_{c'}\circ F\varphi
+		\end{gather*}
+		and 
+		\begin{gather*}
+				\Hom_{\mathsf{Fun}(\mathcal{C}, \SSet)}(\yo_\bullet, - ):\mathcal{C}\times \mathsf{Fun}(\mathcal{C}, \SSet)\to \SSet \\
+				(c, F)\mapsto \Hom_{\mathsf{Fun}(\mathcal{C}, \SSet)}(\yo_c, F ) \\
+				(\varphi: c\to c', \eta: F\to G)\mapsto \Hom_{\mathsf{Fun}(\mathcal{C}, \SSet)}(\yo_\varphi , \eta ).
+		\end{gather*}
+		(as well as a dual one for the contravariant yoneda map)
+		\end{theorem}
+	\begin{proof}
+		For all $\varphi:c\to c', F:\mathcal{C}\to \SSet$, we have a natural transformation $\vartheta: \yo_c\to F$ given by the commutative diagram
+		% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXHlvX2MoYyk9XFxIb21fXFxtYXRoY2Fse0N9KGMsYykiXSxbMywwLCJcXHlvX2MoYycpPVxcSG9tX1xcbWF0aGNhbHtDfShjLGMnKSJdLFszLDMsIkZjJyJdLFswLDMsIkZjIl0sWzEsMSwiXFxpZF9jIl0sWzIsMSwiXFx2YXJwaGkiXSxbMSwyLCIqIl0sWzIsMiwiRlxcdmFycGhpKCopPVxcdmFydGhldGFfe2MnfVxcdmFycGhpIl0sWzAsMywiXFx2YXJ0aGV0YV9jIl0sWzEsMiwiXFx2YXJ0aGV0YV97Yyd9Il0sWzAsMSwiXFxIb21fXFxtYXRoY2Fse0N9KGMsIFxcdmFycGhpKT1cXHlvX2NcXHZhcnBoaSJdLFszLDIsIkZcXHZhcnBoaSJdLFs0LDUsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCw2LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzUsNywiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs2LDcsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
+		\[\begin{tikzcd}
+			{\yo_c(c)=\Hom_\mathcal{C}(c,c)} &&& {\yo_c(c')=\Hom_\mathcal{C}(c,c')} \\
+			& {\id_c} & \varphi \\
+			& {*} & {F\varphi(*)=\vartheta_{c'}\varphi} \\
+			Fc &&& {Fc'}
+			\arrow["{\Hom_\mathcal{C}(c, \varphi)=\yo_c\varphi}", from=1-1, to=1-4]
+			\arrow["{\vartheta_c}", from=1-1, to=4-1]
+			\arrow["{\vartheta_{c'}}", from=1-4, to=4-4]
+			\arrow[maps to, from=2-2, to=2-3]
+			\arrow[maps to, from=2-2, to=3-2]
+			\arrow[maps to, from=2-3, to=3-3]
+			\arrow[maps to, from=3-2, to=3-3]
+			\arrow["{F\varphi}", from=4-1, to=4-4]
+		\end{tikzcd}\]
+		The natural transformation is determined by the choice of $\vartheta_c(\id_c)= *\in F(A)$, and any choice of $*$ defines such a natural transformation. 
+		
+		An analogous diagram proves the analogous result for $\yo^\bullet$.
+	\end{proof}
+	Alright, so that was some very abstract nonsense. Key upshot (for now): 
+	\begin{corollary} Two $\mathcal{C}$-objects, $c,c'$, are isomorphic if and only if their $\Hom$ functors (contravariant or covariant) are isomorphic. 
+		\end{corollary}
+	\begin{proof}
+		By the above, we have $$\Hom_{\mathsf{Fun}(\mathcal{C},\SSet)}(\yo_c, \yo_{c'})\isom \Hom_\mathcal{C}(c',c)$$ and $$\Hom_{\mathsf{Fun}(\mathcal{C}^{op},\SSet)}(\yo^c, \yo^{c'})\isom \Hom_\mathcal{C}(c,c').$$
+	\end{proof}
+	\begin{remark} Because of the above result, the functors $\yo^\bullet$ and $\yo_\bullet$ are often called the ``\textbf{(resp. contravariant, covariant) Yoneda \textit{embedding}}", as we see that these functors are fully faithful (and isomorphism reflecting).\footnote{Sometimes, it is considered useful to view certain nice contravariant functors from certain nice (``geometric/topological") categories as ``generalized spaces" (``sheaves and/or algebraic spaces") which arise from gluing the objects/spaces in the base category. In this view, a ``sheaf" which is isomorphic to $\yo^c$ is said to be ``represented by $c$"-- such matters are quite relevant to the study of moduli spaces/moduli problems. }
+		\end{remark}
+	Philosophically, here's the point: ``objects in $\mathcal{C}$ are determined by morphisms to (and/or from) them". This is, more or less, a far \textit{far} reaching generalization of Cayley's theorem in group theory (``every group is a symmetry group of some object").
+	\subsection{(Co)Limits}
 	\begin{definition}In a category, $\mathcal{C}$, a ``\textbf{diagram}" is a functor $F: \mathcal{I}\to \mathcal{C}$ where $\mathcal{I}$ is small (and thought of as a ``index category").
 		\end{definition}
 	The term ``index category" here is taken in analogy to that of ``index set", e.g. for a product/direct sum. 
