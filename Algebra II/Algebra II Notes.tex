@@ -298,11 +298,22 @@
 		
 		
 	\newpage
-	\section{Tensor products (even over potentially non-commutative rings) and more miscellaneous module theory}
-	\begin{definition}\textbf{$R$-balanced maps}
+\section{Tensor products (even over potentially non-commutative rings) and more miscellaneous module theory}
+	\begin{definition}\textbf{$R$-balanced maps} Let $R$ be a ring, $M\in \Mod{}{R}, N\in \Mod{R}{}$. Then, an $R$ balanced map $\varphi:M\times N \to A$ an abelian group is a biadditive map (e.g., $\mathbb{Z}$-bilinear map) such that, for all $r\in R$, $\varphi(mr,n)= \varphi(m,rn)$ for all $m\in M, n\in N$. 
 		\end{definition}
-	\begin{definition}\textbf{tensor product}
+	\begin{definition}\textbf{tensor product} Let $M\in \Mod{S}{R},N\in \Mod{R}{S'}$ for a ring $R$. Then, the tensor product $M\otimes_R N$ is an abelian group (in particular, an $S$-$S'$-bimodule) together with a map $\otimes_R: M\times N \to M\otimes_R N$ such that, for any abelian group $A$ together with an $R$-balanced map $\varphi: M\times N \to A$, there exists unique abelian group homomorphism $\tilde\varphi: M\otimes_RN \to A$ making the following diagram commute:
+		% https://q.uiver.app/#q=WzAsMyxbMCwwLCJNXFx0aW1lcyBOIl0sWzIsMCwiTVxcb3RpbWVzX1IgTiJdLFsyLDIsIkEiXSxbMCwxLCJcXG90aW1lcyJdLFswLDIsIlxcdmFycGhpIiwyXSxbMSwyLCJcXGV4aXN0cyAhXFx0aWxkZVxcdmFycGhpIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+		\[\begin{tikzcd}
+			{M\times N} && {M\otimes_R N} \\
+			\\
+			&& A
+			\arrow["\otimes", from=1-1, to=1-3]
+			\arrow["\varphi"', from=1-1, to=3-3]
+			\arrow["{\exists !\tilde\varphi}", dashed, from=1-3, to=3-3]
+		\end{tikzcd}\].
+	If $R$ is commutative, then $M\otimes_RN$ admits the natural structure of an $R$-module, and we can instead consider the universal $R$-module such that any $R$-bilinear map $M\times N \to A$ factors through an $R$-module homomorphism $M\otimes_RN\to A$. 
 		\end{definition}
+		Note: while we take bimodules above, we can simply take $S$, $S'$, or $R$ to be $\mathbb{Z}$ and recover ``one-sided" modules.
 		That's a universal property or what have you-- really, it's the same philosophy as viewing the ``tensor product of $V$ and $W$" as ``the multilinear maps from $V\times W$", we're just being cautious about commutativity and being a smidgeon more careful since not every module is free here. Anyways, ``how/why does this universal object actually exist?", well, we just take a super big free module and the mod out by what it means to be $R$-balanced, aka by what it means to be (non-commutatively) multilinear. We give the proof of existence as follows:
 	\begin{lemma})(tensor products exist)
 		\end{lemma}
@@ -310,20 +321,124 @@
 	The tensor product has, itself, a deep relation to $\Hom$-functors-- namely, we have the \textit{tensor-hom adjunction}:
 	\begin{theorem}
 		\end{theorem}
+	\begin{definition}Let $R$ be a ring. An \textbf{$R$-algebra} is a ring, $S$, together with a ring homomorphism $R\to S$ (the ``structure map").
+		\end{definition}
+	\begin{definition} Let $R\to S$, $R\to S'$ be two $R$-algebras. A \textbf{(homo)morphism of $R$-algebras } from $S\to S'$ is a ring homomorphism $\varphi: S\to S'$ which commutes with the structure maps, e.g. making the following diagram commute:
+		% https://q.uiver.app/#q=WzAsMyxbMCwyLCJTIl0sWzIsMiwiUyciXSxbMSwwLCJSIl0sWzIsMF0sWzIsMV0sWzAsMSwiXFx2YXJwaGkiXV0=
+		\[\begin{tikzcd}
+			& R & \\
+			\\
+			S && {S'}
+			\arrow[from=1-2, to=3-1]
+			\arrow[from=1-2, to=3-3]
+			\arrow["\varphi", from=3-1, to=3-3]
+		\end{tikzcd}\]
+		\end{definition}
+	\begin{definition} Let $R$ be a commutative ring, let $R\to S$ and $R\to S'$ be $R$-algebras. Then, the \textit{tensor product of $R$-algebras} is the colimit in $\CRing$ over the diagram $$S'\leftarrow R \to S,$$ e.g. the pushout in $\CRing$ (or, as one can verify, the coproduct in $\CAlg{R}$).
+		\end{definition}
+	\begin{remark}Note that the tensor product of $R$-algebras can also be taken in steps. Namely, any $R$-algebra $R\to S$ admits the natural structure of an $R$-module by left/right multiplication. Then, for two $R$-algebras $S$ and $S'$, one can take their tensor product as $R$-modules, and then endow $S\otimes _R S'$ with the structure of an ring by defining $(s_1\otimes s_1')(s_2\otimes s_2'):= s_1s_2\otimes s_1's_2',$ which one can check gives an $R$-algebra in the natural way.
+		\end{remark}
+	\begin{definition}Let $R$ be a commutative ring, and $S\subset R$ a multiplicatively closed subset. The \textbf{localization}, $S^{-1}R$ is taken to be a (commutative) $R$-algebra $R\to S^{-1}R$ such that, for any ring homomorphism $R\to T$ taking every element of $S$ to a unit, there exists a unique ring homomorphism $S^{-1}R\to T$ making the following diagram commute:% https://q.uiver.app/#q=WzAsMyxbMCwwLCJSIl0sWzIsMCwiU157LTF9UiJdLFsyLDIsIlQiXSxbMCwxXSxbMCwyXSxbMSwyLCJcXGV4aXN0cyAhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+		\[\begin{tikzcd}
+			R && {S^{-1}R} \\
+			\\
+			&& T
+			\arrow[from=1-1, to=1-3]
+			\arrow[from=1-1, to=3-3]
+			\arrow["{\exists !}", dashed, from=1-3, to=3-3]
+		\end{tikzcd}\]
+		\end{definition}
+	This is to say, $S^{-1}R$ is the ``smallest" (e.g., initial) $R$-algebra for which every element of $S$ is a unit. As a universal property, this requires a construction/proof of existence-- this one justifies the common name ``ring of fractions" this ring.
+	\begin{theorem}(Construction of localizations) Localizations exist.
+		\end{theorem}
+	\begin{proof}
+		Let $S$ be a multiplicative subset of $R$ commutative. Define, on $R\times S$, an equivalence relation $$(a,b)\sim (c,d)$$ if there exists $s\in S$ such that $$s(ac-bd)=0.$$ As this forms an ideal,  we may take $S^{-1}R$ to be the ring of equivalence classes under this relation; we denote the equivalence class of $(r,s)$ as either $\frac{r}{s}$ or $s^{-1}r$. Then, the map $r\mapsto \frac{r}{1}: R\to S^{-1}R$ makes $S^{-1}R$ initial among all $R$-algebras for which $S$ is taken to units by the structure map.
+	\end{proof}
+	The relation in question should be taken to be exactly that of fraction addition working ``as it should". The use of an extra $s\in S$ in that definition is mostly just to fudge things a little so that we don't need to make an extra case for the multiplicative set having zero divisors (but, for $S$ to be a multiplicative set containing a zero divisor, it must also contain $0$ and hence the localization must be the zero ring anyways.)
+	
+	There is some special notation in the following cases:
+	\begin{definition}If $f\in R$, then we denote $R_f:= \{f,f^2,f^3,\dots\}^{-1}R$ the ``\textbf{localization away from $f$}". If $\mathfrak{p}$ is a prime ideal of $R$, then we denote $R_\mathfrak{p}:=(R-\mathfrak{p})^{-1}R$ the ``\textbf{localization at $\mathfrak{p}$}."\footnote{This terminology comes from algebraic geometry, where prime ideals (or, intuitively, maximal ideals) are thought of as ``points" of a topological space. Imagining $R$ as the ring of continuous functions on a compact Hausdorff space, $\mathfrak{p}$ as a point of said space, then we have the localization \textit{at} $\mathfrak{p}$ arising as the ``ring of germs of functions at $\mathfrak{p}$". The terminology for localization \textit{away from} an element is analogous: the localization at $f\in R$ is precisely the localization (intuitively, restriction to) all prime ideals (``points") not containing $f$ (that is, where $f$ does not vanish).} 
+		\end{definition}
 		
+	
 		\newpage
 	\section{(co)homological algebra}
 	\begin{definition}If $F: \Mod{R}{}\to \Mod{S}{}$ is a functor of module categories (it can be different sided module categories too, it doesn't matter), $F$ is said to be \textit{additive} if, given any two $\varphi,\psi \in \Hom_R(M,N)$, we have $F(\varphi+ \psi)= F(\varphi)+F(\psi)$-- that is, on each $\Hom$ it's a homomorphism of additive groups.
 	\end{definition}
 	I'm really only mentioning the word ``additive" here so that I can say ``additive" later on without needing to refer you to the stuff on abelian categories (at least, not yet).
-	\begin{definition} A module is said to be \textbf{projective} if
+	\begin{definition} An $R$ module, $P$,  is said to be \textbf{projective} if any of the following equivalent statements are true:
+		\begin{itemize}
+			\item For any surjective module homomorphism $ N\onto M$, any module homomorphism $P\to M$ admits a (not-necessarily unique) lift $ P \to N$ such that the following diagram commutes:
+			% https://q.uiver.app/#q=WzAsMyxbMCwyLCJQIl0sWzIsMiwiTSJdLFsyLDAsIk4iXSxbMiwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwxXSxbMCwyLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+			\[\begin{tikzcd}
+				&& N \\
+				\\
+				P && M
+				\arrow[two heads, from=1-3, to=3-3]
+				\arrow[dashed, from=3-1, to=1-3]
+				\arrow[from=3-1, to=3-3]
+			\end{tikzcd}\]
+			\item Any short exact sequence $$0 \to M \to N \to P \to 0$$ splits.
+			\item The (covariant) functor $\Hom_R(P,-)$ is exact (note left-exactness is always true for $\Hom$ functors)
+			\item $P$ is a direct summand of a free module\footnote{Note: not every abelian category has a good notion of ``free object", so this particular description is distinct for categories of modules.}
+		\end{itemize}
 		\end{definition}
+	\begin{remark} Any free module is projective. Furthermore, the converse is occasionally (but not always!) true: a projective module is always free over a PID (basic fact), and a projective module over a local ring is always free (straightforward to prove for finitely generated modules via Nakayama's lemma from commutative algebra, but a difficult fact in general-- keep the general result in mind only as a restriction for coming up with counterexamples).
+		\end{remark}
+	\begin{definition}An $R$-module, $F$, is said to be \textbf{flat} if any of the following equivalent conditions are true:
+		\begin{itemize}
+			\item The functor $F\otimes _R-\isom -\otimes_RF$ is exact (note right-exactness is always true for tensoring)
+			\item The functor $F\otimes _R -$ takes injective maps to injective maps.
+			\item For any $R$-module homomorphism $\varphi: R^n\to F$, and any $K$ a finitely generated submodule of $\ker \varphi$, $\varphi$ factors through a map $\psi: R^n \to F'$ for some free\footnote{Note: not every abelian category has a good notion of ``free object", so this particular description is distinct for categories of modules.}  $R$-module$F'$ so that  $K\subset  \ker \psi$, e.g. such that the following diagram commutes:
+			% https://q.uiver.app/#q=WzAsNixbMCwyLCJLIl0sWzEsMiwiXFxrZXIgXFx2YXJwaGkiXSxbMiwyLCJSXm4iXSxbNCwyLCJGIl0sWzMsMCwiRiciXSxbMSwzLCJcXGtlciBcXHBzaSJdLFswLDEsImYuZy4iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMywiXFx2YXJwaGkiXSxbMiw0LCJcXGV4aXN0cyBcXHBzaSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDIsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn0sImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDUsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn0sImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+			\[\begin{tikzcd}
+				&&& {F'} & \\
+				\\
+				K & {\ker \varphi} & {R^n} && F \\
+				& {\ker \psi}
+				\arrow[dashed, from=1-4, to=3-5]
+				\arrow["{f.g.}", hook, from=3-1, to=3-2]
+				\arrow[dashed, hook, from=3-1, to=4-2]
+				\arrow[hook, from=3-2, to=3-3]
+				\arrow["{\exists \psi}", dashed, from=3-3, to=1-4]
+				\arrow["\varphi", from=3-3, to=3-5]
+				\arrow[dashed, hook, from=4-2, to=3-3]
+			\end{tikzcd}\]
+			\item (translating the above into a statement about relations-- thank you wikipedia) For any $R$-linear relation $$\sum_{i=1}^n r_i x_i=0$$ with $r_i\in R$, $m_i\in F$, there exist some (``change of basis/generator") elements $y_j\in F, a_{ij}\in R$ such that $$\forall j, \; \sum_{i=1}^n r_i a_{ij} =0$$ and $$\forall i, \; x_i =\sum_{j=1}^m a_{ij}y_j.$$ 
+		\end{itemize}
+		\end{definition}
+	\begin{remark}Any projective module is necessarily flat. The converse is (``clearly") true for finitely presented flat modules (hence for finitely generated flat modules over Noetherian rings).
+		\end{remark}
+	\begin{definition}An $R$-module, $I$, is said to be \textbf{injective} if any of the following equivalent statements are true:
+		\begin{itemize}
+			\item For any module homomorphism $M\to I$, any injective module homomorphism $M\into N$ admits an extension $N\to I$ (``along $M\to I$")such that the following diagram commutes:
+			% https://q.uiver.app/#q=WzAsMyxbMCwwLCJJIl0sWzIsMCwiTSJdLFsyLDIsIk4iXSxbMSwwXSxbMSwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+			\[\begin{tikzcd}
+				I && M \\
+				\\
+				&& N
+				\arrow[from=1-3, to=1-1]
+				\arrow[hook, from=1-3, to=3-3]
+				\arrow[dashed, from=3-3, to=1-1]
+			\end{tikzcd}\]
+			\item Any short exact sequence $$0\to I \to M \to N \to 0$$ splits.
+			\item The (contravariant) functor $\Hom_R(-, I)$ is exact (note left-exactness [interpreted appropriately for variance] is always true for $\Hom$ functors)
+		\end{itemize}
+		\end{definition}
+	Note that projective modules are ``dual" to injective modules and vice versa.
+	Here is a useful criterion for checking injectivity:
+	\begin{theorem}\label{Baer}(Baer's Criterion) Let $I$ be an $R$-module. Then, $I$ is injective if and only if any homomorphism $J\to I$ from $J$ a submodule/ideal of $R$ admits an extension to a homomorphism $R\to I$. 
+		\end{theorem}
+		
+	As an immediate corollary, we have the following:
+	\begin{corollary}Any abelian group $A$ is injective (as a $\mathbb{Z}$-module) if and only if it is divisible (e.g., the map $a\mapsto na$ is a surjection for all non-zero $n\in \mathbb{Z}$).
+		\end{corollary}
 		\newpage
 	\section{Generalities on ``Abelian Categories"}
 	\begin{remark}
 		Jason might require us to technically be able to unravel the definition, \textit{but}, in practice ``abelian category" just means ``category which we can think of like a category of left/right $R$-modules".  This is possible to formalize by the \ref{Freyd-Mitchell}{Freyd-Mitchell Embedding Theorem}, which is technically useful. It's also complete abstract nonsense, and for every almost every single thing we talk about, you can use the words ``abelian category" interchangeably with ``category of $R$-modules" (or, \textit{if you really want}, ``category of chain complexes of $R$-modules"), so just think in terms of whatever's easiest.
 	\end{remark}
-	\begin{theorem}\label{Freyd-Mitchell} (Freyd-Mitchell Embedding) Let $\mathcal{A}$ be a (small) abelian category. Then, there is a ring $R$ (not necessarily commutative)  and a full, faithful, exact (hence additive) functor $i: \mathcal{A}\hookrightarrow _R\mathsf{Mod}$ the category of left $R$-modules.
+	\begin{theorem}\label{Freyd-Mitchell} (Freyd-Mitchell Embedding) Let $\mathcal{A}$ be a (small) abelian category. Then, there is a ring $R$ (not necessarily commutative)  and a full, faithful, exact (hence additive) functor $i: \mathcal{A}\into \Mod{R}{}$ the category of left $R$-modules.
 		\end{theorem}
 	You do \textit{not} need to memorize this (nor will we see a proof), but I feel it necessary to mention it as a name to look up/be referred to.
 
