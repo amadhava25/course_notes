@@ -41,43 +41,50 @@
 \tableofcontents
 
 \section{Vector bundles}
+\subsection{Dual vector bundle}
 \subsection{Cotangent bundle}
-Recall dual vector bundle.
 
 \textbf{Definition:} The \underline{cotangent bundle} is defined as
 \[T^*M\equiv (TM)^*.\]
-We call elements of this dual space, \emph{covectors.}
+We call elements of this dual space, \emph{covectors.} \textcolor{teal}{What we are doing here is just taking the dual vector space to $T_pM$ at each point $p\in M$. As in the case of the tangent bundle, smooth local coordinates for $M$ yield smooth local coordinates for its cotangent bundle}
 
-\textcolor{teal}{What we are doing here is just taking the dual vector space to $T_pM$ at each point $p\in M$.}
+
 
 Recall: \textcolor{teal}{There is a one-to-one correspondence between between tangent vectors at $p$ and derivations at $p$.}
-\[\{\text{vectors}\in T_pM\}\longleftrightarrow\{v:C^\infty(M)\to \R:v(fg)(p)=f(p)v(g)+g(p)v(f)\}\]
+\[\{\text{vectors}\in T_pM\}\longleftrightarrow\{v:C^\infty(M)\to \R:v(fg)|_p=f|_pv(g)+g|_pv(f)\}\]
 \textcolor{teal}{Notice that given a point $p\in M$, a covector $\omega\in T^*_pM$, and a tangent vector $v\in T_pM$, then one can define a pairing $\langle \omega, v\rangle\in \R$. This follows basically from the definition of dual vector space.
 Now, given a function $f$ locally defined near $p\in M$ and a tangent vector $v\in T_pM$, one can similarly define a pairing given by $\langle df_p,v\rangle =v(f)_p\in T^*_pM$, where $v$ is considered as a derivation defined near $p\in M$. We now give the precise definition of the differential.}
 
 
-\textbf{Definition:} Let $f:U\to \R$ be a smooth function defined on an open neighborhood of $p\in M$. Then the differential \textcolor{teal}{(of $f$ at $p\in M$)} is defined as
+\textbf{Definition:} Let $f:U\to \R$ be a smooth function defined on an open neighborhood of $p\in M$. Then the \underline{differential} \textcolor{teal}{(of $f$ at $p\in M$)} is defined as
 \begin{align*}
     df_p:T_pM&\to T^*_pM\\
     v&\mapsto df_p(v)\equiv v(f)_p
 \end{align*}
 \textcolor{teal}{The differential assigns a scalar to each tangent vector via the pairing in the previous comment.}
 
+\subsubsection{How does $df$ looks more concretely?}
 We can compute the differential in local coordinates as follows:
 
-Given a local chart $(U, x)$ near $p$, then each coordinate function $x^i$ is smooth and has differential $dx_i(p)$. Moreover, the differentials $\{dx_1(p), \dots, dx_n(p)\}\subset T^*_pM$ provide a dual basis to $\{\frac{\partial }{\partial x^1}(p), \dots,\frac{\partial }{\partial x^n}(p)\}\subset T_pM$. In these local coordinates, we can write the differential as
-\[df_p=\sum\frac{\partial f}{\partial x_i}(p)dx_i(p)\]
+Given a local chart $(U, x)$ near $p$, then each coordinate function $x^i$ is smooth and has differential $ dx^i|_p$. Moreover, the differentials $\{dx^1|_p, \dots, dx^n|_p\}\subset T^*_pM$ provide a dual basis to $\{\frac{\partial }{\partial x^1}|_p, \dots,\frac{\partial }{\partial x^n}|_p\}\subset T_pM$. In these local coordinates, we can write the differential as
+\[df_p=\sum_i^n\frac{\partial f}{\partial x^i}\Big|_p dx^i\Big|_p\]
+\textcolor{teal}{ Notice that we can think of $df$ as an analogue of the usual gradient, in a way that makes coordinate-independent sense on a manifold.}
 
-\textbf{Lemma:} $dx_i(p), \dots, dx_n(p)$ is a basis for $T^*_pM$.
+\textbf{Lemma:} $ dx^i|_p, \dots, dx_n|_p$ is a basis for $T^*_pM$.
 
 
-Remarks:
+Some useful remarks:
 \begin{enumerate}
-    \item All covectors are differentials 
+    \item Any covector $\omega_p\in T^*_pM$ can be written uniquely as 
+    \[\omega_p=\omega_i dx^i\Big|_p, \,\,\,\text{ where }\omega_i=\omega\left(\frac{\partial}{\partial x^i}\Big|_p\right).\]
+    \textcolor{teal}{This secretly says that all covectors come from differentials.}
     \item For each smooth function $f:M\to \R$, the map 
-    \[df:M\to T^*M\]
-    \[p\mapsto df|_p\in T^*_pM\]
-    is a smooth section.
+    \begin{align*}
+        df:M&\to T^*M\\
+    p&\mapsto df_p\in T^*_pM
+    \end{align*}
+    is a smooth section. \textcolor{teal}{Why? because at each point we are choosing the linear functional $df_p:T_pM\to \R$.}
+    \textcolor{teal}{Now, we will later see that these sections will define something called covector fields or differential $1$-forms.}
 \end{enumerate}
 \textbf{Properties:} Let $f,g\in C^\infty(M)$. Then
 \begin{enumerate}
@@ -86,13 +93,31 @@ Remarks:
     \item $F:N\to M$ smooth map between smooth manifolds, 
     \[d(f\circ F)(V)=df(DF(v))\forall v\in T_qN, q\in N.\]
 \end{enumerate}
+
+\textcolor{teal}{\textbf{Slightly off topic sidenote:} We know that geometrically, we can think of a vector field on $M$ as a rule that assigns an arrow to each point of $M$, but what kind of geometric picture can we form of a covector field?}
+
+\textcolor{teal}{The take away idea is that a nonzero linear functional $\omega_p\in T_p^*M$ is completely determined by two things:}
+\textcolor{teal}{\begin{enumerate}
+    \item Its kernel, which is a codimension one linear subspace of $T_pM$
+    \item The set of vectors in $T_pM$ such that $\omega_p(v)=1$, which determines an affine hyperplane parallel to its kernel.
+\end{enumerate}}
+\textcolor{teal}{Then, we can visualize a covector field as a defining pair of hyperplanes in each tangent space, one through the origin and another parallel to it, varying continuously from point to point.
+}
+
+Notice that up to this point, we have defined two different kinds of derivatives of $f$ at a point $p\in M$:
+\begin{enumerate}
+    \item The \underline{pushforward} $f_*:T_pM\to T_{f(p)}\R$.
+    \item The \underline{differential} $df_p:T_pM\to \R$.
+\end{enumerate}
+But these are the same locally, once we take into account the canonical identification between $\R$ and its tangent space at any point.
+
 \textbf{Lemma:} $f\in C^\infty(M)$, $f:M\to \R$ smooth, $\gamma:[0,1]\to M$ smooth path. Then 
 \[F(\gamma(1))-F(\gamma(0))=\int_0^1df(\gamma'(t))dt.\]
 \textbf{Definition:} A $1$-form is a smooth section $\omega$ of $T^*M$. If $F:N\to M$ is a smooth function, then the pullback of $\omega$ is $F^*\omega$ on $N$, satisfying 
 \[F^*\omega(v)=\omega(DF(v)),\,\,\, \forall v\in T_pM.\]
 \textbf{Definition:} $\gamma:[a,b]\to M$ be a smooth map. The line integral of $\omega$ along $\gamma$ is 
 \[\int_a^b\omega(\gamma'(t))dt.\]
-In general: $\omega(p)=\sum\omega(p)\frac{\partial }{\partial x_i}dx_i$
+In general: $\omega|_p=\sum\omega|_p\frac{\partial }{\partial x_i} dx^i$
 
 Examples: (1) $M=\R^2$ and consider $\omega=xdy$ which is not exact (not even close). Take the path $\gamma:[0,\pi]\to \R^2$ given by $\gamma(t)=(\cos(t),sin(t)$. Then 
 \[\gamma'(t)=\sin(t)\frac{\partial}{\partial x}+\cos(t)\frac{\partial}{\partial y}\]
