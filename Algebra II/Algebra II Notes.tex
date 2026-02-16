@@ -193,7 +193,7 @@
 				(c, F)\mapsto \Hom_{\mathsf{Fun}(\mathcal{C}, \SSet)}(\yo_c, F ) \\
 				(\varphi: c\to c', \eta: F\to G)\mapsto \Hom_{\mathsf{Fun}(\mathcal{C}, \SSet)}(\yo_\varphi , \eta ).
 		\end{gather*}
-		(as well as a dual one for the contravariant yoneda map)
+		(as well as a dual one for the contravariant yoneda map). This is to say, we have natural bijections $$\Hom_{\mathsf{Fun}(\mathcal{C}, \SSet)}(\yo_c, F)\isom Fc$$ and $$\Hom_{\mathsf{Fun}(\mathcal{C}^{op}, \SSet)}(\yo^c, F)\isom Fc.$$
 		\end{theorem}
 	\begin{proof}
 		For all $\varphi:c\to c', F:\mathcal{C}\to \SSet$, we have a natural transformation $\vartheta: \yo_c\to F$ given by the commutative diagram
@@ -203,7 +203,7 @@
 			& {\id_c} & \varphi \\
 			& {*} & {F\varphi(*)=\vartheta_{c'}\varphi} \\
 			Fc &&& {Fc'}
-			\arrow["{\Hom_\mathcal{C}(c, \varphi)=\yo_c\varphi}", from=1-1, to=1-4]
+			\arrow["{\Hom_\mathcal{C}(c, \varphi)=:\yo_c\varphi}", from=1-1, to=1-4]
 			\arrow["{\vartheta_c}", from=1-1, to=4-1]
 			\arrow["{\vartheta_{c'}}", from=1-4, to=4-4]
 			\arrow[maps to, from=2-2, to=2-3]
@@ -212,7 +212,7 @@
 			\arrow[maps to, from=3-2, to=3-3]
 			\arrow["{F\varphi}", from=4-1, to=4-4]
 		\end{tikzcd}\]
-		The natural transformation is determined by the choice of $\vartheta_c(\id_c)= *\in F(A)$, and any choice of $*$ defines such a natural transformation. 
+		Any natural transformation $\vartheta$ is determined by the choice of $\vartheta_c(\id_c)= *\in F(A)$, and any choice of $*$ defines such a natural transformation. 
 		
 		An analogous diagram proves the analogous result for $\yo^\bullet$.
 	\end{proof}
