@@ -30,7 +30,7 @@
 \newcommand{\SSet}{\mathsf{Set}}
 
 \newcommand{\dual}{^\lor}
-\newcommand{\iso}{\xrightarrow{~}}
+\newcommand{\iso}{\xrightarrow{\sim}}
 \newcommand{\onto}{\twoheadrightarrow}
 \newcommand{\isom}{\cong}
 
@@ -39,6 +39,7 @@
 \DeclareMathOperator{\Ext}{\mathsf{Ext}}
 \DeclareMathOperator{\Tor}{\mathsf{Tor}}
 \DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\Ann}{\mathrm{Ann}}
 \begin{document} 
 \section{Basic Category Theory}
 	\begin{remark}The notion of ``class" in ZFC requires a definition. This can be done (``parametrically definable classes"), but for now let's blackbox the concept and just say ``classes are a generalization of sets which are allowed to be `large'", e.g. so a ``class of all sets" makes sense even though a ``set of all sets" does not. This shouldn't matter ultimately anyways. \end{remark}
@@ -57,8 +58,13 @@
 		
 	\begin{definition} Given a category $\mathcal{C}$, we define its \textit{opposite category} $\mathcal{C}^{op}$ to be the category with the same objects, but such that for every morphism $f:a \to b$ in $\Hom(\mathcal{C})$ we have an arrow $f^{op}:b \to a$ in $\Hom(\mathcal{C}^{op})$. Composition is defined by saying that, for every $$a\xrightarrow{f}b \xrightarrow{g} c$$ in $\Hom(\mathcal{C})$, $$c\xrightarrow{(g\circ f)^{op}}a :=  c\xrightarrow{g^{op}}b \xrightarrow{f^{op}}a$$ in $\Hom(\mathcal{C}^{op}).$
 		\end{definition}
-	\begin{definition} Given two categories, $\mathcal{C}$ and $\mathcal{D}$, a \textbf{functor} $F: \mathcal{C}\to \mathcal{D}$ is a map on objects $F_{\mathsf{obj}}: \mathsf{obj}(\mathcal{C})\to \mathsf{obj}(\mathcal{D})$ together with a collection of maps on morphisms $F_{\Hom(a,b)}: \Hom_\mathcal{C}(a,b)\to \Hom_{\mathcal{D}}(Fa, Fb)$. By convention we omit any subscripts and, for any $\mathcal{C}$-object $a$ or any $\mathcal{C}$-morphism $\varphi$, simply denote $Fa$ and $F\varphi$ for the corresponding object/morphism in $\mathcal{D}$.
+	\begin{definition} Given two categories, $\mathcal{C}$ and $\mathcal{D}$, a \textbf{functor} $F: \mathcal{C}\to \mathcal{D}$ is a map on objects $F_{\mathsf{obj}}: \mathsf{obj}(\mathcal{C})\to \mathsf{obj}(\mathcal{D})$ together with a collection of maps on morphisms $F_{\Hom(a,b)}: \Hom_\mathcal{C}(a,b)\to \Hom_{\mathcal{D}}(Fa, Fb)$ such that:
+		\begin{itemize}
+			\item $F$ \textit{respects composition}, e.g. $F_{\Hom(a,b)}(\varphi)\circ F_{\Hom(c,b)}(\psi)= F_{\Hom(c,a)}(\varphi \circ \psi)$
+			\item $F$ maps identities to identities, e.g. $F_{\Hom(a,a)}(\id_a)=\id_{F_{\mathsf{obj}}(a)}$
+		\end{itemize} . By convention we omit the subscripts and, for any $\mathcal{C}$-object $a$ or any $\mathcal{C}$-morphism $\varphi$, simply denote $Fa$ and $F\varphi$ for the corresponding object/morphism in $\mathcal{D}$.
 		\end{definition}
+		You'll note: this is basically the definition of a group homomorphism, but we append ``takes identities to identities" since this isn't a guarantee in the absense of inverses (which, in general, is just the definition of a ``monoid homomorphism"-- a map of groups with identity but without inverses). This is not mere coincidence, and is in some ways how you ``should" think about it.\footnote{if you'd like, you can say categories are precisely ``monoidoids", and functors are ``monoidoid homomorphisms", and I \textit{do like} because ``monoidoid" is a silly fun word and I like saying it}
 	
 		Now, sometimes we wish to talk about things which don't \textit{respect} composition, but instead reverse it. These still get to be called functors, but we call those ``\textbf{contravariant functors}" and (even if we \textit{really}) think of them as ``composition reversing functors $\mathcal{C}\to \mathcal{D}$) it'll end up being nice to think of these quite formally as functors $\mathcal{C}^{op} \to \mathcal{D}$-- e.g. they ``preserve reverse composition of arrows". 
 		
@@ -71,7 +77,7 @@
 			\item \textbf{bijective} if the induced map $\Hom_\mathcal{C}(a,b)\to\Hom_\mathcal{D}(Fa, Fb)$ is bijective for all $a,b\in \mathsf{obj}(\mathcal{C})$
 		\end{itemize}
 		\end{definition}
-	Now, in many contexts we want to compare two categories, talk about whether or not they're the ``same". In such circumstances we \textit{could} require that we have a pair of inverse functors-- an ``isomorphism of categories"-- but the problem is that this is way too strong (to the point of coming down to ``how strict are we about what sets we use to define our objects"). It is, for instance, perfectly valid linear algebra-wise to imagine all finite $\mathbb{R}$-vector spaces as just ``vector spaces $\mathbb{R}^n$", but the two categories \textit{aren't} equivalent because one only has a $\mathbb{Z}^+$ worth of sets while the other has way more. The notion of ``isomorphism" is thus the ``wrong definition". For a better definition, rather than being ``bijective on objects", we require a sort of weaker notion:
+	Now, in many contexts we want to compare two categories, talk about whether or not they're the ``same". In such circumstances we \textit{could} require that we have a pair of inverse functors-- an ``isomorphism of categories"-- but the problem is that this is way too strong (to the point of coming down to ``how strict are we about what sets we use to define our objects"). It is, for instance, perfectly valid linear algebra-wise to imagine all finite $\mathbb{R}$-vector spaces as just ``vector spaces $\mathbb{R}^n$", but the two categories \textit{aren't} isomorphic because one only has a $\mathbb{Z}^+$ worth of sets while the other has way more. The notion of ``isomorphism" is thus the ``wrong definition". For a better definition, rather than being ``bijective on objects", we require a sort of weaker notion:
 	\begin{definition}A functor $F:\mathcal{C}\to \mathcal{D}$ is said to be \textbf{essentially surjective} if, for every $d\in \mathsf{obj}(\mathcal{D})$, there exists some $c\in \mathsf{obj}(\mathcal{C})$ such that $Fc\cong d$. 
 		\end{definition}
 	That is to say, $F$ ``reaches all of $\mathcal{D}$ (up to abstract isomorphism)" With this in mind, we can formulate the following:
@@ -212,7 +218,7 @@
 			\arrow[maps to, from=3-2, to=3-3]
 			\arrow["{F\varphi}", from=4-1, to=4-4]
 		\end{tikzcd}\]
-		Any natural transformation $\vartheta$ is determined by the choice of $\vartheta_c(\id_c)= *\in Fc$, and any choice of $*$ defines such a natural transformation. 
+		Any natural transformation $\vartheta$ is determined by the choice of $\vartheta_c(\id_c)= *\in F(A)$, and any choice of $*$ defines such a natural transformation. 
 		
 		An analogous diagram proves the analogous result for $\yo^\bullet$.
 	\end{proof}
@@ -455,7 +461,7 @@
 		\begin{itemize}
 			\item The functor $F\otimes _R-\isom -\otimes_RF$ is exact (note right-exactness is always true for tensoring)
 			\item The functor $F\otimes _R -$ takes injective maps to injective maps.
-			\item For any $R$-module homomorphism $\varphi: R^n\to F$, and any $K$ a finitely generated submodule of $\ker \varphi$, $\varphi$ factors through a map $\psi: R^n \to F'$ for some free\footnote{Note: not every abelian category has a good notion of ``free object", so this particular description is distinct for categories of modules.}  $R$-module$F'$ so that  $K\subset  \ker \psi$, e.g. such that the following diagram commutes:
+			\item (equational criterion for flatness) [``relations in $F$ arise from relations in $R$"] For any $R$-module homomorphism $\varphi: R^n\to F$, and any $K$ a finitely generated submodule of $\ker \varphi$, $\varphi$ factors through a map $\psi: R^n \to F'$ for some free\footnote{Note: not every abelian category has a good notion of ``free object", so this particular description is distinct for categories of modules.}  $R$-module$F'$ so that  $K\subset  \ker \psi$, e.g. such that the following diagram commutes:
 			% https://q.uiver.app/#q=WzAsNixbMCwyLCJLIl0sWzEsMiwiXFxrZXIgXFx2YXJwaGkiXSxbMiwyLCJSXm4iXSxbNCwyLCJGIl0sWzMsMCwiRiciXSxbMSwzLCJcXGtlciBcXHBzaSJdLFswLDEsImYuZy4iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMywiXFx2YXJwaGkiXSxbMiw0LCJcXGV4aXN0cyBcXHBzaSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDIsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn0sImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDUsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn0sImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
 			\[\begin{tikzcd}
 				&&& {F'} & \\
@@ -470,11 +476,18 @@
 				\arrow["\varphi", from=3-3, to=3-5]
 				\arrow[dashed, hook, from=4-2, to=3-3]
 			\end{tikzcd}\]
-			\item (translating the above into a statement about relations-- thank you wikipedia) For any $R$-linear relation $$\sum_{i=1}^n r_i x_i=0$$ with $r_i\in R$, $m_i\in F$, there exist some (``change of basis/generator") elements $y_j\in F, a_{ij}\in R$ such that $$\forall j, \; \sum_{i=1}^n r_i a_{ij} =0$$ and $$\forall i, \; x_i =\sum_{j=1}^m a_{ij}y_j.$$ 
+			\item (translating the above into a concrete statement about relations-- thank you wikipedia) For any $R$-linear relation $$\sum_{i=1}^n r_i x_i=0$$ with $r_i\in R$, $m_i\in F$, there exist some (``change of basis/generator") elements $y_j\in F, a_{ij}\in R$ such that $$\forall j, \; \sum_{i=1}^n r_i a_{ij} =0$$ and $$\forall i, \; x_i =\sum_{j=1}^m a_{ij}y_j.$$ 
 		\end{itemize}
 		\end{definition}
 	\begin{remark}Any projective module is necessarily flat. The converse is (``clearly") true for finitely presented flat modules (hence for finitely generated flat modules over Noetherian rings).
 		\end{remark}
+	There is yet another equivalent condition (which is, to my understanding, never taken as a definition):
+	\begin{theorem}$M$ is a flat $R$ module if and only if, for every (finitely generated) ideal $I$ of $R$, $M\otimes I \to M\otimes R$ is injective.
+		\end{theorem}
+	For a particularly elementary (if long) proof, see Dummit and Foote exercise 10.5.25 (more or less-- an $R$). When we define (left)-derived functors, we will have another fancier restatement of the above available to us:
+	\begin{theorem}[ideal-theoretic criterion for flatness]\label{flat-ideals}$M$ is a flat $R$-module if and only if $$\Tor^R_1(M, R/I)=0$$ for all (finitely generated) ideals $I$ of $R$.
+	\end{theorem}
+		
 	\begin{definition}An $R$-module, $I$, is said to be \textbf{injective} if any of the following equivalent statements are true:
 		\begin{itemize}
 			\item For any module homomorphism $M\to I$, any injective module homomorphism $M\into N$ admits an extension $N\to I$ (``along $M\to I$")such that the following diagram commutes:
@@ -499,6 +512,19 @@
 	As an immediate corollary, we have the following:
 	\begin{corollary}Any abelian group $A$ is injective (as a $\mathbb{Z}$-module) if and only if it is divisible (e.g., the map $a\mapsto na$ is a surjection for all non-zero $n\in \mathbb{Z}$).
 		\end{corollary}
+	\subsection{$\Ext$ and $\Tor$}
+	Now that we know that $\Tor$ is, we can provide a quick proof of theorem \ref{flat-ideals}:
+	\begin{proof}[Proof of theorem \ref{flat-ideals}]The forward implication is immediate (from $\Tor$ being balanced). For the reverse implication, We follow 24.3.4 in Vakil's FOAG.
+		
+		
+		Note that $M$ is flat if and only if $\Tor^R_1(M, N)\isom \Tor^R_1(N,M)= 0$ for all $N$ (in which case the LES of $\Tor$ gives a SES). 
+		
+		Now, if $N$ is finitely generated take $\{r_1,\dots, r_n\}$ a set of generators. We have $A/\Ann(r_n)\isom A r_n$ a submodule of $N$, hence we have a SES 
+		$$ 0 \to A/\Ann(r_n)\to N \to N/\langle r_n \rangle \to 0$$ a SES where $ N/\langle r_n \rangle$ is generated by $\langle r_1,\dots, r_{n-1}.\rangle $. Taking $\Tor$ and inducting on $n$ we get the desired result for finitely generated modules, since the base case $n=1$ gives $N\isom R/\Ann(r_1)$.
+		
+		
+		In general, a module $N$ is a union of its finitely generated submodules, hence a \textit{filtered colimit} (the filtering given by set-theoretic inclusion) of its f.g. submodules. By general abstract nonsense, filtered colimits are exact functors (exercise 1.5.L of Vakil) hence commute with homology by theorem \ref{FHHF}, hence $\Tor_1^R(M, N)=0$. 
+	\end{proof}
 		\newpage
 	\section{Generalities on ``Abelian Categories"}
 	\begin{remark}
@@ -507,5 +533,20 @@
 	\begin{theorem}\label{Freyd-Mitchell} (Freyd-Mitchell Embedding) Let $\mathcal{A}$ be a (small) abelian category. Then, there is a ring $R$ (not necessarily commutative)  and a full, faithful, exact (hence additive) functor $i: \mathcal{A}\into \Mod{R}{}$ the category of left $R$-modules.
 		\end{theorem}
 	You do \textit{not} need to memorize this (nor will we see a proof), but I feel it necessary to mention it as a name to look up/be referred to.
-
+	\begin{definition} A \textbf{$\delta$-functor}
+		\end{definition}
+	\begin{definition}A $\delta$-functor, $H^*$ \textbf{universal} if
+		\end{definition}
+	\begin{theorem}\label{FHHF}(FOAG 1.5.I, ``the FHHF theorem") Suppose $F: \mathcal{A}\to \mathcal{B}$ is a functor of abelian categories, and $C^\bullet$ an $\mathcal{A}$-complex.
+		\begin{itemize}
+			\item If $F$ is right exact, there exists a natural morphism $FH^\bullet \to H^\bullet F$
+			\item If $F$ is left exact, there is a natural morphism $H^\bullet F \to F H^\bullet$ (e.g., $FH^\bullet \leftarrow H^\bullet F$)
+			\item If $F$ is exact, then there is a natural isomorphism $FH ^\bullet \iso H^\bullet F$.
+		\end{itemize}
+		\end{theorem}
+	\begin{proof}
+		
+	\end{proof}
+	This is abstract nonsense, but generally quite useful abstract nonsense (in that it gives very quick/easy proofs, e.g. that localization commutes with homology etc).\footnote{For those so inclined, one can google the definition of ``filtered category" (a categorical generalization of ``poset of set-theoretic inclusions of subsets") to make sense of a ``filtered colimit"- Then, putting in a bit of work, one can show that taking filtered colimits gives an exact functor \textit{on module categories}. (This is not true in general, cf. Grothendieck's AB5 axiom for ``nice(r) abelian categories.")}
+	
 \end{document}
