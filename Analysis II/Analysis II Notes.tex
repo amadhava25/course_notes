@@ -5,6 +5,7 @@
 \usepackage{pgfplots,mathtools}
 \pgfplotsset{compat=newest}
 \def\xmax{1}\def\ymax{1.2}
+\usepackage{amsfonts}
 
 \title{Lecture Notes in Analysis II}
 \author{Spring 2026}
@@ -228,5 +229,172 @@ In this lecture, we will see a couple of different compactness results. In parti
 \end{itemize}
 
 \newpage 
-\section{Lecture 5: The Space \texorpdfstring{$\ell_{2}(\mathbb{R})$}{l2(R)} and Hilbert Spaces}
+\section{Lecture 5: The Space \texorpdfstring{$\ell^{2}(\mathbb{R})$}{l2(R)} and Hilbert Spaces}
+\subsubsection{Key Topics:}
+(1) The space $\ell^{2}(\mathbb{R})$, (2) Precompactness, (3) Inner Products, (4) Hilbert Spaces
+\subsubsection{Summary:}
+In this lecture, we briefly revisit the space $\ell^{2}(\mathbb{R})$ and examine various completeness and compactness results for this space. Then we define inner product and Hilbert spaces, and briefly examine some various results (e.g., the Cauchy-Schwarz inequality) for Hilbert spaces. 
+\subsubsection{Lecture:}
+\begin{itemize}
+	\item \textbf{Prop. ($\ell^{2}(\mathbb{R})$ is Reflexive)} The space $\ell^{2}(\mathbb{R})$ of all real-valued square summable sequences is reflexive. In particular, the unit ball in this space is weakly compact but not strongly compact. 
+	
+	\begin{solutions}
+		In Lecture 3, we showed that for every $f \in (\ell^{2}(\mathbb{R}))^{\ast}$, there exists a unique sequence $\{b_{n}\}_{n = 1}^{\infty} \in \ell^{2}(\mathbb{R})$ such that 
+			\begin{equation}
+				f(\{a_{n}\}) = \sum_{n = 1}^{\infty}a_{n}b_{n}. 
+			\end{equation} 
+		Hence, $(\ell^{2}(\mathbb{R})) \cong \ell^{2}(\mathbb{R})$, establishing reflexivity. By Kakutani's theorem from Lecture 4, we conclude that the closed unit ball in $\ell^{2}(\mathbb{R})$ is weakly compact. Since $\ell^{2}(\mathbb{R})$ is infinite dimensional, by Reisz's Theorem (Lecture 4), the closed unit ball is not strongly compact. 
+	\end{solutions}
+	
+	\item \textbf{Def. (Precompact Subset)} Let $X$ be a topological space, and $A$ a subset of $X$. $A$ is said to be \textit{precompact} in $X$ if and only every sequence in $\mathscr{A}$ has a convergent subsequence, whose limit need not be contained in $A$; i.e., $A$ is precompact if and only if its closure $\bar{A}$ is compact in $X$. 
+	
+	\item \textbf{Prop. (Precompact Subspaces of $\ell^{2}(\mathbb{R})$)} Let $\mathscr{A} \subseteq \ell^{2}(\mathbb{R})$. Then $\mathscr{A}$ is precompact if and only if the following two conditions hold: 
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item $\sup\limits_{\{a_{n}\} \in \mathscr{A}}\norm{\{a_{n}\}}_{\ell^{2}} < \infty$ (uniform boundedness) 
+			\item for all $\epsilon > 0$, there exists $N_{0} \in \mathbb{Z}^{+}$ such that for all $\{a_{n}\} \in \mathscr{A}$, 
+				\begin{equation}
+					\sum_{n\geq N_{0}}|a_{n}|^{2} \leq \epsilon \qquad \text{(uniform smallness of the tail)}.
+				\end{equation}
+		\end{enumerate}
+
+	\begin{solutions}
+		($\Rightarrow$) Assume $\mathscr{A}$ is precompact in $\ell^{2}(\mathbb{R})$. Then $\mathscr{A}$ is bounded: $\mathscr{A} \subseteq \bar{\mathscr{A}}$, and every compact subspace of a metric space is bounded. Hence, (1) is trivially satisfied. Now assume to the contrary that condition (2) is not satisfied. This means there exists $\epsilon_{0} > 0$ such that for all $k\geq 1$, there exists a sequence $\{a_{n}^{(k)}\} \in \mathscr{A}$ so that 
+			\begin{equation}
+				\sum_{n\geq k}|a_{n}^{(k)}|^{2} \geq \epsilon_{0}. 
+				\tag{\ast}
+			\end{equation}
+		Now, since $\mathscr{A}$ is precompact, $\{a_{n}^{(k)}\}$ has a convergent subsequence, which we denote $\{a_{n}^{(k_{\ell})}\}$, where $\{a_{n}^{(k_{\ell})}\} \to \{b_{n}\}$ in $\ell^{2}(\mathbb{R})$. In other words, there exists some ``large enough'' $\ell_{0}$ such that for all $\ell \geq \ell_{0}$, 
+			\begin{equation}
+				\sum_{n\geq 1}\abs{a_{n}^{(k_{\ell})} - b_{n}}^{2} \leq \frac{\epsilon_{0}}{10}. 
+			\end{equation}
+		Since $\{b_{n}\} \in \ell^{2}(\mathbb{R})$, there exists $N_{0} > 0$ large enough so that 
+			\begin{equation}
+				\sum_{n\geq N_{0}}|b_{n}|^{2} \leq \frac{\epsilon_{0}}{10}. 
+			\end{equation}
+		Therefore, 
+			\begin{equation}
+				\sum_{n\geq N_{0}}|a_{n}^{(k_{\ell})}|^{2} \leq 4\sum_{n \geq N_{0}}|a_{n}^{(k_{\ell})^{2}} - b_{n}|^{2} + 4\sum_{n\geq N_{0}}|b_{n}|^{2} \leq \frac{4}{5}\epsilon_{0} < \epsilon_{0}. 
+			\end{equation}
+		Additionally, there also exists $N_{1} > 0$ large enough such that for $1 \leq \ell \leq \ell_{0} - 1$, 
+			\begin{equation}
+				\sum_{n\geq N_{1}}|a_{n}^{(k_{\ell})}|^{2} \leq \frac{\epsilon_{0}}{2}. 
+			\end{equation}
+		Define $N = \max\{N_{0}, N_{1}\}$. Then 
+			\begin{equation}
+				\sum_{n\geq N}|a_{n}^{(k_{\ell})}|^{2} < \epsilon_{0}, 
+			\end{equation}
+		which contradicts $(\ast)$. 
+		
+		($\Leftarrow$) Let $\{a_{n}^{(k)}\}$ be a sequence in $\mathscr{A}$. It suffices to show that this sequence has a convergent subsequence. We complete this proof via a couple of steps: 
+			\begin{quote}
+				(\textbf{Step 1}) $\{a_{n}^{(k_{\ell})}\}$ is a convergent subsequence, not necessarily in the $\ell^{2}$-norm. The proof of this statement follows from the uniform boundednesss and a Cantor-diagonalization-type argument. Let $\{a_{n}^{(k_{\ell})}\} \to \{b_{n}\}$. 
+				
+				(\textbf{Step 2}) $\{b_{n}\} \in \ell^{2}(\mathbb{R})$. Indeed, we observe that 
+					\begin{align}
+						\begin{split}
+							\sum_{n = 1}^{N}|b_{n}|^{2} &= \lim_{N \to \infty}\sum_{n = 1}^{N}|a_{n}^{(k_{\ell})}|^{2} \leq \sup_{k\geq 1}\norm{\{a_{n}^{(k)}\}}_{\ell^{2}}^{2} < \infty.
+						\end{split}
+					\end{align}
+				Letting $N \to \infty$, we obtain $\{b_{n}\} \in \ell^{2}(\mathbb{R})$. 
+				
+				(\textbf{Step 3}) Let $\epsilon > 0$, and choose $N_{0} \in \mathbb{Z}^{+}$ so that 
+					\begin{equation}
+						\sum_{n \geq N_{0}}|a_{n}^{(k)}|^{2} \leq \epsilon_{0}, \qquad \forall k. 
+					\end{equation}
+				Since $b_{n}= \lim_{\ell \to \infty}a_{n}^{(k_{\ell})}$, we have 
+					\begin{equation}
+						\sum_{n\geq N_{0}}|b_{n}|^{2} \leq \liminf_{\ell \to \infty}\sum_{n\geq N_{0}}|a_{n}^{(k_{\ell})}|^{2} \leq \epsilon_{0}. 
+					\end{equation}
+				Then we can estimate :
+				\begin{align}
+				\begin{split}
+				\sum_{n=1}^{\infty} |a_n^{(k_{\ell})} - b_n|^2
+				&= \sum_{n=1}^{N_0} |a_n^{(k_{\ell})} - b_n|^2
+				+ \sum_{n=N_0+1}^{\infty} |a_n^{(k_{\ell})} - b_n|^2 \\
+				&\leq \sum_{n=1}^{N_0} |a_n^{(k_{\ell})} - b_n|^2
+				+ 4 \sum_{n=N_0+1}^{\infty} |a_n^{(k_{\ell})}|^2
+				+ 4 \sum_{n=N_0+1}^{\infty} |b_n|^2 \\
+				&\leq \sum_{n=1}^{N_0} |a_n^{(k_{\ell})} - b_n|^2 + 8\epsilon
+				\end{split}
+				\end{align}
+				
+				We know that as $\ell \to \infty$, $a_n^{(k_{\ell})} \to b_n$ for each $n$. Therefore we get 
+					\begin{equation}
+						\limsup_{\ell \to \infty}\sum_{n\geq 1}|a_{n}^{(k_{\ell})} - b_{n}|^{2} \leq 8 \epsilon. 
+					\end{equation}
+				Since $\epsilon > 0$ was arbitrary, the proof concludes. 
+			\end{quote}
+	\end{solutions}
+
+	\item \textbf{Def. (Inner Product Spaces)} Let $\mathscr{H}$ be a linear space. An \textit{inner product}, denoted $\braket{\cdot,\cdot}$ is a map from $\mathscr{H} \times \mathscr{H} \to \mathbb{C}$ so that the following properties are satisfied:
+		\begin{enumerate}[itemsep =-2pt,label = (\roman{*})]
+			\item $\braket{\alpha x + \beta y, z} = \alpha \braket{x, z} + \beta \braket{y, z}$ for all $x,y, z \in \mathscr{H}$ and $\alpha,\beta \in \mathbb{C}$. 
+			\item $\braket{y, x} = \overline{\braket{y, x}}$ for all $x, y \in \mathbb{C}$. 
+			\item $\braket{x,x} \geq 0$ for all $x \in \mathscr{H}$, with equality if and only if $x = 0$. 
+		\end{enumerate}
+	If $\mathscr{H}$ is a linear space over $\mathbb{R}$ instead of $\mathbb{C}$, then the inner product satisfies the alternate property: 
+		\begin{enumerate}
+			\item[(ii')] $\braket{y,x} = \braket{x,y}$ for all $x, y \in \mathscr{H}$. 
+		\end{enumerate}
+		
+	\item \textbf{Prop. (Cauchy-Schwarz Inequality)} Let $\mathscr{}$ be a linear space with an inner product $\braket{\cdot,\cdot}$. Then for any $x, y\in \mathscr{H}$, $|\braket{x,y}| \leq \sqrt{\braket{x,x} \braket{y,y}}$, with equality if and only if $x$ and $y$ are linearly dependent. 
+	
+	\begin{solutions}
+		If $\braket{x,y} = 0$, then the claim is trivial. So suppose $\braket{x,y} \neq 0$. Let $\alpha \in \mathbb{C}$ with $|\alpha| = 1$ so that if $z = \alpha y$. Then 
+			\begin{equation}
+				\braket{x, z} = \braket{x,\alpha y} = \bar{\alpha}\braket{x,y} = |\braket{x,y}|. 
+			\end{equation} 
+		Then for arbitary $t \in \mathbb{R}$, we compute 
+			\begin{align}
+				\begin{split} 
+				0 \leq \braket{x - tz, x - tz} &=\braket{x,x} -2t\mathfrak{R}\braket{x,z} + t^{2}\braket{z,z} \\				
+				&= \braket{x,x} - 2t|\braket{x,y}| + t^{2}\braket{y,y}. 
+				\end{split} 
+			\end{align}
+		Since this is true for any real $t$, taking the discriminant of the quadratic expression in $t$, one obtains 
+			\begin{equation}
+				4|\braket{x,y}|^{2} - 4\braket{x,x}\braket{y,y} \leq 0. 
+			\end{equation}
+		Hence, the result follows. Suppose that we have equality above. Then there exists $t_{0}\in \mathbb{R}$ such that $\braket{x - t_{0}z, x - t_{0}z} = 0$, which is possible iff $x - t_{0}z = 0$ iff $x = t_{0}z = t_{0}\alpha y$. Hence, $x$ and $y$ are colinear. This concludes the proof. 
+	\end{solutions}
+	\item \textbf{Def. (Normed Induced by Inner Product)} Let $\mathscr{H}$ be a linear space with inner product $\braket{\cdot,\cdot}$. Then the inner product induces a norm on $\mathscr{H}$ as follows: for any $x \in \mathscr{H}$, $\norm{x} \coloneqq \sqrt{\braket{x,x}}$. 
+	
+	\begin{solutions}
+		We will verify that $\norm{x}$ is indeed a norm on $\mathscr{H}$. 
+			\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+				\item $\norm{x} = 0$ iff $\norm{x}^{2} = 0$ iff $\braket{x, x} = 0$. By the properties of an inner product, this is true iff $x =  0$. If $x \neq 0$, then since $\braket{x,x} > 0$, $\norm{x} = \sqrt{\braket{x,x}} > 0$. 
+				\item Let $\lambda \in \mathbb{C}$. Then 
+					\begin{align}
+						\begin{split}
+							\norm{\lambda x} &= \sqrt{\braket{\lambda x, \lambda x}} = \sqrt{\lambda \braket{x, \lambda x}} \\
+							&= \sqrt{\lambda \bar{\lambda}\braket{x,x}} \\
+							&= |\lambda|\sqrt{\braket{x,x}} = |\lambda|\norm{x}. 
+						\end{split}
+					\end{align}
+				\item Now, we will prove that $\norm{\empspace}$ satisfies the triangle inequality. Let $x, y \in \mathscr{H}$. Then 
+					\begin{align}
+						\begin{split}
+							\norm{x + y}^{2} &= \braket{x + y, x + y} = \braket{x, x + y} + \braket{y, x + y} \\
+							&= \overline{\braket{x, x} + \braket{y,x}} + \overline{\braket{x, y} + \braket{y,y}} \\
+							&= (\norm{x}^{2} + \norm{y}^{2}) + 2\mathfrak{R}\braket{x,y} \\
+							&\leq (\norm{x}^{2} + \norm{y}^{2}) + 2\norm{x}\norm{y} \qquad (\text{by Cauchy-Schwarz}) \\
+							&= (\norm{x} + \norm{y})^{2}. 
+						\end{split}
+					\end{align}
+				Taking the square root concludes the proof. 
+			\end{enumerate}
+	\end{solutions}
+	
+	\item \textbf{Def. (Hilbert Space)} Let $\mathscr{H}$ be a linear space with inner product $\braket{\cdot,\cdot}$; let $\norm{\empspace}$ be the norm on $\mathscr{H}$ induced by the inner product. $\mathscr{H}$ is said to be a \textit{Hilbert space} iff it is complete under the induced norm. 
+	\item \textbf{Ex 0. (Inner Products on $\mathbb{C}^{n}$)} Let $\mathscr{H} = \mathbb{C}^{n}$, and define the inner product $\braket{\cdot,\cdot}: \mathbb{C}^{n} \times \mathbb{C}^{n} \to \mathbb{C}$ as follows 
+		\begin{equation}
+			\braket{x,y} = \sum_{i = 1}^{n}x_{i}\bar{y}_{i}. 
+		\end{equation} 
+	Then $\mathscr{H}$ is a Hilbert space. 
+	\item \textbf{Ex 1. (The space $\ell^{2}(\mathbb{R}))$} Consider the space $\ell^{2}(\mathbb{R})$, and define the inner product
+		\begin{equation}
+			\braket{\{a_{n}\}, \{b_{n}\}} \coloneqq \sum_{n = 1}^{\infty}a_{n}b_{n}. 
+		\end{equation}
+	Then this is a example of a Hilbert space. 
+\end{itemize}
 \end{document}
