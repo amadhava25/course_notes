@@ -1,0 +1,106 @@
+\documentclass[10.5pt]{article}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}				
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tikz-cd}
+\usepackage{xpatch}
+\usepackage{tikzlings,tikzducks}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\U{\mathcal{U}}
+\newcommand\V{\mathcal{V}}
+\usetikzlibrary{arrows}
+\usepackage{xcolor}
+
+\geometry{
+    textwidth=6.5in,
+    footskip=10pt
+}
+ 
+\title{Geometry \& Topology II: Course Notes}
+\author{Mathilda Campillo}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Remarks:} These are the notes for Geometry and Topology II, Spring 2026. My personal comments will be in \textcolor{teal}{teal}.
+
+
+\tableofcontents
+
+\section{Vector bundles}
+\subsection{Cotangent bundle}
+Recall dual vector bundle.
+
+\textbf{Definition:} The \underline{cotangent bundle} is defined as
+\[T^*M\equiv (TM)^*.\]
+We call elements of this dual space, \emph{covectors.}
+
+\textcolor{teal}{What we are doing here is just taking the dual vector space to $T_pM$ at each point $p\in M$.}
+
+Recall: \textcolor{teal}{There is a one-to-one correspondence between between tangent vectors at $p$ and derivations at $p$.}
+\[\{\text{vectors}\in T_pM\}\longleftrightarrow\{v:C^\infty(M)\to \R:v(fg)(p)=f(p)v(g)+g(p)v(f)\}\]
+\textcolor{teal}{Notice that given a point $p\in M$, a covector $\omega\in T^*_pM$, and a tangent vector $v\in T_pM$, then one can define a pairing $\langle \omega, v\rangle\in \R$. This follows basically from the definition of dual vector space.
+Now, given a function $f$ locally defined near $p\in M$ and a tangent vector $v\in T_pM$, one can similarly define a pairing given by $\langle df_p,v\rangle =v(f)_p\in T^*_pM$, where $v$ is considered as a derivation defined near $p\in M$. We now give the precise definition of the differential.}
+
+
+\textbf{Definition:} Let $f:U\to \R$ be a smooth function defined on an open neighborhood of $p\in M$. Then the differential \textcolor{teal}{(of $f$ at $p\in M$)} is defined as
+\begin{align*}
+    df_p:T_pM&\to T^*_pM\\
+    v&\mapsto df_p(v)\equiv v(f)_p
+\end{align*}
+\textcolor{teal}{The differential assigns a scalar to each tangent vector via the pairing in the previous comment.}
+
+We can compute the differential in local coordinates as follows:
+
+Given a local chart $(U, x)$ near $p$, then each coordinate function $x^i$ is smooth and has differential $dx_i(p)$. Moreover, the differentials $\{dx_1(p), \dots, dx_n(p)\}\subset T^*_pM$ provide a dual basis to $\{\frac{\partial }{\partial x^1}(p), \dots,\frac{\partial }{\partial x^n}(p)\}\subset T_pM$. In these local coordinates, we can write the differential as
+\[df_p=\sum\frac{\partial f}{\partial x_i}(p)dx_i(p)\]
+
+\textbf{Lemma:} $dx_i(p), \dots, dx_n(p)$ is a basis for $T^*_pM$.
+
+
+Remarks:
+\begin{enumerate}
+    \item All covectors are differentials 
+    \item For each smooth function $f:M\to \R$, the map 
+    \[df:M\to T^*M\]
+    \[p\mapsto df|_p\in T^*_pM\]
+    is a smooth section.
+\end{enumerate}
+\textbf{Properties:} Let $f,g\in C^\infty(M)$. Then
+\begin{enumerate}
+    \item $d(af+bg)=adf+bdg$
+    \item $d(fg)=gdf+fdg$
+    \item $F:N\to M$ smooth map between smooth manifolds, 
+    \[d(f\circ F)(V)=df(DF(v))\forall v\in T_qN, q\in N.\]
+\end{enumerate}
+\textbf{Lemma:} $f\in C^\infty(M)$, $f:M\to \R$ smooth, $\gamma:[0,1]\to M$ smooth path. Then 
+\[F(\gamma(1))-F(\gamma(0))=\int_0^1df(\gamma'(t))dt.\]
+\textbf{Definition:} A $1$-form is a smooth section $\omega$ of $T^*M$. If $F:N\to M$ is a smooth function, then the pullback of $\omega$ is $F^*\omega$ on $N$, satisfying 
+\[F^*\omega(v)=\omega(DF(v)),\,\,\, \forall v\in T_pM.\]
+\textbf{Definition:} $\gamma:[a,b]\to M$ be a smooth map. The line integral of $\omega$ along $\gamma$ is 
+\[\int_a^b\omega(\gamma'(t))dt.\]
+In general: $\omega(p)=\sum\omega(p)\frac{\partial }{\partial x_i}dx_i$
+
+Examples: (1) $M=\R^2$ and consider $\omega=xdy$ which is not exact (not even close). Take the path $\gamma:[0,\pi]\to \R^2$ given by $\gamma(t)=(\cos(t),sin(t)$. Then 
+\[\gamma'(t)=\sin(t)\frac{\partial}{\partial x}+\cos(t)\frac{\partial}{\partial y}\]
+\[\omega(\gamma'(t))=\cos^2(t).\]
+\[\int_0^1\omega(\gamma'(t))dt=\int_0^1\cos^2(t)dt>0\]
+Now take the path $\Gamma:[0,\pi]\to \R^2$ defined by $\Gamma(t)=(\frac{t}{\pi},0)$
+
+
+
+
+\end{document}
