@@ -1,2 +1,4 @@
 \contentsline {section}{\numberline {1}Vector bundles}{1}{}%
-\contentsline {subsection}{\numberline {1.1}Cotangent bundle}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Dual vector bundle}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Cotangent bundle}{1}{}%
+\contentsline {subsubsection}{\numberline {1.2.1}How does $df$ looks more concretely?}{2}{}%
