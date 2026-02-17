@@ -42,7 +42,7 @@
 \DeclareMathOperator{\Ann}{\mathrm{Ann}}
 \begin{document} 
 \section{Basic Category Theory}
-	\begin{remark}The notion of ``class" in ZFC requires a definition. This can be done (``parametrically definable classes"), but for now let's blackbox the concept and just say ``classes are a generalization of sets which are allowed to be `large'", e.g. so a ``class of all sets" makes sense even though a ``set of all sets" does not. This shouldn't matter ultimately anyways. \end{remark}
+	\begin{remark}The notion of ``class" in ZFC requires a definition. This can be done (``parametrically definable classes"-- e.g., talk about ``sets satisfying a formula" as opposed to ``a \textit{set} of things satisfying said formula"), but for now let's blackbox the concept and just say ``classes are a generalization of sets which are allowed to be `large'", e.g. so a ``class of all sets" makes sense even though a ``set of all sets" does not. For this course, this shouldn't matter ultimately anyways.\footnote{This starts to actually be worth noting [especially supposing you care about working in ZFC or even NBG without universes] once certain constructions/objects (e.g. derived categories, functor categories, stacks etc.) become directly relevant to you. That said, if you aren't a logician then I believe it \textit{mostly} fine to blackbox such foundational issues until it comes up naturally.} \end{remark}
 	\begin{definition}
 		A \textbf{Category}, $\mathcal{C}$, is a triple of classes, $\mathsf{obj}(\mathcal{C})$, $\Hom(\mathcal{C})$, and ``$\mathsf{\circ}$", AKA $\mathsf{Comp}(\mathcal{C})$, such that:
 			\begin{itemize}
@@ -56,11 +56,12 @@
 		\end{definition}
 	In short: we have objects, arrows between objects, a way of composing arrows, and identity arrows on each object. Oftentimes, when working with a category of modules or vector spaces, we will omit the name of the full category and simply denote $\Hom_R(M,N)$ for (say) $\Hom_{\Mod{R}{}}(M,N)$.
 		
+		The next definition is often of little intrinsic import\footnote{This is slightly illegitimate-- there are indeed cases where a category of interest has, as its dual, another category of interest (up to equivalence). For algebraic geometers, one has the category of affine schemes being equivalent to the opposite of $\CRing$, say-- this leads to many useful connections between geometric and algebraic concepts.}, but will be a convenient formal thing to have for discussing ``contravariant functors", and more generally for giving a nice notion of ``duality" for many arguments.
 	\begin{definition} Given a category $\mathcal{C}$, we define its \textit{opposite category} $\mathcal{C}^{op}$ to be the category with the same objects, but such that for every morphism $f:a \to b$ in $\Hom(\mathcal{C})$ we have an arrow $f^{op}:b \to a$ in $\Hom(\mathcal{C}^{op})$. Composition is defined by saying that, for every $$a\xrightarrow{f}b \xrightarrow{g} c$$ in $\Hom(\mathcal{C})$, $$c\xrightarrow{(g\circ f)^{op}}a :=  c\xrightarrow{g^{op}}b \xrightarrow{f^{op}}a$$ in $\Hom(\mathcal{C}^{op}).$
 		\end{definition}
 	\begin{definition} Given two categories, $\mathcal{C}$ and $\mathcal{D}$, a \textbf{functor} $F: \mathcal{C}\to \mathcal{D}$ is a map on objects $F_{\mathsf{obj}}: \mathsf{obj}(\mathcal{C})\to \mathsf{obj}(\mathcal{D})$ together with a collection of maps on morphisms $F_{\Hom(a,b)}: \Hom_\mathcal{C}(a,b)\to \Hom_{\mathcal{D}}(Fa, Fb)$ such that:
 		\begin{itemize}
-			\item $F$ \textit{respects composition}, e.g. $F_{\Hom(a,b)}(\varphi)\circ F_{\Hom(c,b)}(\psi)= F_{\Hom(c,a)}(\varphi \circ \psi)$
+			\item $F$ \textit{respects composition}, e.g. $F_{\Hom(b,c)}(\varphi)\circ F_{\Hom(a,b)}(\psi)= F_{\Hom(a,c)}(\varphi \circ \psi)$
 			\item $F$ maps identities to identities, e.g. $F_{\Hom(a,a)}(\id_a)=\id_{F_{\mathsf{obj}}(a)}$
 		\end{itemize} . By convention we omit the subscripts and, for any $\mathcal{C}$-object $a$ or any $\mathcal{C}$-morphism $\varphi$, simply denote $Fa$ and $F\varphi$ for the corresponding object/morphism in $\mathcal{D}$.
 		\end{definition}
