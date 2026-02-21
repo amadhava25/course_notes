@@ -39,6 +39,9 @@
 \DeclareMathOperator{\Ext}{\mathsf{Ext}}
 \DeclareMathOperator{\Tor}{\mathsf{Tor}}
 \DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\im}{\mathrm{im}}
+\DeclareMathOperator{\coim}{\mathrm{coim}}
 \DeclareMathOperator{\Ann}{\mathrm{Ann}}
 \begin{document} 
 \section{Basic Category Theory}
@@ -528,21 +531,54 @@
 	\end{proof}
 		\newpage
 	\section{Generalities on ``Abelian Categories"}
+	An ``abelian category" can, in some sense, be thought of as a ``convenient category to do homological algebra in" (which may not \textit{literally} be a category of $R$-modules over a ring $R$). There are a number of different equivalent ways to define/build up the definition of an abelian category, but ultimately what it comes down to is as follows: an abelian category should
+	\begin{itemize}
+		\item Have a way for us to (compatibly) add morphisms in the same  $\Hom$ (that is, $\Hom(a,a')$ has the structure of an abelian group in a nice way)
+		\item Should have some ``0 object" (e.g., like a $0$-module or trivial group)
+		\item should have products and sums (that is, coproducts)
+			\begin{itemize}
+				\item In addition, they should agree in the finite case.
+			\end{itemize}
+		\item Should let us \textit{always} be able to take kernels and cokernels.
+			\begin{itemize}
+				\item Furthermore, unlike in $\Grp$ where we need to distinguish ``normal subgroups" from every subgroup, we'd like \textit{every} subobject to be something we can quotient by-- hence, every not-quite-injection (monomorphism) should be a kernel (e.g., of \textit{something}).
+				\item Dually, we'd like every surjection to be a quotient map-- hence, every not-quite-surjection (epimorphism) should be a cokernel (e.g., of \textit{something})
+			\end{itemize}
+		\item Should have the isomorphism theorem(s) hold-- e.g., for $\varphi : M\to N$, we should always have $\im\varphi \isom M /\ker \varphi$. \footnote{Note that the left handside is $\ker\coker \varphi$ and the right-hand-side is $\coker\ker \varphi$, sometimes called the ``coimage"-- this can be phrased diagrammatically if you like (as Jason did in class). More generally, one has a natural morphism $\lim \colim \to \colim \lim $, so the isomorphism theorem can stated as ``the natural morphism $\ker\coker \to \coker \ker$ is an isomorphism."}
+	\end{itemize}
+	We can keep on going and listing nice properties of abelian/module categories, but for now lets leave it here. As it happens, various subsets of these conditions give the rest \footnote{indeed- as a neat curiosity, if your category has ``binary biproducts", all kernels and cokernels, and a 0 object, then that \textit{gives} an abelian group structure on the $\Hom$ sets. If you'd like, then, you can consider $\Ab$-enrichment as a \textit{property} of a category and not an extra structure on said category, but I've no sense for how this would be a \textit{useful} consideration.}. So, we just choose some subset of these properties, build these up in steps, and then use that as the  ``definition" (noting that the rest of the things we want will hold). Picking our poison, we begin:
+	\begin{definition}A category, $\mathcal{C}$, is said to be \textbf{$\Ab$-enriched} or \textbf{preadditive} if, for every pair of $\mathcal{C}$-objects $M,N$, $\Hom_\mathcal{C}(M,N)$ has the structure of an abelian group \textit{and} composition is $\mathbb{Z}$-bilinear-- e.g., $$\varphi\circ (n\psi_1+ m\psi_2)= n\varphi\circ \psi_1+m\varphi\circ \psi_2$$ and $$(n\psi_1+ m\psi_2)\circ \varphi= n\psi_1\circ \varphi +m \psi_2\circ \varphi.$$
+		\end{definition} You'll note that being $\mathbb{Z}$-bilinear (``biadditive", if you prefer) is more or less just left and right distributivity. This should be familiar to you: recall that for modules, the group of endomorphisms of a module form a \textit{ring} (e.g., the endomorphisms of a finite-dimensional $k$-vectorspace are a ring of matrices), etc; more generally, we like to think of ``composing linear transformations" like multiplying matrices (even between vector spaces of different dimension), so requiring ``biadditivity" is really just a way to ensure this analogy still works.
+	Next up, we say:
+	\begin{definition} An $\Ab$-enriched/preadditive category, $\mathcal{C}$, is said to be \textit{additive} if it has a 0 object\footnote{A 0 object is an object that is both initial and terminal. In particular, for any $M,N$, we have a map $M\to 0 \to N$-- the ``zero map". As the terminology suggests, this is precisely the ``zero homomorphism" of groups/modules, and then all the things we'd like to be true for a ``zero map" just end up following formally from the fact it factors through $0$.} and has all binary/finite products.
+		\end{definition}
+	 You'll note we didn't actually say anything about coproducts existing, nor about finite products and coproducts coinciding. You can check this yourself (or just go to the corresponding nlab page), but indeed: if we have an appropriate abelian group structure on all homs, then every product \textit{is} a coproduct and vice versa, so we only need to specify the existence of one or the other. 
+	\begin{definition}An \textit{additive} category, $\mathcal{A}$, is said to be \textit{abelian} if:
+		\begin{itemize}
+			\item Every morphism $\varphi: M \to N$ has a kernel and cokernel.\footnote{If $\mathcal{A}$ satisfies this axiom, but not the 2nd, it is sometimes called ``pre-abelian"-- for example, the category of Banach spaces with bounded/continuous linear maps is pre-abelian, but fails that last axiom-- e.g., the inclusion $\ell^1(\mathbb{R})\to c_0(\mathbb{R})$ is monic and epic but is neither a kernel nor cokernel [according to \href{https://math.stackexchange.com/questions/5120955/example-of-morphism-in-category-of-banach-spaces-with-bounded-linear-maps-for-wh?noredirect=1&lq=1}{this mathstackexchange thread}]. Anyways, neat concept and all but I don't really want to add yet another definition, and it's not like we really need/care about pre-abelian categories here anyways.}
+			\item Every monomorphism and epimorphism is ``normal"-- that is, every monomorphism the kernel of \textit{something}, and every epimorphism is the cokernel of something.
+		\end{itemize}
+		\end{definition}
+	In summary, a category is abelian if: it is $\Ab$-enriched, has 0 object, all finite products, kernels, and cokernels, \textit{and} if every monomorphism is a kernel and every epimorphism is a cokernel. This will end up being sufficient to imply all the other properties that we'd want/like (including the isomorphism theorems above)
 	\begin{remark}
-		Jason might require us to technically be able to unravel the definition, \textit{but}, in practice ``abelian category" just means ``category which we can think of like a category of left/right $R$-modules".  This is possible to formalize by the \ref{Freyd-Mitchell}{Freyd-Mitchell Embedding Theorem}, which is technically useful. It's also complete abstract nonsense, and for every almost every single thing we talk about, you can use the words ``abelian category" interchangeably with ``category of $R$-modules" (or, \textit{if you really want}, ``category of chain complexes of $R$-modules"), so just think in terms of whatever's easiest.
+		Jason might require us to technically be able to unravel the definition, \textit{but}, in practice ``abelian category" just means ``category which we can think of like a category of left/right $R$-modules".  This is possible to formalize by the \ref{Freyd-Mitchell}{Freyd-Mitchell Embedding Theorem}, which is technically useful. It's also abstract nonsense, and for most things we talk about, you can use the words ``abelian category" interchangeably with ``category of $R$-modules" (or, \textit{if you really want}, ``category of chain complexes of $R$-modules"), so just think in terms of whatever's easiest for now (usually, it'll be clear when one's research/area of interest is such that the notion of ``abelian category" is useful.)
 	\end{remark}
 	\begin{theorem}\label{Freyd-Mitchell} (Freyd-Mitchell Embedding) Let $\mathcal{A}$ be a (small) abelian category. Then, there is a ring $R$ (not necessarily commutative)  and a full, faithful, exact (hence additive) functor $i: \mathcal{A}\into \Mod{R}{}$ the category of left $R$-modules.
 		\end{theorem}
 	You do \textit{not} need to memorize this (nor will we see a proof), but I feel it necessary to mention it as a name to look up/be referred to.
+	
+	One last thing for us to define in generality: we defined additive functors before in module categories, but we may as well just define it again in general:
+	\begin{definition} A functor $F:\mathcal{A}\to \mathcal{B}$ between pre-additive categories is said to be \textbf{additive} if, for all $a,a'$ in $\mathcal{A}$, we have that the induced map $\Hom_\mathcal{A}(a,a')\to \Hom_\mathcal{B}(Fa,Fa')$ is an abelian group homomorphism.\footnote{If you're absurd (like nlab), then you can equivalently define an additive functor between additive categories as one which preserves finite ``biproducts"-- this more or less follows since (as mentioned in a prior footnote) the abelian group structure on $\Hom$ sets can be ``derived" from the finite biproducts.}
+		\end{definition}
 	\begin{definition} A \textbf{$\delta$-functor}
 		\end{definition}
 	\begin{definition}A $\delta$-functor, $H^*$ \textbf{universal} if
 		\end{definition}
-	\begin{theorem}\label{FHHF}(FOAG 1.5.I, ``the FHHF theorem") Suppose $F: \mathcal{A}\to \mathcal{B}$ is a functor of abelian categories, and $C^\bullet$ an $\mathcal{A}$-complex.
+	\begin{theorem}\label{FHHF}(FOAG 1.5.I, ``the FHHF theorem") Suppose $F: \mathcal{A}\to \mathcal{B}$ is an additive functor of abelian categories, and $C^\bullet$ an $\mathcal{A}$-complex.
 		\begin{itemize}
 			\item If $F$ is right exact, there exists a natural morphism $FH^\bullet \to H^\bullet F$
 			\item If $F$ is left exact, there is a natural morphism $H^\bullet F \to F H^\bullet$ (e.g., $FH^\bullet \leftarrow H^\bullet F$)
-			\item If $F$ is exact, then there is a natural isomorphism $FH ^\bullet \iso H^\bullet F$.
+			\item If $F$ is exact, then the above are inverse and there is a natural isomorphism $FH ^\bullet \iso H^\bullet F$.
 		\end{itemize}
 		\end{theorem}
 	\begin{proof}
