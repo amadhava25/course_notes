@@ -20,3 +20,7 @@
 \contentsline {subsection}{Key Topics:}{14}{section*.24}%
 \contentsline {subsection}{Summary:}{14}{section*.25}%
 \contentsline {subsection}{Lecture:}{14}{section*.26}%
+\contentsline {section}{Lectures 8-10: The Riesz-Representation Theorem and the Radon-Nikodym Theorem}{17}{section*.27}%
+\contentsline {subsubsection}{Key Topics:}{17}{section*.28}%
+\contentsline {subsubsection}{Summary:}{17}{section*.29}%
+\contentsline {subsubsection}{Lecture:}{17}{section*.30}%

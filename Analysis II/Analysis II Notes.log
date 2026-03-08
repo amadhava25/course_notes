@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  7 MAR 2026 19:19
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  8 MAR 2026 18:41
  restricted system commands enabled.
 **"Analysis II Notes.tex"
 ("./Analysis II Notes.tex"
@@ -1524,7 +1524,20 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 
 [15]
 
-[16] ("./Analysis II Notes.aux")
+[16]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 623.
+
+
+
+[17]
+
+[18]
+
+[19]
+
+[20] ("./Analysis II Notes.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -1534,13 +1547,13 @@ Package rerunfilecheck Info: File `"Analysis II Notes".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 43092 strings out of 475915
+ 43136 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 3950 words of node memory still in use:
-   105 hlist, 10 vlist, 8 rule, 24 math, 75 glue, 22 kern, 106 glyph, 169 attrib
-ute, 110 glue_spec, 169 attribute_list, 2 write nodes
-   avail lists: 2:2121,3:907,4:265,5:528,6:103,7:7010,8:66,9:1176,10:11,11:334
- 64474 multiletter control sequences out of 65536+600000
+ 3141 words of node memory still in use:
+   80 hlist, 17 vlist, 5 rule, 12 math, 36 glue, 16 kern, 71 glyph, 172 attribut
+e, 110 glue_spec, 172 attribute_list, 2 write nodes
+   avail lists: 2:2117,3:907,4:72,5:543,6:62,7:7096,8:70,9:1197,10:11,11:334
+ 64478 multiletter control sequences out of 65536+600000
  80 fonts using 5514991 bytes
  99i,19n,128p,941b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf>
@@ -1548,29 +1561,31 @@ ute, 110 glue_spec, 169 attribute_list, 2 write nodes
 xlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf><c:/texlive/
 2024/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/texlive/2024/t
 exmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/texlive/2024/texmf-d
-ist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/texlive/2024/texmf-dist/f
-onts/opentype/public/lm/lmroman10-bold.otf><c:/texlive/2024/texmf-dist/fonts/ope
+ist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/texlive/2024/texmf-dist/font
+s/opentype/public/lm/lmroman10-regular.otf><c:/texlive/2024/texmf-dist/fonts/ope
 ntype/public/lm/lmroman12-bold.otf><c:/texlive/2024/texmf-dist/fonts/opentype/pu
 blic/lm/lmroman12-regular.otf><c:/texlive/2024/texmf-dist/fonts/opentype/public/
 lm/lmroman17-regular.otf><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/20
-24/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2024/texmf-di
-st/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2024/texmf-dist/font
-s/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2024/texmf-dist/fonts/type1
-/public/amsfonts/euler/eusm7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb>
-Output written on Analysis II Notes.pdf (16 pages, 249941 bytes).
+/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/c
+mex7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive
+/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2024/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2024/texmf-dist/fon
+ts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2024/texmf-dist/fonts/type
+1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/publi
+c/amsfonts/euler/eusm7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfon
+ts/symbols/msbm10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/sy
+mbols/msbm7.pfb>
+Output written on Analysis II Notes.pdf (20 pages, 285454 bytes).
 
-PDF statistics: 427 PDF objects out of 1000 (max. 8388607)
- 359 compressed objects within 4 object streams
- 129 named destinations out of 1000 (max. 131072)
- 192 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 478 PDF objects out of 1000 (max. 8388607)
+ 403 compressed objects within 5 object streams
+ 169 named destinations out of 1000 (max. 131072)
+ 224 words of extra memory for PDF output out of 10000 (max. 100000000)
 

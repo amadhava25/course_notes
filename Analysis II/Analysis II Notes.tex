@@ -8,8 +8,8 @@
 \usepackage{amsfonts}
 
 \title{Lecture Notes in Analysis II}
-\author{Spring 2026}
-\date{\vspace{-0.5ex}}
+\author{\me}
+\date{Spring 2026}
 \begin{document}
 	\maketitle
 	\fullline 
@@ -617,5 +617,158 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 			\end{align}
 		Taking the limit $p \to \infty$, one obtains $\lim_{p \to \infty}\norm{f}_{p} \geq \norm{f}_{\infty} - \epsilon$. Since this is true for all $\epsilon > 0$, we conclude that $\lim_{p \to \infty}\norm{f}_{p} \geq \norm{f}_{\infty}$. Therefore, the proof concludes. 
 	\end{solutions}
+\end{itemize}
+\newpage 
+\section{Lectures 8-10: The Riesz-Representation Theorem and the Radon-Nikodym Theorem}
+\subsubsection{Key Topics:} (1) The Riesz-Representation Theorem, (2) Compactness in $L^{p}(\mathbb{R}^{n})$ and the Kolmogorov-Riesz Theorem, (3) the Generalized Minkowski Inequality
+
+\subsubsection{Summary:} In this lecture, we talked about dual spaces for the $L^{p}$ spaces. In particular, we covered the Riesz-Representation Theorem and started proving this theorem via the Radon-Nikodym theorem. Note that the following three lectures are combined due to their connections. 
+
+\subsubsection{Lecture:}
+\begin{itemize}
+	\item \textbf{Mot. (Goal of Lectures 8 and 9)} In the following two lectures, our goal is to provide a description of the dual space to $L^{p}(X)$ for $1 < p < \infty$. Using the Radon-Nikodym Theorem, we will prove the following result: 
+		\begin{quote}
+			\textbf{Theorem.} (Riesz Representation Theorem for $L^{p}$ Spaces) Let $1 < p < \infty$, and $q$ be its conjugate. Then the following are true: \vspace{-0.15cm}
+			\begin{enumerate}[itemsep =-2pt,label = (\roman{*})]
+				\item For each $\phi \in (L^{p})^{\ast}$, there exists a \textit{unique} $g \in L^{q}$ so that 
+					\begin{equation*}
+						\phi(f) = \int_{X}f \cdot g\;d\mu, \qquad \forall f\in L^{p}. 
+					\end{equation*}
+				\item Let $(X, \mathscr{M},\mu)$ be $\sigma$-finite. Then for each $\phi \in (L^{1})^{\ast}$, there exists a \textit{unique} $g \in L^{\infty}$ so that for all $f \in L^{1}$, 
+					\begin{equation*}
+						\phi(f) = \int_{X} f \cdot g\;d\mu. 
+					\end{equation*}
+			\end{enumerate}
+		\end{quote}
+	\item \textbf{Def. (Complex Measures)} Let $X$ be an arbitrary set, and $\mathscr{M}$ a $\sigma$-algebra on $X$. Let $\nu: \mathscr{M} \to \mathbb{C}$ be a function satisfying the following properties: \vspace{-0.15cm}
+	\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+		\item $\nu(\varnothing) = 0$. 
+		\item For any disjoint sequence $\{E_{j}\}_{j = 1}^{\infty} \subseteq \mathscr{M}$, 
+			\begin{equation}
+				\nu\left(\bigcup_{j = 1}^{\infty}E_{j}\right) = \sum_{j = 1}^{\infty}\nu(E_{j}),
+			\end{equation}
+		where the RHS is assumed to converge absolutely. 
+	\end{enumerate}
+	Then $\nu$ is a complex measure. 
+	\item \textbf{Def. (Absolute Continuity of Measures)} Let $\nu$ be a complex measure and $\mu$ a \textit{positive} measure on $(X, \mathscr{M})$. Then $v$ is said to be absolutely continuous with respect to $\mu$, denoted $\nu \ll \mu$ if and only if $\mu(E) = 0$ implies $\nu(E) = 0$. 
+	\item \textbf{Thm. (Radon-Nikodym)} Let $(X, \mathscr{M})$ be a measure space, $\nu$ a complex measure, and $\mu$ a $\sigma$-finite positive measure so that $\nu \ll \mu$. Then there exists a measurable function $f: X \to \mathbb{C}$ so that for any $E \in \mathscr{M}$, 
+		\begin{equation}
+			\nu(E) = \int_{X}f\;d\mu. 
+		\end{equation} 
+	$f$ is said to be the Radon-Nikodym derivative of $\nu$ with respect to $\mu$. 
+	
+	\item \textbf{Lem. (Thm 6.14 from Folland)} Let $p$ and $q$ be conjugate exponents. Suppose that $g$ is a measurable function on $X$ such that $fg \in L^{1}$ for all $f$ in the space of simple functions that vanish outside a set of finite measure, and the quantity 
+		\begin{equation}
+			M_{q}(g) = \sup\brac*{\abs{\int fg}: f \in \Sigma \text{ and } \norm{f}_{p} = 1}
+		\end{equation}
+	is finite. Also suppose $S_{g} = \{x: g(x) \neq 0\}$ is $\sigma$-finite or that $\mu$ is semifinite. Then $g \in L^{q}$ and $M_{q}(g) = \norm{g}_{q}$. 
+	
+	\begin{solutions}
+		\textcolor{red}{[!! Complete Proof Later !!]}
+	\end{solutions}
+	
+	\item \textbf{Pf. (Proof of Riesz Representation Theorem)} Now we will use the Radon-Nikodym Theorem to prove the Riesz Representation Theorem. This proof will proceed through several smaller, somewhat simpler, steps. 
+	
+	\begin{quote}
+		\textbf{(Step 1)} Step 1 consists of proving the Riesz Representation Theorem when $\mu(X) < \infty$. The idea is as follows: given $\phi \in (L^{p})^{\ast}$, where $1 < p < \infty$, we define $\nu(E) = \phi(\chi_{E})$, and then show the following are true: 
+			\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+				\item $\nu$ defines a complex measure; 
+				\item  $\nu \ll \mu$; 
+				\item use the function $g$ given by the Radon-Nikodym theorem to establish the theorem. 
+			\end{enumerate} 
+\begin{solutions}
+	We will show each of the above is true. \vspace{-0.15cm}
+	\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+		\item Let $\nu$ be defined as follows: for each $E \in \mathscr{M}$, $\nu(E) =\phi(\chi_{E})$. It is clear to see that $\nu(\varnothing) = \phi(\chi_{\varnothing}) =\phi(0) = 0$. Now, we will show that $\nu$ is countably additive. Let $\{E_{j}\}_{j = 1}^{n}$ be a finite collection of disjoint measurable sets. Then since $\phi$ is linear 
+		\begin{equation}
+			\nu\left(\bigcup_{1}^{n}E_{j}\right) = \phi\left(\chi_{\bigcup_{1}^{n}E_{j}}\right) = \phi\left(\sum_{1}^{n}\chi(E_{j})\right) = \sum_{1}^{n}\phi(E_{j}) = \sum_{1}^{n}\nu(E_{j}). 
+		\end{equation}
+		For each positive integer $n > 0$, define the sum 
+			\begin{equation}
+				S_{n} = \sum_{1}^{n}\chi_{E_{j}} = \chi_{\bigcup_{1}^{n}E_{j}}. 
+			\end{equation}
+		We observe that 
+			\begin{align}
+				\begin{split}
+					\norm{\chi_{\bigcup^{\infty}E_{j}} - S_{n}}_{p} &=  \norm{ \sum_{j > n}\chi_{E_{j}} }_{p} \\
+					&= \left(\sum_{j > n}\mu(E_{j})\right)^{1/p}. 
+				\end{split}
+			\end{align}
+		We know that since $\mu$ is finite, $\sum_{1}^{\infty}\mu(E_{j})$ converges. And therefore, the tail of this sum must decay. Hence, 
+			\begin{equation}
+				\sum_{j > n}\mu(E_{j}) \longrightarrow 0 \text{ as $n \to \infty$}, 
+			\end{equation}
+		which proves that $S_{n} \to \chi_{\bigcup^{\infty}E_{j}}$ in the $L^{p}$-norm. Since $\phi$ is continuous, we conclude that 
+		\begin{equation}
+			\sum_{1}^{\infty}\nu(E_{j}) \longleftarrow \sum_{1}^{n}\nu(E_{j}) = \nu\left(\bigcup_{1}^{n}E_{j}\right) = \phi\left(\chi_{S_{n}}\right) \longrightarrow \phi(\chi_{\bigcup^{\infty}E_{j}}) = \nu\left(\bigcup_{1}^{\infty}E_{j}\right).
+		\end{equation}
+		Hence, this concludes the proof that $\nu$ is a complex measure.
+		\item Let $E \in \mathscr{M}$ so that $\mu(E) = 0$. Since $\phi$ is a bounded linear functional, there exists some $C > 0$ so that $|\phi(f)| \leq C\cdot \norm{f}_{p}$ for all $f \in L^{p}$. In particular, 
+		\begin{equation}
+			0 \leq |\nu(E)| = |\phi(\chi_{E})| \leq C \cdot \norm{\chi_{E}}_{p} = C \cdot \mu(E)^{1/p} = 0,
+		\end{equation}
+	so that $\nu(E) = 0$. Hence, $\nu \ll \mu$. 
+	\item Since $\mu(X) < \infty$, $\mu$ is also $\sigma$-finite. Hence, by the Radon-Nikodym theorem, there exists some measurable function $g$ \textcolor{red}{[!! Explain why $g \in L^{1}$]} so that 
+		\begin{equation}
+			\phi(\chi_{E}) = \nu(E) =\int_{X}g\cdot \chi_{E}\;d\mu. 
+		\end{equation}
+	We must prove that $g \in L^{q}$. Let $\sum_{1}^{n}c_{j}\chi_{E_{j}}$ be an arbitrary simple function in $L^{p}$. Then since $\phi$ is a bounded linear functional, 
+		\begin{equation}
+			\abs{\phi\left(\sum_{1}^{n}c_{j}\chi_{E_{j}}\right)} \leq C \cdot \norm{\sum_{1}^{n}c_{j}\chi_{E_{j}}}_{p} < \infty. 
+		\end{equation}
+	By definition of $g$, we must have 
+	\begin{equation}
+		\abs{\int g \cdot \sum_{1}^{n}c_{j}\chi_{E_{j}}} \leq C \cdot \norm{\sum_{1}^{n}c_{j}\chi_{E_{j}}}_{p} < \infty. 
+	\end{equation}
+	Hence, by Theorem 6.14, we conclude that $g \in L^{q}$. Now since the simple functions are dense in the $L^{p}$ spaces, for any function $f \in L^{p}$, there exists a sequence $\{f_{j}\}_{j = 1}^{\infty}$ that converges to $f$ in the $L^{p}$-norm. So by continuity of $\phi$, 
+	\begin{equation}
+		\phi(f) = \lim_{j \to \infty}\phi(f_{j}) = \lim_{j \to \infty}\int g \cdot f_{j}\;d\mu = \int g \cdot f\;d\mu. 
+	\end{equation}
+	Hence, we conclude that the Riesz Representation Theorem is certainly true if $X$ is finite. 
+	\end{enumerate}
+\end{solutions}
+	
+	\textbf{(Step 2)} Step 2 consists of extending the finite-case Riesz Representation Theorem to when $X$ is $\sigma$-finite (recall that all finite spaces are $\sigma$-finite, but not all $\sigma$-finite spaces are finite.) 
+	
+	
+	\begin{solutions} 
+	Consider the sequence $\{X_{n}\}_{1}^{\infty}\subseteq M$, where $X_{n} \subseteq X_{n +1}$ for each $n$, $\mu(X_{n}) < \infty$, and $X = \bigcup^{\infty}X_{n}$. We begin by considering each $L^{p}(X_{n}, \mathscr{M}, d\mu)$; Step 1 proclaims that the Riesz Representation Theorem is true for each such space. Note that for each $n$, each $f \in L^{p}(X_{n}, \mathscr{M}, d\mu)$ may be identified with an element $f \in L^{p}(X, \mathscr{M}, \mu)$ obtained by extending $f$ to be zero outside of $X_{n}$. Hence, given $\phi \in (L^{p}(X, \mathscr{M}, \mu))^{\ast}$, there exists some $g_{n} \in L^{q}(X_{n}, \mathscr{M}, \mu)$ for each $n$ so that 
+		\begin{equation}
+			\phi(f) = \int_{X}f \cdot g_{n}\;d\mu, \qquad \forall f \in L^{p}(X_{n}, \mathscr{M}, \mu). 
+		\end{equation}
+	Observe that if $X_{n} \subseteq X_{m}$, then by uniqueness of the Radon-Nikodym derivative, $g_{n} = g_{m}$ $\mu$-a.e. on $X_{n}$. Therefore, we can obtain a measurable function $g$ by considering each $g_{n}$ to be a function on $X$ by extending $g_{n}$ to be zero outside of each $X_{n}$ and defining the function $g$ as follows: 
+		\begin{equation}
+			g(x) = g_{n}(x), \qquad \text{ for any $n$ such that $x \in X_{n}$};
+		\end{equation}
+	$g$ is well-defined precisely because of the uniqueness clause. $g$ satisfies the following property:
+		\begin{equation}
+			\phi(f) = \int_{X}f\cdot g \;d\mu, \qquad \forall f \in L^{p}(X_{n}, \mathscr{M}, \mu) \text{ for some $n$}.
+		\end{equation}
+	There remain just two things to be seen: \vspace{-0.15cm}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item $g \in L^{q}(X, \mathscr{M}, \mu)$, 
+			\item $\bigcup^{\infty}L^{p}(X_{n}, \mathscr{M}, \mu)$ is dense in $L^{p}(X, \mathscr{M}, \mu)$. 
+		\end{enumerate}
+	Since $\phi$ is bounded on all of $L^{p}(X)$, there exists $C > 0$ so that 
+		\begin{equation}
+			\abs{\int_{X}f\cdot g\;d\mu} \leq C \norm{f}_{p}, \qquad \forall f \in L^{p}(X). 
+		\end{equation}
+	In particular, this holds for all simple functions $f$ with finite support in some $X_{n}$, so that by Theorem 6.14, $g \in L^{q}(X)$. Now we will show that (2) is true. Fix $f \in L^{p}(X, \mathscr{M}, \mu)$ and consider the sequence $\{f_{n}\}_{n = 1}^{\infty} \subset \bigcup^{\infty}L^{p}(X_{n}, \mathscr{M}, \mu)$, where for each $n$, $f_{n} \in L^{p}(X_{n}, \mathscr{M}, \mu)$ and $f_{n} = f \cdot \chi_{X_{n}}$. Then 
+	\begin{equation}
+		\norm{f_{n} - f}_{p} = \int_{X \setminus X_{n}}|f|^{p}\;d\mu. 
+	\end{equation}
+	Since $X\setminus X_{n} \to \varnothing$ and $|f|^{p} \in L^{1}$, by the Monotone Convergence Theorem, $\norm{f_{n} -f}_{p} \to 0$. Hence, since $\{f_{n}\}_{1}^{\infty} \to f$ in the $L^{p}$-norm, we conclude that $\bigcup^{\infty}L^{p}(X_{n}, \mathscr{M}, \mu)$ is dense in $L^{p}(X, \mathscr{M}, \mu)$. Hence, by repeating the density argument used at the end of Step 1, we conclude that the Riesz Representation Theorem holds for all $\sigma$-finite spaces. 
+	\end{solutions} 
+	
+	\textbf{(Step 3)} Now we will completely generalize the argument, and remove our assumption of $\sigma$-finiteness. 
+	
+	\begin{solutions}
+		Let $1 < p < \infty$, and let $E \subset X$ be a $\sigma$-finite set. Let $\phi \in (L^{p}(X))^{\ast}$. By Step 2, there exists a unique $g_{E} \in L^{q}(E)$ such that \vspace{-0.15cm}
+			\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+				\item $\displaystyle \phi(f) = \int f \cdot g_{E} \;d\mu$ for all $f \in L^{p}(E)$ and $\norm{g_{E}}_{q} \leq \norm{\phi}$, 
+				\item if $F$ is $\sigma$-finite and $E \subseteq F$, then by uniqueness of the Radon-Nikodym derivative, $g_{E} = g_{F}$ $\mu$-a.e. on $E$. In particular, $\norm{g_{E}}_{q} \leq \norm{g_{F}}_{q}$. 
+			\end{enumerate}
+	\end{solutions}
+	\end{quote}
 \end{itemize}
 \end{document}
