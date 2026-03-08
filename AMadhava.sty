@@ -1,8 +1,8 @@
 \RequirePackage{fontspec}
-%\setmainfont{Noto Serif}
-%\usepackage{notomath}
-%\let\Bbbk\relax
-%\let\openbox\relax
+\setmainfont{Noto Serif}
+\usepackage{notomath}
+\let\Bbbk\relax
+\let\openbox\relax
 %\RequirePackage{noto}
 %\newfontfamily\kannadafont{Noto Sans Kannada}
 %\RequirePackage{polyglossia}
@@ -13,7 +13,6 @@
 %Extension = .ttf
 %]
 %\RequirePackage[utf8]{inputenc}
-\usepackage{imakeidx}
 \RequirePackage{graphicx} % Required for inserting images
 \RequirePackage{amsfonts, amsmath, amssymb, amsthm, tikz}
 \RequirePackage{mathtools}
@@ -47,7 +46,7 @@
 % Source - https://tex.stackexchange.com/a
 % Posted by fish_monster
 % Retrieved 2026-01-08, License - CC BY-SA 4.0
-%\RequirePackage{MnSymbol}
+\RequirePackage{MnSymbol}
 
 
 \usetikzlibrary{decorations.pathmorphing}
@@ -112,11 +111,6 @@
 \newcommand{\ti}[1]{\widetilde{#1}}
 \newcommand{\h}[1]{H^{#1}_{\text{dr}}}
 \renewcommand{\b}{B_{r}}
-\newcommand{\defs}[1]{\textbf{#1}\index{\textbf{Definitions}!#1}}
-\newcommand{\thms}[1]{\textbf{#1}\index{\textbf{Theorems}!#1}}
-\newcommand{\props}[1]{\textbf{#1}\index{\textbf{Propositions}!#1}}
-\newcommand{\corr}[1]{\textbf{#1}\index{\textbf{Corollaries}!#1}}
-\newcommand{\lems}[1]{\textbf{#1}\index{\textbf{Lemmas}!#1}}
 \DeclareMathOperator*{\esssup}{ess\,sup}
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\supp}{supp}
@@ -183,28 +177,6 @@
 \newcommand{\Int}[1]{#1^{\circ}}
 \newcommand{\Clo}[1]{\overline{#1}}
 \newcommand{\empspace}{\hspace{2pt}\cdot\hspace{2pt}}
-\newcommand{\om}{
-\newfontfamily\kannadafont{Noto Serif Kannada}
-
-\AddToShipoutPictureBG{%
-  \AtPageUpperLeft{%
-    \raisebox{-30pt}{%
-      \ifodd\value{page}
-        % Odd pages â†’ right edge
-        \hspace{\paperwidth}%
-        \makebox[-40pt][r]{%
-          {\color{black}\kannadafont à²“à²‚}%
-        }%
-      \else
-        % Even pages â†’ left edge
-        \makebox[2cm][r]{%
-          {\color{black}\kannadafont à²“à²‚}%
-        }%
-      \fi
-    }%
-  }%
-}
-}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\ext}{ext}
 \DeclarePairedDelimiter{\brac}{\{}{\}}
@@ -268,7 +240,7 @@
 }
 {\endinnercustomprb}
 \newenvironment{solutions}{\color{blue}}{}
-\newenvironment{proofs}{\color{orange}}{}
+
 \newenvironment{myproof}[1][\proofname]{%
 	\begin{proof}[#1]$ $\par\nobreak\ignorespaces
 	}{%
@@ -338,6 +310,6 @@
 %		\hspace{\paperwidth}%
 %		\raisebox{-\baselineskip}{%
 %			\makebox[-20pt][r]{%
-%				{\color{black} \sffamily à²“à²‚}%
+%				{\color{black} \sffamily ಓಂ}%
 %			}%
 %}}}

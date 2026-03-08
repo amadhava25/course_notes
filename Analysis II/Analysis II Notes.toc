@@ -13,13 +13,13 @@
 \contentsline {subsubsection}{Summary:}{8}{section*.16}%
 \contentsline {subsubsection}{Lecture:}{8}{section*.17}%
 \contentsline {section}{Lecture 6: Hilbert Spaces Cont'd}{12}{section*.19}%
-\contentsline {subsection}{Key Topics:}{12}{section*.20}%
-\contentsline {subsection}{Summary:}{12}{section*.21}%
-\contentsline {subsection}{Lecture:}{12}{section*.22}%
+\contentsline {subsubsection}{Key Topics:}{12}{section*.20}%
+\contentsline {subsubsection}{Summary:}{12}{section*.21}%
+\contentsline {subsubsection}{Lecture:}{12}{section*.22}%
 \contentsline {section}{Lecture 7: $L^{p}$ Spaces}{14}{section*.23}%
-\contentsline {subsection}{Key Topics:}{14}{section*.24}%
-\contentsline {subsection}{Summary:}{14}{section*.25}%
-\contentsline {subsection}{Lecture:}{14}{section*.26}%
+\contentsline {subsubsection}{Key Topics:}{14}{section*.24}%
+\contentsline {subsubsection}{Summary:}{14}{section*.25}%
+\contentsline {subsubsection}{Lecture:}{14}{section*.26}%
 \contentsline {section}{Lectures 8-10: The Riesz-Representation Theorem and the Radon-Nikodym Theorem}{17}{section*.27}%
 \contentsline {subsubsection}{Key Topics:}{17}{section*.28}%
 \contentsline {subsubsection}{Summary:}{17}{section*.29}%

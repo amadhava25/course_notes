@@ -5,7 +5,7 @@
 \usepackage{pgfplots,mathtools}
 \pgfplotsset{compat=newest}
 \def\xmax{1}\def\ymax{1.2}
-\usepackage{amsfonts}
+%\usepackage{amsfonts}
 
 \title{Lecture Notes in Analysis II}
 \author{\me}
@@ -337,8 +337,7 @@ In this lecture, we briefly revisit the space $\ell^{2}(\mathbb{R})$ and examine
 			\item[(ii')] $\braket{y,x} = \braket{x,y}$ for all $x, y \in \mathscr{H}$. 
 		\end{enumerate}
 		
-	\item \textbf{Prop. (Cauchy-Schwarz Inequality)} Let $\mathscr{}$ be a linear space with an inner product $\braket{\cdot,\cdot}$. Then for any $x, y\in \mathscr{H}$, $|\braket{x,y}| \leq \sqrt{\braket{x,x} \braket{y,y}}$, with equality if and only if $x$ and $y$ are linearly dependent. 
-	
+	\item \textbf{Prop. (Cauchy-Schwarz Inequality)} Let $\mathscr{}$ be a linear space with an inner product $\braket{\cdot,\cdot}$. Then for any $x, y\in \mathscr{H}$, $|\braket{x,y}| \leq \sqrt{\braket{x,x} \braket{y,y}}$, with equality if and only if $x$ and $y$ are linearly dependent. \newline 
 	\begin{solutions}
 		If $\braket{x,y} = 0$, then the claim is trivial. So suppose $\braket{x,y} \neq 0$. Let $\alpha \in \mathbb{C}$ with $|\alpha| = 1$ so that if $z = \alpha y$. Then 
 			\begin{equation}
@@ -357,8 +356,7 @@ In this lecture, we briefly revisit the space $\ell^{2}(\mathbb{R})$ and examine
 			\end{equation}
 		Hence, the result follows. Suppose that we have equality above. Then there exists $t_{0}\in \mathbb{R}$ such that $\braket{x - t_{0}z, x - t_{0}z} = 0$, which is possible iff $x - t_{0}z = 0$ iff $x = t_{0}z = t_{0}\alpha y$. Hence, $x$ and $y$ are colinear. This concludes the proof. 
 	\end{solutions}
-	\item \textbf{Def. (Normed Induced by Inner Product)} Let $\mathscr{H}$ be a linear space with inner product $\braket{\cdot,\cdot}$. Then the inner product induces a norm on $\mathscr{H}$ as follows: for any $x \in \mathscr{H}$, $\norm{x} \coloneqq \sqrt{\braket{x,x}}$. 
-	
+	\item \textbf{Def. (Normed Induced by Inner Product)} Let $\mathscr{H}$ be a linear space with inner product $\braket{\cdot,\cdot}$. Then the inner product induces a norm on $\mathscr{H}$ as follows: for any $x \in \mathscr{H}$, $\norm{x} \coloneqq \sqrt{\braket{x,x}}$. \newline 
 	\begin{solutions}
 		We will verify that $\norm{x}$ is indeed a norm on $\mathscr{H}$. 
 			\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
@@ -383,8 +381,7 @@ In this lecture, we briefly revisit the space $\ell^{2}(\mathbb{R})$ and examine
 					\end{align}
 				Taking the square root concludes the proof. 
 			\end{enumerate}
-	\end{solutions}
-	
+	\end{solutions} 	
 	\item \textbf{Def. (Hilbert Space)} Let $\mathscr{H}$ be a linear space with inner product $\braket{\cdot,\cdot}$; let $\norm{\empspace}$ be the norm on $\mathscr{H}$ induced by the inner product. $\mathscr{H}$ is said to be a \textit{Hilbert space} iff it is complete under the induced norm. 
 	\item \textbf{Ex 0. (Inner Products on $\mathbb{C}^{n}$)} Let $\mathscr{H} = \mathbb{C}^{n}$, and define the inner product $\braket{\cdot,\cdot}: \mathbb{C}^{n} \times \mathbb{C}^{n} \to \mathbb{C}$ as follows 
 		\begin{equation}
@@ -397,17 +394,15 @@ In this lecture, we briefly revisit the space $\ell^{2}(\mathbb{R})$ and examine
 		\end{equation}
 	Then this is a example of a Hilbert space. 
 \end{itemize}
-
 \newpage 
 \section{Lecture 6: Hilbert Spaces Cont'd}
-\subsection{Key Topics:}
+\subsubsection{Key Topics:}
 (1) Hilbert Spaces, (2) Cauchy-Schwarz, (3) Riesz Representation Theorem, (4) Inequalities
-\subsection{Summary:}
+\subsubsection{Summary:}
 In this lecture, we continue talking about Hilbert spaces. In particular, we talk about convergence in Hilbert spaces, various inequalities with the inner product, and present/prove the Riesz Representation Theorem. 
-\subsection{Lecture:}
+\subsubsection{Lecture:}
 \begin{itemize}
-	\item \textbf{Prop. (Continuity of the Inner Product)} Let $\mathscr{H}$ be a Hilbert space with inner product $\braket{\cdot,\cdot}: \mathscr{H}\times \mathscr{H} \to \mathbb{C}$. If $x_{n} \to x$ and $y_{n} \to y$, then $\braket{x_{n}, y_{n}} \to \braket{x,y}$. I.e., the inner product is continuous.
-	
+	\item \textbf{Prop. (Continuity of the Inner Product)} Let $\mathscr{H}$ be a Hilbert space with inner product $\braket{\cdot,\cdot}: \mathscr{H}\times \mathscr{H} \to \mathbb{C}$. If $x_{n} \to x$ and $y_{n} \to y$, then $\braket{x_{n}, y_{n}} \to \braket{x,y}$. I.e., the inner product is continuous. \newline 
 	\begin{solutions}
 		Assume the hypotheses. Then 
 			\begin{align}
@@ -433,9 +428,7 @@ In this lecture, we continue talking about Hilbert spaces. In particular, we tal
 			\end{align}
 		Adding the two lines yields the conclusion. 
 	\end{solutions}
-	
 	\item \textbf{Rmk. (Polarization Identity)} The parallelogram law is a relation between an inner product and the induced norm. In particular, a normed space $(\mathscr{H}, \norm{\empspace})$ satisfies the parallelogram if and only if $\norm{\empspace}$ is induced by an inner product on $\mathscr{H}$. As such, this identity can be easily used to test whether a space's norm was induced by the inner product (e.g., applying this test to the $L^{p}$ spaces shows that only the $L^{2}$ norm is induced by an inner product.)	
-	
 	\item \textbf{Thm. (Pythagorean Theorem)} If $x_{1}, \ldots, x_{n} \in \mathscr{H}$ and $x_{j} \perp x_{k}$ for all $j \neq k$ (in the sense of $\braket{x_{j}, x_{k}} = 0$), then 
 		\begin{equation*}
 			\norm{\sum_{j= 1}^{n}x_{j}}^{2} = \sum_{j = 1}^{n}\norm{x_{j}}^{2}. 
@@ -449,12 +442,10 @@ In this lecture, we continue talking about Hilbert spaces. In particular, we tal
 				\end{split}
 			\end{align}
 	\end{solutions}
-	
 	\item \textbf{Lem. (Projection Lemma)} Let $\mathscr{H}$ be a Hilbert space, and $M$ a closed subspace of $\mathscr{H}$. Let $x \in \mathscr{H}$. Then there exists a unique $y_{0} \in M$ such that 
 		\begin{equation*}
 			\norm{x - y_{0}} = \inf_{y \in M}\norm{x - y}. 
 		\end{equation*}
-	
 	\begin{solutions}
 		We will break up the proof of this lemma into an (1) existence and (2) uniqueness segment. 
 			\begin{quote}
@@ -468,7 +459,6 @@ In this lecture, we continue talking about Hilbert spaces. In particular, we tal
 					\begin{equation}
 						\norm{x - y_{0}} = \lim_{j \to \infty}\norm{x - y_{j}} = \inf_{y \in \mathscr{M}}\norm{x - y}. 
 					\end{equation}
-					
 				(\textbf{Uniqueness}) Suppose there exist $y_{1}, y_{2} \in M$ so that 
 					\begin{equation}
 						\norm{x - y_{i}} = \inf_{y \in M}\norm{x - y}. 
@@ -478,21 +468,19 @@ In this lecture, we continue talking about Hilbert spaces. In particular, we tal
 	\item \textbf{Thm. (Projecting onto Closed Subspace)} Let $\mathscr{H}$ be a Hilbert space, and $M \subseteq \mathscr{H}$ a closed subspace. Define the space 
 		\begin{equation*}
 			M^{\perp} \coloneqq \brac*{x \in \mathscr{H}: \braket{x,y} =0, \quad \forall y \in M}. 
-		\end{equation*}
+		\end{equation*}	
 	Then any $x \in \mathscr{H}$ can be \textit{uniquely} represented as the sum $x_{1} + x_{2}$, where $x_{1} \in M$ and $x_{2} \in M^{\perp}$. In addition, $x_{1}$ and $x_{2}$ are the unique elements such that 
 		\begin{equation}
 			\norm{x_{1} - x} = \inf_{y \in M}\norm{x - y}\qquad \text{and} \qquad \norm{x_{2} - x} = \inf_{y \in M^{\perp}}\norm{x - y}. 
 		\end{equation}
 \end{itemize}
-
 \newpage 
 \section{Lecture 7: \texorpdfstring{$L^{p}$}{Lp} Spaces}
-\subsection{Key Topics:}
+\subsubsection{Key Topics:}
 (1) $L^{p}$ spaces, (2) H\"older's inequality, (3) Minkowski Inequality, (4) $L^{p}$ is a Banach space
-\subsection{Summary:}
+\subsubsection{Summary:}
 In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we defined the $L^{p}$ norm, some important inequalities, and proved that $L^{p}$ is a Banach space. 
-
-\subsection{Lecture:} 
+\subsubsection{Lecture:} 
 \begin{itemize}
 	\item \textbf{Def. ($L^{p}$-Space)} Let $(X, \mathscr{M}, \mu)$ be a measure space, $f$ a measurable function on $X$ and $0 < p < \infty$. Define 
 		\begin{equation}
@@ -508,8 +496,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		\begin{equation}
 			a^{\lambda}b^{1 - \lambda} \leq \lambda a + (1 - \lambda)b,
 		\end{equation}
-	with equality if and only if $a = b$. 
-	
+	with equality if and only if $a = b$. 	\newline 
 	\begin{solutions}
 		The proof is left as an exercise; the proof follows by a simple calculus argument. 
 	\end{solutions}
@@ -517,8 +504,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		\begin{equation}
 			\norm{fg}_{1} \leq \norm{f}_{p} \cdot \norm{g}_{q}. 
 		\end{equation}
-	Moreover, equality holds if and only if $\alpha |f|^{p} = \beta |g|^{q}$ $\mu$-a.e for some constants $\alpha, \beta$. 
-	
+	Moreover, equality holds if and only if $\alpha |f|^{p} = \beta |g|^{q}$ $\mu$-a.e for some constants $\alpha, \beta$. \newline 
 	\begin{solutions}
 		If either $\norm{f}_{p} = 0$ or $\norm{g}_{q} = 0$, then the result is trivial. Likewise, if either $\norm{f}_{p} = \infty$ or $\norm{f}_{q} = \infty$, then the result is trivial. On the other hand, if the above inequality holds for some pair $(f,g)$, then it surely holds for all scalar multiples of $f$ and $g$. Hence, it suffices to prove the case where $\norm{f}_{p} = \norm{g}_{q} = 1$. By H\"older's Lemma, we observe that equality follows iff $|f|^{p} = |g|^{q}$ $\mu$-a.e. So let $a = |f(x)|^{p}$, $b = |g(x)|^{q}$, and $\lambda = p^{-1}$. Applying H\"older's Lemma, 
 			\begin{equation}
@@ -530,8 +516,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 			\end{equation}
 		Equality holds here iff equality holds in H\"older's lemma; i.e., $|f|^{p} = |q|^{q}$ $\mu$-a.e. 
 	\end{solutions}
-	\item \textbf{Thm. (Minkowski Inequality)} For $1 \leq p < \infty$ and $f, g \in L^{p}$, then $\norm{f + g}_{p}\leq \norm{f}_{p} + \norm{g}_{p}$. 
-	
+	\item \textbf{Thm. (Minkowski Inequality)} For $1 \leq p < \infty$ and $f, g \in L^{p}$, then $\norm{f + g}_{p}\leq \norm{f}_{p} + \norm{g}_{p}$. \newline 
 	\begin{solutions} 
 		If $p = 1$, then the result is trivial: 
 		\begin{equation}
@@ -555,11 +540,8 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 			\norm{f + g}_{p}^{p(1 - q^{-1})} \leq \left(\norm{f}_{p} + \norm{g}_{p}\right) \iff \norm{f + g}_{p} \leq \norm{f}_{p} + \norm{g}_{p}.
 		\end{equation}
 	\end{solutions}  
-	
 	Note that Minkowski's inequality implies that $\norm{\empspace}_{p}$ is a norm for all $1 \leq p$. On the other hand, one can show that $\norm{\empspace}_{p}$ is concave for all $0 < p < 1$ so that it is definitely not a norm for these $L^{p}$ spaces. 
-	
-	\item \textbf{Thm. ($L^{p}$ is Banach)} For $1 \leq p < \infty$, $L^{p}$ is a Banach space. 
-	
+	\item \textbf{Thm. ($L^{p}$ is Banach)} For $1 \leq p < \infty$, $L^{p}$ is a Banach space. \newline 
 	\begin{solutions}
 		Recall that a normed linear space is Banach if and only if every absolutely convergent series is convergent. Let $\{f_{j}\} \subset L^{p}$ and assume that 
 			\begin{equation}
@@ -579,7 +561,6 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 			\end{equation}
 		Hence, the series $\sum_{1}^{\infty}f_{j}$ converges in $L^{p}$, which completes the proof. 
 	\end{solutions}
-	
 	\item \textbf{Def. (The Space $L^{\infty}$)} Make the definition: 
 	\begin{equation}
 		L^{\infty}(X, \mathscr{M}, \mu) \coloneqq \brac*{f: X \to \mathbb{C}: f \text{ measurable and } \norm{f}_{\infty} < \infty}/\sim, 
@@ -593,8 +574,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 			\norm{f}_{\infty} = \inf\brac*{M > 0: \abs{f(x)} \leq M \text{ $\mu$-a.e.}}.
 		\end{equation}
 	Note that this is the definition officially used in the lectures. 
-	\item \textbf{Thm. ($L^{\infty}$-Norm)} If $\mu(X) < \infty$, then $\lim\limits_{p \to \infty}\norm{f}_{p} = \norm{f}_{\infty}$.
-	
+	\item \textbf{Thm. ($L^{\infty}$-Norm)} If $\mu(X) < \infty$, then $\lim\limits_{p \to \infty}\norm{f}_{p} = \norm{f}_{\infty}$.\newline
 	\begin{solutions}
 		Let $f$ be a measurable function on $X$, and $\mu$ a finite positive measure on $X$. Then 
 			\begin{equation}
@@ -621,9 +601,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 \newpage 
 \section{Lectures 8-10: The Riesz-Representation Theorem and the Radon-Nikodym Theorem}
 \subsubsection{Key Topics:} (1) The Riesz-Representation Theorem, (2) Compactness in $L^{p}(\mathbb{R}^{n})$ and the Kolmogorov-Riesz Theorem, (3) the Generalized Minkowski Inequality
-
 \subsubsection{Summary:} In this lecture, we talked about dual spaces for the $L^{p}$ spaces. In particular, we covered the Riesz-Representation Theorem and started proving this theorem via the Radon-Nikodym theorem. Note that the following three lectures are combined due to their connections. 
-
 \subsubsection{Lecture:}
 \begin{itemize}
 	\item \textbf{Mot. (Goal of Lectures 8 and 9)} In the following two lectures, our goal is to provide a description of the dual space to $L^{p}(X)$ for $1 < p < \infty$. Using the Radon-Nikodym Theorem, we will prove the following result: 
@@ -656,19 +634,31 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 			\nu(E) = \int_{X}f\;d\mu. 
 		\end{equation} 
 	$f$ is said to be the Radon-Nikodym derivative of $\nu$ with respect to $\mu$. 
-	
 	\item \textbf{Lem. (Thm 6.14 from Folland)} Let $p$ and $q$ be conjugate exponents. Suppose that $g$ is a measurable function on $X$ such that $fg \in L^{1}$ for all $f$ in the space of simple functions that vanish outside a set of finite measure, and the quantity 
 		\begin{equation}
 			M_{q}(g) = \sup\brac*{\abs{\int fg}: f \in \Sigma \text{ and } \norm{f}_{p} = 1}
 		\end{equation}
-	is finite. Also suppose $S_{g} = \{x: g(x) \neq 0\}$ is $\sigma$-finite or that $\mu$ is semifinite. Then $g \in L^{q}$ and $M_{q}(g) = \norm{g}_{q}$. 
-	
+	is finite. Also suppose $S_{g} = \{x: g(x) \neq 0\}$ is $\sigma$-finite or that $\mu$ is semifinite. Then $g \in L^{q}$ and $M_{q}(g) = \norm{g}_{q}$. \newline 
 	\begin{solutions}
 		\textcolor{red}{[!! Complete Proof Later !!]}
 	\end{solutions}
-	
+	\item \textbf{Lem. (Lemma 1)} Let $g \in L^{q}(X, \mathscr{M}, \mu)$, with $q < \infty$. Then $\{g \neq 0\}$ is $\sigma$-finite; i.e., there exists a sequence $\{X_{j}\}_{j= 1}^{\infty} \subseteq \mathscr{P}(X)$ so that for each $j$, $\mu(X_{j}) < \infty$ and $\{g \neq 0\} = \bigcup^{\infty}X_{j}$. \newline 
+	\begin{solutions}
+		Suppose $q < \infty$. Then we may write 
+		\begin{equation}
+			\brac*{g \neq 0} = \bigcup_{1}^{\infty}\brac*{\abs{g} \geq j^{-1}} \eqqcolon \bigcup_{1}^{\infty}X_{j}
+		\end{equation}
+		Assume to the contrary that there exists some $j_{0} \geq 1$ so that $\mu(X_{j_{0}}) \coloneqq \mu(\brac*{\abs{g} \geq j_{0}^{-1}}) = \infty$. Then 
+		\begin{align}
+			\begin{split}
+				\infty &> \int_{X}\abs{g}^{q}\;d\mu \\
+				&\geq \int_{X_{j_{0}}}\abs{g}^{q}\;d\mu \\
+				&\geq j_{0}^{-q}\cdot \mu(X_{j_{0}}) = \infty, 
+			\end{split}
+		\end{align}
+		which is a contradiction. Hence, for each $j$, $\mu(X_{j}) < \infty$, proving $\sigma$-finiteness. To see the importance of $q < \infty$, let $X$ be a non-$\sigma$-finite space, and $g$ be a nonzero constant function. Then clearly $g \in L^{q}$, but $\{g \neq 0\} = X$ is not $\sigma$-finite by hypothesis. 
+	\end{solutions} 
 	\item \textbf{Pf. (Proof of Riesz Representation Theorem)} Now we will use the Radon-Nikodym Theorem to prove the Riesz Representation Theorem. This proof will proceed through several smaller, somewhat simpler, steps. 
-	
 	\begin{quote}
 		\textbf{(Step 1)} Step 1 consists of proving the Riesz Representation Theorem when $\mu(X) < \infty$. The idea is as follows: given $\phi \in (L^{p})^{\ast}$, where $1 < p < \infty$, we define $\nu(E) = \phi(\chi_{E})$, and then show the following are true: 
 			\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
@@ -727,10 +717,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 	Hence, we conclude that the Riesz Representation Theorem is certainly true if $X$ is finite. 
 	\end{enumerate}
 \end{solutions}
-	
-	\textbf{(Step 2)} Step 2 consists of extending the finite-case Riesz Representation Theorem to when $X$ is $\sigma$-finite (recall that all finite spaces are $\sigma$-finite, but not all $\sigma$-finite spaces are finite.) 
-	
-	
+	\textbf{(Step 2)} Step 2 consists of extending the finite-case Riesz Representation Theorem to when $X$ is $\sigma$-finite (recall that all finite spaces are $\sigma$-finite, but not all $\sigma$-finite spaces are finite.) \newline 
 	\begin{solutions} 
 	Consider the sequence $\{X_{n}\}_{1}^{\infty}\subseteq M$, where $X_{n} \subseteq X_{n +1}$ for each $n$, $\mu(X_{n}) < \infty$, and $X = \bigcup^{\infty}X_{n}$. We begin by considering each $L^{p}(X_{n}, \mathscr{M}, d\mu)$; Step 1 proclaims that the Riesz Representation Theorem is true for each such space. Note that for each $n$, each $f \in L^{p}(X_{n}, \mathscr{M}, d\mu)$ may be identified with an element $f \in L^{p}(X, \mathscr{M}, \mu)$ obtained by extending $f$ to be zero outside of $X_{n}$. Hence, given $\phi \in (L^{p}(X, \mathscr{M}, \mu))^{\ast}$, there exists some $g_{n} \in L^{q}(X_{n}, \mathscr{M}, \mu)$ for each $n$ so that 
 		\begin{equation}
@@ -759,16 +746,32 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 	\end{equation}
 	Since $X\setminus X_{n} \to \varnothing$ and $|f|^{p} \in L^{1}$, by the Monotone Convergence Theorem, $\norm{f_{n} -f}_{p} \to 0$. Hence, since $\{f_{n}\}_{1}^{\infty} \to f$ in the $L^{p}$-norm, we conclude that $\bigcup^{\infty}L^{p}(X_{n}, \mathscr{M}, \mu)$ is dense in $L^{p}(X, \mathscr{M}, \mu)$. Hence, by repeating the density argument used at the end of Step 1, we conclude that the Riesz Representation Theorem holds for all $\sigma$-finite spaces. 
 	\end{solutions} 
-	
-	\textbf{(Step 3)} Now we will completely generalize the argument, and remove our assumption of $\sigma$-finiteness. 
-	
+	\textbf{(Step 3)} Now we will completely generalize the argument, and remove our assumption of $\sigma$-finiteness.\newline 
 	\begin{solutions}
 		Let $1 < p < \infty$, and let $E \subset X$ be a $\sigma$-finite set. Let $\phi \in (L^{p}(X))^{\ast}$. By Step 2, there exists a unique $g_{E} \in L^{q}(E)$ such that \vspace{-0.15cm}
 			\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
 				\item $\displaystyle \phi(f) = \int f \cdot g_{E} \;d\mu$ for all $f \in L^{p}(E)$ and $\norm{g_{E}}_{q} \leq \norm{\phi}$, 
 				\item if $F$ is $\sigma$-finite and $E \subseteq F$, then by uniqueness of the Radon-Nikodym derivative, $g_{E} = g_{F}$ $\mu$-a.e. on $E$. In particular, $\norm{g_{E}}_{q} \leq \norm{g_{F}}_{q}$. 
 			\end{enumerate}
+		Now let $M_{0} = \sup\brac*{\norm{g_{E}}_{q}: \text{ $E$ is $\sigma$-finite}}.$ In particular, it follows that $M_{0} \leq \norm{\phi}$. Let $\{E_{n}\} \subset \mathscr{P}(X)$, where each $E_{n}$ is $\sigma$-finite and $\norm{g_{E_{n}}}_{q} \to M_{0}$. Then define the set 
+			\begin{equation}
+				E_{\ast} = \bigcup^{\infty}E_{n}. 
+			\end{equation}
+		Since $E_{}$ is maximal, we must have $\norm{g_{E}}_{q} = M_{0}$. Now since $p < \infty$, for any $f \in L^{p}$, by Lemma 1, $\{f \neq 0\}$ is $\sigma$-finite so that 
+			\begin{equation}
+				E_{\ast} \cup \{f \neq 0\}
+			\end{equation}
+		is also $\sigma$-finite. Moreover,
+		\begin{equation}
+			\norm{g_{E_{\ast} \cup \{f \neq 0\}}}_{q} = \norm{g_{E_{\ast}}}_{q};
+		\end{equation}
+		i.e., $g_{E_{\ast} \cup \{f\neq 0\}} = 0$ $\mu$-a.e. on $\{f \neq 0\} \setminus E_{\ast}$. Hence, we conclude that 
+			\begin{equation}
+				\phi(f) = \int fg_{E_{\ast} \cup \{f \neq 0\}}\;d\mu = \int f \cdot g_{E_{\ast}}\;d\mu. 
+			\end{equation}
+		This finally concludes the proof of the Riesz Representation Theorem. 
 	\end{solutions}
 	\end{quote}
+	\item \textbf{Ex. 1 (Precompactness in $L^{p}(\mathbb{R}^{n})$)} Consider the space $L^{2}(\mathbb{R})$ and let $\mathscr{A} = \brac*{\sqrt{n}\chi_{[0,n^{-1}]}}$ so that for each $n$, $\int f_{n}^{2}\;dx = 1$. 
 \end{itemize}
 \end{document}
