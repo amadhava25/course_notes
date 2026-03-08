@@ -484,4 +484,138 @@ In this lecture, we continue talking about Hilbert spaces. In particular, we tal
 			\norm{x_{1} - x} = \inf_{y \in M}\norm{x - y}\qquad \text{and} \qquad \norm{x_{2} - x} = \inf_{y \in M^{\perp}}\norm{x - y}. 
 		\end{equation}
 \end{itemize}
+
+\newpage 
+\section{Lecture 7: \texorpdfstring{$L^{p}$}{Lp} Spaces}
+\subsection{Key Topics:}
+(1) $L^{p}$ spaces, (2) H\"older's inequality, (3) Minkowski Inequality, (4) $L^{p}$ is a Banach space
+\subsection{Summary:}
+In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we defined the $L^{p}$ norm, some important inequalities, and proved that $L^{p}$ is a Banach space. 
+
+\subsection{Lecture:} 
+\begin{itemize}
+	\item \textbf{Def. ($L^{p}$-Space)} Let $(X, \mathscr{M}, \mu)$ be a measure space, $f$ a measurable function on $X$ and $0 < p < \infty$. Define 
+		\begin{equation}
+			\norm{f}_{p} = \left(\int_{X}\abs{f}^{p}\;d\mu\right)^{1/p}. 
+		\end{equation}
+	Then we define the corresponding $L^{p}$-space to be: 
+		\begin{equation}
+			L^{p}(X, \mathscr{M}, \mu) = \brac*{f: X \to \mathbb{C}: f \text{ measurable and } \norm{f}_{p} < \infty}\bigg/ \sim, 
+		\end{equation}
+	where $f \sim g$ iff $f = g$ $\mu$-a.e. I.e., we define $L^{p}$ to be a set of equivalence classes of functions. In the future, if $(X, \mathscr{M}, \mu)$ is clear, then we will just write $L^{p}$. It is straightforward to check that $L^{p}$ is a vector space. 
+	\item \textbf{Rmk.} Remember that we have not yet shown $\norm{\empspace}_{p}$ to be a norm on $L^{p}$. The following results will help us determine when $\norm{\empspace}_{p}$ is indeed a norm. 
+	\item \textbf{Lem. (H\"older's Lemma)} If $a, b \geq 0$, $0 < \lambda < 1$, then 
+		\begin{equation}
+			a^{\lambda}b^{1 - \lambda} \leq \lambda a + (1 - \lambda)b,
+		\end{equation}
+	with equality if and only if $a = b$. 
+	
+	\begin{solutions}
+		The proof is left as an exercise; the proof follows by a simple calculus argument. 
+	\end{solutions}
+	\item \textbf{Thm. (H\"older's Inequality)} Suppose $1 < p < \infty$ and $p^{-1} + q^{-1} = 1$. If $f$ and $g$ are both measurable functions on $X$, then 
+		\begin{equation}
+			\norm{fg}_{1} \leq \norm{f}_{p} \cdot \norm{g}_{q}. 
+		\end{equation}
+	Moreover, equality holds if and only if $\alpha |f|^{p} = \beta |g|^{q}$ $\mu$-a.e for some constants $\alpha, \beta$. 
+	
+	\begin{solutions}
+		If either $\norm{f}_{p} = 0$ or $\norm{g}_{q} = 0$, then the result is trivial. Likewise, if either $\norm{f}_{p} = \infty$ or $\norm{f}_{q} = \infty$, then the result is trivial. On the other hand, if the above inequality holds for some pair $(f,g)$, then it surely holds for all scalar multiples of $f$ and $g$. Hence, it suffices to prove the case where $\norm{f}_{p} = \norm{g}_{q} = 1$. By H\"older's Lemma, we observe that equality follows iff $|f|^{p} = |g|^{q}$ $\mu$-a.e. So let $a = |f(x)|^{p}$, $b = |g(x)|^{q}$, and $\lambda = p^{-1}$. Applying H\"older's Lemma, 
+			\begin{equation}
+				\abs{fg} \leq p^{-1}\abs{f}^{p} + q^{-1}\abs{g}.
+			\end{equation}	
+		Integrating both sides, one obtains 
+			\begin{equation}
+				\norm{fg}_{1} \leq  p^{-1}\norm{f}_{p} + q^{-1}\norm{g}_{q} = p^{-1} + q^{-1} = 1 = \norm{f}_{p}\norm{g}_{q}. 
+			\end{equation}
+		Equality holds here iff equality holds in H\"older's lemma; i.e., $|f|^{p} = |q|^{q}$ $\mu$-a.e. 
+	\end{solutions}
+	\item \textbf{Thm. (Minkowski Inequality)} For $1 \leq p < \infty$ and $f, g \in L^{p}$, then $\norm{f + g}_{p}\leq \norm{f}_{p} + \norm{g}_{p}$. 
+	
+	\begin{solutions} 
+		If $p = 1$, then the result is trivial: 
+		\begin{equation}
+			\norm{f + g}_{1} = \int \abs{f + g} \leq \int \abs{f} + \abs{g} = \int \abs{f} + \int \abs{g} = \norm{f}_{1} + \norm{g}_{1}. 
+		\end{equation}
+	Likewise, if $\norm{f + g}_{p} =0$, then the result is trivial for any $1 \leq p$. So now assume $1 < p < \infty$ and $\norm{f + g}_{p} > 0$. Then we first write 
+		\begin{equation}
+			\abs{f + g}^{p} = \abs{f + g} \cdot \abs{f + g}^{p -1} \leq \abs{f}\abs{f + g}^{p - 1} + \abs{g}\abs{f + g}^{p - 1}. 
+		\end{equation}
+	Integrating both sides, 
+		\begin{align}
+			\begin{split}
+				\norm{f + g}^{p}_{p} &\leq \int \abs{f}\abs{f + g}^{p - 1} + \int \abs{g}\abs{f + g}^{p - 1} \\
+				&\leq \left(\norm{f}_{p} + \norm{g}_{p}\right) \cdot \left(\int_{X}\abs{f + g}^{(p - 1)q}\right)^{1/q} \qquad \text{(by H\"older's Inequality)} \\
+				&= \left(\norm{f}_{p} + \norm{g}_{p}\right) \cdot \left(\int_{X}\abs{f + g}^{p}\right)^{1/p\cdot p/q} \\
+				&= \left(\norm{f}_{p} + \norm{g}_{p}\right) \cdot \norm{f + g}_{p}^{p/q}. 
+ 			\end{split}
+		\end{align}
+	This implies 
+		\begin{equation}
+			\norm{f + g}_{p}^{p(1 - q^{-1})} \leq \left(\norm{f}_{p} + \norm{g}_{p}\right) \iff \norm{f + g}_{p} \leq \norm{f}_{p} + \norm{g}_{p}.
+		\end{equation}
+	\end{solutions}  
+	
+	Note that Minkowski's inequality implies that $\norm{\empspace}_{p}$ is a norm for all $1 \leq p$. On the other hand, one can show that $\norm{\empspace}_{p}$ is concave for all $0 < p < 1$ so that it is definitely not a norm for these $L^{p}$ spaces. 
+	
+	\item \textbf{Thm. ($L^{p}$ is Banach)} For $1 \leq p < \infty$, $L^{p}$ is a Banach space. 
+	
+	\begin{solutions}
+		Recall that a normed linear space is Banach if and only if every absolutely convergent series is convergent. Let $\{f_{j}\} \subset L^{p}$ and assume that 
+			\begin{equation}
+				\sum_{1}^{\infty}\norm{f_{j}} = M < \infty. 
+			\end{equation}
+		Let $G_{n} = \sum_{1}^{n}|f_{j}|$ and $G = \sum_{1}^{\infty}|f_{j}|$. By Minkowski's inequality 
+			\begin{equation}
+				\norm{G_{n}}_{p}\leq \sum_{1}^{n}\norm{f_{j}}_{p} \leq B < \infty. 
+			\end{equation}
+		Hence, by the Monotone Convergence Theorem, we conclude that 
+			\begin{equation}
+				\int G^{p} = \lim_{n \to\infty}\int G_{n}^{p} \leq B^{p}. 
+			\end{equation}
+		This means that $G \in L^{p}$. In particular, $G(x) < \infty$ $\mu$-a.e. This means that $\sum_{1}^{\infty}f_{j}(x)$ converges pointwise a.e. Let $F$ denote this sum. By definition, $|F| \leq G$ and so $F \in L^{p}$. Moreover, $|F - \sum_{1}^{n}f_{j}| \leq (2G)^{p} \in L^{1}$. By the Dominated Convergence Theorem, we conclude that 
+			\begin{equation}
+				\norm{F - \sum_{1}^{n}f_{j}}_{p}^{p} = \int \abs{F - \sum_{1}^{n}f_{j}}^{p} \longrightarrow 0. 
+			\end{equation}
+		Hence, the series $\sum_{1}^{\infty}f_{j}$ converges in $L^{p}$, which completes the proof. 
+	\end{solutions}
+	
+	\item \textbf{Def. (The Space $L^{\infty}$)} Make the definition: 
+	\begin{equation}
+		L^{\infty}(X, \mathscr{M}, \mu) \coloneqq \brac*{f: X \to \mathbb{C}: f \text{ measurable and } \norm{f}_{\infty} < \infty}/\sim, 
+	\end{equation}
+	where we define 
+		\begin{equation}
+			\norm{f}_{\infty} \coloneqq \sup_{x \in X}\abs{f(x)}.
+		\end{equation}
+	\item \textbf{Cor. (Alternate Definition for $L^{\infty}$-Norm)} The following is true 
+		\begin{equation}
+			\norm{f}_{\infty} = \inf\brac*{M > 0: \abs{f(x)} \leq M \text{ $\mu$-a.e.}}.
+		\end{equation}
+	Note that this is the definition officially used in the lectures. 
+	\item \textbf{Thm. ($L^{\infty}$-Norm)} If $\mu(X) < \infty$, then $\lim\limits_{p \to \infty}\norm{f}_{p} = \norm{f}_{\infty}$.
+	
+	\begin{solutions}
+		Let $f$ be a measurable function on $X$, and $\mu$ a finite positive measure on $X$. Then 
+			\begin{equation}
+				\norm{f}_{p}^{p} = \int_{X}\abs{f}^{p}\;d\mu \leq \int_{X} \norm{f}_{\infty}^{p}\;d\mu = \norm{f}_{\infty}^{p}\cdot \mu(X) \implies \norm{f}_{p} \leq \norm{f}_{\infty} \cdot \mu(X)^{1/p}. 
+			\end{equation}
+		Since $\mu(X) < \infty$, taking the limit $p \to \infty$, $\mu(X)^{1/p} \to 1$ so that $\lim_{p \to \infty}\norm{f}_{p} \leq \norm{f}_{\infty}$. It suffices to prove the reverse inequality. For each $\epsilon > 0$, define the set 
+			\begin{equation}
+				E_{\epsilon} = \brac*{x \in X: |f(x)| \geq \norm{f}_{\infty} - \epsilon}. 
+			\end{equation} 
+		By definition of $\norm{f}_{\infty}$, $\mu(E_{\epsilon}) > 0$ for each $\epsilon > 0$. Therefore, 
+			\begin{align}
+				\begin{split}
+					\norm{f}_{p}^{p} &= \int_{X}\abs{f}^{p}\;d\mu \\
+					&\geq \int_{E_{\epsilon}}|f|^{p}\;d\mu \\
+					&\geq \int_{E_{\epsilon}}(\norm{f}_{\infty} - \epsilon)^{p}\;d\mu \\
+					&= (\norm{f}_{\infty} - \epsilon)^{p} \cdot \mu(E_{\epsilon}) \\
+					\implies 
+					\norm{f}_{p} &\geq (\norm{f}_{\infty} - \epsilon) \cdot \mu(E_{\epsilon})^{1/p}.
+				\end{split}
+			\end{align}
+		Taking the limit $p \to \infty$, one obtains $\lim_{p \to \infty}\norm{f}_{p} \geq \norm{f}_{\infty} - \epsilon$. Since this is true for all $\epsilon > 0$, we conclude that $\lim_{p \to \infty}\norm{f}_{p} \geq \norm{f}_{\infty}$. Therefore, the proof concludes. 
+	\end{solutions}
+\end{itemize}
 \end{document}

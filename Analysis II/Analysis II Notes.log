@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  16 FEB 2026 21:35
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  7 MAR 2026 19:19
  restricted system commands enabled.
 **"Analysis II Notes.tex"
 ("./Analysis II Notes.tex"
@@ -1518,7 +1518,13 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 
 [12]
 
-[13] ("./Analysis II Notes.aux")
+[13]
+
+[14]
+
+[15]
+
+[16] ("./Analysis II Notes.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -1528,14 +1534,14 @@ Package rerunfilecheck Info: File `"Analysis II Notes".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 43059 strings out of 475915
+ 43092 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 2921 words of node memory still in use:
-   84 hlist, 11 vlist, 6 rule, 4 math, 47 glue, 10 kern, 89 glyph, 90 attribute,
- 110 glue_spec, 90 attribute_list, 2 write nodes
-   avail lists: 2:2279,3:907,4:223,5:539,6:87,7:7075,8:66,9:1150,10:11,11:334
- 64468 multiletter control sequences out of 65536+600000
- 78 fonts using 5410351 bytes
+ 3950 words of node memory still in use:
+   105 hlist, 10 vlist, 8 rule, 24 math, 75 glue, 22 kern, 106 glyph, 169 attrib
+ute, 110 glue_spec, 169 attribute_list, 2 write nodes
+   avail lists: 2:2121,3:907,4:265,5:528,6:103,7:7010,8:66,9:1176,10:11,11:334
+ 64474 multiletter control sequences out of 65536+600000
+ 80 fonts using 5514991 bytes
  99i,19n,128p,941b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf>
 <c:/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf><c:/te
@@ -1561,10 +1567,10 @@ st/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2024/texmf-dist/font
 s/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2024/texmf-dist/fonts/type1
 /public/amsfonts/euler/eusm7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on Analysis II Notes.pdf (13 pages, 227346 bytes).
+Output written on Analysis II Notes.pdf (16 pages, 249941 bytes).
 
-PDF statistics: 374 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 102 named destinations out of 1000 (max. 131072)
- 160 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 427 PDF objects out of 1000 (max. 8388607)
+ 359 compressed objects within 4 object streams
+ 129 named destinations out of 1000 (max. 131072)
+ 192 words of extra memory for PDF output out of 10000 (max. 100000000)
 
