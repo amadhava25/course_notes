@@ -772,6 +772,65 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		This finally concludes the proof of the Riesz Representation Theorem. 
 	\end{solutions}
 	\end{quote}
-	\item \textbf{Ex. 1 (Precompactness in $L^{p}(\mathbb{R}^{n})$)} Consider the space $L^{2}(\mathbb{R})$ and let $\mathscr{A} = \brac*{\sqrt{n}\chi_{[0,n^{-1}]}}$ so that for each $n$, $\int f_{n}^{2}\;dx = 1$. 
+	\item \textbf{Ex. 1 (Precompactness in $L^{p}(\mathbb{R}^{n})$)} Consider the space $L^{2}(\mathbb{R})$ and let $\mathscr{A} = \brac*{\sqrt{n}\chi_{[0,n^{-1}]}}$ so that for each $n$, $\int f_{n}^{2}\;dx = 1$. Then $\mathscr{A}$ is \textit{not} precompact in $L^{2}(\mathbb{R})$. 
+	
+	\begin{solutions}
+		\textcolor{red}{[!! Fill in details !!]} The sequence $\{f_{n}\}$ does \textit{not} have a convergent subsequence in $L^{2}$. However, it is uniformly bounded and uniformly decays near $\infty$. 
+	\end{solutions}
+	
+	\item \textbf{Ex. 2 (Precompactnesss in $L^{p}(\mathbb{R}^{n})$)} Consider the space $L^{2}(\mathbb{R})$, and let $\mathscr{A} = \brac*{\chi_{[n,n+1]}}$. Then $\mathscr{A}$ is \textit{not} precompact in $L^{2}(\mathbb{R})$. 
+	
+	\begin{solutions}
+		\textcolor{red}{[!! Fill in details !!]} We note that $\mathscr{A}$ is uniformly bounded and equicontinuous under the $L^{p}$-norm. However, it does not uniformly decay near $\infty$. 
+	\end{solutions}
+	
+	\item \textbf{Lem. (Equicontinuity Lemma)} Let $f \in L^{p}(\mathbb{R}^{n})$, where $1 \leq p < \infty$. Then one has 
+		\begin{equation}
+			\norm{f(\cdot + h) - f}_{p}\longrightarrow 0 \quad \text{ as $h \to 0$}.
+		\end{equation}
+		
+	\begin{solutions}
+		Fix some $f \in L^{p}(\mathbb{R}^{n})$, where $1 \leq p < \infty$. Since $C_{c}(\mathbb{R}^{n})$ is dense in $L^{p}(\mathbb{R}^{n})$, there exists a sequence $\{f_{j}\}_{1}^{\infty} \subseteq C_{c}(\mathbb{R}^{n})$ so that $f_{j} \to f$ in the $L^{p}$-norm. 
+			\begin{align}
+				\begin{split} 
+					\norm{f(\cdot + h) - f}_{p} &\leq \norm{f(\cdot + h) - f_{j}(\cdot + h)}_{p} + \norm{f_{j}(\cdot + h) - f}_{p}	\\
+					&\leq \norm{f(\cdot + h) - f_{j}(\cdot + h)}_{p} + \norm{f_{j}(\cdot + h) - f_{j}}_{p} + \norm{f_{j} - f}_{p} \longrightarrow 0, 
+				\end{split} 
+			\end{align}
+		since by hypothesis, $f_{j} \to f$ in the $L^{p}$-norm, and each $f_{j}$ is continuous. 
+	\end{solutions}
+	
+	\item \textbf{Lem. (Tail Decay for Integrals of $L^{p}$ Functions)} Let $f \in L^{p}(\mathbb{R}^{n})$, where $1 \leq p < \infty$. Then 
+		\begin{equation}
+			\int_{|x|\geq R} |f(x)|^{p}\;dx \longrightarrow 0, \quad \text{ as $R \to \infty$}.
+		\end{equation}
+	
+	\begin{solutions}
+		Let $1 \leq p < \infty$, and fix $f \in L^{p}(\mathbb{R}^{n})$. We note that 
+		\begin{equation}
+			\int_{|x|\geq R}|f(x)|^{p}\;dx = \int_{\mathbb{R}^{n}}|f(x)|^{p}\chi_{\{|x| \geq R\}}\;dx. 
+		\end{equation}
+	Note that $|f(x)|^{p}\chi_{\{|x| \geq R\}} \leq |f(x)|^{p}$, $|f(x)|^{p}\chi_{\{|x| \geq R\}} \to 0$ pointwise, and $|f(x)|^{p} \in L^{1}$ (since $f\in L^{p}$). By the Dominated Convergence Theorem, we conclude that 
+		\begin{equation}
+			\int_{|x|\geq R}|f(x)|^{p}\;dx = \int_{\mathbb{R}^{n}}|f(x)|^{p}\chi_{\{|x| \geq R\}}\;dx \longrightarrow 0. 
+		\end{equation} 
+	\end{solutions} 
+	
+	\item \textbf{Def. (Convolutions)} Given functions $f, g$ over $\mathbb{R}^{n}$, we define their \textit{convolution}, denoted $(f \ast g)(x)$ to be the quantity 
+		\begin{equation}
+			(f \ast g)(x) = \int_{\mathbb{R}^{n}}f(y)g(x-y)\;dy.
+		\end{equation}
+		
+	\item \textbf{Lem 1. (Properties of Convolutions)} Let $f \in L^{p}(\mathbb{R}^{n})$, and $\psi: C_{c}^{\infty}(\mathbb{R}^{n})$. Then the following are true: \vspace{-0.15cm}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item $(f \ast \psi)(x)$ is well-defined for all $x$, $f \ast \psi \in C^{\infty}(\mathbb{R}^{n})$, and $D^{\alpha}(f \ast \psi) = f \ast D^{\alpha}\psi$. 
+			\item $\norm{f \ast \psi}_{p} \leq \norm{f}_{p}\norm{\psi}_{1}$. 
+		\end{enumerate}
+	\item \textbf{Thm. (Kolmogorov-Riesz)} Let $\mathscr{A} \subseteq L^{p}(\mathbb{R}^{n})$, where $1 \leq p < \infty$. Then $\mathscr{A}$ is precompact if and only if the following hold: \vspace{-0.15cm}
+	\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+		\item $\sup\limits_{f \in \mathscr{A}}\norm{f}_{p} < \infty$ (uniform boundedness) 
+		\item $\sup\limits_{f \in \mathscr{A}}\norm{f(\cdot + h) - f}_{p} \longrightarrow 0$ as $h \to 0$ (equicontinuity under the $L^{p}$ norm)
+		\item $\sup\limits_{f \in \mathscr{A}}\norm{f \cdot \chi_{\{|x|\geq R\}}}_{p} \longrightarrow 0$ as $R \to \infty$ (uniform decay near $\infty$).
+	\end{enumerate}
 \end{itemize}
 \end{document}

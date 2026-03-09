@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  8 MAR 2026 19:46
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  8 MAR 2026 22:07
  restricted system commands enabled.
 **"Analysis II Notes.tex"
 ("./Analysis II Notes.tex"
@@ -2404,7 +2404,9 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 [19]
 
-[20] ("./Analysis II Notes.aux")
+[20]
+
+[21] ("./Analysis II Notes.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -2414,12 +2416,12 @@ Package rerunfilecheck Info: File `"Analysis II Notes".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49010 strings out of 475915
+ 49022 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 3696 words of node memory still in use:
-   88 hlist, 15 vlist, 5 rule, 12 math, 36 glue, 20 kern, 118 glyph, 210 attribu
-te, 110 glue_spec, 210 attribute_list, 2 write nodes
-   avail lists: 2:1420,3:907,4:307,5:712,6:119,7:7332,8:66,9:1194,10:8,11:327
+ 4214 words of node memory still in use:
+   78 hlist, 6 vlist, 5 rule, 12 math, 74 glue, 19 kern, 170 glyph, 226 attribut
+e, 110 glue_spec, 226 attribute_list, 2 write nodes
+   avail lists: 2:1388,3:907,4:307,5:715,6:119,7:7242,8:66,9:1213,10:8,11:327
  70081 multiletter control sequences out of 65536+600000
  373 fonts using 38972895 bytes
  101i,19n,147p,941b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2441,10 +2443,10 @@ b><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/t
 exlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/texlive/2
 024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/f
 onts/type1/public/newtx/txsym.pfb>
-Output written on Analysis II Notes.pdf (20 pages, 273652 bytes).
+Output written on Analysis II Notes.pdf (21 pages, 281978 bytes).
 
-PDF statistics: 458 PDF objects out of 1000 (max. 8388607)
- 411 compressed objects within 5 object streams
- 175 named destinations out of 1000 (max. 131072)
+PDF statistics: 474 PDF objects out of 1000 (max. 8388607)
+ 426 compressed objects within 5 object streams
+ 187 named destinations out of 1000 (max. 131072)
  224 words of extra memory for PDF output out of 10000 (max. 100000000)
 
