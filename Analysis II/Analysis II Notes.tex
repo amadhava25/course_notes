@@ -826,6 +826,48 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 			\item $(f \ast \psi)(x)$ is well-defined for all $x$, $f \ast \psi \in C^{\infty}(\mathbb{R}^{n})$, and $D^{\alpha}(f \ast \psi) = f \ast D^{\alpha}\psi$. 
 			\item $\norm{f \ast \psi}_{p} \leq \norm{f}_{p}\norm{\psi}_{1}$. 
 		\end{enumerate}
+	\item \textbf{Lem 2. (Convergence of Mollifiers)} Assume $\rho \geq 0$, $\int \rho \;dx =  1$. Then the following results hold: \vspace{-0.25cm} 
+	\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+		\item $f_{\epsilon}(x) \to f(x)$ as $\epsilon \to 0$, for all $x \in \mathbb{R}^{n}$ and $f \in C_{b}(\mathbb{R}^{n})$. 
+		\item $f_{\epsilon} \to f$ in $L^{p}$ if $f \in L^{p}$, where $1 \leq p < \infty$ as $\epsilon \to 0$. 
+	\end{enumerate}
+	
+	\begin{solutions}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item Let $\rho \in C_{c}^{\infty}(\mathbb{R}^{n})$, $f \in C_{b}(\mathbb{R}^{n})$, and define $f_{\epsilon}(x) = (f \ast \rho_{\epsilon})(x)$. Let $\zeta > 0$, and choose $\delta > 0$ so that when $|y| \leq \delta$, $|f(x - y) - f(x)| < \zeta$ by continuity of $f$. Furthermore, let $0 < M < \infty$ so that $|f(x)| \leq M$ for all $x \in \mathbb{R}^{n}$. Without loss of generality, assume $0 < \epsilon \leq 1$. We observe the following 
+			\begin{align}
+				\begin{split}
+					\abs{f_{\epsilon}(x) - f(x)} &= \abs{\int f(x - y)\rho_{\epsilon}(y)\;dy - \int f(x) \rho_{\epsilon}(y)\;dy} \\
+					&= \abs{\int [f(x - y) -f(x)]\rho_{\epsilon}(y)\;dy} \leq \int \abs{f(x - y)-f(x)}\rho_{\epsilon}(y)\;dy \\
+					&= \int_{|y| \leq \delta}|f(x - y) - f(x)|\rho_{\epsilon}(y)\;dy + \int_{|y|\geq \delta}|f(x - y) - f(x)|\rho_{\epsilon}(y)\;dy \\
+					&\leq \zeta + \int_{|y|\geq \delta}|f(x - y) - f(x)|\rho_{\epsilon}(y)\;dy.
+				\end{split}
+			\end{align}
+			Since $\zeta > 0$ was arbitrary, we may take $\zeta \to 0$. Next, since $\rho_{\epsilon}(y) = \epsilon^{-n}\rho(y/\epsilon)$, for each $y \neq 0$, as $\epsilon \to 0$, $\rho_{\epsilon}(y) \to 0$. Moreover, 
+			\begin{equation}
+				|f(x - y) - f(x)|\rho_{\epsilon}(y) \leq 2M\rho_{\epsilon}(y) \leq 2M\norm{\rho}_{\infty}\chi_{B_{R}(0)}\in L^{1}, 
+			\end{equation}
+			where $\operatorname{supp}{\rho_{\epsilon}} \subseteq B_{R}(0)$ for some $R > 0$. Hence, by the Dominated Convergence Theorem, 
+				\begin{equation}
+					\lim_{\epsilon \to 0}\int_{|y|\geq \delta} |f(x - y) - f(x)|\rho_{\epsilon}(y)\;dy = \int_{|y|\geq \delta}\lim_{\epsilon \to 0}|f(x - y) - f(x)|\rho_{\epsilon}(y)\;dy = 0. 
+				\end{equation}
+			Hence, taking the limit $\epsilon \to 0$ on the LHS concludes the proof that $f_{\epsilon}(x) \to f(x)$ as $\epsilon \to 0$. 
+			\item Now let $f \in L^{p}$, where $1 \leq p < \infty$; without loss of generality, assume $0 < \epsilon \leq 1$. Then 
+				\begin{align}
+					\begin{split}
+						\norm{f_{\epsilon} - f}_{p}^{p} &= \int \abs{\int [f(x -y) - f(x)]\rho_{\epsilon}(y)\;dy}^{p}\;dx \\ 
+						&\leq \int \left(\int \abs{f(x -y) - f(x)}\rho_{\epsilon}(y)\;dy\right)^{p}\;dx \\
+						&\leq \left[\int \left[\int |f(x - y)- f(x)|^{p}\rho_{\epsilon}^{p}(y)\;dx\right]^{1/p}dy\right]^{p} \\
+						&= \left[\int \left[\int |f(x - y) - f(y)|^{p}\;dx\right]^{1/p}\rho_{\epsilon}(y)\;dy\right]^{p} \\
+						&\leq \left[\int 2\norm{f}_{p}\rho_{\epsilon}(y)\;dy\right]^{p} \\
+						\implies 
+						\norm{f_{\epsilon} - f}_{p} & \leq \int 2\norm{f}_{p} \rho_{\epsilon}(y)\;dy. 
+					\end{split}
+				\end{align}
+			Now we note that $2\norm{f}_{p}\rho_{\epsilon}(y) \to 0$ a.e. and $2\norm{f}_{p}\rho_{\epsilon}(y) \leq 2\norm{f}_{p}\norm{\rho}_{\infty}\chi_{B_{R}(0)} \in L^{1}$ (as in the proof of (1)). Hence, by the Dominated Convergence Theorem, we conclude that $\lim_{\epsilon \to 0}\norm{f_{\epsilon} - f}_{p} = 0$. 
+		\end{enumerate}
+	\end{solutions}
+ 
 	\item \textbf{Thm. (Kolmogorov-Riesz)} Let $\mathscr{A} \subseteq L^{p}(\mathbb{R}^{n})$, where $1 \leq p < \infty$. Then $\mathscr{A}$ is precompact if and only if the following hold: \vspace{-0.15cm}
 	\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
 		\item $\sup\limits_{f \in \mathscr{A}}\norm{f}_{p} < \infty$ (uniform boundedness) 

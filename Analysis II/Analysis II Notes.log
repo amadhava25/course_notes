@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  8 MAR 2026 22:07
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  10 MAR 2026 09:50
  restricted system commands enabled.
 **"Analysis II Notes.tex"
 ("./Analysis II Notes.tex"
@@ -2406,7 +2406,15 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 [20]
 
-[21] ("./Analysis II Notes.aux")
+[21]
+Overfull \hbox (24.29512pt too wide) in paragraph at lines 866--868
+\TU/NotoSerif(1)/m/n/10 proof of (1)). Hence, by the Dom-i-nated Con-ver-gence 
+The-o-rem, we con-clude that $[][] [][] \U/MnSymbolD/m/n/10 ^^@
+ []
+
+
+
+[22] ("./Analysis II Notes.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -2416,12 +2424,12 @@ Package rerunfilecheck Info: File `"Analysis II Notes".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49022 strings out of 475915
+ 49031 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 4214 words of node memory still in use:
-   78 hlist, 6 vlist, 5 rule, 12 math, 74 glue, 19 kern, 170 glyph, 226 attribut
-e, 110 glue_spec, 226 attribute_list, 2 write nodes
-   avail lists: 2:1388,3:907,4:307,5:715,6:119,7:7242,8:66,9:1213,10:8,11:327
+ 6259 words of node memory still in use:
+   144 hlist, 12 vlist, 9 rule, 28 math, 117 glue, 72 kern, 239 glyph, 276 attri
+bute, 110 glue_spec, 276 attribute_list, 2 write nodes
+   avail lists: 2:1288,3:907,4:307,5:664,6:119,7:7114,8:78,9:1137,10:8,11:327
  70081 multiletter control sequences out of 65536+600000
  373 fonts using 38972895 bytes
  101i,19n,147p,941b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2443,10 +2451,10 @@ b><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/t
 exlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/texlive/2
 024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/f
 onts/type1/public/newtx/txsym.pfb>
-Output written on Analysis II Notes.pdf (21 pages, 281978 bytes).
+Output written on Analysis II Notes.pdf (22 pages, 290361 bytes).
 
-PDF statistics: 474 PDF objects out of 1000 (max. 8388607)
- 426 compressed objects within 5 object streams
- 187 named destinations out of 1000 (max. 131072)
+PDF statistics: 487 PDF objects out of 1000 (max. 8388607)
+ 438 compressed objects within 5 object streams
+ 196 named destinations out of 1000 (max. 131072)
  224 words of extra memory for PDF output out of 10000 (max. 100000000)
 
