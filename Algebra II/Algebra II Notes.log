@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.2.10)  21 FEB 2026 14:49
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.2.10)  21 FEB 2026 21:15
  restricted system commands enabled.
 **"Algebra II Notes.tex"
 ("./Algebra II Notes.tex"
@@ -1417,162 +1417,162 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-11.10004pt}.
 
-[9] [10]
+[9] [10] [11] [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathop' on input line 519.
+(hyperref)                removing `math shift' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
+(hyperref)                removing `\mathop' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
+(hyperref)                removing `\mathcode' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
+(hyperref)                removing `\mathcode' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Umathcharnumdef' on input line 519.
+(hyperref)                removing `\mathcode' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\std@minus' on input line 519.
+(hyperref)                removing `\Umathcharnumdef' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Umathcodenum' on input line 519.
+(hyperref)                removing `\std@minus' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\-' on input line 519.
+(hyperref)                removing `\Umathcodenum' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
+(hyperref)                removing `\-' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\-' on input line 519.
+(hyperref)                removing `\mathcode' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
+(hyperref)                removing `\-' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
+(hyperref)                removing `\mathcode' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 519.
+(hyperref)                removing `\mathcode' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 2.22198pt
-(hyperref)                removed on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathgroup' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\symoperators' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathop' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Umathcharnumdef' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\std@minus' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Umathcodenum' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\-' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\-' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathcode' on input line 519.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 519.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 2.22198pt
-(hyperref)                removed on input line 519.
+(hyperref)                removed on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathgroup' on input line 519.
+(hyperref)                removing `\mathgroup' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\symoperators' on input line 519.
+(hyperref)                removing `\symoperators' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 519.
+(hyperref)                removing `\@ifnextchar' on input line 579.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 519.
+(hyperref)                removing `math shift' on input line 579.
 
-[11] [12] [13] [14] ("./Algebra II Notes.aux")
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathop' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathcode' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathcode' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathcode' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Umathcharnumdef' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\std@minus' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Umathcodenum' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\-' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathcode' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\-' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathcode' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathcode' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 2.22198pt
+(hyperref)                removed on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathgroup' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\symoperators' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 579.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 579.
+
+[13] [14] [15] [16] [17] ("./Algebra II Notes.aux")
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1582,14 +1582,14 @@ Package rerunfilecheck Info: File `"Algebra II Notes".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 35713 strings out of 476076
+ 35730 strings out of 476076
  156414,1144653 words of node,token memory allocated
- 1109 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 15 glue, 4 kern, 1 glyph, 65 attribute, 111 glue_sp
-ec, 65 attribute_list, 2 write nodes
-   avail lists: 1:3,2:5905,3:2284,4:103,5:1089,6:84,7:13817,8:49,9:1930,10:11,11
+ 1136 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 16 glue, 4 kern, 1 glyph, 70 attribute, 111 glue_sp
+ec, 70 attribute_list, 2 write nodes
+   avail lists: 1:3,2:5895,3:2284,4:103,5:1092,6:84,7:13816,8:49,9:1930,10:13,11
 :854
- 57170 multiletter control sequences out of 65536+600000
+ 57171 multiletter control sequences out of 65536+600000
  90 fonts using 62232103 bytes
  131i,17n,128p,1063b,1350s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf><c:/te
@@ -1624,10 +1624,10 @@ ive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2
 025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/t
 exmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb><c:/texlive/2025/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on Algebra II Notes.pdf (14 pages, 315059 bytes).
+Output written on Algebra II Notes.pdf (17 pages, 328111 bytes).
 
-PDF statistics: 396 PDF objects out of 1000 (max. 8388607)
- 312 compressed objects within 4 object streams
- 97 named destinations out of 1000 (max. 131072)
- 72 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 426 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 113 named destinations out of 1000 (max. 131072)
+ 80 words of extra memory for PDF output out of 10000 (max. 100000000)
 
