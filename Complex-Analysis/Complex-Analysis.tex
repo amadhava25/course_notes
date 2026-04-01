@@ -562,6 +562,7 @@ and some facts about $\CC$ we can actually do some complex analysis.
 
 \subsection{The Cauchy integral formula}
 
+\todo{morera}
 \begin{theorem}[Cauchy's integral theorem]
     \label{thm:cauchy-integral-theorem}
     Let $\omega = f(z)\dd z$ be a holomorphic $1$-form
@@ -1385,6 +1386,135 @@ and with some cleverness we can extract a lot of juice out of them.
     so the inequalities above are equalities,
     meaning $g(z) = cz$ for some $\abs c = 1$.
 \end{proof}
+
+\todo{weierstrass preparation theorem (not required content)}
+
+\pagebreak
+\section{Harmonic functions}
+\begin{definition}[Harmonic function]
+    \label{def:harmonic-function}
+    Let $U\subseteq\CC$ be open and connected.
+    A $C^2$ function $u\colon U\to\RR$ is \vocab{harmonic} if
+    \begin{equation*}
+	\Delta u\coloneq u_{xx} + u_{yy}
+	= 4\frac{\partial^2}{\partial \ol z\partial z} u
+	= 0.
+    \end{equation*}
+\end{definition}
+\todo{maybe write definition wrt $\RR^n$ instead of $\CC$}
+
+\begin{example}
+    Real parts and imaginary parts of holomorphic functions are harmonic
+    by the Cauchy-Riemann equations, since if $f = u + iv\in\mathcal O(U)$,
+    \begin{equation*}
+	u_{xx} + u_{yy} = (u_x)_x + (u_y)_y
+	= v_{yx} - v_{xy} = 0
+    \end{equation*}
+    and similarly for $v$.
+    Thus, for example, $u(x,y) = e^{x}\cos(y)$,
+    being the real part of $e^{x+iy}$, is harmonic.
+    We will shortly see that all harmonic functions arise in this way.
+\end{example}
+
+Writing $\Delta u$ in terms of $\frac\partial{\partial z}$
+and $\frac{\partial}{\partial\ol z}$ tells us that
+$u\in C^2(U)$ is harmonic if and only if
+\begin{equation*}
+    \frac{\partial u}{\partial z}
+    = \frac{\partial u}{\partial x} - i\frac{\partial u}{\partial y}
+\end{equation*}
+is harmonic (since applying $\frac\partial{\partial\ol z}$ is zero).
+
+Let $U\subseteq\CC$ be a simply connected open set
+and suppose that $u\in C^2(U)$ is harmonic. For a fixed $z_0\in U$,
+\begin{equation*}
+    f(z) = \int_{z_0}^z\frac{\partial u}{\partial \zeta}\dd\zeta
+\end{equation*}
+is a well-defined holomorphic function on $U$
+(where the integral is along some arbitrary path from $z_0$ to $z$ in $U$).
+Then,
+\begin{equation*}
+    \ol{f(z)} = \int_{z_0}^z \frac{\partial u}{\partial\ol\zeta}\dd\ol\zeta.
+\end{equation*}
+Recalling that $\dd u = \frac{\partial u}{\partial\zeta}\dd\zeta +
+\frac{\partial u}{\partial\ol\zeta}\dd\ol\zeta$,
+\begin{equation*}
+    2\opname{Re}f(z) = f(z) + \ol{f(z)}
+    = \int_{z_0}^z \dd u = u(z) - u(z_0).
+\end{equation*}
+Thus $u$ is (up to a constant) equal to the real part of $f$
+(which justifies the remark at the end of the example above).
+Let $u^*$ be the imaginary part of $f$, which is also a harmonic function,
+called the \vocab{conjugate harmonic function} of $u$.
+Note that if $g$ is another holomorphic function on $U$
+whose real part is also $\frac u2$ up to a constant, then
+$f-g$ is a holomorphic function whose real part is constant;
+the open mapping theorem then implies that $f-g$ is constant,
+so $u^*$ is the unique harmonic function up to a constant
+such that $u + iu^*$ is holomorphic.
+
+Harmonic functions inherit some nice properties of harmonic functions.
+\begin{prop}[Mean value property]
+    \label{prop:mean-value-thm}
+    Let $u$ be harmonic on open $U\subseteq\CC$ with $z_0\in U$ a point.
+    Then, if $U$ contains the disk $\ol{\Delta_R(z_0)}$,
+    \begin{equation*}
+	u(z_0) = \frac 1{2\pi}\int_0^{2\pi} u(z_0 + re^{i\theta})\dd\theta
+    \end{equation*}
+    for all $0 < r \le R$.
+\end{prop}
+
+\begin{proof}
+    This follows immediately from using the Cauchy integral formula
+    on $u + iu^*$ and comparing the real and imaginary parts of both sides.
+\end{proof}
+
+\pagebreak
+\begin{prop}[Max-min principle]
+    \label{prop:max-min}
+    If $u$ is harmonic on open, connected $U\subseteq\CC$ and attains
+    a local minimum or maximum, it is constant.
+\end{prop}
+
+\begin{proof}
+    Let $z_0\in U$ be a local maximum for $U$.
+    For $0 < r \le R$, where $R$ is small enough that
+    the disk centered at $z_0$ with radius $R$ is contained in $U$,
+    \begin{equation*}
+	\sup_{\abs{z-z_0} = r} u(z) \le u(z_0)
+	= \int_0^{2\pi} u(z_0 + re^{i\theta})
+	\le \sup_{\abs{z-z_0} = r} u(z),
+    \end{equation*}
+    so $u(z_0)$ is equal to $\sup_{\abs{z-z_0}=r}u(z)$.
+    Since $u$ is continuous, this tells us that
+    $u$ is constant on $\{z\in U : \abs{z-z_0} = r\}$
+    for all $r < R$, hence is locally constant.
+    Since $U$ is connected, this implies $u$ is constant.
+    A similar proof works for if $z_0$ is a local minimum.
+\end{proof}
+
+By taking an appropriate M\"obius transformation,
+we can use the mean value property
+to obtain the value of a harmonic function
+on any point on the interior of a disk
+given only the boundary values.
+\begin{theorem}[Poisson formulas]
+    \label{thm:poisson-formulas}
+    Let $u$ be a continuous function on the closed disk
+    $\ol\Delta$ and harmonic on $\Delta$. Then for any $a\in\Delta$,
+    \begin{equation*}
+	u(a) = \frac 1{2\pi}\int_0^{2\pi}
+	\frac{1 - \abs a^2}{\abs{e^{i\psi} - a}^2} u(e^{i\psi})\dd\psi
+	= \frac 1{2\pi}\int_0^{2\pi}
+	\opname{Re}\left(\frac{e^{i\psi + a}}{e^{i\psi-a}}\right)
+	u(e^{i\psi})\dd\psi.
+    \end{equation*}
+\end{theorem}
+\todo{proof (annoying calculation)}
+
+\todo{schwarz theorem}
+
+\todo{reflection principle}
 
 \pagebreak
 \section{Todo items}
