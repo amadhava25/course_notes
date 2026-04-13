@@ -5,7 +5,20 @@
 \usepackage{pgfplots,mathtools}
 \pgfplotsset{compat=newest}
 \def\xmax{1}\def\ymax{1.2}
+\usepackage{scalerel,stackengine}
+\stackMath
+\renewcommand\wh[1]{%
+	\savestack{\tmpbox}{\stretchto{%
+			\scaleto{%
+				\scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+				{\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+			}{\textheight}% 
+		}{0.5ex}}%
+	\stackon[1pt]{#1}{\tmpbox}%
+}
 %\usepackage{amsfonts}
+\fontsize{11.9pt}{2cm}\selectfont
+
 
 \title{Lecture Notes in Analysis II}
 \author{\me}
@@ -858,7 +871,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 						\norm{f_{\epsilon} - f}_{p}^{p} &= \int \abs{\int [f(x -y) - f(x)]\rho_{\epsilon}(y)\;dy}^{p}\;dx \\ 
 						&\leq \int \left(\int \abs{f(x -y) - f(x)}\rho_{\epsilon}(y)\;dy\right)^{p}\;dx \\
 						&\leq \left[\int \left[\int |f(x - y)- f(x)|^{p}\rho_{\epsilon}^{p}(y)\;dx\right]^{1/p}dy\right]^{p} \\
-						&= \left[\int \left[\int |f(x - y) - f(y)|^{p}\;dx\right]^{1/p}\rho_{\epsilon}(y)\;dy\right]^{p} \\
+						&= \left[\int \left[\int |f(x - y) - f(x)|^{p}\;dx\right]^{1/p}\rho_{\epsilon}(y)\;dy\right]^{p} \\
 						&\leq \left[\int 2\norm{f}_{p}\rho_{\epsilon}(y)\;dy\right]^{p} \\
 						\implies 
 						\norm{f_{\epsilon} - f}_{p} & \leq \int 2\norm{f}_{p} \rho_{\epsilon}(y)\;dy. 
@@ -875,4 +888,188 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		\item $\sup\limits_{f \in \mathscr{A}}\norm{f \cdot \chi_{\{|x|\geq R\}}}_{p} \longrightarrow 0$ as $R \to \infty$ (uniform decay near $\infty$).
 	\end{enumerate}
 \end{itemize}
+
+
+\newpage 
+\section{Lecture 17: Fourier Transform} 
+\subsubsection{Key Topics:} (1) Fourier Transform, (2) Fourier Inversion Theorem, (3) Riemann-Lebesgue Lemma, (4) Plancherel's Theorem 
+
+\subsubsection{Summary:} In this lecture, we will talk about the Fourier transform of $L^{1}$ functions, and discuss various properties of the Fourier transform, including the Fourier Inversion Theorem, the Riemann-Lebesgue Lemma, and Plancherel's Theorem. 
+
+\subsubsection{Lecture:}
+
+\begin{itemize}
+	\item \textbf{Def. (Fourier Transform of an Integrable Function)} For $f \in L^{1}(\mathbb{R}^{n})$, we define its Fourier transform $\hat{f}(\xi)$ to be the function, 
+		\begin{equation}
+			\hat{f}(\xi) = \int_{\mathbb{R}^{n}}f(x)e^{-2\pi i (\xi, x)}\;dx.
+		\end{equation}
+	
+	\item \textbf{Lem. (Properties of the Fourier Transform of $f$)} For $f \in L^{1}(\mathbb{R}^{n})$, $\hat{f}$ is bounded and continuous. 
+	
+	{\color{blue}
+		Let $f \in L^{1}(\mathbb{R}^{n})$. Then for any $\xi \in \mathbb{R}^{n}$, 
+		\begin{equation}
+			\abs{\hat{f}(\xi)} = \abs{\int_{\mathbb{R}^{n}}f(x)e^{-2\pi (\xi, x)}\;dx} \leq \int_{\mathbb{R}^{n}}\abs{f(x)e^{-2\pi i (\xi, x)}}\;dx = \int_{\mathbb{R}^{n}}|f(x)|\;dx = \norm{f}_{1} < \infty. 
+		\end{equation}
+	Hence, $\hat{f}(\xi)$ is bounded. On the other hand, 
+		\begin{align}
+			\begin{split}
+				\abs{\hat{f}(\xi + h) - \hat{f}(\xi)} &= \abs{\int_{\mathbb{R}^{n}}f(x)e^{-2\pi i (\xi + h, x)} - f(x)e^{-2\pi i (\xi, x)}\;dx} \\
+				&= \abs{\int_{\mathbb{R}^{n}}f(x)e^{-2\pi i (\xi, x)}\left(e^{-2\pi i (h, x)} - 1\right)\;dx} \\
+				&\leq \int_{\mathbb{R}^{n}}|f(x)|\abs{e^{-2\pi i (h, x)} -1}\;dx. 
+			\end{split}
+		\end{align}
+	We note that $|f(x)||\exp(-2\pi i (h, x)) - 1| \to 0$ pointwise, and 
+		\begin{equation}
+			|f(x)|\abs{e^{-2\pi i (h, x)} -1} \leq 2|f(x)| \in L^{1}(\mathbb{R}^{n}). 
+		\end{equation}
+	Hence, by the Dominated Convergence Theorem, 
+		\begin{equation}
+			\abs{\hat{f}(\xi + h) - \hat{f}(\xi)} \leq \int_{\mathbb{R}^{n}}|f(x)|\abs{e^{-2\pi i (h, x)} -1}\;dx \to 0 \qquad \text{ as $h \to 0$}. 
+		\end{equation}
+	Hence, $\hat{f}$ is continuous. Moreover, $\hat{f}$ is \textit{uniformly continuous}. 
+	}
+	
+	\item \textbf{Lem. (Some More Properties of the Fourier Transform)} Let $f \in L^{1}(\mathbb{R}^{n})$, and define the \textit{translation operator}, $\tau_{h}: L^{1}(\mathbb{R}^{n}) \to L^{1}(\mathbb{R}^{n})$ for each $h \in \mathbb{R}^{n}$ as follows: $\tau_{h}f(x) = f(x + h)$. Then the following are true: \vspace{-0.2cm}
+		\begin{enumerate}[itemsep =-1pt,label = (\arabic{*})]
+			\item $\wh{\tau_{h}f}(\xi) = e^{2\pi i (h, \xi)}\hat{f}(\xi)$. 
+			\item If $g \in L^{1}(\mathbb{R}^{n})$, then $\wh{f \ast g} = \hat{f} \cdot \hat{g}$, where the product is defined pointwise on $\mathbb{R}^{n}$. 
+		\end{enumerate}
+		
+	{\color{blue}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item Let $f \in L^{1}(\mathbb{R}^{n})$, and fix $h \in \mathbb{R}^{n}$. Then 
+				\begin{align}
+					\begin{split}
+						\wh{\tau_{h}f}(\xi) &= \int_{\mathbb{R}^{n}}\tau_{h}f(x)e^{-2\pi i (\xi, x)}\;dx \\
+						&= \int_{\mathbb{R}^{n}}f(x + h)e^{-2\pi i (\xi, x + h)}e^{2\pi i (\xi, h)}\;dx \\
+						&= \hat{f}(\xi)e^{2\pi i (\xi, h)}. 
+					\end{split}
+				\end{align}
+			\item Now let $g \in L^{1}(\mathbb{R}^{n})$. Then 
+				\begin{align}
+					\begin{split}
+						\wh{f \ast g}(\xi) &= \int_{\mathbb{R}^{n}}\int_{\mathbb{R}^{n}}f(x - y)g(y)e^{-2\pi i (\xi, x)}\;dydx \\
+						&= \int_{\mathbb{R}^{n}}\int_{\mathbb{R}^{n}}f(x - y)e^{-2\pi i (\xi, x - y)}g(y)e^{-2\pi i (\xi, y)}\;dy dx \\
+						&= \left(\int_{\mathbb{R}^{n}}g(y)e^{-2\pi i (\xi, y)}\;dy\right)\left(\int_{\mathbb{R}^{n}}f(z)e^{-2\pi i (\xi, z)}\;dz\right) \qquad \text{(by Fubini)}\\
+						&= \hat{g}(\xi) \cdot \hat{f}(\xi). 
+					\end{split}
+				\end{align}
+		\end{enumerate}
+	}
+	
+	\item \textbf{Def. (Multiindices)} We define a multiindex $\alpha$ of length $n$ to be an $n$-tuple $(\alpha_{i})$ of nonnegative integers, where we define their norm: 
+		\begin{equation}
+			|\alpha| = \alpha_{1} + \dotsm +\alpha_{n}. 
+		\end{equation}
+	Using this notation, if $f \in C^{k}(\mathbb{R}^{n})$,  for $|\alpha|\leq k$:
+		\begin{equation}
+			\partial^{\alpha}f \coloneqq \brac*{\frac{\partial^{|\alpha|}f}{\partial x_{1}^{\alpha_{1}}\dotsm x_{n}^{\alpha_{n}}}: |\alpha| = k}
+		\end{equation}
+	
+	\item \textbf{Lem. (Smoothness of Functions and the Fourier Transform)} Let $f \in L^{1}(\mathbb{R}^{n})$. \vspace{-0.2cm}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item If $x^{\alpha}f \in L^{1}$ for all $|\alpha| \leq k$, then $\hat{f} \in C^{k}$, and $\partial^{\alpha}\hat{f} = \wh{(-2\pi i x^{\alpha})f}$. 
+			\item If $f \in C^{k}$, $\partial^{\alpha}f \in L^{1}$ for all $|\alpha|\leq k$, and $\partial^{\alpha}f \in C_{0}(\mathbb{R}^{n})$ for all $|\alpha| \leq k -1$, then $\wh{\partial^{\alpha}f}(\xi) = (2\pi i \xi)^{\alpha}\hat{f}(\xi)$. 
+		\end{enumerate}
+		
+	{\color{blue}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item We will prove the case for $|\alpha| = 1$ since the higher cases follow by induction. We compute the following: 
+				\begin{align}
+					\begin{split}
+						\abs{\frac{\hat{f}(\xi + he_{j}) - \hat{f}(\xi)}{h}} &= \abs{\int_{\mathbb{R}^{n}}f(x) \cdot \frac{e^{-2\pi i (\xi + he_{j}, x)} - e^{-2\pi i (\xi, x)}}{h}\; dx} \\
+						&= \abs{\int_{\mathbb{R}^{n}}f(x)e^{-2\pi i (\xi, x)} \cdot \left(\frac{e^{-2\pi i (he_{j},x)} - 1}{h}\right)\;dx} \\
+						&\leq \int_{\mathbb{R}^{n}}\abs{f(x)} \abs{\left(\frac{e^{-2\pi i (he_{j},x)} - 1}{h}\right)}\;dx
+					\end{split}
+				\end{align}
+			Since 
+				\begin{equation}
+					\abs{\left(\frac{e^{-2\pi i (he_{j},x)} - 1}{h}\right)} \leq 2\pi |x_{j}|, 
+				\end{equation}
+			applying the Dominated Convergence Theorem concludes the proof. 
+			\item \textcolor{red}{[!! Complete Later !!]}
+		\end{enumerate}	
+	}
+	
+	\item \textbf{Ex. (Fourier Transform of the Gaussian)} Let $f(x) =\exp(-\pi a|x|^{2})$, $a > 0$. Then 
+		\begin{equation}
+			\hat{f}(\xi) = a^{-n/2}\exp\left(-\frac{\pi |\xi|^{2}}{a}\right).
+		\end{equation}
+	In other words, the Fourier transform of a Gaussian is a Gaussian. 
+	
+	\item \textbf{Thm. (Fourier Inversion Theorem)} Let $f \in L^{1}(\mathbb{R}^{n})$. Assume that $\hat{f} \in L^{1}(\mathbb{R}^{n})$. Then one has
+		\begin{equation}
+			f(x) = \int_{\mathbb{R}^{n}}\hat{f}(\xi)e^{2\pi i (\xi, x)}\;d\xi, \qquad \text{ a.e. $x \in \mathbb{R}^{n}$}. 
+		\end{equation}
+		
+	{\color{blue} 
+		The proof of this theorem will be carried out over a couple of steps. First, fix $f \in L^{1}(\mathbb{R}^{n})$, and assume $\hat{f} \in L^{1}(\mathbb{R}^{n})$. Then for $\epsilon > 0$, set 
+			\begin{equation}
+				f_{\epsilon}(x) = f \ast \left(\epsilon^{-\frac{n}{2}}\exp\left(-\frac{\pi |\empspace|^{2}}{\epsilon}\right)\right). 
+			\end{equation}	
+		
+		\begin{quote}
+			(\textbf{Step 1}) First, we will show that 
+				\begin{equation*}
+					f_{\epsilon}(x) = \int_{\mathbb{R}^{n}}\hat{f}(\xi)e^{-\pi \epsilon |\xi|^{2}}e^{2\pi i (\xi, x)}\;d\xi, \qquad \epsilon >0. 
+				\end{equation*}
+			We start by manipulating the right side. We have 
+				\begin{align}
+					\begin{split}
+						\int_{\mathbb{R}^{n}}\hat{f}(\xi)e^{-\pi \epsilon |\xi|^{2}}e^{2\pi i (\xi, x)}\;d\xi &= \int_{\mathbb{R}^{n}}\int_{\mathbb{R}^{n}}f(y)e^{-2\pi i (\xi, y)}e^{-\pi \epsilon |\xi|^{2}}e^{2\pi i (\xi, x)}\;dy dx \\
+						&= \int_{\mathbb{R}^{n}}f(y)dy\int_{\mathbb{R}^{n}}e^{-\pi \epsilon |\xi|^{2} + 2\pi i (\xi, x - y)}\;d\xi. \qquad (\text{by Fubini})
+					\end{split}
+				\end{align}
+			We will compute the exponential integral first. We will do this by completing the square inside the exponential: We write 
+				\begin{align}
+					\begin{split}
+						\int_{\mathbb{R}^{n}}e^{-\pi \epsilon |\xi|^{2} + 2\pi i (\xi, x - y)}\;d\xi  &= \int_{\mathbb{R}^{n}}e^{-\pi \epsilon \left(|\xi|^{2} - \frac{2i(x - y)}{\epsilon}\right)}\;d\xi\\
+						&= \int_{\mathbb{R}^{n}}e^{-\pi \epsilon \left(\sum_{j}\left(\xi_{j} - \frac{i(x_{j} - y_{j})^{2}}{\epsilon}\right) + \sum_{j} \frac{(x_{j} - y_{j})^{2}}{\epsilon^{2}}\right)}\;d\xi \\
+						&= \int_{\mathbb{R}^{n}}e^{-\pi \epsilon \sum_{j}\left( \xi_{j} - \frac{ i(x_{j} - y_{j})}{\epsilon} \right)^{2}}\;d\xi e^{-\frac{\pi |x - y|^{2}}{\epsilon}} \\
+						&= \prod_{j}\int_{\mathbb{R}^{n}}e^{-\pi \epsilon \left(\xi_{j} - \frac{ i(x_{j} - y_{j})}{\epsilon}\right)^{2}}\;d\xi_{j} e^{-\frac{\pi |x - y|^{2}}{\epsilon}} \qquad \qquad \text{(by Fubini)} \\
+						&= \left(\int_{\mathbb{R}^{n}}e^{-\pi \epsilon |\xi|^{2}}\;d\xi\right)^{n} \cdot e^{-\frac{\pi |x - y|^{2}}{\epsilon}} = \epsilon^{-n/2}e^{-\frac{\pi|x - y|^{2}}{\epsilon}}. 
+					\end{split}
+				\end{align}
+			Therefore, this implies that 
+				\begin{align}
+					\begin{split}
+						\int_{\mathbb{R}^{n}}\hat{f}(\xi)e^{-\pi \epsilon |\xi|^{2}}e^{2\pi i (\xi, x)}\;d\xi &= \int_{\mathbb{R}^{n}}f(y) \cdot \epsilon^{-n/2}e^{-\frac{\pi |x - y|^{2}}{\epsilon}}\;dy \\
+						&= f \ast \left(\epsilon^{-n/2}e^{-\frac{\pi |\empspace|^{2}}{\epsilon}}\right) = f_{\epsilon}(x). 
+					\end{split}
+				\end{align}
+			Hence, this concludes the proof of the first statement. 
+			
+			(\textbf{Step 2}) Now we pass to the limit $\epsilon \to 0$. In this limit, we know that $f_{\epsilon} \to f$ in $L^{1}$. On the other hand, we also know that by dominated convergence, 
+				\begin{equation}
+					 \int_{\mathbb{R}^{n}}\hat{f}(\xi)e^{-\pi \epsilon |\xi|^{2}}e^{2\pi i (\xi, x)}\;d\xi \to \int_{\mathbb{R}^{n}}\hat{f}(\xi)e^{2\pi i (\xi,x)}\;d\xi, 
+				\end{equation}
+			so that 
+				\begin{equation}
+					f(x) = \int_{\mathbb{R}^{n}}\hat{f}(\xi)e^{2\pi i (\xi,x)}\;d\xi \quad \text{ a.e. $x \in \mathbb{R}^{n}$}. 
+				\end{equation}
+		\end{quote}
+	Thus, the proof concludes. Essentially, the main idea was to convolve $f$ with a smoothing function, and then use dominated convergence to force the limits to work. 
+	}
+	
+	\item \textbf{Cor. (Fourier Transforms are Injective)} If $f \in L^{1}(\mathbb{R}^{n})$. If $\hat{f} = 0$, then $f = 0$ a.e. so that the Fourier transform is injective. 
+	
+	\newpage 
+	\item \textbf{Thm. (Plancherel)} If $f \in L^{1} \cap L^{2}(\mathbb{R}^{n})$, then $\hat{f} \in L^{2}(\mathbb{R}^{n})$. Moreover, $\norm{\hat{f}}_{2} = \norm{f}_{2}$. 
+	
+	{\color{blue}
+		We consider 
+			\begin{align}
+				\begin{split}
+					\int_{\mathbb{R}^{n}}\abs{\hat{f}(\xi)}^{2}e^{-\pi \epsilon |\xi|^{2}}\;d\xi &= \int_{\mathbb{R}^{n}}\left(\int_{\mathbb{R}^{n}}f(x)e^{-2\pi i (x, \xi)}\;dx\right) \cdot \left(\int_{\mathbb{R}^{n}}\overline{f(y)}e^{2\pi i (y, \xi)}\;dy\right)e^{-\pi \epsilon |\xi|^{2}}\;d\xi \\
+					&= \left(\iint_{\mathbb{R}^{n}\times \mathbb{R}^{n}}f(x)\overline{f(y)}\;dx dy \cdot \right)\int_{\mathbb{R}^{n}}e^{-\pi \epsilon |\xi|^{2} + 2\pi i (\xi, y - x)}d\xi \\
+					&= \iint_{\mathbb{R}^{n} \times \mathbb{R}^{n}}f(x)\overline{f(y)}\epsilon^{-n/2}e^{-\frac{\pi|x - y|^{2}}{\epsilon}}\;dx dy \\
+					&= \iint_{\mathbb{R}^{n} \times \mathbb{R}^{n}}f(x)\overline{f_{\epsilon}(x)}\;dx dy. 
+				\end{split}
+			\end{align}
+		Since $f_{\epsilon}(x) \to f$ in $L^{2}$, the RHS tends to $\int_{\mathbb{R}^{n}}|f|^{2};dx$. On the other hand, the left side tends to $\int_{\mathbb{R}^{n}}|\hat{f}|^{2}\;d\xi$ by the monotone convergence theorem. Hence, the proof concludes. 
+	
+	}
+\end{itemize}
+
 \end{document}
