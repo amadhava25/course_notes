@@ -439,9 +439,69 @@
 	
 		\newpage
 	\section{(co)homological algebra}
-	\begin{definition}If $F: \Mod{R}{}\to \Mod{S}{}$ is a functor of module categories (it can be different sided module categories too, it doesn't matter), $F$ is said to be \textit{additive} if, given any two $\varphi,\psi \in \Hom_R(M,N)$, we have $F(\varphi+ \psi)= F(\varphi)+F(\psi)$-- that is, on each $\Hom$ it's a homomorphism of additive groups.
+	For the duration of this section, by ``module category", I will generally mean $\Mod{R}{S}$ for some (not-necessarily-commutative) rings $R$,$S$. Noting that we can recover a one-sided module category by taking $R$ or $S$ to be $\mathbb{Z}$, and that for many of these statements we don't care about ``sidedness", we will save some trouble and just say ``module category", and denote them generically by $\mathcal{A}$ or $\mathcal{B}$.
+	
+	\begin{definition}If $F: \mathcal{A}\to \mathcal{B}$ is a functor of module categories (it can be different sided module categories too, it doesn't matter), $F$ is said to be \textit{additive} if, given any two $\varphi,\psi \in \Hom_R(M,N)$, we have $F(\varphi+ \psi)= F(\varphi)+F(\psi)$-- that is, on each $\Hom$ it's a homomorphism of additive groups.
 	\end{definition}
 	I'm really only mentioning the word ``additive" here so that I can say ``additive" later on without needing to refer you to the stuff on abelian categories (at least, not yet).
+	
+	Now, to start with, we want to talk about ``exactness." 
+	\begin{definition}
+		A sequence of $R$-modules/homomorphisms, $$\dots \to A\xrightarrow{\varphi} B\xrightarrow{\psi} C\to \dots$$ is said to be ``\textbf{exact at $B$}" if $\ker \psi = \im \varphi$. If the sequence is exact at every module, then it is sometimes called a \textbf{long exact sequence} (abbreviated ``LES").
+	\end{definition}
+	\begin{definition}A sequence of $R$-modules of the form $$0 \to A \to B\to C\to 0$$ is said to be a \textbf{short exact sequence} (abbreviated ``SES") if it is exact at $A$, $B$, and $C$ (e.g., a LES of the above shape).
+		\end{definition}
+	Take note that exactness at the left/right terms of a SES is precisely injectivity/surjectivity respectively.
+	
+	 There are many natural sequences-- ``complexes"-- of $R$-modules which come up in various places in mathematics; oftentimes, we wish to view failure of a sequence to be exact as being a ``obstruction" to some other phenomenon. For instance, in topology, one might care to ask if the singular/simplicial (co)chain complex is exact, and the extent to which this fails is precisely due to the presence of ``holes" in each dimension (and by De Rham's theorem, the same is true for, say, De Rham cohomology on a smooth manifold)-- thinking in reverse, we can gain insight about our objects of interest by measuring the failure of certain algebraic ``complexes" to be exact. The goal of (co)homological algebra is principally to systematize how we study/discuss such scenarios. 
+	 
+	 
+	 Having established that exactness of sequences is a key interest, we ask the following: ``When does a functor \textit{preserve} exactness?" To help discuss and elaborate upon this, we introduce some definitions.
+	 
+	 \begin{definition}Let $F:\mathcal{A}\to \mathcal{B}$ be an additive functor of module categories. Then, if for any short exact sequence $$0 \to A \to B\to C\to 0$$ we have
+	 	\begin{itemize}
+	 		\item $0\to FA \to FB$ exact at $FA$, then we say $F$ is \textbf{left exact}
+	 		\item $FB\to FC\to 0$ exact at $FC$, then we say $F$ is \textbf{right exact}
+	 		\item $FA\to FB\to FC$ exact at $FB$, then we say $F$ is \textbf{half exact}
+	 		\item $0 \to FA \to FB\to FC \to 0$ a SES, then we say $F$ is \textbf{exact}.
+	 	\end{itemize}
+ 	\end{definition}
+	 Note that left/right exactness is equivalent taking injections (``monos") to injections and surjections (``epis") to surjections respectively. In fact, one can show the following:
+	 \begin{prop}
+	 	Let $F:\mathcal{A}\to \mathcal{B}$ be an additive functor of module categories. Then, $F$ is left (resp. right) exact if and only if $F$ preserves finite limits (resp. colimits).
+	 \end{prop}
+	 	\begin{proof}
+	 		Note the reverse direction is clear-- if $F$ preserves finite limits (resp. colimits), then it preserves kernels (resp. cokernels), hence takes any morphism with (co)kernel 0 to one with (co)kernel 0.
+	 		
+	 		For the forward implication, we note some general abstract nonsense. Namely, as an additive functor, $F$ necessarily ``preserves finite (bi)products" (that is, finite products and coproducts, which happen to coincide). Secondly, since $F$ preserves injections (resp. surjections), we can thus surmise that $F$ preserves all kernels (resp. cokernels). Now, by general abstract nonsense, it is known that all finite (co)limits can be built out of (co)kernels and finite (co)products, and since $F$ preserves those, $F$ preserves \textit{all} finite (co)limits.
+	 	\end{proof}
+	 The proof is not particularly instructive here (not yet, anyways), but it's nice to know that one can take pullbacks/pushouts or kernels/cokernels etc. without needing to worry about if $F$ preserves them. This also tells us yet more cleanly that any left adjoint is right exact, and any right adjoint is left exact. Another thing worth noting is that ``half-exactness" is often not necessary to prove/worry too much about by the following result:
+	 \begin{prop} An additive functor $F:\mathcal{A}\to \mathcal{B}$ of module categories is exact if and only if it is both left and right exact.
+	 	\end{prop}
+	 	\begin{proof}
+	 		The forward implication is clear. The reverse implication follows by the (proof of the) previous proposition: since $F$ is left and right exact, $F$ preserves kernels and cokernels.
+	 	\end{proof}
+	 \begin{example}For any right $R$-module $A$, the functor $A\otimes_R-$ is right exact. 
+	 	\end{example}
+	 \begin{example}For any $R$-module $A$, the functor $\Hom_R(A,-)$ is left exact.
+	 	\end{example}
+	 \begin{example}For any commutative ring $R$, $S$ a multiplicative subset of $R$, the localization functor $S^{-1}(-): \Mod{R}{}\to \Mod{S^{-1}R}{}$ is exact.
+	 	\end{example}
+	 
+	 Now, we need to be a bit cautious here when we talk about \textit{contravariant} functors like $\Hom_R(-, A)$. In particular, the opposite of a module category is \textit{not} a module category, so we either need to formulate things in terms of abelian categories, \textit{or} we need to rewrite some definitions. For concreteness/ease of reference, we do the latter:
+	 \begin{definition}Let $F:\mathcal{A}^{op}\to \mathcal{B}$ be an additive functor of module categories. Then, if for any short exact sequence $$0 \to A \to B\to C\to 0$$ we have
+	 	\begin{itemize}
+	 		\item $0\to FC \to FB$ exact at $FC$, then we say $F$ is \textbf{left exact}
+	 		\item $FB\to FA\to 0$ exact at $FA$, then we say $F$ is \textbf{right exact}
+	 		\item $FC\to FB\to FA$ exact at $FB$, then we say $F$ is \textbf{half exact}
+	 		\item $0 \to FC \to FB\to FA \to 0$ a SES, then we say $F$ is \textbf{exact}.
+	 	\end{itemize}
+	 \end{definition}
+	 This gives us yet another example: 
+	 \begin{example}For any $R$-module $A$, the functor $\Hom_R(-,A)$ is left exact. 
+	 	\end{example}
+	 	
+	 	Now, we have various examples of additive functors in hand which satisfy various exactness properties, \textit{but} the vast majority of them are \textit{not exact}. This gives us another question, namely: ``Is there some way to `fix' left-exact or right-exact functors and `turn them exact'?" It turns out that the answer will be yes: in module categories, we can ``derive" these left/right-exact functors in a nice way. As (co)homology theories in the topological or smooth categories measure ``obstructions to exactness", so too will we define ``(co)homology theories" in module categories-- that is, $\Ext$ and $\Tor$-- which measure obstructions to certain functors being exact. Broadly speaking, the way we do this will involve taking the ``not-quite-exact sequence" obtained by applying the functor, and then ``resolving" the sequence to get along exact sequence. To understand where these resolutions come from, we need to define certain classes of ``nice" modules which we can make a resolution out of.
 	\begin{definition} An $R$ module, $P$,  is said to be \textbf{projective} if any of the following equivalent statements are true:
 		\begin{itemize}
 			\item For any surjective module homomorphism $ N\onto M$, any module homomorphism $P\to M$ admits a (not-necessarily unique) lift $ P \to N$ such that the following diagram commutes:
@@ -534,6 +594,9 @@
 	An ``abelian category" can, in some sense, be thought of as a ``convenient category to do homological algebra in" (which may not \textit{literally} be a category of $R$-modules over a ring $R$). There are a number of different equivalent ways to define/build up the definition of an abelian category, but ultimately what it comes down to is as follows: an abelian category should
 	\begin{itemize}
 		\item Have a way for us to (compatibly) add morphisms in the same  $\Hom$ (that is, $\Hom(a,a')$ has the structure of an abelian group in a nice way)
+			\begin{itemize}
+				\item Ideally, it should be possible to imagine maps in terms of matrices (e.g., like we can with vector spaces) and composition in terms of matrix multiplication
+			\end{itemize}
 		\item Should have some ``0 object" (e.g., like a $0$-module or trivial group)
 		\item should have products and sums (that is, coproducts)
 			\begin{itemize}
@@ -548,7 +611,7 @@
 	\end{itemize}
 	We can keep on going and listing nice properties of abelian/module categories, but for now lets leave it here. As it happens, various subsets of these conditions give the rest \footnote{indeed- as a neat curiosity, if your category has ``binary biproducts", all kernels and cokernels, and a 0 object, then that \textit{gives} an abelian group structure on the $\Hom$ sets. If you'd like, then, you can consider $\Ab$-enrichment as a \textit{property} of a category and not an extra structure on said category, but I've no sense for how this would be a \textit{useful} consideration.}. So, we just choose some subset of these properties, build these up in steps, and then use that as the  ``definition" (noting that the rest of the things we want will hold). Picking our poison, we begin:
 	\begin{definition}A category, $\mathcal{C}$, is said to be \textbf{$\Ab$-enriched} or \textbf{preadditive} if, for every pair of $\mathcal{C}$-objects $M,N$, $\Hom_\mathcal{C}(M,N)$ has the structure of an abelian group \textit{and} composition is $\mathbb{Z}$-bilinear-- e.g., $$\varphi\circ (n\psi_1+ m\psi_2)= n\varphi\circ \psi_1+m\varphi\circ \psi_2$$ and $$(n\psi_1+ m\psi_2)\circ \varphi= n\psi_1\circ \varphi +m \psi_2\circ \varphi.$$
-		\end{definition} You'll note that being $\mathbb{Z}$-bilinear (``biadditive", if you prefer) is more or less just left and right distributivity. This should be familiar to you: recall that for modules, the group of endomorphisms of a module form a \textit{ring} (e.g., the endomorphisms of a finite-dimensional $k$-vectorspace are a ring of matrices), etc; more generally, we like to think of ``composing linear transformations" like multiplying matrices (even between vector spaces of different dimension), so requiring ``biadditivity" is really just a way to ensure this analogy still works.
+		\end{definition} You'll note that being $\mathbb{Z}$-bilinear (``biadditive", if you prefer) is more or less just left and right distributivity. This should be familiar to you: recall that for modules, the group of endomorphisms of a module form a \textit{ring} (e.g., the endomorphisms of a finite-dimensional $k$-vectorspace are a ring of matrices), etc; more generally, we like to think of ``composing linear transformations" like multiplying matrices (even between vector spaces of different dimension), so requiring ``biadditivity" is really just a way to ensure this analogy still works.\footnote{One can formally prove that morphisms can be treated in terms of matrices \textit{so long as} the category in question has finite biproducts}
 	Next up, we say:
 	\begin{definition} An $\Ab$-enriched/preadditive category, $\mathcal{C}$, is said to be \textit{additive} if it has a 0 object\footnote{A 0 object is an object that is both initial and terminal. In particular, for any $M,N$, we have a map $M\to 0 \to N$-- the ``zero map". As the terminology suggests, this is precisely the ``zero homomorphism" of groups/modules, and then all the things we'd like to be true for a ``zero map" just end up following formally from the fact it factors through $0$.} and has all binary/finite products.
 		\end{definition}
@@ -569,6 +632,13 @@
 	
 	One last thing for us to define in generality: we defined additive functors before in module categories, but we may as well just define it again in general:
 	\begin{definition} A functor $F:\mathcal{A}\to \mathcal{B}$ between pre-additive categories is said to be \textbf{additive} if, for all $a,a'$ in $\mathcal{A}$, we have that the induced map $\Hom_\mathcal{A}(a,a')\to \Hom_\mathcal{B}(Fa,Fa')$ is an abelian group homomorphism.\footnote{If you're absurd (like nlab), then you can equivalently define an additive functor between additive categories as one which preserves finite ``biproducts"-- this more or less follows since (as mentioned in a prior footnote) the abelian group structure on $\Hom$ sets can be ``derived" from the finite biproducts.}
+		
+	We also have definitions for (left,right, half) exact functors and injective/projective objects-- these are more or less verbatim the definitions for categories of modules, but we don't have any convenient characterizations in terms of free objects or ideals. In that section, we had to restate various definitions etc. ``for each side" because the opposite of a module category need not be a module category. However, if you look at the axioms we stated for an abelian category, you'll note that almost all of them are self-dual! In particular, we see
+	\begin{prop}
+		If $\mathcal{A}$ is an abelian category, then its opposite $\mathcal{A}^{op}$ is an abelian category.
+	\end{prop}
+	This sort of justifies the way we treated, say, left-right exactness of \textit{contravariant} functors etc. In particular, since kernels in $\mathcal{A}$ are precisely cokernels in $\mathcal{A}^{op}$ (and vice versa), ``$F:\mathcal{A}^{op}\to \mathcal{B}$ preserving (co)kernels" is precisely the statement we wrote out before.
+	\subsection{(Co)homology on abelian categories}
 		\end{definition}
 	\begin{definition} A \textbf{$\delta$-functor}
 		\end{definition}

@@ -1,0 +1,1534 @@
+\documentclass[10pt]{article}
+
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage[shortlabels]{enumitem}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[colorlinks]{hyperref}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,      
+	urlcolor=blue,
+	pdftitle={MAT344 Notes}
+}
+
+\usepackage{mathtools}
+\usepackage{thmtools}
+\usepackage[textsize=scriptsize]{todonotes}
+
+\renewcommand{\tilde}{\widetilde}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\setminus}{\!-\!}
+\providecommand{\ol}{\overline}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\frac{1}{2}}
+\providecommand{\dang}{\measuredangle} %% Directed angle
+\providecommand{\dd}{\mathrm d}
+\providecommand{\CC}{\mathbb C}
+\providecommand{\FF}{\mathbb F}
+\providecommand{\HH}{\mathbb H}
+\providecommand{\NN}{\mathbb N}
+\providecommand{\QQ}{\mathbb Q}
+\providecommand{\RR}{\mathbb R}
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\RP}{\mathbb RP}
+\providecommand{\CP}{\mathbb CP}
+\providecommand{\dg}{^\circ}
+\providecommand{\ind}[1]{\mathbf 1_{#1}}
+\providecommand{\ii}{\item}
+\providecommand{\alert}[1]{{\sffamily\textbf{\textcolor{magenta}{#1}}}}
+\providecommand{\opname}{\operatorname}
+\providecommand{\li}{\opname{li}}
+\providecommand{\ls}{\opname{ls}}
+\providecommand{\supp}{\opname{supp}}
+\providecommand{\res}{\opname{Res}}
+\providecommand{\inv}{^{-1}}
+\providecommand{\setdiff}{\smallsetminus}
+\providecommand{\mb}[1]{\mathbf{#1}}
+\providecommand{\abs}[1]{\left\lvert{#1}\right\rvert}
+\providecommand{\smabs}[1]{\lvert{#1}\rvert}
+\providecommand{\norm}[1]{\left\|{#1}\right\|}
+\providecommand{\dif}{\;d}
+\providecommand{\id}{\operatorname{id}}
+
+\reversemarginpar
+\setlength{\marginparwidth}{1in}
+
+\mdfdefinestyle{mdbluebox}{roundcorner=10pt,innerbottommargin=9pt,
+	linecolor=blue,backgroundcolor=TealBlue!5,}
+\declaretheoremstyle[headfont=\sffamily\bfseries\color{MidnightBlue},
+mdframed={style=mdbluebox},]{thmbluebox}
+
+\mdfdefinestyle{mdredbox}{frametitlefont=\bfseries,innerbottommargin=8pt,
+	nobreak=true,backgroundcolor=Salmon!5,linecolor=RawSienna,}
+\declaretheoremstyle[headfont=\bfseries\color{RawSienna},
+mdframed={style=mdredbox},headpunct={\\[3pt]},postheadspace=0pt,]{thmredbox}
+
+\mdfdefinestyle{mdgreenbox}{linecolor=ForestGreen,backgroundcolor=ForestGreen!5,
+	linewidth=2pt,rightline=false,leftline=true,topline=false,bottomline=false,}
+\declaretheoremstyle[headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+mdframed={style=mdgreenbox},headpunct={ --- },]{thmgreenbox}
+
+\mdfdefinestyle{mdorangebox}{linecolor=RedOrange,backgroundcolor=RedOrange!5,
+	linewidth=2pt,rightline=false,leftline=true,topline=false,bottomline=false,}
+\declaretheoremstyle[headfont=\bfseries\sffamily\color{RedOrange!70!black},
+mdframed={style=mdorangebox},headpunct={ --- },]{thmorangebox}
+
+\mdfdefinestyle{mdblackbox}{linecolor=black,backgroundcolor=RedViolet!5!gray!5,
+	linewidth=3pt,rightline=false,leftline=true,topline=false,bottomline=false,}
+\declaretheoremstyle[mdframed={style=mdblackbox}]{thmblackbox}
+
+\declaretheoremstyle[spaceabove=6pt,spacebelow=6pt]{boldhead}
+
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+
+\declaretheorem[style=boldhead,name=Example,sibling=theorem]{example}
+
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{prop}
+\declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox,name=Lemma,numbered=no]{lemma*}
+\declaretheorem[style=thmgreenbox,name=Claim,numberwithin=theorem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+\declaretheorem[style=boldhead,name=Remark,sibling=theorem]{remark}
+\declaretheorem[style=boldhead,name=Remark,numbered=no]{remark*}
+\declaretheorem[style=thmgreenbox,name=Definition,sibling=theorem]{definition}
+\declaretheorem[style=thmgreenbox,name=Definition,numbered=no]{definition*}
+\declaretheorem[style=thmorangebox,name=Warning,sibling=theorem]{warning}
+\declaretheorem[style=thmorangebox,name=Warning,numbered=no]{warning*}
+\declaretheorem[style=thmorangebox,name=Note,numbered=no]{note}
+\declaretheorem[style=thmblackbox,name=Exercise,sibling=theorem]{exercise}
+\declaretheorem[style=thmblackbox,name=Exercise,numbered=no]{exercise*}
+
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
+\newenvironment{walkthrough}{\noindent \textbf{Walkthrough.}}{\medskip}
+\newlist{walk}{enumerate}{3}
+\setlist[walk]{label=\bfseries (\alph*)}
+
+\providecommand{\pow}{\operatorname{Pow}}
+%\providecommand{\vocab}[1]{{{\sffamily\textolor{ForestGreen}{#1}}}}
+\providecommand{\vocab}[1]{{{\sffamily\textit{#1}}}}
+\providecommand{\lcm}{\operatorname{lcm}}
+\providecommand{\ord}{\operatorname{ord}}
+\providecommand{\Int}{\operatorname{Int}}
+\providecommand{\rk}{\operatorname{rk}}
+\providecommand{\Mat}{\operatorname{Mat}}
+
+\usepackage{asymptote}
+\begin{asydef}
+	defaultpen(fontsize(10pt));
+	unitsize(1cm);
+	size(8cm); // set a reasonable default
+	usepackage("amsmath");
+	usepackage("amssymb");
+	settings.tex="pdflatex";
+	settings.outformat="pdf";
+	// Replacement for olympiad+cse5 which is not standard
+	import geometry;
+	// recalibrate fill and filldraw for conics
+	void filldraw(picture pic = currentpicture, conic g, pen fillpen=defaultpen, pen drawpen=defaultpen)
+	{ filldraw(pic, (path) g, fillpen, drawpen); }
+	void fill(picture pic = currentpicture, conic g, pen p=defaultpen)
+	{ filldraw(pic, (path) g, p); }
+	// some geometry
+	pair foot(pair P, pair A, pair B) { return foot(triangle(A,B,P).VC); }
+	pair orthocenter(pair A, pair B, pair C) { return orthocentercenter(A,B,C); }
+	pair centroid(pair A, pair B, pair C) { return (A+B+C)/3; }
+	// cse5 abbreviations
+	path CP(pair P, pair A) { return circle(P, abs(A-P)); }
+	path CR(pair P, real r) { return circle(P, r); }
+	pair IP(path p, path q) { return intersectionpoints(p,q)[0]; }
+	pair OP(path p, path q) { return intersectionpoints(p,q)[1]; }
+	path Line(pair A, pair B, real a=0.6, real b=a) { return (a*(A-B)+A)--(b*(B-A)+B); }
+	// cse5 more useful functions
+	picture CC() {
+		picture p=rotate(0)*currentpicture;
+		currentpicture.erase();
+		return p;
+	}
+	pair MP(Label s, pair A, pair B = plain.S, pen p = defaultpen) {
+		Label L = s;
+		L.s = "$"+s.s+"$";
+		label(L, A, B, p);
+		return A;
+	}
+	pair Drawing(Label s = "", pair A, pair B = plain.S, pen p = defaultpen) {
+		dot(MP(s, A, B, p), p);
+		return A;
+	}
+	path Drawing(path g, pen p = defaultpen, arrowbar ar = None) {
+		draw(g, p, ar);
+		return g;
+	}
+\end{asydef}
+
+
+\title{\vspace{-2.0cm}MAT344 Notes}
+\author{\large Aditya Pahuja}
+\date{\large \today}
+\begin{document}
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Differentiability in $\CC$}
+
+\setcounter{subsection}{-1}
+\subsection{Precalculus review}
+
+\begin{definition}[$\CC$]
+    \label{def:complex-numbers}
+    The \vocab{complex numbers} $\CC$ is the direct sum
+    $\RR\oplus i\RR$, where $i\equiv(0,1)$, $1\equiv(1,0)$;
+    it is given the structure of a commutative,
+    associative, unital $\RR$-algebra with the multiplication
+    \begin{equation*}
+	(a,b)\cdot(c,d) = (ac-bd,ad+bc)
+    \end{equation*}
+    (so in particular $i^2 = -1$).
+\end{definition}
+
+\begin{exercise}
+    A list of properties you should remember from high school:
+    \begin{enumerate}[(a)]
+        \ii Show that $\CC$ is a field, in with
+	$(a+bi)\inv = \frac{a-bi}{a^2+b^2}$.
+	\ii Show that complex conjugation, defined as
+	$\ol{a+bi}\equiv a-bi$, is a field automorphism of $\CC$
+	that fixes $\RR$.
+	\ii Show that the map $\abs{\bullet}\colon\CC\to\RR_+$
+	given by $\abs{a+bi} = \sqrt{a^2+b^2}$
+	(equivalently, $\abs{z}^2 = z\ol z)$)
+	is a norm on $\CC$.
+	\ii Show that any $z\in\CC\setminus\{0\}$
+	can be written uniquely as
+	$re^{i\theta} = r(\cos\theta + i\sin\theta)$
+	for $r\in\RR_+$ and $\theta\in\RR/2\pi\ZZ$
+	(here, the exponential map is defined via its power series).
+	In particular, this suggests that multiplication by $z=re^{i\theta}$
+	corresponds to scaling about the origin by $r$
+	and rotating counterclockwise by $\theta$.
+    \end{enumerate}
+\end{exercise}
+
+Property (d) in particular suggests why $\CC$ is so nice:
+multiplication by a complex number is much more rigid than
+any old linear transformation on $\RR^2$, as we will see shortly.
+
+\subsection{Holomorphic functions}
+
+Recall that a map $f\colon\RR^n\to\RR^n$ is differentiable
+if it locally behaves like an $\RR^n$-linear map.
+Naturally, one gets the following definition for complex differentiability:
+\begin{definition}[Holomorphic]
+    \label{def:holomorphic}
+    A function $f\colon U\to\CC$ defined on an open subset $U\subset\CC$
+    is \vocab{holomorphic} or \vocab{complex analytic} at $z_0\in U$ if
+    \begin{equation*}
+	f'(z_0)\equiv\lim_{h\to 0}\frac{f(z_0+h) - f(z_0)}h
+    \end{equation*}
+    exists in $\CC$ (i.e. the limit is taken over $h\in\CC$ tending to $0$).
+\end{definition}
+
+As with functions on $\RR$, sums, products, quotients (where defined),
+and compositions (where defined) of holomorphic functions
+are also holomorphic.
+
+\subsubsection{Conformal linear maps, Cauchy-Riemann equations}
+Observe that a $\CC$-linear map $L\colon\CC\to\CC$ is
+uniquely determined by $L(1)$, since $L(z) = zL(1)$ by linearity;
+thus any $\CC$-linear map corresponds to multiplying by
+a fixed complex number $a+bi$. As an $\RR$-linear map,
+multiplication by $a+bi$ can be expressed as the matrix
+\begin{equation*}
+    \begin{pmatrix}
+	a&-b\\b&a
+    \end{pmatrix}
+\end{equation*}
+with respect to the standard basis ($1$ and $i$) of $\CC$.
+
+As mentioned at the end of section 1.0, such linear transformations
+are angle- and orientation-preserving (equivalently,
+they preserve directed angles --- that is, if $\ell_1$ and $\ell_2$
+are lines such that the counterclockwise angle
+from $\ell_1$ to $\ell_2$ is $\theta$, then the counterclockwise angle
+from $L(\ell_1)$ to $L(\ell_2)$ is also $\theta$).
+Such a linear map is called \vocab{conformal}.
+
+\begin{remark}
+    More generally, we call a differentiable map $f\colon\RR^2\to\RR^2$
+    (or between two Riemannian manifolds of dimension $2$)
+    conformal if it preserves angles between curves,
+    where the angle between two curves at a given point of intersection $p$
+    is the angle between the tangent lines at that point;
+    this is equivalent to $\dd f_p$ being a conformal linear map.
+\end{remark}
+
+\begin{prop}
+    \label{prop:conformal-is-complex-mult}
+    All conformal $\RR$-linear maps $L\colon\CC\to\CC$ are $\CC$-linear.
+\end{prop}
+
+\begin{proof}
+    Let $z\in\CC$. The product $iz$ is $z$ rotated
+    $90^\circ$ counterclockwise about the origin,
+    so $L(iz)$ is the counterclockwise $90^\circ$ rotation
+    of $L(z)$ about the origin, i.e. $L(iz) = iL(z)$.
+    Thus, by $\RR$-linearity,
+    \begin{equation*}
+        L((a+bi)z) = aL(z) + bL(iz) = (a+bi)L(z)
+    \end{equation*}
+    for any $a,b\in\RR$, which means $L$ is $\CC$-linear.
+\end{proof}
+
+Let $f\colon\CC\to\CC$ be a holomorphic function.
+We can consider $f$ as a map on $\RR^2$ by treating it as
+a function of the real and imaginary parts;
+in this context, the derivative of $f(x,y) = (f_1(x,y),f_2(x,y))$
+(where $f_1,f_2\colon\RR^2\to\RR$) is the linear transformation
+\begin{equation*}
+    \dd f = \begin{pmatrix}
+        \partial f_1/\partial x &\partial f_1/\partial y\\
+        \partial f_2/\partial x &\partial f_2/\partial y
+    \end{pmatrix}.
+\end{equation*}
+The limit defining the derivative of $f$
+corresponds to this linear transformation,
+so $\dd f$ must be a conformal linear map; this means that we must have
+\begin{equation*}
+    \frac{\partial f_1}{\partial x} = \frac{\partial f_2}{\partial y},
+    \qquad \frac{\partial f_1}{\partial y} = -\frac{\partial f_2}{\partial x}
+\end{equation*}
+at any point at which $f$ is holomorphic.
+This system of equations is called the \vocab{Cauchy-Riemann equations}.
+In fact, a partial converse holds too: the Cauchy-Riemann equations
+exactly determine whether $f$ is complex differentiable at a given point
+if $f$ is sufficiently regular.
+
+\begin{prop}
+    \label{prop:CR-eqns-iff-holomorphic}
+    Let $f\colon U\to\CC$, with $U\subseteq\CC$ an open subset,
+    have continuous partial derivatives on all of $U$
+    (we say that such a function $f$ is $C^1$,
+    since it is $C^1$ as a function on (a subset of) $\RR^2$).
+    Then, $f$ is holomorphic if and only if
+    the Cauchy-Riemann equations hold for all $z_0\in U$.
+\end{prop}
+
+\begin{proof}
+    If $f$ is holomorphic, then the limits
+    \begin{align*}
+	\lim_{\substack{h\to 0\\h\in\RR}} \frac{f(z_0+h) - f(z_0)}h
+	&= \frac{\partial f}{\partial x}(z_0)
+	= \frac{\partial f_1}{\partial x}(z_0)
+	+ i\frac{\partial f_2}{\partial x}(z_0)\\
+	\lim_{\substack{h\to 0\\h\in i\RR}} \frac{f(z_0+h) - f(z_0)}{h}
+	&= \frac 1i\frac{\partial f}{\partial y}(z_0)
+	= -i\frac{\partial f_1}{\partial y}(z_0)
+	+ \frac{\partial f_2}{\partial y}(z_0)
+    \end{align*}
+    are equal. Comparing the real and imaginary parts
+    yields the Cauchy-Riemann equations.
+
+    Conversely, if $f$ has continuous partial derivatives,
+    then it is differentiable as a map on (a subset of) $\RR^2$.
+    This derivative obeys the Cauchy-Riemann equations,
+    so it is a $\CC$-linear map, say corresponding to multiplication by
+    $z\in\CC$. Thus, by definition of differentiability in $\RR^n$,
+    \begin{equation*}
+	0 = \lim_{h\to 0}\frac{f(z_0+h) - f(z_0) - \dd f_{z_0}h}h
+	= \lim_{h\to 0}\frac{f(z_0+h) - f(z_0) - zh}h
+    \end{equation*}
+    so the limit defining $f'(z_0)$ exists.
+\end{proof}
+
+\begin{remark}
+    [Looman-Menchoff theorem]
+    In fact, any continuous function $f\colon U\to \CC$
+    whose partials exist and satisfy the Cauchy-Riemann equations
+    on all of $U$ is holomorphic on $U$;
+    this is called the \vocab{Looman-Menchoff theorem}.
+    The continuity assumption is required because
+    $f(z) = \exp(-z^{-4})$ has partials that exist and satisfy
+    Cauchy-Riemann everywhere, but is not continuous
+    (hence not holomorphic) at zero.
+    Additionally, if $f$ is only required to have partials
+    satisfying the Cauchy-Riemann equations at a single point,
+    then $f\colon\CC\to\CC$ defined as $f(0) = 0$ and
+    $f(z) = z^5/\abs{z}^4$ for $z\ne 0$ is continuous at $0$
+    but not holomorphic at $0$, since
+    \begin{equation*}
+	\lim_{z\to 0} \frac{f(z) - 0}{z}
+	= \lim_{z\to 0} \frac{z^4}{\abs z^4}
+    \end{equation*}
+    is easily seen to not exist, as taking the limit along the real line
+    and taking the limit along the line $\opname{Re}z = \opname{Im}z$
+    respectively give $1$ and $-1$.
+\end{remark}
+
+\subsubsection{The operators $\frac{\partial}{\partial z}$
+and $\frac{\partial}{\partial\ol z}$}
+\begin{definition}[$\frac{\partial}{\partial z}$
+    and $\frac{\partial}{\partial\ol z}$]
+    \label{def:dz-dzbar}
+    The formal operators $\frac{\partial}{\partial z}$
+    and $\frac{\partial}{\partial\ol z}$ are defined as
+    \begin{equation*}
+	\frac{\partial}{\partial z}
+	\equiv \half\left(\frac{\partial}{\partial x}
+	- i\frac{\partial}{\partial y}\right),\qquad
+	\frac{\partial}{\partial \ol z}
+	\equiv \half\left(\frac{\partial}{\partial x}
+	+ i\frac{\partial}{\partial y}\right).
+    \end{equation*}
+\end{definition}
+
+\begin{prop}
+    \label{prop:dzbar-zero-iff-holo}
+    A $C^1$ function $f\colon U\to\CC$
+    (where, as usual, $U\subseteq\CC$ is open)
+    is holomorphic if and only if $\frac\partial{\partial\ol z}f = 0$
+    on all of $U$.
+\end{prop}
+
+\begin{proof}
+    Write $f = f_1 + if_2$ for real-valued functions $f_1$ and $f_2$.
+    We can manually compute
+    \begin{equation*}
+	2\frac\partial{\partial\ol z}f
+	= \frac{\partial f_1}{\partial x} - \frac{\partial f_2}{\partial y}
+	+ i\left(\frac{\partial f_1}{\partial y}
+	+ \frac{\partial f_2}{\partial x}\right),
+    \end{equation*}
+    which is zero if and only if the real and imaginary parts are zero,
+    which is equivalent to the Cauchy-Riemann equations.
+    The statement then follows from
+    Proposition \ref{prop:CR-eqns-iff-holomorphic}.
+\end{proof}
+
+\begin{remark}
+    We can compute
+    \begin{equation*}
+	\frac\partial{\partial z}\frac\partial{\partial\ol z}
+	= \frac\partial{\partial\ol z}\frac\partial{\partial z}
+	= \frac 14\left(\frac{\partial^2}{\partial^2 x}
+	+ \frac{\partial^2}{\partial^2y}\right) = \frac 14\Delta
+    \end{equation*}
+    where $\Delta = \frac{\partial^2}{\partial^2 x}
+    + \frac{\partial^2}{\partial^2y}$ is called the \vocab{Laplacian} of $f$.
+\end{remark}
+
+\begin{prop}
+    \label{prop:dz-equals-derivative}
+    Let $f\colon U\to\CC$ be holomorphic at $z_0\in U$. Then
+    \begin{equation*}
+	\frac\partial{\partial z}f(z_0) = f'(z_0).
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Write $f = f_1 + if_2$ for real-valued functions $f_1,f_2\colon U\to\RR$.
+    Then,
+    \begin{equation*}
+	\frac\partial{\partial z}f
+	= \half\left(\frac{\partial f_1}{\partial x}
+	+ \frac{\partial f_2}{\partial y}\right)
+	+ \frac i2\left(\frac{\partial f_2}{\partial x}
+	- \frac{\partial f_1}{\partial y}\right).
+    \end{equation*}
+    Since $f$ is holomorphic at $z_0$,
+    the Cauchy-Riemann equations imply that
+    multiplication by $\frac\partial{\partial z}f(z_0)$
+    corresponds to the linear transformation
+    \begin{equation*}
+        \begin{pmatrix}
+	    \partial f_1/\partial x & \partial f_1/\partial y\\
+	    \partial f_2/\partial x & \partial f_2/\partial y
+        \end{pmatrix}
+    \end{equation*}
+    \todo{i confuse myself}
+\end{proof}
+
+\subsection{Functions on Riemann surfaces}
+
+Let $\CC_{\infty} = \CC\cup\{\infty\}$ be the one-point compactification
+of $\CC$ (which is homeomorphic to $S^2$).
+Let $U = \CC_{\infty} - \{\infty\} = \CC$ and $V = \CC_\infty-\{0\}$,
+and define
+\begin{align*}
+    \varphi\colon U\to\CC,\quad f(z) &= z,\\
+    \psi\colon V\to\CC,\quad f(z) &= \frac 1z
+\end{align*}
+with the convention $\frac 1\infty = 0$.
+These are both homeomorphisms (since they continuous
+and are both their own inverse) and the transition map
+\begin{equation*}
+    \psi\circ\varphi\inv\colon\varphi(U\cap V)\to\psi(U\cap V),
+    \quad \psi\circ\varphi\inv(z) = \frac 1z
+\end{equation*}
+is a \vocab{biholomorphism} (holomorphic map with holomorphic inverse),
+so the charts $(U,\varphi)$ and $(V,\psi)$ turn $\CC_\infty$
+into a \vocab{complex $1$-manifold}, also called a \vocab{Riemann surface}.
+The Riemann surface $\CC_\infty$ is known as the \vocab{Riemann sphere}.
+
+Concretely, the idea of the maps $\varphi$ and $\psi$ is that
+they describe how $\CC_\infty$ looks like some copies of $\CC$ glued together,
+with $\varphi\circ\varphi\inv$ being a biholomorphism meaning
+that the way they are glued is compatible with the kind of
+structure on $\CC$ that we care about.
+Since being holomorphic only depends on the behavior of a function locally,
+we can use these charts to define holomorphic functions
+between any two Riemann surfaces.
+
+\todo{define riemann surface properly}
+
+\todo{define holomorphic map between riemann surfaces}
+
+\begin{example}
+    [Automorphisms of the Riemann sphere]
+    Let $a,b,c\in\CC$ with $a\ne b$ and $c\ne 0$.
+    The function $f\colon\CC_\infty\to\CC_\infty$
+    defined by $f(z) = c\cdot\frac{z-a}{z-b}$
+    when $z\notin\{b,\infty\}$, $f(b) = \infty$, and $f(\infty) = c$
+    is a biholomorphism of $\CC_\infty$;
+    in fact, these are the only biholomorphisms on $\CC_\infty$.
+    \todo{idk difficulty of pf}
+\end{example}
+
+\begin{example}
+    Let $p,q\colon\CC\to\CC_\infty$ be complex polynomials
+    with no common factors. Define
+    \begin{equation*}
+        f(z) = \begin{cases}
+	    p(z)/q(z) & q(z)\ne 0\\
+	    \infty & q(z) = 0.
+        \end{cases}
+    \end{equation*}
+    Since $f$ is holomorphic whenever $q(z)\ne 0$
+    and $\frac 1f$ is holomorphic whenever $p(z)\ne 0$,
+    this makes $f\colon\CC\to\CC_\infty$ a holomorphic function.
+    If $a\in\CC$ is a point at which $f(z) = \infty$,
+    there exists a positive integer $n$ such that
+    \begin{equation*}
+	f(z) = \frac{1}{(z-a)^n}g(z)
+    \end{equation*}
+    for holomorphic $g$ that is nonzero on (a neighborhood of) $a$.
+    The complex number $a$ is called a \vocab{pole} of $f$,
+    and the integer $n$ is called its \vocab{order}.
+    Similarly, if $f(b) = 0$, then
+    $f(z) = (z-b)^nh(z)$ for $h$ that is nonzero and holomorphic
+    in a neighborhood of $b$; in this case $b$ is a \vocab{zero} of $f$
+    with \vocab{order} $n$.
+    Note that a pole of $f$ with order $n$ is a zero of $\frac 1f$
+    with order $n$, and vice versa.
+\end{example}
+
+\todo{give another example of riemann surface using log}
+
+
+\todo{write down power series facts}
+\section{Differential geometry crash course}
+\begin{definition}[Tangent vector, cotangent vector]
+    \label{def:tangent-cotangent}
+    todo
+\end{definition}
+
+\todo{induced maps on tangent/cotangent spaces via a smooth map $\RR^m\to\RR^n$}
+
+\begin{definition}[$1$-form]
+    \label{def:1-form}
+    todo
+\end{definition}
+
+\begin{definition}[Integral of $1$-form]
+    \label{def:line-integral}
+    todo
+\end{definition}
+
+\todo{good domains, orientation, Green's theorem}
+
+\pagebreak
+
+\section{The Cauchy integral formula and consequences}
+\todo{write down important results from HWs}
+
+\todo{restructure sections}
+Now that we have established the basic geometric and algebraic terminology
+and some facts about $\CC$ we can actually do some complex analysis.
+
+\subsection{The Cauchy integral formula}
+
+\todo{morera}
+\begin{theorem}[Cauchy's integral theorem]
+    \label{thm:cauchy-integral-theorem}
+    Let $\omega = f(z)\dd z$ be a holomorphic $1$-form
+    on a good domain $\Omega$. Then
+    \begin{equation*}
+	\int_{\partial\Omega}\omega = 0.
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Apply Green's theorem to get
+    \begin{equation*}
+	\int_{\partial\Omega}\omega = \int_{\Omega}\dd\omega = 0
+    \end{equation*}
+    where the integral is zero because $\dd\omega = 0$, as $f$ is holomorphic.
+\end{proof}
+
+\begin{theorem}[Cauchy's integral formula]
+    \label{thm:cauchy-integral-formula}
+    Let $\Omega$ be a good domain and $f\in\mathcal O(\Omega)$.
+    For every $z\in\Omega$,
+    \begin{equation*}
+	f(z) =
+	\frac 1{2\pi i}\int_{\partial\Omega}\frac{f(\zeta)}{\zeta-z}\dd\zeta.
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Fix $z\in\Omega$ and let $\eps>0$ be such that
+    the closed ball $\ol B_\eps(z)$ is contained in $\Omega$.
+    Since $\frac{f(\zeta)}{\zeta - z}$ is a holomorphic function of $\zeta$
+    on $\Omega - B_\eps(z)$, Green's theorem shows that
+    \begin{equation*}
+	\int_{\partial\Omega}\frac{f(\zeta)}{\zeta-z}\dd\zeta
+	= \int_{\abs{\zeta-z} = \eps} \frac{f(\zeta)}{\zeta-z}\dd\zeta.
+    \end{equation*}
+    Then, parametrizing the circle in the obvious way, we get
+    \begin{equation*}
+	\int_{\abs{\zeta-z} = \eps} \frac{f(\zeta)}{\zeta-z}\dd\zeta.
+	= \int_0^{2\pi}\frac{f(z+\eps e^{i\theta})}{\eps e^{i\theta}}
+	\cdot \eps ie^{i\theta}\dd\theta
+	= i\int_0^{2\pi}f(z+\eps e^{i\theta})\dd\theta.
+    \end{equation*}
+    The equation we got from Green's theorem tells us that
+    this integral is independent of $\eps$,
+    so it is equal to its limit as $\eps$ goes to zero;
+    moreover, we can compute that
+    \begin{equation*}
+	\abs{\int_0^{2\pi}f(z+\eps e^{i\theta}) - f(z)\dd\theta}
+	< \int_0^{2\pi} C\eps\dd\theta = 2\pi C\eps,
+    \end{equation*}
+    where $C$ is a constant such that
+    $\abs{f(z + \eps e^{i\theta}) - f(z)} < C\abs{\eps e^{i\theta}}$
+    for sufficiently small $\eps$, which exists because $f$ is differentiable
+    (namely take any $C > \abs{f'(z)}$). In summary,
+    \begin{align*}
+	\int_{\partial\Omega}\frac{f(\zeta)}{\zeta - z}\dd\zeta
+	&= \int_{\abs{\zeta - z} = \eps}\frac{f(\zeta)}{\zeta - z}\dd\zeta\\
+	&= i\int_0^{2\pi}f(z + \eps e^{i\theta})\dd\theta
+	= i\cdot \lim_{\eps\to 0}
+	\int_0^{2\pi}f(z + \eps e^{i\theta})\dd\theta\\
+	&= i\int_0^{2\pi} f(z)\dd\theta = 2\pi if(z).\qedhere
+    \end{align*}
+\end{proof}
+
+\pagebreak
+\begin{theorem}[Holomorphic functions are analytic]
+    \label{thm:holomorphic-implies-analytic}
+    Let $\Omega$ be a good domain and $f\in\mathcal O(\Omega)$.
+    For every $z_0\in\Omega$, $f$ has a convergent power series
+    in a ball around $z_0$.
+\end{theorem}
+
+\begin{proof}
+    Let $r$ be the distance from $z_0$ to $\partial\Omega$
+    and suppose that $z\in\ol B_{r_0}(z_0)$ for some $r_0 < r$.
+    Then
+    \begin{align*}
+	f(z)
+	&= \frac{1}{2\pi i}\int_{\partial\Omega}
+	\frac{f(\zeta)}{\zeta-z}\dd\zeta
+	= \frac 1{2\pi i}\int_{\partial\Omega}
+	\frac{f(\zeta)}{(\zeta - z_0) - (z-z_0)}\\
+	&= \frac 1{2\pi i}\int_{\partial\Omega}
+	\left(\frac{f(\zeta)}{\zeta - z_0}\sum_{n=0}^\infty
+	\left(\frac{z-z_0}{\zeta-z_0}\right)^n\right)\dd\zeta\\
+	&= \sum_{n=0}^\infty \left( \frac 1{2\pi i}
+	\int_{\partial\Omega}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\dd\zeta
+        \cdot (z-z_0)^n\right)
+    \end{align*}
+    where we can expand the geometric series beacuse
+    $\abs{z-z_0} < \abs{\zeta - z_0}$ by assumption
+    and we can pull the sum out of the integral because
+    the geometric series converges uniformly
+    over $z\in\ol B_{r_0}(z_0)$ (say, by the Weierstrass $M$-test).
+    This is thus a power series expansion for $f(z)$
+    over all $z\in B_r(z_0)$.
+\end{proof}
+
+\begin{prop}
+    [Analytic continuation]
+    \label{prop:analytic-continuation}
+    Let $U\subseteq\CC$ be open and connected
+    and suppose that $f\in\mathcal O(U)$.
+    \begin{enumerate}[(1)]
+        \ii $f$ is infinitely differentiable.
+	\ii The zeroes of $f$ are isolated unless $f$ is
+	the zero function on $U$.
+	\ii If $f$ and $g$ are holomorphic functions on $U$
+	that agree on any open set, then they are the same function.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    (1) This is immediate from Theorem \ref{thm:holomorphic-implies-analytic}.
+    \\
+
+    (2) Suppose $z_0\in U$ satisfies $f(z_0) = 0$.
+    Then, in a neighborhood of $z_0$,
+    \begin{equation*}
+	f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n.
+    \end{equation*}
+    If there is a $k>0$ such that $a_k \ne 0$,
+    take the smallest such $k$, so that
+    $f(z) = (z-z_0)^k g(z)$ for $g$ defined in a neighborhood of $z_0$ by
+    \begin{equation*}
+	g(z) = \sum_{n=0}^\infty a_{n+k}(z-z_0)^n.
+    \end{equation*}
+    Since $g(z_0) = \lim_{z\to z_0}g(z) \ne 0$,
+    $g$, hence $f$, is nonzero in a neighborhood of $z_0$,
+    so $z_0$ is an isolated zero of $f$.
+
+    On the other hand, if all the $a_n$ are zero,
+    then $f$ is zero in a neighborhood of $z_0$.
+    This implies that the set of non-isolated zeroes of $f$
+    is open in $U$. At the same time, the set of non-isolated zeroes
+    must be closed in $U$, because $f\inv(0)$ is closed
+    and a closed set minus some isolated points is still closed.
+    Connectedness of $U$ then tells us that
+    the set of non-isolated zeroes of $f$ is either
+    all of $U$ (in which case $f$ is the zero function)
+    or empty (in which case all the zeroes of $f$ are isolated).
+    \\
+
+    (3) If $f$ and $g$ agree on an open set, then
+    $f-g$ has a non-isolated zero, so $f-g\equiv 0$ by (2).
+\end{proof}
+
+\pagebreak
+\subsection{Derivatives as integrals}
+The fact that holomorphic functions are analytic
+and that their coefficients can be computed
+via certain integrals gives us the following formula:
+
+\begin{corollary}
+    \label{coro:nth-derivative-integral}
+    If $f$ is holomorphic on a good domain $\Omega$, then
+    \begin{equation*}
+	f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\partial\Omega}
+	\frac{f(\zeta)}{(\zeta-z)^{n+1}}\dd\zeta.
+    \end{equation*}
+\end{corollary}
+
+\begin{proof}
+    Immediate from differentiating the power series expansion around $z$
+    (recall that the derivative of a power series
+    is obtained by termwise differentiation).
+\end{proof}
+
+% One can also prove Corollary \ref{coro:nth-derivative-integral}
+% with the following fact, taking $K = \partial\Omega$
+% and $\mu = f(\zeta)\dd s$.\todo{idk what this measure is bro}
+% \begin{lemma}
+%     \label{prop:borel-measure-lemma}
+%     Let $K\subseteq\CC$ be compact and $\mu$ a finite Borel measure on $K$.
+%     The function
+%     \begin{equation*}
+% 	F(z) = \int_K \frac 1{\zeta-z}\dd\mu(\zeta)
+%     \end{equation*}
+%     is holomorphic on $\CC - K$, with
+%     \begin{equation*}
+% 	F^{(n)}(z) = n!\int_K \frac 1{(\zeta-z)^{n+1}}\dd\mu(\zeta).
+%     \end{equation*}
+% \end{lemma}
+% 
+% \begin{proof}
+%     \todo{pf}
+% \end{proof}
+
+One reason that this formula is useful because it
+lets us easily estimate derivatives; for example:
+
+\begin{lemma}
+    \label{lem:derivative-of-cauchy-seq}
+    If $\{f_k\}_{k=1}^\infty$ is a Cauchy sequence
+    in $\mathcal O(\ol B_r(z_0))$, then, for all $n\ge 1$,
+    the sequence of $n$th derivatives $\{f_k^{(n)}\}_{k=1}^\infty$
+    is also Cauchy when restricted to $\ol B_{r_0}(z_0)$
+    for any $r_0 < r$ (where the space of holomorphic functions
+    is endowed with the sup metric).
+\end{lemma}
+
+\begin{proof}
+    Let $k,\ell\in\NN$ be such that
+    $\abs{f_k-f_{\ell}} < \eps$ on $\partial B_r(z_0)$.
+    Then by Corollary \ref{coro:nth-derivative-integral},
+    \begin{equation*}
+	f_k^{(n)}(z) - f_\ell^{(n)}(z)
+	= \frac{n!}{2\pi i}\int_{\abs{\zeta-z_0}=r}
+	\frac{f_k(\zeta)-f_\ell(\zeta)} {(\zeta-z)^{n+1}}\dd\zeta.
+    \end{equation*}
+    for all $z\in B_r(z_0)$. Suppose now that $z\in B_{r_0}(z_0)$,
+    so that $\abs{\zeta-z}\ge r-r_0$ for $\zeta$ on $\partial B_r(z_0)$.
+    We then get
+    \begin{align*}
+	\smabs{f_k^{(n)}(z) - f_\ell^{(n)}(z)}
+	&= \frac{n!}{2\pi}\abs{\int_{\abs{\zeta-z_0}=r}
+	\frac{f_k(\zeta)-f_\ell(\zeta)}{(\zeta-z)^{n+1}}\dd z}\\
+	&= \frac{n!}{2\pi}\abs{\int_0^{2\pi} \frac{f_k(\zeta)-f_\ell(\zeta)}
+	{(\zeta-z)^{n+1}}\cdot ire^{i\theta}\dd \theta}\\
+	&\le \frac{n!\cdot r}{2\pi}\int_0^{2\pi}\abs{\frac{f_k(\zeta)-f_\ell(\zeta)}
+	{(\zeta-z)^{n+1}}}\dd\theta\\
+	&< \frac{n!\cdot r}{2\pi}
+	\int_0^{2\pi}\frac{\eps}{(r-r_0)^{n+1}}\dd\theta
+	= \frac{n!\cdot r\eps}{(r-r_0)^{n+1}}.
+    \end{align*}
+    Since the coefficient of $\eps$ depends only on $n$, $r$, and $r_0$,
+    which are fixed, this implies that $f_k^{(n)}$ is Cauchy
+    in $\ol B_{r_0}(z_0)$ if $f_k$ is Cauchy on $\ol B_r(z_0)$.
+\end{proof}
+
+The following is sort of a version of the maximum principle
+but for derivatives.
+\begin{lemma}
+    \label{lem:norm-estimate-nth-derivative}
+    Suppose $f$ is holomorphic on $\ol B_r(z_0)$ and $0 < r_0 < r$.
+    For all positive integers $n$,
+    \begin{equation*}
+	\sup_{B_{r_0}(z_0)}\smabs{f^{(n)}}
+	\le \frac{n!}{2\pi(r-r_0)^{n+1}}
+	\int_{\partial B_r(z_0)}\abs{f(z)}\dd z
+	\le \frac{n!\cdot r}{(r-r_0)^{n+1}}\sup_{\partial B_r(z_0)}\abs f
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    By the inequality in the proof of
+    Lemma \ref{lem:derivative-of-cauchy-seq}
+    with $f$ in place of $f_k$ and the zero function in place of $f_\ell$,
+    \begin{equation*}
+	\smabs{f^{(n)}(z)}
+	\le \frac{n!}{2\pi(r-r_0)^{n+1}}\int_0^{2\pi}
+	\abs{f(z_0+re^{i\theta})}r\dd\theta
+	\le \frac{n!\cdot r}{(r-r_0)^{n+1}}\sup_{\partial B_r(z_0)}\abs f
+    \end{equation*}
+    holds for all $z\in B_{r_0}(z_0)$,
+    where $\eps$ is the supremum of $\abs f$
+    and we have simply not yet estimated $\abs f$ above by $\eps$
+    in the middle term. Then, the middle term is easily seen to be
+    equal to the integral of $\abs f$ over the boundary of $B_r(z_0)$,
+    so taking the supremum over $z\in B_{r_0}(z_0)$
+    gives the inequality as stated in the lemma.
+\end{proof}
+
+\begin{theorem}[Liouville's theorem]
+    \label{thm:liouville}
+    If $f$ is \vocab{entire}, meaning it is holomorphic on all of $\CC$,
+    and $\abs f$ is bounded, then $f$ is constant.
+\end{theorem}
+
+\begin{proof}
+    Let $M = \sup_\CC \abs f < \infty$.
+    Lemma \ref{lem:norm-estimate-nth-derivative} says
+    \begin{equation*}
+	\abs{f'(z)} \le \frac{R}{(R-\abs z)^2}\cdot M
+    \end{equation*}
+    for all $R > \abs{z}$, so taking $R$ arbitrarily large
+    implies that $f'(z) = 0$; thus $f'(z) = 0$ everywhere,
+    meaning $f$ is constant.
+\end{proof}
+
+\begin{theorem}[Fundamental theorem of algebra]
+    \label{thm:fundamental-theorem-of-algebra}
+    Any nonconstant polynomial in $\CC$ has a root in $\CC$.
+\end{theorem}
+
+\begin{proof}
+    If $p(z) = a_0 + a_1z + \cdots + a_nz^n \in\CC[z]$
+    has no roots, then $\frac 1{p(z)}$ is an entire function. Since
+    \begin{equation*}
+	\abs{\frac 1{p(z)}} =
+	\frac 1{\abs z^n}\cdot\frac 1{\abs{a_n + a_{n-1}z^{-1}
+	+ \cdots + a_0z^{-n}}} < \frac 2{\abs{a_nz}^n}
+    \end{equation*}
+    holds if $\abs z$ is large enough, $\frac 1{p(z)}$
+    is bounded outside some ball $\ol B_R(z_0)$.
+    On the other hand $\frac 1{p(z)}$ is also bounded inside $\ol B_R(z_0)$
+    because $\ol B_R(z_0)$ is compact, so it is bounded on all of $\CC$.
+    Liouville's theorem then implies that $\frac 1{p(z)}$,
+    hence $p(z)$, must be constant if it has no roots.
+\end{proof}
+
+\subsection{Root counting}
+The Cauchy integral formula lets us
+\emph{count the number of zeroes} of a holomorphic function!
+\begin{prop}[Argument principle]
+    \label{prop:argument-principle}
+    Let $\Omega$ be a good domain and $f\in\mathcal O(\ol\Omega)$.
+    If $f|_{\partial\Omega}$ is nowhere zero, then $f$ has
+    finitely many, say $N$, zeroes in the interior of $\Omega$, and
+    \begin{equation*}
+        N = \frac 1{2\pi i}\int_{\partial\Omega}\frac{f'(z)}{f(z)}\dd z.
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    The number of zeroes is finite because
+    the set of zeroes of $f$ is compact (because it is
+    a closed subset of the compact set $\ol\Omega$) and discrete
+    (since, by assumption, $f$ is not everywhere zero,
+    hence is not the zero function by
+    Proposition \ref{prop:analytic-continuation}),
+    and compact, discrete sets must be finite.
+
+    If $z_1$, \dots, $z_N$ are the zeroes of $f$
+    (where each zero is repeated in this list
+    as many times as its multiplicity, e.g. $z_1=z_2 = 0$ if $f(z) = z^2$),
+    then $f(z) = (z-z_1)\cdots(z-z_N)g(z)$
+    where $g$ is a nonzero holomorphic function on $\ol\Omega$;
+    one can verify that $g$ is indeed nonzero on $\ol\Omega$
+    by using analyticity. Then it is easy to compute
+    \begin{equation*}
+	\frac{f'(z)}{f(z)} = \frac{1}{z-z_1} + \cdots + \frac 1{z-z_N}
+	+ \frac{g'(z)}{g(z)}
+    \end{equation*}
+    using the product rule (the trick for computing this quickly is
+    to formally differentiate the ``function''
+    $\log f = \log(z-z_1) + \cdots + \log(z-z_n) + \log g$).
+    When integrating over $\partial\Omega$, the $\frac 1{z-z_k}$ addends
+    each become $2\pi i$ by the Cauchy integral formula,
+    and since $\frac{g'(z)}{g(z)}$ is holomorphic on $\ol\Omega$,
+    its integral is zero by the Cauchy integral theorem, so
+    \begin{equation*}
+	\frac 1{2\pi i}\int_{\partial\Omega}\frac{f'(z)}{f(z)}\dd z = N.
+    \end{equation*}
+
+    Equivalently, one could apply the residue theorem
+    (Theorem \ref{thm:residue-theorem}) to $\frac{f'(z)}{f(z)}$.
+\end{proof}
+
+Geometrically, this says that the number of solutions to $f(z) = 0$
+inside $\Omega$ is the winding number of $f(\partial\Omega)$ around $0$
+(as long as $f(\partial\Omega)$ does not pass through zero).
+
+\begin{corollary}
+    \label{coro:locally-polynomial}
+    Let $U\subseteq\CC$ be open and connected
+    and $f\in\mathcal O(U)$ nonconstant.
+    For a given $z_0\in U$, suppose that $f(z) - f(z_0) = (z-z_0)^ng(z)$
+    where $g\in\mathcal O(U)$ is nonzero at $z_0$
+    ($n$ is called the \vocab{order} of the zero $z_0$ of $f$).
+    Then, there exists $\delta>0$ such that for all $a\in\CC$
+    in $B_\delta(f(z_0))$, the equation $f(z) = a$
+    has $n$ solutions in a neighborhood of $z_0$.
+\end{corollary}
+
+\begin{proof}
+    Let $B_r(z_0)$ be a neighborhood of $z_0$ in which
+    $g$ is nonzero, so that
+    \begin{equation*}
+	\frac 1{2\pi i}\int_{\partial B_r(z_0)} \frac{f'(z)}{f(z)-f(z_0)}\dd z
+	= n
+    \end{equation*}
+    by the argument principle. Then, for $a\in\CC - f(\partial B_r(z_0))$,
+    define
+    \begin{equation*}
+        N(a) \coloneq 
+	\frac 1{2\pi i}\int_{\partial B_r(z_0)} \frac{f'(z)}{f(z)- a}\dd z
+    \end{equation*}
+    to be the number of solutions to $f(z) = a$ inside $B_r(z_0)$.
+    Then,
+    \begin{align*}
+	\abs{N(z_0) - N(a)}
+	&= \frac 1{2\pi}\abs{\int_{\partial B_r(z_0)}
+	f'(z)\cdot\frac{a-f(z_0)}{(f(z)-a)(f(z)-f(z_0))}\dd z}\\
+	&= \frac 1{2\pi}\abs{\int_{0}^{2\pi}f'(z)\cdot
+	\frac{a-f(z_0)}{(f(z)-a)(f(z)-f(z_0))}\cdot rie^{i\theta}\dd\theta}\\
+	&\le \frac{r\abs{a-f(z_0)}}{2\pi}\int_0^{2\pi}\abs{
+	\frac{f'(z)}{(f(z)-a)(f(z)-f(z_0))}}\dd\theta
+    \end{align*}
+    Since $\partial B_r(z_0)$ is compact and $z_0\notin f(\partial B_r(z_0))$,
+    $\abs{f(z)-f(z_0)}$ has a minimum value $M > 0$ on the circle.
+    Supposing $\abs{a-z_0} < \delta$ with $\delta < M$,
+    we then also have $\abs{f(z-a)} \ge M-\delta$ on the circle. Thus
+    \begin{equation*}
+	\frac{r\abs{a-f(z_0)}}{2\pi}\int_0^{2\pi}\abs{
+	\frac{f'(z)}{(f(z)-a)(f(z)-f(z_0))}}\dd\theta
+	\le \frac{r\delta}{M(M-\delta)}\int_0^{2\pi}\abs{f'(z)}\dd\theta,
+    \end{equation*}
+    and the right-hand side can be made arbitrarily small
+    by shrinking $\delta$.
+    Thus $N$ is an integer-valued, continuous function
+    on its domain, hence it is constant on the component
+    of $\CC - f(\partial B_r(z_0))$ containing $z_0$.
+    This component is open in $\CC$ because
+    it is an open subset of the open set $\CC - f(\partial B_r(z_0))$
+    (noting that the image of the circle is compact hence closed),
+    so one just needs to pick $\delta$ small enough
+    that $B_\delta(f(z_0))$ is contained in this connected component.
+\end{proof}
+
+\begin{exercise}[Weak Rouch\'e's theorem]
+    \label{exer:rouche-zeroes}
+    Prove the following version of Rouch\'e's theorem
+    (Theorem \ref{thm:rouches-theorem})
+    by appealing to the winding number interpretation
+    of the argument principle:
+    if $f$ and $g$ are holomorphic functions on good domain $\Omega$
+    such that $\abs{f-g} < \abs g$ on $\partial\Omega$,
+    then $f$ and $g$ have the same number of zeroes inside $\Omega$.
+    The stronger (usual) version of this theorem,
+    which we will see later, incorporates some information
+    about the poles of $f$ too.
+    (Hint: you should be able to construct
+    an explicit homotopy $H\colon(\CC-\{0\})\times I\to\CC-\{0\}$
+    between $f(\partial\Omega)$ and $g(\partial\Omega)$.)
+\end{exercise}
+
+\begin{exercise}
+    \label{exer:locally-poly-rouche}
+    Use Rouch\'e's theorem to prove Corollary \ref{coro:locally-polynomial}.
+\end{exercise}
+
+Two super important corollaries:
+\begin{theorem}[Open mapping theorem]
+    \label{thm:open-mapping}
+    Let $U\subseteq\CC$ be open and connected,
+    and $f\in\mathcal O(U)$ nonconstant.
+    Then $f$ is an open map.
+\end{theorem}
+
+\begin{proof}
+    This follows immediately from Corollary
+    \ref{coro:locally-polynomial}, since the corollary implies that
+    if $a$ is contained in $f(U)$ then so is some open ball around $a$.
+\end{proof}
+
+\pagebreak
+\begin{theorem}[Maximum modulus principle]
+    \label{thm:max-mod-principle}
+    Let $\Omega$ be a good domain
+    and $f\in\mathcal O(\ol\Omega)$ a holomorphic function.
+    For every $z_0$ in the interior of $\Omega$,
+    \begin{equation*}
+	\abs{f(z_0)} < \sup_{z\in\partial\Omega}\abs{f(z)}
+    \end{equation*}
+    (note the strict inequality).
+\end{theorem}
+
+\begin{proof}
+    The open mapping theorem tells us that
+    $f$ sends the interior of $\ol\Omega$
+    to the interior of $f(\ol\Omega)$.
+    Since $\ol\Omega$ is compact,
+    $f(\ol\Omega)$ is too, so there is a point in $f(\ol\Omega)$
+    maximizing the magnitude over all points in $f(\ol\Omega)$;
+    any such point necessarily cannot be in the interior of $f(\ol\Omega)$,
+    so neihter can its preimage under $f$.
+    Thus any point maximizing the magnitude of $f$
+    over $\ol\Omega$ cannot be in the interior of $\Omega$.
+\end{proof}
+
+\subsection{Poles}
+Let $U\subseteq\CC$ be open and $z_0\in U$.
+If $f\in\mathcal O(U - \{z_0\})$, we say that $z_0$ is
+an \vocab{isolated singularity} of $f$.
+There are three possibilities for the behavior of $f$ around $z_0$.
+\begin{enumerate}[(1)]
+    \ii If $f$ extends to a holomorphic function on $U$,
+    then we call $z_0$ a \vocab{removable singularity} of $f$.
+    Such points are characterized by
+    $\lim_{z\to z_0}(z-z_0)f(z) = 0$, in which case
+    we can define $\tilde f\in\mathcal O(U)$ by taking
+    $\tilde f\equiv f$ on $U - \{z_0\}$ and
+    \begin{equation*}
+	\tilde f(z_0) = \frac 1{2\pi i}\int_{\partial B_\eps(z_0)}
+	\frac{f(\zeta)}{\zeta-z_0}\dd\zeta
+    \end{equation*}
+    (which is of course preordained by the Cauchy integral formula).
+\end{enumerate}
+
+\begin{exercise}
+    If $f$ is a removable singularity
+    (in the sense of the limit definition)
+    show that the function $g\colon U\to\CC$ defined by
+    $g(z_0) = 0$ and $g(z) = (z-z_0)^2f(z)$ for $z\in U-\{z_0\}$
+    is holomorphic on $U$, and that $z_0$
+    is a zero of $g$ with order at least $2$.
+    Conclude that $f$ admits an extension to $U$.
+\end{exercise}
+
+\begin{enumerate}[(1),resume]
+    \ii It could also happen that there is a positive integer $n$
+    such that $g(z) = (z-z_0)^nf(z)$ extends to a
+    nonzero holomorphic function in a neighborhood of $z_0$.
+    In this case, $z_0$ is a \vocab{pole} of $f$
+    with \vocab{order} $n$. Recall that, dually, $z_0$ is a zero
+    of $f$ with order $n$ if $f(z) = (z-z_0)^nh(z)$ for some
+    holomorphic $h$ that is nonzero in a neighborhood of $z_0$ ---
+    poles and zeroes thus behave ``opposite'' to each other
+    (cf. Proposition \ref{prop:argument-principle-poles}
+    and Theorem \ref{thm:rouches-theorem}).
+    A holomorphic function whose isolated singularities are all poles
+    (or removable, but we can just remove those)
+    is called \vocab{meromorphic};
+    these functions can be thought of as holomorphic functions
+    to the Riemann sphere (which is another reason why
+    zeroes and poles behave dually to one another).
+    We will say more about meromorphic functions momentarily.
+
+    \ii Finally, in the case where $ z_0$
+    is neither removable nor a pole, we say that $z_0$ is
+    an \vocab{essential} singularity ---
+    these have incredibly interesting behavior.
+\end{enumerate}
+
+Here is one example of the crazy behavior of essential singularities.
+(In my head, the situation is just that
+cases (1) and (2) are so rigid and well-behaved
+that deviating at all from those scenarios
+causes things to explode. Maybe the right adjective is ``brittle''.)
+\begin{prop}
+    [Casorati-Weierstrass]
+    \label{prop:essential-singularity-density}
+    If $z_0$ is an essential singularity of $f$,
+    then the image of any neighborhood of $z_0$ under $f$
+    is dense in $\CC$.
+\end{prop}
+
+\begin{proof}
+    \todo{todo; idea is just that if it isn't dense
+    then we get a rem sing or pole}
+\end{proof}
+
+For example, $f(z) = e^{1/z} = \sum_{n=0}^\infty \frac 1{n!z^n}$
+has an essential singularity at zero.
+\\
+
+Now, we will talk about meromorphic functions.
+The most important definition relating to meromorphic functions
+is the idea of a residue.
+
+\begin{definition}[Residue]
+    \label{def:residue}
+    If $f$ is holomorphic in a punctured neighborhood of $a\in\CC$
+    (so not necessarily holomorphic at $a$ itself), then
+    the \vocab{residue} of $f$ at $a$ is
+    \begin{equation*}
+	\res_a(f) = \frac 1{2\pi i}\int_{\abs{z-a} = \eps} f(z)\dd z
+    \end{equation*}
+    where $\eps$ is small.
+\end{definition}
+
+Of course, residues are only interesting at singularities,
+since if $f$ is holomorphic at $a$ then
+the residue is zero by Cauchy's integral theorem
+(Theorem \ref{thm:cauchy-integral-theorem}).
+
+\begin{prop}
+    \label{prop:residue-formula}
+    Suppose $a$ is a pole of $f$ with order $n$. Then
+    \begin{equation*}
+	\res_a(f) = \frac 1{(n-1)!}\frac{\dd^{n-1}}{\dd z^{n-1}}
+	((z-a)^nf(z))\Big|_{z=a}.
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    By definition of pole, $(z-a)^nf(z)$ extends to
+    a nonzero holomorphic function in a neighborhood of $a$,
+    so there exist complex numbers $c_k$ such that
+    \begin{equation*}
+	(z-a)^nf(z) = c_0 + c_1(z-a) + c_2(z-a)^2 + \cdots,
+    \end{equation*}
+    with $c_0\ne 0$, in a neighborhood of $a$.
+    This means that
+    \begin{equation*}
+	f(z) = \frac{c_0}{(z-a)^n} + \frac{c_1}{(z-a)^{n-1}}
+	+ \cdots + \frac{c_{n-1}}{z-a} + c_n + c_{n+1}(z-a) + \cdots
+    \end{equation*}
+    in a punctured neighborhood of $a$.
+    Integrating over a sufficiently small circle centered at $a$
+    kills every addend except $\frac{c_{n-1}}{z-a}$
+    (where we can integrate termwise because
+    power series converge locally uniformly), so that
+    \begin{equation*}
+	\res_a(f) = \frac 1{2\pi i}\int_{\partial B_\eps(a)} f(z)\dd z
+	= \frac 1{2\pi i}\int_{\partial B_\eps(a)}\frac{c_{n-1}}{z-a}\dd z
+	= c_{n-1}.
+    \end{equation*}
+    On the other hand we can compute $c_{n-1}$ in the standard way
+    by differentiating the power series for $(z-a)^nf(z)$
+    above $n-1$ times, dividing by $(n-1)!$, and evaluating at $a$.
+\end{proof}
+
+In the case where $n = 1$, the formula above involves
+the zeroth derivative of $(z-a)f(z)$, which is just
+the value of (the extension to a neighborhood of $a$ of)
+$(z-a)f(z)$ at $a$, i.e.
+\begin{equation*}
+    \res_a(f) = \lim_{z\to a}(z-a)f(z).
+\end{equation*}
+Such a pole is called a \vocab{simple pole} of $f$.
+
+The reason that we care to define residues is that
+the integral of a meromorphic function is dependent
+only on the residues:
+\begin{theorem}[Residue theorem]
+    \label{thm:residue-theorem}
+    Let $f$ be a meromorphic function defined on good domain $\Omega$.
+    Then, $f$ has finitely many poles $a_1$, \dots, $a_N$, and
+    \begin{equation*}
+	\frac 1{2\pi i}\int_{\partial\Omega}f(z)\dd z
+	= \sum_{k=1}^N\res_{a_k}(f).
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Since the poles of $f$ are the zeroes of $1/f$
+    (or rather, we can extend $1/f$ to a meromorphic function
+    whose zeroes are the poles of $f$), the set of poles is closed,
+    so it is compact and discrete, hence finite.
+
+    In particular, there exists $\eps>0$ such that
+    the $\eps$-balls around each $a_k$ are pairwise disjoint,
+    meaning $f$ is holomorphic on
+    $\tilde\Omega = \Omega - \bigcup_{k=1}^NB_\eps(a_k)$, so that
+    \begin{equation*}
+	0 = \int_{\partial\tilde\Omega}
+	f(z)\dd z = \int_{\partial\Omega}f(z)\dd z
+	- \sum_{k=1}^N \int_{\partial B_\eps(a_k)} f(z)\dd z
+	= \int_{\partial\Omega}f(z)\dd z
+	- \sum_{k=1}^N \res_{a_k}(f).\qedhere
+    \end{equation*}
+\end{proof}
+
+\todo{computation of real integrals with residue theorem}
+
+One way to think about the argument principle
+(Proposition \ref{prop:argument-principle})
+is that holomorphic functions look like polynomials of degree $n$
+in a neighborhood of a zero of order $n$,
+which we can glean from the power series,
+as higher-order terms are small in comparison to the lowest one.
+This explains why the winding number of $f(\partial B_\eps(z_0))$
+around $0$ is $n$ if $\eps$ is small enough
+and $z_0$ is an isolated zero of order $n$.
+(Green's theorem lets us patch this local interpretation
+into a more global integral, in the same way that
+the residues of a meromorphic function determine its integral.)
+
+In analogy, a meromorphic function $f$ looks like
+$(z-a_0)^{-n}$ around a pole $a_0$ of order $n$,
+which implies that the winding number of $f(B_\eps(z_0))$
+for small $\eps$ should be $-n$
+(since for example $1/z$ reverses the orientation of the circle).
+Thus, the poles are ``negative zeroes'' for the purposes
+of counting facts like the argument principle:
+\begin{prop}[Argument principle for poles]
+    \label{prop:argument-principle-poles}
+    Let $f$ be meromorphic on a good domain $\Omega$
+    with no zeroes or poles on $\partial\Omega$. Then
+    \begin{equation*}
+	\frac 1{2\pi i}\int_{\partial\Omega}\frac{f'(z)}{f(z)}\dd z
+	= N(f,\Omega) - P(f,\Omega)
+    \end{equation*}
+    where $N(f,\Omega)$ and $P(f,\Omega)$ are respectively
+    the number of zeroes and poles of $f$ in $\Omega$.
+\end{prop}
+
+Note that the integral on the left gets negated
+when replacing $f$ with $1/f$, which makes sense
+because taking the reciprocal swaps zeroes and poles.
+
+\begin{proof}
+    [Proof of Proposition \ref{prop:argument-principle-poles}]
+    Note that $n = N(f,\Omega)$ and $p = P(f,\Omega)$ are both finite.
+    We do a similar argument to the proof of
+    Proposition \ref{prop:argument-principle}:
+    if $a_1$, \dots, $a_n$ are the zeroes of $f$
+    and $b_1$, \dots, $b_p$ are the poles, both lists
+    with repeats according to multiplicity, then
+    \begin{equation*}
+	f(z) = \frac{(z-a_1)\cdots(z-a_n)}{(z-b_1)\cdots(z-b_p)}g(z)
+    \end{equation*}
+    where $g$ extends to a nowhere zero holomorphic function on $\Omega$.
+    Then, by the product rule or logarithmic differentiation,
+    \begin{equation*}
+	\frac{f'(z)}{f(z)} = \sum_{k=1}^n\frac 1{z-a_k}
+	- \sum_{k=1}^n \frac 1{z-b_k} + \frac{g'(z)}{g(z)},
+    \end{equation*}
+    and then taking the integral gives
+    \begin{equation*}
+	\frac 1{2\pi i}\int_{\partial\Omega}\frac{f'(z)}{f(z)}\dd z
+	= \sum_{k=1}^n 1 - \sum_{k=1}^p 1 + 0 = n - p
+    \end{equation*}
+    by the Cauchy integral formula for the $\frac 1{z-w}$ summands
+    and the Cauchy integral theorem for $\frac{g'(z)}{g(z)}$.
+\end{proof}
+
+Recall Exercise \ref{exer:rouche-zeroes} tells us how
+if two holomorphic functions $f$ and $g$ send $\partial\Omega$
+sufficiently close to one another (in the sense of the given inequality),
+then $f$ and $g$ have the same number of zeroes in $\Omega$.
+Since that version of Rouch\'e's theorem relied on
+only the argument principle, there is a version for meromorphic functions:
+\begin{theorem}[Rouch\'e's theorem]
+    \label{thm:rouches-theorem}
+    Let $f$ and $g$ be meromorphic functions on $\Omega$.
+    If $\abs{f-g}<\abs f$ on $\partial\Omega$, then
+    $N(f,\Omega) - P(f,\Omega) = N(g,\Omega) - P(g,\Omega)$.
+\end{theorem}
+
+The homotopy idea in Exercise \ref{exer:rouche-zeroes}
+can also be used here, but here is another proof.
+
+\begin{proof}
+    [Proof of Rouch\'e's theorem]
+    The inequality says that $\smabs{\frac gf - 1} < 1$
+    on $\partial\Omega$, so $F = \frac gf$ maps $\partial\Omega$
+    into the open disk $B_1(1)$. Let
+    \begin{equation*}
+	n(a) =\frac 1{2\pi i}\int_{\partial\Omega}\frac{F'(z)}{F(z)-a}\dd z
+    \end{equation*}
+    be the number of times $F$ attains the value
+    $a\in\CC - F(\partial\Omega)$ in $\Omega$,
+    which is constant on each component of $\CC - F(\partial\Omega)$.
+    Obviously $n(a)$ is zero on the unbounded component
+    (since e.g. $\smabs{\frac gf}$ is bounded on $\partial\Omega$),
+    and $0$ is contained in the unboundded component,
+    so number of zeroes of $F$ is
+    \begin{align*}
+	0
+	&= n(0) = \int_{\partial\Omega}\frac{F'(z)}{F(z)}\dd z
+	= N\left(\frac gf,\Omega\right) - P\left(\frac gf,\Omega\right)\\
+	&= (N(g,\Omega) + P(f,\Omega))
+	- (P(g,\Omega) + N(f,\Omega)),
+    \end{align*}
+    where we recall that taking the reciprocal swaps poles and zeroes.
+\end{proof}
+
+
+\todo{laurent series}
+
+\subsection{Schwarz lemma}
+The maximum principle (and the open mapping theorem)
+are very strong structural statements,
+and with some cleverness we can extract a lot of juice out of them.
+\begin{theorem}[Schwarz lemma]
+    \label{thm:schwarz-lemma}
+    Let $\Delta$ be the open unit disk
+    and $f\in\mathcal O(\Delta)$ such that
+    \begin{enumerate}[(1)]
+	\ii $\abs{f} < 1$ on $\Delta$; and
+	\ii $f(0) = 0$.
+    \end{enumerate}
+    Then $\abs{f(z)} < \abs{z}$ on all of $\Delta$
+    and $\abs{f'(0)} \le 1$. Furthermore, if $\abs{f(z)} = \abs z$
+    for any nonzero $z\in\Delta-\{0\}$ or $\abs{f'(0)} = 1$,
+    then $f(z) = cz$ for some $c\in S^1$.
+\end{theorem}
+
+\begin{proof}
+    Let $g(z) = \frac{f(z)}{z}$.
+    Since $f(0) = 0$, $f$ has a power series
+    expansion $f(z) = c_1z + c_2z^2 + \cdots$
+    that converges on all of $\Delta$
+    (examine the proof of holomorphicity implying analyticity,
+    Theorem \ref{thm:holomorphic-implies-analytic}).
+    Define $g(z) = c_1 + c_2z + \cdots$
+    to be the extension of $\frac{f(z)}z$ to $\Delta$
+    by setting $g(0) = f'(0)$; this function is holomorphic
+    because we have defined it via a power series.
+
+    Given $z\in\Delta$, we have by the maximum principle
+    (Theorem \ref{thm:max-mod-principle}) that
+    \begin{equation*}
+	\abs{g(z)} \le \sup_{w\in B_r(0)} \frac 1{\abs w}
+	\le \frac 1r
+    \end{equation*}
+    for any $r$ satisfying $\abs z \le r < 1$,
+    so taking $ r$ arbitrarily close to $1$ tells us that
+    $\abs g \le 1$, which is equivalent to the inequalities
+    that we want to prove. The two equality conditions
+    are both equivalent to saying that $\abs{g(z)} = 1$
+    for some $z\in\Delta$; this would imply that
+    $z$ is a local maximum for $g$ in the interior of
+    $B_r(0)$ for any $r$ with $\abs z < r < 1$,
+    which implies that $g$ must be constant on $B_r(0)$.
+    If this is the case then $g(0) = c_1$ has magnitude $1$
+    and $f(z) = c_1z$ for all $z\in\Delta$, as desired.
+\end{proof}
+
+\begin{corollary}
+    \label{coro:automorphism-disk}
+    The automorphisms of the unit disk
+    (i.e. holomorphic bijections $\Delta\to\Delta$ with holomorphic inverse)
+    are given by the fractional linear transformations
+    $\varphi(z) = c\frac{a-z}{1-\ol az}$
+    for $\abs a < 1$, $\abs c = 1$.
+\end{corollary}
+
+\begin{proof}
+    Let $a\in\Delta$ be the point with $f(a) = 0$,
+    $\varphi(z) = \frac{a-z}{1-\ol az}$,
+    and $g(z) = f(\varphi(z))$. Then, $g$ and $g\inv$
+    are automorphisms of $\Delta$ and satisfy the hypotheses
+    of the Schwarz lemma, so $\abs{g'(0)}\le 1$
+    and $\abs{(g\inv)'(0)}\le 1$.
+    The chain rule tells us that $g'(0)(g\inv)'(0) = 1$,
+    so the inequalities above are equalities,
+    meaning $g(z) = cz$ for some $\abs c = 1$.
+\end{proof}
+
+\todo{weierstrass preparation theorem (not required content)}
+
+\pagebreak
+\section{Harmonic functions}
+\begin{definition}[Harmonic function]
+    \label{def:harmonic-function}
+    Let $U\subseteq\CC$ be open and connected.
+    A $C^2$ function $u\colon U\to\RR$ is \vocab{harmonic} if
+    \begin{equation*}
+	\Delta u\coloneq u_{xx} + u_{yy}
+	= 4\frac{\partial^2}{\partial \ol z\partial z} u
+	= 0.
+    \end{equation*}
+\end{definition}
+\todo{maybe write definition wrt $\RR^n$ instead of $\CC$}
+
+\begin{example}
+    Real parts and imaginary parts of holomorphic functions are harmonic
+    by the Cauchy-Riemann equations, since if $f = u + iv\in\mathcal O(U)$,
+    \begin{equation*}
+	u_{xx} + u_{yy} = (u_x)_x + (u_y)_y
+	= v_{yx} - v_{xy} = 0
+    \end{equation*}
+    and similarly for $v$.
+    Thus, for example, $u(x,y) = e^{x}\cos(y)$,
+    being the real part of $e^{x+iy}$, is harmonic.
+    We will shortly see that all harmonic functions arise in this way.
+\end{example}
+
+Writing $\Delta u$ in terms of $\frac\partial{\partial z}$
+and $\frac{\partial}{\partial\ol z}$ tells us that
+$u\in C^2(U)$ is harmonic if and only if
+\begin{equation*}
+    \frac{\partial u}{\partial z}
+    = \frac{\partial u}{\partial x} - i\frac{\partial u}{\partial y}
+\end{equation*}
+is harmonic (since applying $\frac\partial{\partial\ol z}$ is zero).
+
+Let $U\subseteq\CC$ be a simply connected open set
+and suppose that $u\in C^2(U)$ is harmonic. For a fixed $z_0\in U$,
+\begin{equation*}
+    f(z) = \int_{z_0}^z\frac{\partial u}{\partial \zeta}\dd\zeta
+\end{equation*}
+is a well-defined holomorphic function on $U$
+(where the integral is along some arbitrary path from $z_0$ to $z$ in $U$).
+Then,
+\begin{equation*}
+    \ol{f(z)} = \int_{z_0}^z \frac{\partial u}{\partial\ol\zeta}\dd\ol\zeta.
+\end{equation*}
+Recalling that $\dd u = \frac{\partial u}{\partial\zeta}\dd\zeta +
+\frac{\partial u}{\partial\ol\zeta}\dd\ol\zeta$,
+\begin{equation*}
+    2\opname{Re}f(z) = f(z) + \ol{f(z)}
+    = \int_{z_0}^z \dd u = u(z) - u(z_0).
+\end{equation*}
+Thus $u$ is (up to a constant) equal to the real part of $f$
+(which justifies the remark at the end of the example above).
+Let $u^*$ be the imaginary part of $f$, which is also a harmonic function,
+called the \vocab{conjugate harmonic function} of $u$.
+Note that if $g$ is another holomorphic function on $U$
+whose real part is also $\frac u2$ up to a constant, then
+$f-g$ is a holomorphic function whose real part is constant;
+the open mapping theorem then implies that $f-g$ is constant,
+so $u^*$ is the unique harmonic function up to a constant
+such that $u + iu^*$ is holomorphic.
+
+Harmonic functions inherit some nice properties of harmonic functions.
+\begin{prop}[Mean value property]
+    \label{prop:mean-value-thm}
+    Let $u$ be harmonic on open $U\subseteq\CC$ with $z_0\in U$ a point.
+    Then, if $U$ contains the disk $\ol{\Delta_R(z_0)}$,
+    \begin{equation*}
+	u(z_0) = \frac 1{2\pi}\int_0^{2\pi} u(z_0 + re^{i\theta})\dd\theta
+    \end{equation*}
+    for all $0 < r \le R$.
+\end{prop}
+
+\begin{proof}
+    This follows immediately from using the Cauchy integral formula
+    on $u + iu^*$ and comparing the real and imaginary parts of both sides.
+\end{proof}
+
+\pagebreak
+\begin{prop}[Max-min principle]
+    \label{prop:max-min}
+    If $u$ is harmonic on open, connected $U\subseteq\CC$ and attains
+    a local minimum or maximum, it is constant.
+\end{prop}
+
+\begin{proof}
+    Let $z_0\in U$ be a local maximum for $U$.
+    For $0 < r \le R$, where $R$ is small enough that
+    the disk centered at $z_0$ with radius $R$ is contained in $U$,
+    \begin{equation*}
+	\sup_{\abs{z-z_0} = r} u(z) \le u(z_0)
+	= \int_0^{2\pi} u(z_0 + re^{i\theta})
+	\le \sup_{\abs{z-z_0} = r} u(z),
+    \end{equation*}
+    so $u(z_0)$ is equal to $\sup_{\abs{z-z_0}=r}u(z)$.
+    Since $u$ is continuous, this tells us that
+    $u$ is constant on $\{z\in U : \abs{z-z_0} = r\}$
+    for all $r < R$, hence is locally constant.
+    Since $U$ is connected, this implies $u$ is constant.
+    A similar proof works for if $z_0$ is a local minimum.
+\end{proof}
+
+By taking an appropriate M\"obius transformation,
+we can use the mean value property
+to obtain the value of a harmonic function
+on any point on the interior of a disk
+given only the boundary values.
+\begin{theorem}[Poisson formulas]
+    \label{thm:poisson-formulas}
+    Let $u$ be a continuous function on the closed disk
+    $\ol\Delta$ and harmonic on $\Delta$. Then for any $a\in\Delta$,
+    \begin{equation*}
+	u(a) = \frac 1{2\pi}\int_0^{2\pi}
+	\frac{1 - \abs a^2}{\abs{e^{i\psi} - a}^2} u(e^{i\psi})\dd\psi
+	= \frac 1{2\pi}\int_0^{2\pi}
+	\opname{Re}\left(\frac{e^{i\psi + a}}{e^{i\psi-a}}\right)
+	u(e^{i\psi})\dd\psi.
+    \end{equation*}
+\end{theorem}
+\todo{proof (annoying calculation)}
+
+\todo{schwarz theorem}
+
+\todo{reflection principle}
+
+\pagebreak
+\section{Todo items}
+\listoftodos
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
