@@ -964,7 +964,7 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		\end{equation}
 	Using this notation, if $f \in C^{k}(\mathbb{R}^{n})$,  for $|\alpha|\leq k$:
 		\begin{equation}
-			\partial^{\alpha}f \coloneqq \brac*{\frac{\partial^{|\alpha|}f}{\partial x_{1}^{\alpha_{1}}\dotsm x_{n}^{\alpha_{n}}}: |\alpha| = k}
+			\partial^{\alpha}f \coloneqq \frac{\partial^{|\alpha|}f}{\partial x_{1}^{\alpha_{1}}\dotsm x_{n}^{\alpha_{n}}}.
 		\end{equation}
 	
 	\item \textbf{Lem. (Smoothness of Functions and the Fourier Transform)} Let $f \in L^{1}(\mathbb{R}^{n})$. \vspace{-0.2cm}
@@ -1071,5 +1071,210 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 	
 	}
 \end{itemize}
+
+\newpage 
+\section{Lecture 18: Hausdorff-Young Theorem for Fourier Transform}
+\subsubsection{Key Topics:} (1) Hausdorff-Young Theorem for Fourier Transform, (2) Fourier Series, (3) Harmonic Polynomials in $L^{2}(S^{n-1})$
+\subsubsection{Summary:} In this lecture, we will continue with our discussion of the Fourier Transform (in particular, we will examine ways to extend the transform to $L^{2}(\mathbb{R}^{n})$ from $L^{1}(\mathbb{R}^{n})$). In addition, we will examine various properties of and results for the Fourier Series in higher dimensions. 
+
+\subsubsection{Lecture:}
+
+\begin{itemize}
+	\item \textbf{Cor: (Corollary of Plancherel's Identity)} The Fourier transform can be extended to $L^{2}(\mathbb{R}^{n})$, and the Fourier transform is an isometry on $L^{2}(\mathbb{R}^{n})$. Moreover, for $f \in L^{2}(\mathbb{R}^{n})$, 
+		\begin{equation}
+			\int_{[-A,A]^{n}}f(x)e^{-2\pi i (\xi, x)}\;dx \longrightarrow \hat{f}(\xi) \in L^{2}(\mathbb{R}^{n}) \qquad \text{ as $A \to \infty$}.
+		\end{equation}
+	
+	{\color{orange}
+		Fix $f \in L^{2}(\mathbb{R}^{n})$. By the density of $L^{1} \cap L^{2}(\mathbb{R}^{n})$ in $L^{2}(\mathbb{R}^{n})$, there exists a sequence $\{f_{j}\}_{j = 1}^{\infty} \subset L^{1} \cap L^{2}(\mathbb{R}^{n})$ that converges to $f$ under the $L^{2}$-norm. This means that $\{f_{j}\}$ is a Cauchy sequence in $L^{2}(\mathbb{R}^{n})$. By Plancherel's identity, since $\norm{f_{j}}_{2} = \norm{\hat{f}_{j}}_{2}$, it follows that $\{\hat{f}_{j}\}$ is also a Cauchy sequence in $L^{2}(\mathbb{R}^{n})$, and hence converges to some $\hat{f} \in L^{2}(\mathbb{R}^{n})$. We shall define this limit $\hat{f}$ as the Fourier transform of $f \in L^{2}(\mathbb{R}^{n})$, so that the Fourier transform can be extended to the space of square-integrable functions. Then since the $L^{2}$ norm is continuous, one has, 
+			\begin{equation}
+				\norm{\hat{f}}_{2} = \norm{\lim_{j \to \infty}\hat{f}_{j}}_{2} = \lim_{j \to \infty}\norm{\hat{f}_{j}}_{2} = \lim_{j \to \infty}\norm{f_{j}}_{2} = \norm{f}_{2},
+			\end{equation}
+		so that the Fourier transform is an isometry of spaces. Now we shall construct an explicit formula for $\hat{f}(\xi)$. For each positive integer $j > 0$, define $f_{j} = f \cdot \chi_{[-j,j]^{n}}$. Then each $f_{j} \in L^{1} \cap L^{2}(\mathbb{R}^{n})$ and 
+			\begin{align}
+				\begin{split}
+					\norm{f_{j} - f}_{2}^{2} &= \int_{\mathbb{R}^{n}}|f \cdot (\chi_{[-j,j]^{n}} -1)|^{2}\;dx 
+				\end{split}
+			\end{align}
+		Pointwise, $|f \cdot (\chi_{[-j,j]^{n}} - 1)|^{2} \to 0$ and 
+			\begin{equation}
+				|f \cdot (\chi_{[-j,j]^{n}} - 1)|^{2} \leq |f|^{2} \in L^{1}(\mathbb{R}^{n}), 
+			\end{equation}
+		so that by the Dominated Convergence Theorem, 
+			\begin{equation}
+				\norm{f_{j} - f}_{2}^{2} = \int_{\mathbb{R}^{n}}|f \cdot (\chi_{[-j,j]^{n}} -1)|^{2}\;dx  \to 0. 
+			\end{equation}
+		Hence, the $f_{j} \to f$ under the $L^{2}$-norm. Therefore, by the previous argument, $\hat{f}_{j} \to \hat{f}$ under the $L^{2}$-norm. More precisely, 
+			\begin{equation}
+				\int_{[-j,j]^{n}}f(x)e^{-2\pi i(\xi, x)}\;dx = \hat{f}_{j} \longrightarrow \hat{f} \qquad \text{ as $j \to \infty$}.
+			\end{equation}
+	}
+	
+	\item \textbf{Thm. (Riesz-Thorin Interpolation Theorem)} Let $1 \leq p_{0}, q_{0} \leq \infty$, $1 \leq p_{1}, q_{1} \leq \infty$. Assume that $(X, \mathscr{M}, \mu)$, $(Y, \mathscr{N}, \nu)$ are two measure spaces. Let $T: L^{p_{0}}(X)+ L^{p_{1}}(X)\to L^{q_{0}}(Y) + L^{q_{1}}(Y)$ be a linear map such hat 
+		\begin{equation}
+			T: L^{p_{0}}(X) \to L^{q_{0}}(Y), L^{p_{1}}(X) \to L^{q_{1}}(Y)
+		\end{equation}
+	are bounded linear maps with $\norm{T}_{p_{0} \to q_{0}} \leq M_{0}$ and $\norm{T}_{p_{1} \to q_{1}} \leq M_{1}$. Then $T: L^{p_{0}}(X) \to L^{q_{0}}(Y)$ is also bounded linear with 
+		\begin{equation}
+			\norm{T}_{p_{0} \to q_{0}} \leq M_{0}^{1 - \theta}M_{1}^{\theta},
+		\end{equation}
+	where 
+		\begin{equation}
+			\left(\frac{1}{p_{\theta}}, \frac{1}{q_{\theta}}\right) = (1 - \theta)\left(\frac{1}{p_{0}}, \frac{1}{q_{0}}\right) + \theta\left(\frac{1}{p_{1}}, \frac{1}{q_{1}}\right). 
+		\end{equation}
+		
+	\item \textbf{Thm. (Hausdorff-Young)} Assume that $1 \leq p \leq 2$, and $f \in L^{1} \cap L^{p}(\mathbb{R}^{n})$. Then $\hat{f} \in L^{q}(\mathbb{R}^{n})$, with 
+		\begin{equation}
+			\norm{\hat{f}}_{q} \leq \norm{f}_{p}, \qquad \text{ where $p^{-1} + q^{-1} = 1$}.
+		\end{equation}
+		
+	\item \textbf{Cor. (Extending the Fourier Transform to $L^{p}$-Spaces)} The Fourier Transform is a bounded linear map from $L^{p}(\mathbb{R}^{n})$ to $L^{q}(\mathbb{R}^{n})$, for $1 \leq p < 2$ and $p^{-1} + q^{-1} = 1$, but is not an isometry. 
+	
+	{\color{orange}
+		Fix $1 \leq p < 2$, and $f \in L^{p}(\mathbb{R}^{n})$. Since $L^{1} \cap L^{p}(\mathbb{R}^{n})$ is dense in $L^{p}(\mathbb{R}^{n})$, there exists a sequence $\{f_{j}\}_{j= 1}^{\infty} \subset L^{1} \cap L^{p}(\mathbb{R}^{n})$ that converges to $f$ under the $L^{p}$-norm. Since each $f_{j} \in L^{1}(\mathbb{R}^{n})$, their Fourier transforms $\hat{f}_{j}$ are well-defined. Moreover, by the Hausdorff-Young Inequality,
+		\begin{equation}
+			\norm{\hat{f}_{j} - \hat{f}_{\ell}}_{q} = \norm{\wh{f_{j} - f_{\ell}}}_{q} \leq \norm{f_{j} - f_{\ell}}_{p} \longrightarrow 0 \text{ as $j, \ell \to \infty$}. 
+		\end{equation}
+		Hence, $\{\hat{f}_{j}\}_{j = 1}^{\infty}$ is a Cauchy sequence in $L^{q}(\mathbb{R}^{n})$; since this space is complete under the $L^{q}$-norm, we conclude that $\hat{f}_{j}$ converges in the space. We define the Fourier transform of $f$ to be $L^{q}(\mathbb{R}^{n}) \ni \hat{f} \coloneqq \lim_{j \to\infty}\hat{f}_{j}$. However, this time, we have 
+			\begin{equation}
+				\norm{\hat{f}}_{q} = \lim_{j \to \infty}\norm{\hat{f}_{j}}_{q} \leq \lim_{j \to \infty}\norm{f_{j}}_{p} = \norm{f}_{p}, 
+			\end{equation}
+		so that the Fourier transform is \textit{not} an isometry. However, for each positive integer $j > 0$, define $f_{j} = f \cdot \chi_{[-j,j]^{n}}$. Then each $f_{j} \in L^{1} \cap L^{p}(\mathbb{R}^{n})$ and 
+		\begin{align}
+			\begin{split}
+				\norm{f_{j} - f}_{p}^{p} &= \int_{\mathbb{R}^{n}}|f \cdot (\chi_{[-j,j]^{n}} -1)|^{p}\;dx 
+			\end{split}
+		\end{align}
+		Pointwise, $|f \cdot (\chi_{[-j,j]^{n}} - 1)|^{p} \to 0$ and 
+		\begin{equation}
+			|f \cdot (\chi_{[-j,j]^{n}} - 1)|^{p} \leq |f|^{p} \in L^{1}(\mathbb{R}^{n}), 
+		\end{equation}
+		so that by the Dominated Convergence Theorem, 
+		\begin{equation}
+			\norm{f_{j} - f}_{p}^{p} = \int_{\mathbb{R}^{n}}|f \cdot (\chi_{[-j,j]^{n}} -1)|^{p}\;dx  \to 0. 
+		\end{equation}
+		Hence, the $f_{j} \to f$ under the $L^{p}$-norm. Therefore, by the previous argument, $\hat{f}_{j} \to \hat{f}$ under the $L^{q}$-norm. More precisely, 
+		\begin{equation}
+			\int_{[-j,j]^{n}}f(x)e^{-2\pi i(\xi, x)}\;dx = \hat{f}_{j} \longrightarrow \hat{f} \qquad \text{ as $j \to \infty$}.
+	\		\end{equation}
+	}
+	
+	
+	\item \textbf{Prop. (Orthonormal Basis for $L^{2}(S^{1}))$} Identifying $[0,1]$ with $S^{1}$ by means of the identification $0 \sim 1$, 
+\end{itemize}
+
+\newpage 
+\section{Lectures 19 - 20: Definitions in Distribution Theory}
+\subsubsection{Key Topics:} (1) Distributions, (2) Weak Solutions 
+\subsubsection{Summary:}
+In this lecture, we will introduce the idea of distributions, motivations for working with distributions, and some important operations on distributions. These two lectures are merged together for continuity. 
+\subsubsection{Lecture:}
+\begin{itemize}
+	\item \textbf{Def. (Space of Test Functions)} Let $U \subseteq \mathbb{R}^{n}$ be a domain. By $\mathcal{O} \coloneqq C_{c}^{\infty}(U)$, we denote the space of all test functions on $\mathcal{O}$. 
+	\item \textbf{Def. (Convergence in $\mathcal{O}$)} Let $\{\phi_{j}\} \subseteq \mathcal{O}$, and $\phi \in \mathcal{O}$. Then $\phi_{j} \to \phi$ in $\mathcal{O}$ iff there exists $K^{\text{cpt}} \subseteq U$ such that $\partial^{\alpha}\phi_{j} \to \partial^{\alpha}\phi$ uniformly on $K$ for all multiindices $\alpha$. 
+	\item \textbf{Def. (Distribution)} Let $\ell: \mathcal{O} \to \mathbb{R}$ be a linear functional. We say that $\ell$ is a \textit{distribution} if and only if for all $\{\phi_{j}\} \subseteq \mathcal{O}$ such that $\phi_{j} \to\phi$ for some $\phi \in \mathcal{O}$, $\ell(\phi_{j}) \to \ell(\phi)$. 
+	
+	\item \textbf{Ex 1. (Integration against Locally Integrable Function)} Let $f \in L^{1}_{\text{loc}}(U)$. We define 
+		\begin{equation}
+			\ell(\phi)= \int_{U}\phi \cdot f\;dx. 
+		\end{equation}
+	Then $\ell$ is a distribution. 
+	
+	{\color{orange}
+		Fix some arbitrary $f \in L^{1}_{\text{loc}}(U)$, and let $\{\phi_{j}\}_{j = 1}^{\infty} \subset \mathcal{O}$ so that $\phi_{j} \to \phi$ in $\mathcal{O}$. Let $K$ be the compact set on which $\partial^{\alpha}\phi_{j} \to \partial^{\alpha}\phi$ uniformly for all multiindices $\alpha$. Then 
+			\begin{align}
+				\begin{split}
+					\abs{\ell(\phi) - \ell(\phi_{j})} &= \abs{\int_{U}(\phi_{j}(x) - \phi(x))\cdot f(x)\;dx} \\
+					&\leq \int_{U}|\phi_{j}(x) - \phi(x)|\cdot |f(x)|\;dx \\
+					&= \int_{K}|\phi_{j}(x) - \phi(x)|\cdot |f(x)|\;dx \qquad \quad \text{(since $\operatorname{supp}{\phi_{j}}, \operatorname{supp}{\phi} \subseteq K$)}\\
+					&\leq \sup_{x \in K}|\phi_{j}(x) - \phi(x)| \cdot \int_{K}\abs{f(x)}\;dx \to 0 \text{ as $j \to \infty$}, 
+				\end{split}
+			\end{align}
+		since $\int_{K}|f(x)|\;dx < \infty$ ($f$ is locally integrable), and $\phi_{j} \to \phi$ uniformly on $K$. 
+	}
+	
+	\item \textbf{Ex 2. (Integration against Radon Measures)} 	If $\mu$ is a Radon measure on $U$, then $\ell(\phi) = \int_{U}\phi\;d\mu$ is a distribution on $U$. 
+	
+	{\color{orange}
+		Let $\mu$ be a Radon measure on $U$. Let $\{\phi_{j}\}_{j = 1}^{\infty}, \phi \in \mathcal{O}$ such that $\phi_{j} \to \phi$ in $\mathcal{O}$. Let $K^{\text{cpt}} \subseteq U$ be a compact subset such that $\operatorname{supp}{\phi_{j}}, \operatorname{supp}{\phi} \subseteq K$. Define $\ell$ as prescribed above. Then 
+			\begin{align}
+				\begin{split}
+					\abs{\ell(\phi_{j}) - \ell(\phi)} &= \abs{\int_{U}(\phi_{j}(x) - \phi(x)) \;d\mu} \\
+					&\leq \int_{U}\abs{\phi_{j}(x) - \phi(x)}\;d\mu \\
+					&= \int_{K}\abs{\phi_{j}(x) - \phi(x)}\;d\mu \\
+					&\leq \sup_{x \in K}|\phi_{j}(x) - \phi(x)| \cdot \mu(K) \to 0 \text{ as $j \to \infty$}, 
+				\end{split}
+			\end{align}
+		since $\mu(K) <\infty$ by virtue of $\mu$ being a Radon measure. 
+	}
+	
+	\item \textbf{Ex 3. (Partial Derivatives at a Point)} If $x_{0} \in U$, and $\alpha$ a fixed multiindex, then the linear functional $\ell(\phi) = \partial^{\alpha}\phi(x_{0})$ is a distribution. 
+	
+	{\color{orange}
+		Fix $x_{0} \in U$ and an arbitrary multiindex $\alpha$. Let $K^{\text{cpt}} \subseteq U$ so that $\partial^{\alpha}\phi_{j} \to \partial^{\alpha}\phi$ uniformly on $K$. But this implies that $\partial^{\alpha}\phi_{j}(x_{0}) \to \partial^{\alpha}\phi(x_{0})$, so that $\ell(\phi_{j}) \to\ell(\phi)$. Hence, $\ell$ is a distribution. 
+	}
+	
+	\item \textbf{Not. (Space of Distributions)} We denote by $\mathcal{O}'$ the space of all distributions on the domain $U$. 
+	
+	\item \textbf{Def. (Convergence of Distributions)} We say $\{\ell_{j}\} \subseteq \mathcal{O}'$ converges to the distribution $\ell \in \mathcal{O}'$ if and only if $\ell_{j}(\phi) \to \ell(\phi)$ for all $\phi \in \mathcal{O}$. 
+	
+	\item \textbf{Prop. (Dirac-$\delta$)} Consider the linear functional $\delta_{0}: \mathcal{O} \to \mathbb{R}$ defined by 
+		\begin{equation}
+			\delta_{0}(\phi) = \phi(0). 
+		\end{equation}
+	Then $\delta_{0}$ is a distribution. 
+	
+	\item \textbf{Lem. (Convergence to the Dirac-$\delta$)} Let $f \in L^{1}(\mathbb{R}^{n})$ such that $\int f\;dx = 1$. For $\epsilon > 0$, define 
+		\begin{equation}
+			f_{\epsilon}(x) = \epsilon^{-n}f\left(\frac{x}{\epsilon}\right). 
+		\end{equation}
+	Then $f_{\epsilon} \to \delta_{0}$ in $\mathcal{O}'(\mathbb{R}^{n})$ as $\epsilon \to 0$. 
+	
+	{\color{blue}
+		Fix some $\phi \in \mathcal{O}(\mathbb{R}^{n})$, and define $f_{\epsilon}(x)$ as prescribed above. Then 
+			\begin{align}
+				\begin{split}
+					\int_{\mathbb{R}^{n}}f_{\epsilon}(x) \phi(x)\;dx &= \int_{\mathbb{R}^{n}}f(y)\phi(\epsilon y)\;dy \qquad \text{(let $x = \epsilon y$)}\\
+					&= \int_{\mathbb{R}^{n}}f(y)(\phi(\epsilon y) - \phi(0))\;dy + \phi(0)
+				\end{split}
+			\end{align}
+		Now we note that  
+			\begin{align}
+				\begin{split}
+					|f(y)(\phi(\epsilon y) - \phi(0))| &\leq 2|f(y)|\cdot \norm{\phi}_{\infty} \in L^{1}(\mathbb{R}^{n}). 
+				\end{split}
+			\end{align}
+		Moreover, in the limit $\epsilon \to 0$, $f(y)(\phi(\epsilon y) - \phi(0)) \to 0$ pointwise as $\epsilon \to 0$. Hence, by dominated convergence, the integral on the right side tends to zero. This means that 
+			\begin{equation}
+				\int_{\mathbb{R}^{n}}f_{\epsilon}(x)\phi(x)\;dx \to \phi(0) = \delta(\phi). 
+			\end{equation}
+		Since $\phi$ was arbitrary, the proof concludes. 
+	} 
+	
+	\item \textbf{Def. (Differentiation of Distributions)} Let $\alpha$ be a multiindex, and $\ell \in \mathcal{O}'$. Then we define 
+		\begin{equation}
+			\braket{\partial^{\alpha}\ell, \phi} = (-1)^{|\alpha|}\braket{\ell, \partial^{\alpha}\phi}. 
+		\end{equation}
+		
+	\item \textbf{Ex 4. (Derivative of the Dirac-$\delta$)} Let $\ell = \delta_{0}$ be the Dirac-$\delta$ distribution supported at the origin $0$. Let $\phi$ be an arbitrary test function on $\mathbb{R}$, and let $\alpha= 1$. Then by the above definition, 
+		\begin{equation}
+			\braket{\partial \delta_{0}, \phi} = -\braket{\delta_{0}, \partial \phi} = -\frac{\partial \phi}{\partial x}(0). 
+		\end{equation}
+	
+	\item \textbf{Def. (Multiplication by Smooth Functions)} Given $\psi \in C^{\infty}(U)$, define 
+		\begin{equation}
+			(\psi \cdot \ell)(\phi) = \ell(\psi \phi). 
+		\end{equation}
+		
+	\item \textbf{Def. (Translation of Distributions)} For a domain $U \subseteq \mathbb{R}^{n}$, define $V = U - y = \{x - y: x \in U\}$ for some $y \in \mathbb{R}^{n}$. Then define the translation of the distribution $\ell$ to be the distribution: 
+		\begin{equation}
+			\tau_{y}\ell(\phi) = \ell(\tau_{-y}\phi). 
+		\end{equation}
+		
+	\item \textbf{Prop. (Fundamental Result in Distribution Theory)} For any domain $U \subseteq \mathbb{R}^{n}$, $C_{c}^{\infty}(U)$ is dense in $\mathcal{O}'(U)$ in the topology of $\mathcal{O}'(U)$. More precisely, for every $\ell \in \mathcal{O}'(U)$, there exists $\{f_{j}\} \subset C_{c}^{\infty}(U)$ so that for all $\phi \in \mathcal{O}(U)$, 
+		\begin{equation}
+			\ell(\phi) = \int_{U}\phi f_{j}\;dx. 
+		\end{equation}
+	\end{itemize}
 
 \end{document}

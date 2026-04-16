@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  13 APR 2026 19:09
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  16 APR 2026 09:19
  restricted system commands enabled.
 **"Analysis II Notes.tex"
 ("./Analysis II Notes.tex"
@@ -2271,15 +2271,21 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 7.3pt on input line 2.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 5.5pt on input line 2.
-)
+
+
+[1
+
+{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write5
 
 \openout5 = Analysis II Notes.toc
 
 
-[1
-
-{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `TU/NotoSerif(1)/m/sl' in size <10> not availabl
+e
+(Font)              Font shape `TU/NotoSerif(1)/m/it' tried instead on input li
+ne 31.
+[2]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 35.
@@ -2289,11 +2295,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-LaTeX Font Info:    Font shape `TU/NotoSerif(1)/m/sl' in size <10> not availabl
-e
-(Font)              Font shape `TU/NotoSerif(1)/m/it' tried instead on input li
-ne 84.
-[2]
+[3]
 Package pgfplots info on input line 99: Deactivating LUA version of plot expres
 sion for plot 0 (type 'pgfplothandlerlineto'): y expression '\n {5}' contains a
  TeX macro.
@@ -2302,14 +2304,14 @@ ssion for plot 1 (type 'pgfplothandlerlineto'): y expression '\n {25}' contains
  a TeX macro.
 
 
-[3]
+[4]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 114.
 
 
 
-[4]
+[5]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 126.
@@ -2340,11 +2342,11 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 6.2pt on input line 135.
 
 
-[5]
-
 [6]
 
 [7]
+
+[8]
 LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
 (Font)              scaled to size 12.9599pt on input line 245.
 LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
@@ -2392,7 +2394,7 @@ LaTeX Font Info:    Trying to load font information for U+eus on input line 262
 File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
 
-[8
+[9
 warning  (pdf backend): ignoring duplicate destination with the name 'equation.0
 .16'
 ]
@@ -2403,38 +2405,36 @@ esss and a Cantor-diagonalization-
 
 
 
-[9]
-
 [10]
 
 [11]
+
+[12]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 412.
 
 
 
-[12]
-
 [13]
+
+[14]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 492.
 
 
 
-[14]
-
 [15]
 
 [16]
+
+[17]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 616.
 
 
-
-[17]
 
 [18]
 
@@ -2443,6 +2443,8 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 [20]
 
 [21]
+
+[22]
 Overfull \hbox (24.29512pt too wide) in paragraph at lines 879--881
 \TU/NotoSerif(1)/m/n/10 proof of (1)). Hence, by the Dom-i-nated Con-ver-gence 
 The-o-rem, we con-clude that $[][] [][] \U/MnSymbolD/m/n/10 ^^@
@@ -2450,7 +2452,7 @@ The-o-rem, we con-clude that $[][] [][] \U/MnSymbolD/m/n/10 ^^@
 
 
 
-[22]
+[23]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 895.
@@ -2464,13 +2466,31 @@ m, (3) Riemann-Lebesgue Lemma, (4) Plancherel’s
 \tmpboxcontent=\box140
 
 
-[23]
-
 [24]
 
 [25]
 
-[26] ("./Analysis II Notes.aux")
+[26]
+
+[27]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 1077.
+
+
+
+[28]
+
+[29]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 1168.
+
+
+
+[30]
+
+[31] ("./Analysis II Notes.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -2480,37 +2500,38 @@ Package rerunfilecheck Info: File `"Analysis II Notes".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49455 strings out of 475915
+ 49512 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 6608 words of node memory still in use:
-   116 hlist, 15 vlist, 13 rule, 20 math, 64 glue, 98 kern, 308 glyph, 364 attri
-bute, 110 glue_spec, 364 attribute_list, 2 write nodes
-   avail lists: 2:1229,3:907,4:349,5:644,6:135,7:7106,8:79,9:1426,10:8,11:327
- 70449 multiletter control sequences out of 65536+600000
- 374 fonts using 39494183 bytes
+ 4109 words of node memory still in use:
+   34 hlist, 5 vlist, 4 rule, 8 math, 26 glue, 22 kern, 192 glyph, 352 attribute
+, 110 glue_spec, 352 attribute_list, 2 write nodes
+   avail lists: 2:1253,3:907,4:363,5:722,6:140,7:7272,8:79,9:1517,10:8,11:327
+ 70464 multiletter control sequences out of 65536+600000
+ 381 fonts using 39816263 bytes
  101i,25n,147p,941b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{c:/texlive/2024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}{c:/texlive/2
-024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolF.enc}{c:/texlive/2024/texmf-dis
-t/fonts/enc/dvips/mnsymbol/MnSymbolC.enc}{c:/texlive/2024/texmf-dist/fonts/enc/d
-vips/mnsymbol/MnSymbolA.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/mnsymbol
-/MnSymbolD.enc}<c:/texlive/2024/texmf-dist/fonts/truetype/google/noto/NotoSerif-
-Italic.ttf>{c:/texlive/2024/texmf-dist/fonts/enc/dvips/noto/a_wcjgjy.enc}<c:/tex
-live/2024/texmf-dist/fonts/truetype/google/noto/NotoSerif-Bold.ttf><c:/texlive/2
-024/texmf-dist/fonts/truetype/google/noto/NotoSerif-Regular.ttf><c:/texlive/2024
-/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol10.pfb><c:/texlive/2024/texmf-di
-st/fonts/type1/public/mnsymbol/MnSymbol12.pfb><c:/texlive/2024/texmf-dist/fonts/
-type1/public/mnsymbol/MnSymbol5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/publ
-ic/mnsymbol/MnSymbol7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/notomat
-h/NotoMathMI.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/notomath/NotoMat
-hRM.pfb><c:/texlive/2024/texmf-dist/fonts/type1/google/noto/NotoSerif-Regular.pf
-b><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/texlive/2
-024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/f
-onts/type1/public/newtx/txsym.pfb>
-Output written on Analysis II Notes.pdf (26 pages, 318638 bytes).
+{c:/texlive/2024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolS.enc}{c:/texlive/2
+024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}{c:/texlive/2024/texmf-dis
+t/fonts/enc/dvips/mnsymbol/MnSymbolF.enc}{c:/texlive/2024/texmf-dist/fonts/enc/d
+vips/mnsymbol/MnSymbolC.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/mnsymbol
+/MnSymbolA.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolD.en
+c}<c:/texlive/2024/texmf-dist/fonts/truetype/google/noto/NotoSerif-Italic.ttf>{c
+:/texlive/2024/texmf-dist/fonts/enc/dvips/noto/a_wcjgjy.enc}<c:/texlive/2024/tex
+mf-dist/fonts/truetype/google/noto/NotoSerif-Bold.ttf><c:/texlive/2024/texmf-dis
+t/fonts/truetype/google/noto/NotoSerif-Regular.ttf><c:/texlive/2024/texmf-dist/f
+onts/type1/public/mnsymbol/MnSymbol10.pfb><c:/texlive/2024/texmf-dist/fonts/type
+1/public/mnsymbol/MnSymbol12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/
+mnsymbol/MnSymbol5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/mnsymbol/M
+nSymbol7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/notomath/NotoMathMI.
+pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/notomath/NotoMathRM.pfb><c:/t
+exlive/2024/texmf-dist/fonts/type1/google/noto/NotoSerif-Regular.pfb><c:/texlive
+/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2024/t
+exmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/texlive/2024/texmf-dis
+t/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/pu
+blic/newtx/txsym.pfb>
+Output written on Analysis II Notes.pdf (31 pages, 349174 bytes).
 
-PDF statistics: 555 PDF objects out of 1000 (max. 8388607)
- 501 compressed objects within 6 object streams
- 232 named destinations out of 1000 (max. 131072)
- 256 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 650 PDF objects out of 1000 (max. 8388607)
+ 591 compressed objects within 6 object streams
+ 274 named destinations out of 1000 (max. 131072)
+ 320 words of extra memory for PDF output out of 10000 (max. 100000000)
 

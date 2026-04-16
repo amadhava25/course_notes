@@ -1,30 +1,38 @@
-\contentsline {section}{Lecture 1: Normed Linear Spaces and Completeness}{2}{section*.2}%
-\contentsline {subsubsection}{Key Topics:}{2}{section*.3}%
-\contentsline {subsubsection}{Summary:}{2}{section*.4}%
-\contentsline {subsubsection}{Lecture:}{2}{section*.5}%
-\contentsline {section}{Lecture 3: The Hahn-Banach Theorem}{4}{section*.8}%
-\contentsline {subsubsection}{Addendum: Extra Applications of the Hahn-Banach Theorem}{4}{section*.9}%
-\contentsline {section}{Lecture 4: Weak and Strong Convergence}{5}{section*.10}%
-\contentsline {subsubsection}{Key Topics:}{5}{section*.11}%
-\contentsline {subsubsection}{Summary:}{5}{section*.12}%
-\contentsline {subsubsection}{Lecture:}{5}{section*.13}%
-\contentsline {section}{Lecture 5: The Space $\ell ^{2}(\mathbb {R})$ and Hilbert Spaces}{8}{section*.14}%
-\contentsline {subsubsection}{Key Topics:}{8}{section*.15}%
-\contentsline {subsubsection}{Summary:}{8}{section*.16}%
-\contentsline {subsubsection}{Lecture:}{8}{section*.17}%
-\contentsline {section}{Lecture 6: Hilbert Spaces Cont'd}{12}{section*.19}%
-\contentsline {subsubsection}{Key Topics:}{12}{section*.20}%
-\contentsline {subsubsection}{Summary:}{12}{section*.21}%
-\contentsline {subsubsection}{Lecture:}{12}{section*.22}%
-\contentsline {section}{Lecture 7: $L^{p}$ Spaces}{14}{section*.23}%
-\contentsline {subsubsection}{Key Topics:}{14}{section*.24}%
-\contentsline {subsubsection}{Summary:}{14}{section*.25}%
-\contentsline {subsubsection}{Lecture:}{14}{section*.26}%
-\contentsline {section}{Lectures 8-10: The Riesz-Representation Theorem and the Radon-Nikodym Theorem}{17}{section*.27}%
-\contentsline {subsubsection}{Key Topics:}{17}{section*.28}%
-\contentsline {subsubsection}{Summary:}{17}{section*.29}%
-\contentsline {subsubsection}{Lecture:}{17}{section*.30}%
-\contentsline {section}{Lecture 17: Fourier Transform}{23}{section*.31}%
-\contentsline {subsubsection}{Key Topics:}{23}{section*.32}%
-\contentsline {subsubsection}{Summary:}{23}{section*.33}%
-\contentsline {subsubsection}{Lecture:}{23}{section*.34}%
+\contentsline {section}{Lecture 1: Normed Linear Spaces and Completeness}{3}{section*.2}%
+\contentsline {subsubsection}{Key Topics:}{3}{section*.3}%
+\contentsline {subsubsection}{Summary:}{3}{section*.4}%
+\contentsline {subsubsection}{Lecture:}{3}{section*.5}%
+\contentsline {section}{Lecture 3: The Hahn-Banach Theorem}{5}{section*.8}%
+\contentsline {subsubsection}{Addendum: Extra Applications of the Hahn-Banach Theorem}{5}{section*.9}%
+\contentsline {section}{Lecture 4: Weak and Strong Convergence}{6}{section*.10}%
+\contentsline {subsubsection}{Key Topics:}{6}{section*.11}%
+\contentsline {subsubsection}{Summary:}{6}{section*.12}%
+\contentsline {subsubsection}{Lecture:}{6}{section*.13}%
+\contentsline {section}{Lecture 5: The Space $\ell ^{2}(\mathbb {R})$ and Hilbert Spaces}{9}{section*.14}%
+\contentsline {subsubsection}{Key Topics:}{9}{section*.15}%
+\contentsline {subsubsection}{Summary:}{9}{section*.16}%
+\contentsline {subsubsection}{Lecture:}{9}{section*.17}%
+\contentsline {section}{Lecture 6: Hilbert Spaces Cont'd}{13}{section*.19}%
+\contentsline {subsubsection}{Key Topics:}{13}{section*.20}%
+\contentsline {subsubsection}{Summary:}{13}{section*.21}%
+\contentsline {subsubsection}{Lecture:}{13}{section*.22}%
+\contentsline {section}{Lecture 7: $L^{p}$ Spaces}{15}{section*.23}%
+\contentsline {subsubsection}{Key Topics:}{15}{section*.24}%
+\contentsline {subsubsection}{Summary:}{15}{section*.25}%
+\contentsline {subsubsection}{Lecture:}{15}{section*.26}%
+\contentsline {section}{Lectures 8-10: The Riesz-Representation Theorem and the Radon-Nikodym Theorem}{18}{section*.27}%
+\contentsline {subsubsection}{Key Topics:}{18}{section*.28}%
+\contentsline {subsubsection}{Summary:}{18}{section*.29}%
+\contentsline {subsubsection}{Lecture:}{18}{section*.30}%
+\contentsline {section}{Lecture 17: Fourier Transform}{24}{section*.31}%
+\contentsline {subsubsection}{Key Topics:}{24}{section*.32}%
+\contentsline {subsubsection}{Summary:}{24}{section*.33}%
+\contentsline {subsubsection}{Lecture:}{24}{section*.34}%
+\contentsline {section}{Lecture 18: Hausdorff-Young Theorem for Fourier Transform}{28}{section*.35}%
+\contentsline {subsubsection}{Key Topics:}{28}{section*.36}%
+\contentsline {subsubsection}{Summary:}{28}{section*.37}%
+\contentsline {subsubsection}{Lecture:}{28}{section*.38}%
+\contentsline {section}{Lectures 19 - 20: Definitions in Distribution Theory}{30}{section*.39}%
+\contentsline {subsubsection}{Key Topics:}{30}{section*.40}%
+\contentsline {subsubsection}{Summary:}{30}{section*.41}%
+\contentsline {subsubsection}{Lecture:}{30}{section*.42}%
