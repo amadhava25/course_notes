@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  16 APR 2026 09:19
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  26 APR 2026 22:09
  restricted system commands enabled.
-**"Analysis II Notes.tex"
-("./Analysis II Notes.tex"
+**"Analysis II.tex"
+("./Analysis II.tex"
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
 Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
@@ -2031,8 +2031,8 @@ sep char (CT)
 \@centerbox=\box138
 \c@ROWcellindex@=\count406
 )
-("./Analysis II Notes.aux")
-\openout1 = Analysis II Notes.aux
+("./Analysis II.aux")
+\openout1 = Analysis II.aux
 
 LaTeX Font Info:    Checking defaults for OML/notomi/m/it on input line 26.
 LaTeX Font Info:    Trying to load font information for OML+notomi on input lin
@@ -2154,10 +2154,10 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 26.
-("./Analysis II Notes.out") ("./Analysis II Notes.out")
+("./Analysis II.out") ("./Analysis II.out")
 \@outlinefile=\write4
 
-\openout4 = Analysis II Notes.out
+\openout4 = Analysis II.out
 
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
@@ -2233,8 +2233,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
 
 (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-("./Analysis II Notes.toc"
+) ("./Analysis II.toc"
 LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
 (Font)              scaled to size 8.99994pt on input line 2.
 LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
@@ -2278,7 +2277,7 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 {c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write5
 
-\openout5 = Analysis II Notes.toc
+\openout5 = Analysis II.toc
 
 
 LaTeX Font Info:    Font shape `TU/NotoSerif(1)/m/sl' in size <10> not availabl
@@ -2304,137 +2303,133 @@ ssion for plot 1 (type 'pgfplothandlerlineto'): y expression '\n {25}' contains
  a TeX macro.
 
 
-[4]
-
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 114.
+(hyperref)                than one, level fixed on input line 111.
 
+
+
+[4]
+LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 120.
+LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
+(Font)              scaled to size 5.57996pt on input line 120.
+LaTeX Font Info:    Font shape `OML/notomi/m/it' will be
+(Font)              scaled to size 8.0pt on input line 120.
+LaTeX Font Info:    Font shape `OML/notomi/m/it' will be
+(Font)              scaled to size 6.2pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 8.0pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 6.2pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 8.0pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 6.2pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 8.0pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 6.2pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 8.0pt on input line 120.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 6.2pt on input line 120.
 
 
 [5]
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 126.
-
-LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 135.
-LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
-(Font)              scaled to size 5.57996pt on input line 135.
-LaTeX Font Info:    Font shape `OML/notomi/m/it' will be
-(Font)              scaled to size 8.0pt on input line 135.
-LaTeX Font Info:    Font shape `OML/notomi/m/it' will be
-(Font)              scaled to size 6.2pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 8.0pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.2pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 8.0pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.2pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 8.0pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.2pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 8.0pt on input line 135.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.2pt on input line 135.
-
-
 [6]
 
 [7]
-
-[8]
 LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
-(Font)              scaled to size 12.9599pt on input line 245.
+(Font)              scaled to size 12.9599pt on input line 230.
 LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
-(Font)              scaled to size 9.44994pt on input line 245.
+(Font)              scaled to size 9.44994pt on input line 230.
 LaTeX Font Info:    Font shape `OT1/NotoSerif-TLF/m/n' will be
-(Font)              scaled to size 7.10994pt on input line 245.
+(Font)              scaled to size 7.10994pt on input line 230.
 LaTeX Font Info:    Font shape `OML/notomi/m/it' will be
-(Font)              scaled to size 14.4pt on input line 245.
+(Font)              scaled to size 14.4pt on input line 230.
 LaTeX Font Info:    Font shape `OML/notomi/m/it' will be
-(Font)              scaled to size 10.5pt on input line 245.
+(Font)              scaled to size 10.5pt on input line 230.
 LaTeX Font Info:    Font shape `OML/notomi/m/it' will be
-(Font)              scaled to size 7.9pt on input line 245.
+(Font)              scaled to size 7.9pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 14.4pt on input line 245.
+(Font)              scaled to size 14.4pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 10.5pt on input line 245.
+(Font)              scaled to size 10.5pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 7.9pt on input line 245.
+(Font)              scaled to size 7.9pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 14.4pt on input line 245.
+(Font)              scaled to size 14.4pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 10.5pt on input line 245.
+(Font)              scaled to size 10.5pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 7.9pt on input line 245.
+(Font)              scaled to size 7.9pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 14.4pt on input line 245.
+(Font)              scaled to size 14.4pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 10.5pt on input line 245.
+(Font)              scaled to size 10.5pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 7.9pt on input line 245.
+(Font)              scaled to size 7.9pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 14.4pt on input line 245.
+(Font)              scaled to size 14.4pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 10.5pt on input line 245.
+(Font)              scaled to size 10.5pt on input line 230.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 7.9pt on input line 245.
+(Font)              scaled to size 7.9pt on input line 230.
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 246.
+(hyperref)                than one, level fixed on input line 231.
 
-LaTeX Font Info:    Trying to load font information for U+eus on input line 262
+LaTeX Font Info:    Trying to load font information for U+eus on input line 247
 .
 (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/ueus.fd
 File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
 
-[9
+[8
 warning  (pdf backend): ignoring duplicate destination with the name 'equation.0
 .16'
 ]
-Overfull \hbox (8.05843pt too wide) in paragraph at lines 303--304
+Overfull \hbox (8.05843pt too wide) in paragraph at lines 288--289
 \TU/NotoSerif(1)/m/n/10 of this state-ment fol-lows from the uni-form bound-ed-n
 esss and a Cantor-diagonalization-
  []
 
 
 
+[9]
+
 [10]
 
 [11]
 
-[12]
-
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 412.
+(hyperref)                than one, level fixed on input line 397.
 
 
+
+[12]
 
 [13]
 
-[14]
-
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 492.
+(hyperref)                than one, level fixed on input line 477.
 
 
+
+[14]
 
 [15]
 
 [16]
 
-[17]
-
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 616.
+(hyperref)                than one, level fixed on input line 601.
 
 
+
+[17]
 
 [18]
 
@@ -2443,22 +2438,20 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 [20]
 
 [21]
-
-[22]
-Overfull \hbox (24.29512pt too wide) in paragraph at lines 879--881
+Overfull \hbox (24.29512pt too wide) in paragraph at lines 864--866
 \TU/NotoSerif(1)/m/n/10 proof of (1)). Hence, by the Dom-i-nated Con-ver-gence 
 The-o-rem, we con-clude that $[][] [][] \U/MnSymbolD/m/n/10 ^^@
  []
 
 
 
-[23]
+[22]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 895.
+(hyperref)                than one, level fixed on input line 880.
 
 
-Overfull \hbox (2.8819pt too wide) in paragraph at lines 895--896
+Overfull \hbox (2.8819pt too wide) in paragraph at lines 880--881
 \TU/NotoSerif(1)/m/n/10 (1) Fourier Trans-form, (2) Fourier In-ver-sion The-o-re
 m, (3) Riemann-Lebesgue Lemma, (4) Plancherel’s
  []
@@ -2466,49 +2459,64 @@ m, (3) Riemann-Lebesgue Lemma, (4) Plancherel’s
 \tmpboxcontent=\box140
 
 
+[23]
+
 [24]
 
 [25]
 
 [26]
 
-[27]
-
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1077.
+(hyperref)                than one, level fixed on input line 1064.
 
 
+
+[27]
 
 [28]
 
 [29]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1168.
+(hyperref)                than one, level fixed on input line 1194.
 
 
 
 [30]
 
-[31] ("./Analysis II Notes.aux")
+[31]
+Overfull \hbox (57.48584pt too wide) in paragraph at lines 1296--1299
+\OML/notomi/m/it/10 @[]\OMX/MnSymbolE/m/n/10 \OML/notomi/m/it/10 '\OMX/MnSymb
+olE/m/n/10 \OML/notomi/m/it/10 x\OMX/MnSymbolE/m/n/10 \U/MnSymbolC/m/n/10
+ \OT1/NotoSerif-TLF/m/n/10 2\OML/notomi/m/it/10 ix\OMX/MnSymbolE/m/n/10 []
+ \U/MnSymbolD/m/n/10 > \OML/notomi/m/it/10 L[]\OMX/MnSymbolE/m/n/10 \U/ntxs
+ym/m/n/10 R[]\OMX/MnSymbolE/m/n/10 $ \TU/NotoSerif(1)/m/n/10 (by prop-erty of be-ing a Schwartz func-tion), we must have $[][] [] \U/MnSymbolD/m/n/10 @
+ []
+
+
+
+[32]
+
+[33] ("./Analysis II.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
  ***********
-Package rerunfilecheck Info: File `"Analysis II Notes".out' has not changed.
+Package rerunfilecheck Info: File `"Analysis II".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49512 strings out of 475915
+ 49520 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 4109 words of node memory still in use:
-   34 hlist, 5 vlist, 4 rule, 8 math, 26 glue, 22 kern, 192 glyph, 352 attribute
-, 110 glue_spec, 352 attribute_list, 2 write nodes
-   avail lists: 2:1253,3:907,4:363,5:722,6:140,7:7272,8:79,9:1517,10:8,11:327
+ 7237 words of node memory still in use:
+   110 hlist, 23 vlist, 9 rule, 28 math, 107 glue, 94 kern, 323 glyph, 414 attri
+bute, 111 glue_spec, 414 attribute_list, 2 write nodes
+   avail lists: 2:1129,3:956,4:379,5:651,6:145,7:6705,8:79,9:1418,10:8,11:332
  70464 multiletter control sequences out of 65536+600000
  381 fonts using 39816263 bytes
- 101i,25n,147p,941b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,25n,147p,935b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolS.enc}{c:/texlive/2
 024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}{c:/texlive/2024/texmf-dis
 t/fonts/enc/dvips/mnsymbol/MnSymbolF.enc}{c:/texlive/2024/texmf-dist/fonts/enc/d
@@ -2528,10 +2536,10 @@ exlive/2024/texmf-dist/fonts/type1/google/noto/NotoSerif-Regular.pfb><c:/texlive
 exmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/texlive/2024/texmf-dis
 t/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/pu
 blic/newtx/txsym.pfb>
-Output written on Analysis II Notes.pdf (31 pages, 349174 bytes).
+Output written on Analysis II.pdf (33 pages, 358718 bytes).
 
-PDF statistics: 650 PDF objects out of 1000 (max. 8388607)
- 591 compressed objects within 6 object streams
- 274 named destinations out of 1000 (max. 131072)
- 320 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 658 PDF objects out of 1000 (max. 8388607)
+ 597 compressed objects within 6 object streams
+ 282 named destinations out of 1000 (max. 131072)
+ 304 words of extra memory for PDF output out of 10000 (max. 100000000)
 

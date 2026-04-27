@@ -32,7 +32,7 @@
 \contentsline {subsubsection}{Key Topics:}{28}{section*.36}%
 \contentsline {subsubsection}{Summary:}{28}{section*.37}%
 \contentsline {subsubsection}{Lecture:}{28}{section*.38}%
-\contentsline {section}{Lectures 19 - 20: Definitions in Distribution Theory}{30}{section*.39}%
-\contentsline {subsubsection}{Key Topics:}{30}{section*.40}%
-\contentsline {subsubsection}{Summary:}{30}{section*.41}%
-\contentsline {subsubsection}{Lecture:}{30}{section*.42}%
+\contentsline {section}{Lectures 19 - 20: Definitions in Distribution Theory}{31}{section*.39}%
+\contentsline {subsubsection}{Key Topics:}{31}{section*.40}%
+\contentsline {subsubsection}{Summary:}{31}{section*.41}%
+\contentsline {subsubsection}{Lecture:}{31}{section*.42}%
