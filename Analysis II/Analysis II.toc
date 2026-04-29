@@ -38,3 +38,7 @@
 \contentsline {subsubsection}{Key Topics:}{34}{section*.42}%
 \contentsline {subsubsection}{Summary:}{34}{section*.43}%
 \contentsline {subsubsection}{Lecture:}{34}{section*.44}%
+\contentsline {section}{Lecture 23: Sobolev Spaces}{38}{section*.45}%
+\contentsline {subsubsection}{Key Topics:}{38}{section*.46}%
+\contentsline {subsubsection}{Summary:}{38}{section*.47}%
+\contentsline {subsubsection}{Lecure:}{38}{section*.48}%

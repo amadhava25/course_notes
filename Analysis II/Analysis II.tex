@@ -1562,4 +1562,87 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 	\item \textbf{Cor. (Fourier Transform for Singleton Support)} Let $\operatorname{supp}{F} = \{0\}$. Then $\hat{F}(\xi)$ is a polynomial. 
 \end{itemize}
 
+\newpage 
+\section{Lecture 23: Sobolev Spaces}
+\subsubsection{Key Topics:} (1) Fourier Transform of Tempered Distributions, (2) Sobolev spaces, (3) Sobolev Embedding Theorem, (4) Rellich-Kondrachov Embedding Theorem 
+
+\subsubsection{Summary:} In this lecture, we finish our discussion of the Fourier transform of tempered distribution, and use the developed theory to define and study properties of Sobolev spaces. In particular, we will study the Sobolev and Rellich-Kondrachov Embedding theorems. 
+
+\subsubsection{Lecure:} 
+\begin{itemize}
+	\item \textbf{Prop. (Properties of Distributions with Compact Support)} We have the following two results: \vspace{-0.25cm}
+		\begin{enumerate}[itemsep =-2pt,label =(\alph{*})]
+			\item If $F$ is a distribution with compact support, then $F = \sum_{|\alpha|\leq N}C_{\alpha}\partial^{\alpha}f$ for some (not necessarily unique) constants $C_{\alpha}$ and $f \in C_{0}(\mathbb{R}^{n})$. 
+			\item If $F$ is a distribution and $V \Subset U$, then $F = \sum_{|\alpha|\leq N}C_{\alpha}\partial^{\alpha}f$ on $V$, for some $f \in C_{0}(\mathbb{R}^{n})$ and constants $C_{\alpha}$. 
+		\end{enumerate}
+	\begin{solutions}
+		\begin{enumerate}[itemsep =-2pt,label = (\alph{*})]
+			\item Let $F$ be a distribution with compact support. Then since $\hat{F}(\xi)$ is a slowly increasing smooth function, for some $M$ large enough, we must have $(1 + 4\pi^{2}|\xi|^{2})^{-M}\hat{F}(\xi) \in L^{1}(\mathbb{R}^{n})$. Hence, if 
+				\begin{equation}
+					f(x) = \left[(1 + 4\pi^{2}|\xi|^{2})^{-M}\hat{F}(\xi)\right]^{\vee} \in C_{0}(\mathbb{R}^{n}). 
+				\end{equation}
+			Moreover, 
+				\begin{equation}
+					\hat{f} = (1 + 4\pi^{2}|\xi|^{2})^{-M}\hat{F}(\xi) \in \mathcal{S}' \implies \hat{F}(\xi) = (1 + 4\pi^{2}|\xi|^{2})^{M}\hat{f} = \left[(1 - \sum_{j}\partial_{j}^{2})^{M}f\right]^{\wedge}. 
+				\end{equation}
+			Hence, we conclude that 
+				\begin{equation}
+					F = \left(1 - \sum_{j}\partial_{j}^{2}\right)f, \qquad f \in C_{0}(\mathbb{R}^{n}). 
+				\end{equation}
+			\item Let $\psi \in C_{c}^{\infty}(\mathbb{R}^{n})$ with $\psi \equiv 1$ on $V$. Then $\psi F$ is a distribution with compact support. Then applying part (1), there exists some $f \in C_{0}(\mathbb{R}^{n})$ so that 
+				\begin{equation}
+					\psi F = \sum_{|\alpha|\leq N}C_{\alpha}\partial^{\alpha}f. 
+				\end{equation}
+			Since $\psi \equiv 1$ on $V$, we have $F = \sum_{|\alpha|\leq N}C_{\alpha}\partial^{\alpha}f$ on $V$. 
+		\end{enumerate}
+	\end{solutions} 
+	
+	\item \textbf{Def. (Sobolev Spaces for Positive Integers)} Let $k\in \mathbb{Z}_{\geq 0}$. We define, 
+		\begin{equation}
+			H^{k}(\mathbb{R}^{n}) \coloneqq \brac*{f \in L^{2}(\mathbb{R}^{n}): \partial^{\alpha}f \in L^{2}(\mathbb{R}^{n}) \text{ for all $|\alpha|\leq k$}},  
+		\end{equation}
+	to be the Sobolev space corresponding to the positive integer $k$. Note that for each $f \in H^{k}(\mathbb{R}^{n})$, since $f \in L^{2}(\mathbb{R}^{n}) \subset L^{1}_{\text{loc}}(\mathbb{R}^{n})$, $f$ is a distribution. Hence, $\partial^{\alpha}f$ are well-defined as distributions. Importantly, the integration by parts formula: 
+		\begin{equation}
+			\int_{\mathbb{R}^{n}}\partial^{\alpha}\phi \cdot f\;dx = (-1)^{|\alpha|}\int_{\mathbb{R}^{n}}\phi \partial^{\alpha}f\; dx, \qquad \forall \phi \in C_{c}^{\infty}(\mathbb{R}^{n}). 
+		\end{equation} 
+	
+	\item \textbf{Obs. ($H^{k}(\mathbb{R}^{n})$ as a Hilbert Space)} Consider the map $(\empspace, \empspace)_{k}: H^{k}(\mathbb{R}^{n}) \to H^{k}(\mathbb{R}^{n})$ defined by 
+		\begin{equation}
+			(f, g)_{k} \longmapsto \int_{\mathbb{R}^{n}}\sum_{|\alpha|\leq k}\partial^{\alpha}f \cdot \overline{\partial^{\alpha}g}\;dx. 
+		\end{equation}
+	Then this map forms an inner product on $H^{k}(\mathbb{R}^{n})$. Since the Fourier transform is an $L^{2}$ isometry, 
+		\begin{equation}
+			\int_{\mathbb{R}^{n}}\sum_{|\alpha|\leq k}(\partial^{\alpha}f)\cdot \overline{\partial^{\alpha}g}\;dx = \int_{\mathbb{R}^{n}}\sum_{|\alpha|\leq k}\left[\partial^{\alpha}f\right]^{\wedge}(\xi)\overline{\left[\partial^{\alpha}g\right]^{\wedge}}(\xi)\;dx = \int_{\mathbb{R}^{n}}\sum_{|\alpha|\leq k}(4\pi^{2}|\xi^{\alpha}|^{2})\hat{f}(\xi)\hat{g}(\xi)\;dx. 
+		\end{equation}
+	Using this, the norms can be defined as: 
+		\begin{equation}
+			\norm{f}_{H^{k}(\mathbb{R}^{n})} = \sum_{|\alpha|\leq k}\norm{\partial^{\alpha}f}_{L^{2}(\mathbb{R}^{n})} \approx \sum_{|\alpha|\leq k}\left(\int_{\mathbb{R}^{n}}|\xi^{\alpha}|^{2}|\hat{f}(\xi)|^{2}\;d\xi\right)^{1/2} \approx \left(\int_{\mathbb{R}^{n}}(1 + |\xi|^{2})^{k}|\hat{f}(\xi)|^{2}\;d\xi\right)^{1/2}. 
+		\end{equation}
+	
+	\item \textbf{Def. (General Sobolev Space)} For $s \in \mathbb{R}$, we define 
+		\begin{equation}
+			H^{s}(\mathbb{R}^{n}) \coloneqq \brac*{f \in \mathcal{S}': (1 + |\xi|^{2})^{s/2}\hat{f} \in L^{2}(\mathbb{R}^{n})}. 
+		\end{equation}
+	This definition is well-defined for the following reasons: since $f \in \mathcal{S}'$, $\hat{f} \in \mathcal{S}'$. Hence, since $(1 + |\xi|^{2})^{s/2}$ is a slowly increasing smooth function, $(1 + |\zeta|^{2})^{s/2}\hat{f}$ is also contained in $\mathcal{S}'$. 
+	
+	\item \textbf{Def. (Inner Product on $H^{s}(\mathbb{R}^{n})$)} We can extend the inner product and norm defined above as follows: 
+		\begin{equation}
+			\braket{f,g}_{s} \coloneqq \int_{\mathbb{R}^{n}}(1 + |\xi|^{2})^{s}\hat{f}(\xi)\overline{\hat{g}}(\xi)\;d\xi \qquad \text{and} \qquad \norm{f}_{s} = \left(\int_{\mathbb{R}^{n}}(1 + |\xi|^{2})^{s/2}|\hat{f}(\xi)|^{2}\;d\xi\right)^{1/2}.
+		\end{equation}
+	
+	\item \textbf{Lem. (Properties of the Sobolev Spaces)} We have the following results: \vspace{-0.25cm}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item The Fourier transform is a unitary isomorphism from $H^{s}(\mathbb{R}^{n})$ to $L^{2}(\mathbb{R}^{n},\mu_{s})$, where $d\mu_{s}(\xi) = (1 + |\xi|^{2})^{s}\;d\xi$. 
+			\item $\mathcal{S}$ is dense in $H^{s}$ for all $s \in \mathbb{R}$. 
+			\item $H^{0} = L^{2}$. 
+			\item $\partial^{\alpha}$ is a bounded linear map from $H^{s}$ to $H^{s - |\alpha|}$. 
+		\end{enumerate}
+	\begin{solutions}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item Follows directly from the definition of the Sobolev spaces. 
+			\item Let $f \in H^{s}$, then $(1 + |\xi|^{2})^{s/2} \hat{f}(\xi) \in L^{2}(\mathbb{R}^{n})$. Denote $g(\xi) = (1 + |\xi|^{2})^{s/2}\hat{f}(\xi) \in L^{2}(\mathbb{R}^{n})$. Then since $C_{c}^{\infty}(\mathbb{R}^{n})$ is dense in $L^{2}(\mathbb{R}^{n})$, we can find $g_{j} \in C_{c}^{\infty}(\mathbb{R}^{n})$ so that $g_{j} \to g$. 
+		\end{enumerate}
+	\end{solutions} 
+\end{itemize}
+
 \end{document}
