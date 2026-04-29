@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  26 APR 2026 22:09
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.7.8)  28 APR 2026 22:14
  restricted system commands enabled.
 **"Analysis II.tex"
 ("./Analysis II.tex"
@@ -2498,7 +2498,20 @@ ym/m/n/10 R[]\OMX/MnSymbolE/m/n/10 $ \TU/NotoSerif(1)/m/n/10 (by prop-erty of 
 
 [32]
 
-[33] ("./Analysis II.aux")
+[33]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 1359.
+
+
+
+[34]
+
+[35]
+
+[36]
+
+[37] ("./Analysis II.aux")
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -2508,13 +2521,13 @@ Package rerunfilecheck Info: File `"Analysis II".out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49520 strings out of 475915
+ 49571 strings out of 475915
  125126,1977958 words of node,token memory allocated
- 7237 words of node memory still in use:
-   110 hlist, 23 vlist, 9 rule, 28 math, 107 glue, 94 kern, 323 glyph, 414 attri
-bute, 111 glue_spec, 414 attribute_list, 2 write nodes
-   avail lists: 2:1129,3:956,4:379,5:651,6:145,7:6705,8:79,9:1418,10:8,11:332
- 70464 multiletter control sequences out of 65536+600000
+ 6997 words of node memory still in use:
+   104 hlist, 17 vlist, 7 rule, 28 math, 99 glue, 76 kern, 287 glyph, 485 attrib
+ute, 111 glue_spec, 485 attribute_list, 2 write nodes
+   avail lists: 2:1082,3:956,4:379,5:673,6:145,7:6749,8:79,9:1432,10:8,11:332
+ 70468 multiletter control sequences out of 65536+600000
  381 fonts using 39816263 bytes
  101i,25n,147p,935b,2471s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2024/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolS.enc}{c:/texlive/2
@@ -2536,10 +2549,10 @@ exlive/2024/texmf-dist/fonts/type1/google/noto/NotoSerif-Regular.pfb><c:/texlive
 exmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/texlive/2024/texmf-dis
 t/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/pu
 blic/newtx/txsym.pfb>
-Output written on Analysis II.pdf (33 pages, 358718 bytes).
+Output written on Analysis II.pdf (37 pages, 388173 bytes).
 
-PDF statistics: 658 PDF objects out of 1000 (max. 8388607)
- 597 compressed objects within 6 object streams
- 282 named destinations out of 1000 (max. 131072)
- 304 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 736 PDF objects out of 1000 (max. 8388607)
+ 670 compressed objects within 7 object streams
+ 329 named destinations out of 1000 (max. 131072)
+ 336 words of extra memory for PDF output out of 10000 (max. 100000000)
 

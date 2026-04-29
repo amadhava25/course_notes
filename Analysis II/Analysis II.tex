@@ -1353,6 +1353,213 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
  			Since $\phi_{j} \to \phi$ uniformly, their norms must be uniformly bounded: there exists some $C > 0$ so that for \textit{all} $j$, $\norm{\phi_{j}}_{\infty} \leq M$. Hence, since $C \cdot e^{x^{2}} \in L^{1}([a,b])$, we conclude by the dominated convergence theorem that $\ell(\phi_{j}) \to \ell(\phi)$. Hence, $\ell$ is a distribution. But $\ell$ is not a \textit{tempered} distribution: consider the Schwartz function $e^{-x^{2}}$. Then $\ell(e^{-x^{2}})$ is undefined. 
  		}
 \end{itemize}
+
+\newpage 
+\section{Lecture 22: Convolution and Fourier Transforms of a Tempered Distribution}	
+\subsubsection{Key Topics:} (1) Slowly increasing smooth functions, (2) Bounding estimates for tempered distributions, (3) Convolution of tempered distributions,  (4) Fourier transform of a distribution with compact support 
+
+\subsubsection{Summary:} In this lecture, we discuss smoothly increasing functions, bounding estimates for tempered distributions, and the convolution of tempered distributions with test functions. Then we turn to define the Fourier transform of a distribution with compact support. 
+
+\subsubsection{Lecture:} 
+\begin{itemize}
+	\item \textbf{Def. (Slowly Increasing $C^{\infty}$-Function)} Let $\psi \in C^{\infty}(\mathbb{R}^{n})$. We say that $\psi$ is slowly increasing, if for any multiindex $\alpha$, we have 
+		\begin{equation}
+			\abs{\partial^{\alpha}\psi(x)} \leq C_{\alpha}(1 + |x|)^{N(\alpha)}, \forall x \in \mathbb{R}^{n}, 
+		\end{equation}
+	for some $C_{\alpha} > 0$ and $N_{\alpha} \in \mathbb{Z}_{\geq 0}$. I.e., the derivatives of $\psi(x)$ grow slower than any polynomial. 
 	
+	\item \textbf{Ex 1. (Non-slowly Increasing Function)} The smooth function $e^{x^{2}}$ is \textit{not} slowly increasing. 
+		
+		{\color{orange}
+			Let $\psi(x) = e^{x^{2}} \in C^{\infty}(\mathbb{R})$. Note that 	
+				\begin{equation}
+					e^{x^{2}} = 1 + x^{2} + \frac{x^{4}}{2} + \frac{x^{6}}{6} + \dotsm. 
+				\end{equation}
+			In the limit $|x| \to \infty$, $e^{x^{2}} \gg (1 + |x|)^{N}$ for any positive integer $N$. 
+		}
+	\item \textbf{Ex 2. (Polynomials)} Every polynomial is slowly increasing. 
+	
+	\item \textbf{Lem. (Boundedness Property of Tempered Distribution)} Let $F \in \mathcal{S}'$. Then there exists $C > 0$, $N_{1}, N_{2} \in \mathbb{Z}_{\geq 0}$ so that for all $\phi \in \mathcal{S}$, 
+		\begin{equation}
+			\abs{F(\phi)} \leq C \cdot \sum_{|\alpha| \leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N_{1}}|\partial^{\alpha}\phi|(x). 
+		\end{equation}
+		
+	{\color{orange}
+		Let us fix $F \in \mathcal{S}'$; we will argue by contradiction. Assume to the contrary that for each $C > 0$, $N_{1}, N_{2} \in \mathbb{Z}_{\geq 0}$, there exists some $\phi \in \mathcal{S}$ so that 
+			\begin{equation}
+				|F(\phi)| > C \cdot \sum_{|\alpha| \leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N_{1}}|\partial^{\alpha}\phi|. 
+			\end{equation}	
+		Fix some $C = N_{1} = N_{2}$. For each $j \in \mathbb{N}$, let $\phi_{j} \in \mathcal{S}$ be a Schwartz function that satisfies the above inequality. Define the normalized Schwartz function 
+			\begin{equation}
+				\ti{\phi}_{j} = \frac{\phi_{j}}{jC \cdot \sum_{|\alpha| \leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N_{1}}|\partial^{\alpha}\phi_{j}|}. 
+			\end{equation}
+		Notice that by constuction, $|F(\ti{\phi}_{j})| > 1$ for each $j$. On the other hand, for each $j$, 
+			\begin{equation}
+				C \cdot \sum_{|\alpha| \leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1+ |x|)^{N_{1}}|\partial^{\alpha}\phi_{j}| = j^{-1} \longrightarrow 0 \text{ as $j \to \infty$}. 
+			\end{equation}
+		This implies that $\ti{\phi}_{j} \to 0$ as $j \to \infty$. But this contradicts the fact that $|\ell(\phi_{j})| > 1$ for all $j$. Hence, by contradiction, the proof concludes. 
+	}
+	
+	\item \textbf{Lem. (Convolution of Tempered Distribution with Smooth Function)} Let $F \in \mathcal{S}'$, and $\psi \in C^{\infty}(\mathbb{R}^{n})$. Then the following are true: \vspace{-0.25cm}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item $F \ast \psi \in C^{\infty}(\mathbb{R}^{n})$. 
+			\item $\partial^{\alpha}(F \ast \psi)(x) = (F \ast \partial^{\alpha}\psi)(x) = F(\tau_{x}(\partial^{\alpha}\psi)_{R})$. 
+		\end{enumerate}
+	
+	\item \textbf{Lem. (Convergence of Product by Smoothly Increasing $C^{\infty}$-Function)} Let $\phi_{j}, \phi \in \mathcal{S}$, and assume that $\phi_{j} \to \phi$ in $\mathcal{S}$. Let $\psi$ be a slowly increasing $C^{\infty}$ function. Then $\psi \phi_{j} \to \psi \phi$. Hence, if $F \in \mathcal{S}'$, then for any slowly increasing smooth function $\psi$, $\psi F \in \mathcal{S}'$, where $(\psi \cdot F)(\phi) = F(\psi\phi)$, for all $\phi \in \mathcal{S}$. 
+	
+	\begin{solutions}
+		Let $N \in \mathbb{Z}_{\geq 0}$, $k \in \mathbb{Z}_{\geq 0}$. Then 
+			\begin{align}
+				\begin{split}
+					(1 + |x|)^{N}\abs{D^{k}(\psi \phi_{j} - \psi \phi)}	 &\leq C (1 + |x|)^{N} \cdot \sum_{\ell = 0}^{k}|D^{\ell}\psi|\cdot |D^{k - \ell}(\phi_{j} - \phi)| \qquad (\text{by the Leibniz Product Rule}) \\
+					&\leq C'(1 + |x|)^{N} \cdot \sum_{\ell= 0}^{k}(1 + |x|)^{N_{\ell}}\abs{D^{k - \ell}(\phi_{j} - \phi)}. 
+				\end{split}
+			\end{align}
+		Hence, since $\phi_{j} \to \phi$ in $\mathbb{R}^{n}$, by tsking the supremum of both sides and taking the limit $j \to \infty$, we see that the above equation tends to zero. Hence, $\psi\phi_{j} \to \psi \phi$ in $\mathcal{S}$. Now, fix some $F \in \mathcal{S}'$, and some slowly increasing smooth function $\psi$. Linearity follows immediately by construction. Next let $\phi_{j}, \phi \in \mathcal{S}$ so that $\phi_{j} \to \phi$ in $\mathcal{S}$. Then since $\psi \phi_{j} \to \psi \phi$, where $\psi\phi \in \mathcal{S}$, 
+			\begin{equation}
+				\psi F(\phi_{j}) = F(\psi \phi_{j}) \xrightarrow{j \to \infty} F(\psi \phi) = \psi F(\phi). 
+			\end{equation}
+		This proves continuity. Therefore, $\psi F \in \mathcal{S}'$. 
+	\end{solutions}
+	
+	\item \textbf{Lem. (Base Lemma for Defining Fourier Transform)} We have the following results: \vspace{-0.25cm}
+		\begin{enumerate}[itemsep=-2pt,label = (\arabic{*})]
+			\item If $\phi_{j} \to \phi$ in $\mathcal{S}$, $\psi_{j} \to \psi$ in $\mathcal{S}$, then $\phi_{j} \ast \psi_{j} \to \phi \ast \psi$ in $\mathcal{S}$. 
+			\item If $\psi_{j} \to \psi$ in $\mathcal{S}$, $F \in \mathcal{S}'$, then $F \ast \psi_{j} \to F \ast \psi$ in the space of slowly increasing smooth functions. 
+			\item If $\psi_{j} \to \psi$ in the space of slowly increasing smooth functions, $\phi_{j} \to \phi$ in $\mathcal{S}$, then 
+				\begin{equation}
+					\int_{\mathbb{R}^{n}}\psi_{j}\phi_{j}\;dx\longrightarrow \int_{\mathbb{R}^{n}}\psi\phi\;dx. 
+				\end{equation}
+		\end{enumerate}
+	
+	{\color{orange}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item Let $x \in \mathbb{R}^{n}$, $\{\varphi_{j}\}, \{\psi_{j}\}, \varphi, \psi$ be contained in $\mathcal{S}$ so that $\varphi_{j} \to \varphi$ and $\psi_{j} \to \psi$ in $\mathcal{S}$. Fix some arbitrary multiindex $\alpha$. We write, 
+			\begin{align}
+				\begin{split}
+					\abs{\partial^{\alpha}(\varphi_{j} \ast \psi_{j} - \varphi \ast \psi)} &= \abs{\partial^{\alpha}(\varphi_{j} \ast \psi_{j} - \varphi \ast \psi_{j} + \varphi \ast \psi_{j} - \varphi \ast \psi)} \\
+					&\leq \abs{\partial^{\alpha}(\varphi_{j} - \varphi) \ast \psi_{j}} + \abs{\partial^{\alpha}(\psi_{j} - \psi) \ast \varphi}. 
+				\end{split}
+			\end{align}
+			By the triangle inequality, one has 
+			\begin{equation}
+				(1 + |x|) \leq C_{N}'(1 + |x - y|)(1 + |y|) \implies (1 + |x|)^{N} \leq C_{N}(1 + |x - y|)^{N}(1 + |y|)^{N}, \qquad C_{N} \in \mathbb{R}. 
+			\end{equation}
+			Hence, this implies that 
+			\begin{align}
+				\begin{split}
+					(1 + |x|)^{N}\abs{\partial^{\alpha}(\varphi_{j} \ast \psi_{j} - \varphi \ast \psi)} &\leq C_{N} (1 + |x - y|)^{N}(1 + |y|)^{N} \abs{\partial^{\alpha}(\varphi_{j} - \varphi) \ast \psi_{j}}\\
+					&\qquad + C_{N}(1 + |x - y|)^{N}(1 + |y|)^{N}\abs{\partial^{\alpha}(\psi_{j} - \psi)\ast \varphi} \\
+					&= C_{N}\int_{\mathbb{R}^{n}}(1 + |x - y|)^{N}|\partial^{\alpha}(\varphi_{j} - \varphi)(x - y)|(1 + |y|)^{N}|\psi_{j}(y)|\;dy \\
+					&\qquad + C_{N}\int_{\mathbb{R}^{n}}(1 + |x-y|)^{N}\abs{\partial^{\alpha}(\psi_{j} - \psi)(x-y)}(1 + |y|)^{N}\abs{\varphi(y)}\;dy \\
+					&\leq C_{N}\norm{(1 + |\empspace|)^{N}\abs{\partial^{\alpha}(\varphi_{j} - \varphi)(\empspace)}}_{\infty}\cdot \norm{(1 + |\empspace|)^{N}\abs{\psi_{j}(\empspace)}}_{1}\\
+					&\qquad + C_{N}\norm{(1 + \abs{\empspace})^{N}\abs{\partial^{\alpha}(\psi_{j} - \psi)(\empspace)}}_{\infty}\cdot \norm{(1 + \abs{\empspace})^{N}\abs{\varphi(\empspace)}}_{1}\\
+					&\xrightarrow{j \to \infty} 0 \quad \text{by hypothesis}. 
+				\end{split}
+			\end{align}
+			Since $x \in \mathbb{R}^{n}$ was arbitrary, one has 
+			\begin{equation}
+				\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N}\abs{\partial^{\alpha}(\varphi_{j} \ast \psi_{j} - \varphi \ast \psi)} \xrightarrow{j \to \infty} 0, 
+			\end{equation}
+			so that $\varphi_{j} \ast \psi_{j} \to \varphi \ast \psi$ in $\mathcal{S}$. 
+			
+			\item Let $\psi_{j} \to \psi$ in $\mathcal{S}$, and fix $F \in \mathcal{S}'$. We begin by noting that 
+			\begin{equation}
+				\abs{\partial^{\alpha}(F \ast \psi_{j} - F \ast \psi)} = \abs{\partial^{\alpha}(F \ast (\psi_{j} - \psi))} = \abs{F \ast \partial^{\alpha}(\psi_{j} - \psi)}. 
+			\end{equation}
+			By definition of the convolution of a tempered distribution with Schwartz functions, one has 
+			\begin{equation}
+				F \ast \partial^{\alpha}(\psi_{j} -\psi) = F(\tau_{x}\partial^{\alpha}(\psi_{j} - \psi)_{R}) = F(\partial^{\alpha}(\psi_{j} - \psi)(x - y)). 
+			\end{equation}
+			By the boundedness property of tempered distributions, there exists $C > 0$, and $N_{1}, N_{2} \in \mathbb{Z}_{\geq 0}$ so that 
+			\begin{align}
+				\begin{split}
+					\abs{\partial^{\alpha}(F \ast \psi_{j} - F \ast \psi)} &\leq C \cdot \max_{y \in \mathbb{R}^{n}}(1 + |y|)^{N_{1}} \cdot \sum_{|\beta|\leq N_{2}}\abs{\partial^{\beta}\partial^{\alpha}(\psi_{j} - \psi)(x - y)} \\
+					&= C \cdot \max_{y \in \mathbb{R}^{n}}(1 + |y|)^{N_{1}} \cdot \sum_{|\beta|\leq N_{2}} \abs{\partial^{\alpha + \beta}(\psi_{j} - \psi)(x - y)} \\
+					&= C \cdot \sum_{|\beta|\leq N_{2}}\max_{y \in \mathbb{R}^{n}}(1 + |y|)^{N_{1}} \cdot \abs{\partial^{\alpha + \beta}(\psi_{j} - \psi)(x - y)}. 
+				\end{split}
+			\end{align}
+			From part (1), we have $(1 + |y|)^{N_{1}} \leq C_{N_{1}}(1 + |x - y|)^{N_{1}} \cdot (1 + |x|)^{N_{1}}$. This implies that 
+			\begin{align}
+				\begin{split}
+					\abs{\partial^{\alpha}(F \ast \psi_{j} - F \ast \psi)} &\leq C' \cdot \sum_{|\beta|\leq N_{2}}\max_{y \in \mathbb{R}^{n}}(1 + |x|)^{N_{1}}(1 +|x - y|)^{N_{1}} \cdot \abs{\partial^{\alpha + \beta}(\psi_{j}- \psi)(x - y)} \\
+					\implies 
+					(1 + |x|)^{-N_{1}}\abs{\partial^{\alpha}(F \ast \psi_{j} - F \ast \psi)} &\leq C' \cdot \sum_{|\beta| \leq N_{2}}\max_{y \in \mathbb{R}^{n}}(1 + |x -y|)^{N_{1}} \cdot \abs{\partial^{\alpha + \beta}(\psi_{j} - \psi)(x - y)}. 
+				\end{split}
+			\end{align}
+			Since $\psi_{j} \to \psi$ in $\mathcal{S}$, each of the terms in the sum tends to zero as $j \to \infty$. Hence, the whole right side tends to zero as $j \to \infty$. Hence, since $x \in \mathbb{R}^{n}$ was arbitrary, we conclude that 
+			\begin{equation}
+				\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{-N_{1}}\abs{\partial^{\alpha}(F \ast \psi_{j} - F \ast \psi)} \xrightarrow{j \to \infty} 0,
+			\end{equation}
+			so that $F \ast \psi_{j} \to F \ast \psi$ in the space of slowly increasing smooth functions. 
+			
+			\item Suppose $\psi_{j} \to \psi$ in the space of slowly increasing smooth functions, and $\varphi_{j} \to \varphi$ in $\mathcal{S}$. First note that 
+			\begin{equation}
+				\abs{\psi_{j}\varphi_{j} - \psi \varphi} \leq \abs{\psi_{j}\varphi_{j} - \psi_{j}\varphi} + \abs{\psi_{j}\varphi - \psi \varphi}. 
+			\end{equation}
+			Let $N \in \mathbb{Z}_{\geq 0}$ so that $\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{-N}\cdot |\psi_{j} -\psi| \xrightarrow{j \to \infty}0$. Then 
+			\begin{equation}
+				(\star_{1}) \coloneqq \int_{\mathbb{R}^{n}}|\psi_{j} \varphi - \psi \varphi|\;dx = \int_{\mathbb{R}^{n}}(1 + |x|)^{N}|\varphi| \cdot (1 + |x|)^{-N}\cdot |\psi_{j} - \psi|\;dx. 
+			\end{equation}
+			Using H\"older's inequality, 
+			\begin{equation}
+				(\star_{1}) \leq \norm{(1 + |x|)^{N}\abs{\varphi}}_{1} \cdot \norm{(1 + |x|)^{-N}\abs{\psi_{j} -\psi}}_{\infty} \xrightarrow{j \to\infty} 0. 
+			\end{equation}
+			On the other hand, since $|\psi_{j}| \leq |\psi_{j} - \psi| + |\psi|$. Since $\psi$ is a slowly increasing smooth function, there exists $C > 0$ and $N' \in \mathbb{Z}_{\geq 0}$ so that for all $x \in \mathbb{R}^{n}$, 
+			\begin{equation}
+				|\psi(x)| \leq C(1 + |x|)^{N'}. 
+			\end{equation}
+			Likewise, we must have 
+			\begin{equation}
+				|(\psi_{j} - \psi)(x)| \leq C_{j}(1 + |x|)^{M}, 
+			\end{equation}
+			where we define 
+			\begin{equation}
+				C_{j} \coloneqq \sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{-M}|(\psi_{j} - \psi)(x)|, 
+			\end{equation}
+			so that $C_{j} \xrightarrow{j \to \infty}0$. Let $N = \max\{N', M\}$. Then we have 
+			\begin{equation}
+				\abs{\psi_{j}} \cdot \abs{\varphi_{j} - \varphi} \leq (C + C_{j}) \cdot \underbrace{(1 + |x|)^{M} \cdot |\varphi_{j} - \varphi|}_{\in L^{1}(\mathbb{R}^{n})}. 
+			\end{equation}
+			Therefore, 
+			\begin{equation}
+				\int_{\mathbb{R}^{n}}|\psi_{j}| \cdot |\varphi_{j} - \varphi| \leq (C + C_{j}) \cdot \norm{(1 + |x|)^{M} \cdot |\varphi_{j} - \varphi|}_{1} \xrightarrow{j \to \infty} 0. 
+			\end{equation}
+			Hence, we conclude that 
+			\begin{equation}
+				\abs{\int_{\mathbb{R}^{n}}\psi_{j}\varphi_{j} - \psi\varphi\;dx} \leq \int_{\mathbb{R}^{n}}\abs{\psi_{j}\varphi_{j} - \psi \varphi}\;dx \leq \int_{\mathbb{R}^{n}}|\psi_{j} \varphi_{j} - \psi_{j}\varphi| + \int_{\mathbb{R}^{n}}|\psi_{j}\varphi - \psi\varphi| \xrightarrow{j \to \infty} 0. 
+			\end{equation}
+		\end{enumerate}	
+	}
+		
+	\item \textbf{Def. (Fourier Transform of a Tempered Distribution; Schwartz Function)} If $F \in \mathcal{S}'$ is represented by a Schwartz function, then one should define 
+		\begin{equation}
+			\hat{F}(\phi) \coloneqq F(\hat{\phi}). 
+		\end{equation}
+	This should be taken as the general definition for $F \in \mathcal{S}'$. 
+	
+	\item \textbf{Prop. (Fourier Transform of Tempered Distribution with Compact Support)} Let $F$ be a tempered distribution with compact support. Then $\hat{F}(\xi) = F_{x}(e^{-2\pi i (x, \xi)})$ in the sense that 
+		\begin{equation}
+			\hat{F}(\phi) = \int_{\mathbb{R}^{n}}F_{x}\left(e^{-2\pi i (x, \xi)}\right)\hat{\phi}(\xi)\;d\xi, \qquad\phi \in \mathcal{S}. 
+		\end{equation}
+	\begin{solutions}
+		If $\eta \in C_{c}^{\infty}(\mathbb{R})$ such that $\eta \equiv 1$ on $\operatorname{supp}{F}$, then 
+			\begin{equation}
+				e^{-2\pi i(x, \xi + h)}\eta(x) \xrightarrow{h \to 0} e^{-2\pi i (x, \xi)}\eta(x) \qquad \text{in $\mathcal{D}(\mathbb{R}^{n})$}. 
+			\end{equation}
+		This implies that $F_{x}(e^{-2\pi i (x, \xi + h)}\eta(x)) = F_{x}(e^{-2\pi i (x, \xi + h)}) \longrightarrow F_{x}(e^{-2\pi i (\xi, x)})$. Now using boundedness of $F$,
+			\begin{align}
+				\begin{split}
+					\abs{F(\phi)} &\leq C \cdot \sup_{\substack{x \in \mathbb{R}^{n} \\ x \in \operatorname{supp}{F}}}\sum_{|\alpha| \leq N}\abs{\partial^{\alpha}\phi(x)} \\
+					&\leq C \cdot \sup_{\substack{x \in \mathbb{R}^{n} \\ x \in \operatorname{supp}{F}}}\sum_{|\beta|\leq N}\abs{\partial^{\beta}\left((-2\pi i x)^{\alpha}e^{-2\pi i (x, \xi)}\right)} \\ 
+					&\leq C \cdot \sup_{x \in \operatorname{supp}{F}}\sum_{\ell = 0}^{N}\abs{D_{x}^{\ell}((-2\pi i x)^{\alpha})}\abs{D^{|\beta| - \ell}(e^{-2\pi i (x, \xi)})} \\
+					&\leq C' \cdot (1 + |\xi|)^{N}. 
+				\end{split}
+			\end{align}
+	\end{solutions}
+	
+	\item \textbf{Cor. (Fourier Transform for Singleton Support)} Let $\operatorname{supp}{F} = \{0\}$. Then $\hat{F}(\xi)$ is a polynomial. 
+\end{itemize}
 
 \end{document}
