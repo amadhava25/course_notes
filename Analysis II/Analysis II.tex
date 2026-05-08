@@ -872,7 +872,52 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		\item $\sup\limits_{f \in \mathscr{A}}\norm{f(\cdot + h) - f}_{p} \longrightarrow 0$ as $h \to 0$ (equicontinuity under the $L^{p}$ norm)
 		\item $\sup\limits_{f \in \mathscr{A}}\norm{f \cdot \chi_{\{|x|\geq R\}}}_{p} \longrightarrow 0$ as $R \to \infty$ (uniform decay near $\infty$).
 	\end{enumerate}
+	
+	\begin{solutions}
+		Suppose $\mathcal{A}$ is precompact. Then (1) follows immediately. Now assume (2) does not hold. Then there exist $h_{k} \in \mathbb{R}^{n}$ so that $|h_{k}| \leq k^{-1}$ and corresponding $f_{k} \in \mathcal{A}$ so that $\norm{f_{k}(\cdot + h_{k}) - f_{k}}_{p} \geq \epsilon_{0}$ for some $\epsilon_{0} > 0$. So now there is a subsequence $\{f_{k_{\ell}}\}_{\ell = 1}^{\infty}$ so that $f_{k_{\ell}} \to f_{k}$ under the $L^{p}$-norm. But then 
+			\begin{align}
+				\begin{split}
+					\norm{f_{k_{\ell}}(\cdot + h_{k_{\ell}}) - f_{k_{\ell}}}_{p} &\leq \norm{(f_{k_{\ell}} - f_{k})(\cdot + h_{k_{\ell}})}_{p} + \norm{f_{k_{\ell}} - f_{k}}_{p} + \norm{f_{k}(\cdot + h_{k_{\ell}}) - f_{k}}_{p} \\
+					&= 2\norm{f_{k_{\ell}} - f_{k}}_{p} + \norm{f_{k}(\cdot + h_{k_{\ell}}) - f_{k}}_{p} \xrightarrow{\ell \to \infty} 0. 
+				\end{split}
+			\end{align}
+		But this is a contradiction. Note that we used the equicontinuity lemma from above So (2) holds. Likewise, we can prove (3) holds using a proof by contradiction and the tail-decay lemma from above. 
+	\end{solutions} 
 \end{itemize}
+
+\newpage 
+\section{Lecture 11: Baire's Category Theorem and Applications}
+\subsubsection{Key Topics:} (1) Baire's Catgeory Theorem, (2) Uniform Boundedness Principle, (3) Open Mapping Theorem, (4) Bounded Inverse Theorem, (5) Closed Graph Theorem 
+\subsubsection{Summary:} In this lecture, we state and prove Baire's Category Theorem for metric spaces. Then we work through a couple of applications of the theorem. In particular, we will state and prove the theorems states above. 
+\subsubsection{Lecture:}
+\begin{itemize}
+	\item \textbf{Def. (Dense Subset of a Metric Space)} Let $X$ be a metric space. $E \subseteq X$ is a \textit{dense subset} of $X$ if $E \cap U \neq \varnothing$ for any open subset $U \subseteq X$. 
+	
+	\item \textbf{Def. (Nowhere Dense Subset)} Let $X$ be a metric space, and $E \subseteq X$. $E$ is said to be \textit{nowhere dense in $X$} if the closure of $E$, denoted $\overline{E}$, does not contain any open set. 
+	
+	\item \textbf{Lem. (Dense and Nowhere Dense)} Let $X$ be a metric space, and $E \subseteq X$. Then the following are true: \vspace{-0.25cm}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item If $E$ is nowhere dense, then $\overline{E}$ is nowhere dense. 
+			\item $E$ is nowhere dense if and only if $\overline{E}^{c}$ is dense. 
+		\end{enumerate}
+	
+	\begin{solutions}
+		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
+			\item Suppose $E$ is nowhere dense, which means $\overline{E}$ contains no open sets. Since $\overline{\overline{E}} = \overline{E}$, it follows that the closure of $\overline{E}$ also does not contain any open sets. Hence, $\overline{E}$ is also nowhere dense. 
+			\item Let $U^{\text{open}} \subseteq X$. Assume first that $E$ is nowhere dense so that $U$ is not contained in $\overline{E}$. But this implies that $U \cap\overline{E}^{c} \neq \varnothing$. Hence, since $U$ was arbitrary, we conclude that $\overline{E}^{c}$ is dense in $X$. Now suppose $\overline{E}^{c}$ is dense. This means that for any $U^{\text{open}} \subset X$, $U \cap \overline{E}^{c} \neq \varnothing$. This means that $U$ is not contained in $\overline{E}$. Hence, since $\overline{E}$ does not contain any open subset of $X$, $E$ must be nowhere dense. 
+		\end{enumerate}
+	\end{solutions}
+	
+	\item \textbf{Thm. (Baire Category Theorem)} Let $X$ be a complete metric space. Then \vspace{-0.25cm}
+		\begin{enumerate}[itemsep =-2pt,label = (\alph{*})]
+			\item If $\{U_{n}\}_{n=1}^{\infty}$ is a sequence of open dense subsets of $X$, then $\bigcap_{n=1}^{\infty}U_{n}$ is also dense. 
+			\item $X$ is not a countable union of nowhere dense sets. 
+		\end{enumerate}
+	\begin{solutions}
+		Let $W \subseteq X$ be an open set. Our goal is to show that $W \cap \bigcap_{1}^{\infty}U_{n}$.
+	\end{solutions}
+\end{itemize}
+
 
 
 \newpage 
@@ -1385,19 +1430,19 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		\end{equation}
 		
 	{\color{orange}
-		Let us fix $F \in \mathcal{S}'$; we will argue by contradiction. Assume to the contrary that for each $C > 0$, $N_{1}, N_{2} \in \mathbb{Z}_{\geq 0}$, there exists some $\phi \in \mathcal{S}$ so that 
+		Let us fix $F \in \mathcal{S}'$. We recall that $\mathcal{S}'$ is a Fr\'echet space under the topology induced by the seminorms, 
 			\begin{equation}
-				|F(\phi)| > C \cdot \sum_{|\alpha| \leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N_{1}}|\partial^{\alpha}\phi|. 
-			\end{equation}	
-		Fix some $C = N_{1} = N_{2}$. For each $j \in \mathbb{N}$, let $\phi_{j} \in \mathcal{S}$ be a Schwartz function that satisfies the above inequality. Define the normalized Schwartz function 
-			\begin{equation}
-				\ti{\phi}_{j} = \frac{\phi_{j}}{jC \cdot \sum_{|\alpha| \leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N_{1}}|\partial^{\alpha}\phi_{j}|}. 
+				p_{N,M}(\phi) \coloneqq \sum_{|\alpha| \leq M}\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N}|\partial^{\alpha}\phi(x)|. 
 			\end{equation}
-		Notice that by constuction, $|F(\ti{\phi}_{j})| > 1$ for each $j$. On the other hand, for each $j$, 
+		Since $F$ is a continuous linear functional, it follows that there exists a finite collection of seminorms $\{p_{N_{1}^{(j)}, N_{2}^{(j)}}(\phi)\}_{j = 1}^{m}$ and $C' > 0$ so that for all $\phi \in \mathcal{S}$, one has 
 			\begin{equation}
-				C \cdot \sum_{|\alpha| \leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1+ |x|)^{N_{1}}|\partial^{\alpha}\phi_{j}| = j^{-1} \longrightarrow 0 \text{ as $j \to \infty$}. 
+				|F(\phi)| \leq C' \cdot \sum_{j = 1}^{m}p_{N_{1}^{(j)},N_{2}^{(j)}}(\phi). 
 			\end{equation}
-		This implies that $\ti{\phi}_{j} \to 0$ as $j \to \infty$. But this contradicts the fact that $|\ell(\phi_{j})| > 1$ for all $j$. Hence, by contradiction, the proof concludes. 
+		Set $N_{1} = \max\{N_{1}^{(j)}\}$ and $N_{2} = \max\{N_{2}^{(j)}\}$. We note that for each $j$, $p_{N_{1}^{(j)}, N_{2}^{(j)}}(\phi)\leq p_{N_{1}, N_{2}}(\phi)$. Hence, we have 
+			\begin{equation}
+				|F(\phi)| \leq C' \cdot m \cdot p_{N_{1}, N_{2}}(\phi) \eqqcolon Cp_{N_{1},N_{2}}(\phi) = C \cdot \sum_{|\alpha|\leq N_{2}}\sup_{x \in \mathbb{R}^{n}}(1 + |x|)^{N_{1}}|\partial^{\alpha}\phi(x)|. 
+			\end{equation}
+		Evidently, this bound can be taken to be the definition of a tempered distribution. 
 	}
 	
 	\item \textbf{Lem. (Convolution of Tempered Distribution with Smooth Function)} Let $F \in \mathcal{S}'$, and $\psi \in C^{\infty}(\mathbb{R}^{n})$. Then the following are true: \vspace{-0.25cm}
@@ -1639,8 +1684,25 @@ In this lecture, we shifted focus towards the $L^{p}$ spaces. In particular, we 
 		\end{enumerate}
 	\begin{solutions}
 		\begin{enumerate}[itemsep =-2pt,label = (\arabic{*})]
-			\item Follows directly from the definition of the Sobolev spaces. 
-			\item Let $f \in H^{s}$, then $(1 + |\xi|^{2})^{s/2} \hat{f}(\xi) \in L^{2}(\mathbb{R}^{n})$. Denote $g(\xi) = (1 + |\xi|^{2})^{s/2}\hat{f}(\xi) \in L^{2}(\mathbb{R}^{n})$. Then since $C_{c}^{\infty}(\mathbb{R}^{n})$ is dense in $L^{2}(\mathbb{R}^{n})$, we can find $g_{j} \in C_{c}^{\infty}(\mathbb{R}^{n})$ so that $g_{j} \to g$. 
+			\item Recall that a unitary isomorphism is a bijective linear map $\varPhi: X \to Y$ between inner product spaces that preserves the inner product. By definition of the inner product on $H^{s}(\mathbb{R}^{n})$, 
+				\begin{equation}
+					\braket{f, g}_{s} = \int_{\mathbb{R}^{n}}(1 + |\xi|^{2})^{s}\hat{f}(\xi)\overline{\hat{g}}(\xi)\;d\xi = \int_{\mathbb{R}^{n}}\hat{f}(\xi)\overline{\hat{g}}(\xi)\;d\mu_{s}(\xi). 
+				\end{equation}
+			Bijectivity and linearity follow from the properties of the Fourier transform. 
+			\item Let $f \in H^{s}$. Then $(1 + |\xi|^{2})^{s/2}\hat{f}(\xi) \in L^{2}(\mathbb{R}^{n})$. Denote by $g(\xi)$, the function $(1 + |\xi|^{2})^{s/2}\hat{f}(\xi)$. Since $C_{c}^{\infty}(\mathbb{R}^{n})$ is dense in $L^{2}(\mathbb{R}^{n})$, we can find $g_{j} \in C_{c}^{\infty}(\mathbb{R}^{n})$ so that $g_{j} \to g$. Define 
+				\begin{equation}
+					f_{j} = \left[g_{j}(1 + |\xi|^{2})^{-s/2}\right]^{\vee}. 
+				\end{equation} 
+			Hence, $f_{j} \in \mathcal{S}$. Moreover, 
+				\begin{equation}
+					(1 + |\xi|^{2})^{s/2}\hat{f}_{j} = g_{j}, 
+				\end{equation}
+			so that 
+				\begin{equation}
+					\int_{\mathbb{R}^{n}}(1 + |\xi|^{2})^{s}\abs{\hat{f}_{j} - \hat{f}}^{2}\;d\xi = \int_{\mathbb{R}^{n}}\abs{g_{j} - g}^{2}\;d\xi \xrightarrow{j \to \infty} 0
+				\end{equation}
+			\item This follows by definition of $H^{0}$. 
+			\item 
 		\end{enumerate}
 	\end{solutions} 
 \end{itemize}
